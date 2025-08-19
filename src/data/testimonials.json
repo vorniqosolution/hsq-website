@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Sarah & Ahmed Khan",
+    "rating": 5,
+    "comment": "HSQ Hotels exceeded all our expectations. The mountain views were breathtaking, the service impeccable, and every detail was perfectly arranged for our anniversary celebration.",
+    "date": "November 2023"
+  },
+  {
+    "name": "Michael Thompson",
+    "rating": 5,
+    "comment": "A truly world-class experience in the heart of Murree. The combination of luxury amenities and natural beauty created memories that will last a lifetime.",
+    "date": "October 2023"
+  },
+  {
+    "name": "Fatima & Hassan Ali",
+    "rating": 5,
+    "comment": "The spa treatments were divine, the food exceptional, and the staff went above and beyond to make our family vacation special. We can't wait to return.",
+    "date": "December 2023"
+  }
+]

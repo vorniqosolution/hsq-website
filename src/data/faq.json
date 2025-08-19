@@ -1,0 +1,32 @@
+[
+  {
+    "q": "What is your booking and cancellation policy?",
+    "a": "Reservations can be cancelled up to 48 hours before arrival without penalty. Cancellations within 48 hours are subject to a one-night charge. We recommend booking directly for the best rates and flexible cancellation options.",
+    "category": "booking"
+  },
+  {
+    "q": "What are your check-in and check-out times?",
+    "a": "Check-in is at 3:00 PM and check-out is at 12:00 PM. Early check-in and late check-out are available upon request and may incur additional charges depending on availability.",
+    "category": "stay"
+  },
+  {
+    "q": "Do you provide parking facilities?",
+    "a": "Yes, we offer complimentary valet parking for all hotel guests. Our secure parking area can accommodate all vehicle types including SUVs and larger vehicles.",
+    "category": "amenities"
+  },
+  {
+    "q": "Are pets allowed at the hotel?",
+    "a": "We welcome pets with advance notice. A pet fee of PKR 2,000 per night applies, and pets must be supervised at all times. Please contact us before booking to ensure pet-friendly accommodation.",
+    "category": "policies"
+  },
+  {
+    "q": "Do you offer airport transfer services?",
+    "a": "Yes, we provide luxury airport transfer services from Islamabad International Airport. The service must be booked in advance and is available for an additional fee based on vehicle type and group size.",
+    "category": "services"
+  },
+  {
+    "q": "Is the hotel accessible for guests with disabilities?",
+    "a": "HSQ Hotels is committed to accessibility. We offer wheelchair-accessible rooms, elevators, ramps, and specially trained staff to assist guests with disabilities. Please inform us of any special requirements when booking.",
+    "category": "accessibility"
+  }
+]

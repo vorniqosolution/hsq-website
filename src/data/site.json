@@ -1,0 +1,16 @@
+{
+  "name": "HSQ Hotels",
+  "address": "Kashmir Point, Murree, Punjab, Pakistan",
+  "phone": "+92 51 123 4567",
+  "email": "reservations@hsqhotels.com",
+  "geo": {
+    "lat": 33.9062,
+    "lng": 73.3903
+  },
+  "social": {
+    "facebook": "https://facebook.com/hsqhotels",
+    "instagram": "https://instagram.com/hsqhotels",
+    "twitter": "https://twitter.com/hsqhotels"
+  },
+  "copyright": "© 2024 HSQ Hotels. All rights reserved."
+}

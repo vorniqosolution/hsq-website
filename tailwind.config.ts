@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				heading: ['Playfair Display', 'serif'],
+				body: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,6 +56,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// HSQ Brand Colors
+				hsq: {
+					gold: 'hsl(var(--hsq-gold))',
+					black: 'hsl(var(--hsq-black))',
+					white: 'hsl(var(--hsq-white))',
+					offwhite: 'hsl(var(--hsq-offwhite))',
+					graphite: 'hsl(var(--hsq-graphite))',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -64,9 +76,14 @@ export default {
 				}
 			},
 			borderRadius: {
+				'2xl': '1rem',
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				md: 'calc(var(--radius) - 4px)',
+				sm: 'calc(var(--radius) - 8px)'
+			},
+			boxShadow: {
+				'luxury': 'var(--shadow-luxury)',
+				'gold': 'var(--shadow-gold)',
 			},
 			keyframes: {
 				'accordion-down': {
