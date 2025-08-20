@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "./layout/Container";
 import { BookingWidget } from "./BookingWidget";
-import heroImage from "@/assets/hero-hotel.jpg";
+// import heroImage from "@/assets/hero-hotel.jpg";
+import heroImage from "@/assets/hero-bg.png";
 
 export const Hero = () => {
   // Use your own gallery thumbs here (keeping strings avoids import errors)
@@ -63,7 +64,7 @@ export const Hero = () => {
           </div>
 
           {/* Right: Stacked Gallery (shown on lg+) */}
-          <aside className="hidden lg:flex lg:col-span-4 flex-col gap-4">
+          {/* <aside className="hidden lg:flex lg:col-span-4 flex-col gap-4">
             {gallery.map((src, i) => (
               <div
                 key={i}
@@ -78,7 +79,7 @@ export const Hero = () => {
                 <div className="pointer-events-none absolute inset-0 ring-1 ring-black/10" />
               </div>
             ))}
-          </aside>
+          </aside> */}
         </div>
 
         {/* Booking Widget bar (floating near bottom, like the screenshot) */}
