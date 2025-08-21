@@ -9,7 +9,8 @@ All colors MUST be HSL for proper theming.
 @layer base {
   :root {
     /* HSQ Brand Colors */
-    --hsq-gold: 43 79% 53%;      /* #D4AF37 */
+    /* --hsq-gold: 43 79% 53%;      #D4AF37 */
+    --hsq-gold: 43 63% 57%;      /* #d7ab4e */
     --hsq-black: 240 4% 4%;      /* #0B0B0C */
     --hsq-white: 0 0% 100%;      /* #FFFFFF */
     --hsq-offwhite: 60 14% 96%;  /* #F7F7F5 */
@@ -25,7 +26,8 @@ All colors MUST be HSL for proper theming.
     --popover: 0 0% 100%;
     --popover-foreground: 240 4% 4%;
 
-    --primary: 43 79% 53%;        /* HSQ gold */
+    /* --primary: 43 79% 53%;        HSQ gold */
+    --primary: 43 63% 53%;        /* HSQ gold */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 4% 11%;      /* HSQ graphite */
@@ -34,7 +36,7 @@ All colors MUST be HSL for proper theming.
     --muted: 60 14% 96%;          /* HSQ off-white */
     --muted-foreground: 240 4% 45%;
 
-    --accent: 43 79% 53%;         /* HSQ gold */
+    --accent: 43 63% 53%;         /* HSQ gold */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -42,12 +44,12 @@ All colors MUST be HSL for proper theming.
 
     --border: 240 4% 85%;
     --input: 240 4% 85%;
-    --ring: 43 79% 53%;           /* HSQ gold */
+    --ring: 43 63% 53%;           /* HSQ gold */
 
     --radius: 1rem;               /* More luxury feel */
     
     /* Custom HSQ Design Tokens */
-    --gradient-gold: linear-gradient(135deg, hsl(var(--hsq-gold)), hsl(43 79% 45%));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--hsq-gold)), hsl(43 63% 45%));
     --gradient-dark: linear-gradient(135deg, hsl(var(--hsq-black)), hsl(var(--hsq-graphite)));
     --shadow-luxury: 0 25px 50px -12px hsl(var(--hsq-black) / 0.25);
     --shadow-gold: 0 10px 30px -10px hsl(var(--hsq-gold) / 0.3);
@@ -80,7 +82,7 @@ All colors MUST be HSL for proper theming.
     --popover: 240 4% 11%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 43 79% 53%;        /* HSQ gold */
+    --primary: 43 63% 53%;        /* HSQ gold */
     --primary-foreground: 240 4% 4%;
 
     --secondary: 240 4% 15%;
@@ -89,7 +91,7 @@ All colors MUST be HSL for proper theming.
     --muted: 240 4% 15%;
     --muted-foreground: 240 4% 65%;
 
-    --accent: 43 79% 53%;         /* HSQ gold */
+    --accent: 43 63% 53%;         /* HSQ gold */
     --accent-foreground: 240 4% 4%;
 
     --destructive: 0 62.8% 30.6%;
@@ -97,7 +99,7 @@ All colors MUST be HSL for proper theming.
 
     --border: 240 4% 20%;
     --input: 240 4% 20%;
-    --ring: 43 79% 53%;
+    --ring: 43 63% 53%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
