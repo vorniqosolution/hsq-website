@@ -1,21 +1,29 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, Instagram, Globe, User, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Container } from "./Container";
 import { BookingWidget } from "../BookingWidget";
 import { cn } from "@/lib/utils";
+import navIcon from "@/assets/hsq_logo.png";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Rooms", href: "/rooms" },
-  { name: "Dining", href: "/dining" },
-  { name: "Spa", href: "/spa" },
+// Primary navigation (desktop)
+const navPrimary = [
+  { name: "Weather", href: "/weather" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Offers", href: "/offers" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Decor", href: "/decor" },
+  { name: "3D", href: "/3d" },
+  { name: "Reviews", href: "/reviews" },
+  { name: "FAQs", href: "/faqs" },
+  { name: "Rooms", href: "/rooms" },
+];
+
+// Social links (shown inside the pill on desktop, in drawer on mobile)
+const navSocial = [
+  { label: "Instagram", href: "https://instagram.com/", external: true, Icon: Instagram },
+  { label: "Website", href: "https://hsq.example.com", external: true, Icon: Globe },
+  { label: "Account", href: "/account", external: false, Icon: User },
 ];
 
 export const Header = () => {
@@ -33,53 +41,90 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 hsq-transition",
-      isScrolled 
-        ? "bg-white/95 backdrop-blur-sm hsq-shadow-luxury" 
-        : "bg-transparent"
-    )}>
-      <Container>
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-heading font-bold hsq-gold">
-              HSQ
-            </div>
-            <div className="hidden sm:block text-sm text-muted-foreground">
-              HOTELS
-            </div>
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 h-20 transition-[background-color,backdrop-filter] duration-300",
+        isScrolled ? "bg-black/20 backdrop-blur-sm" : "bg-transparent"
+      )}
+    >
+      <Container className="relative h-full">
+        <div className="flex items-center h-full">
+          {/* Left: Logo */}
+          <Link to="/" className="shrink-0 flex items-center">
+            <img
+              src={navIcon}
+              alt="HSQ Towers"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "text-sm font-medium hsq-transition relative",
-                  "after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:hsq-gradient-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left",
-                  location.pathname === item.href 
-                    ? "hsq-gold after:scale-x-100" 
-                    : "text-foreground hover:hsq-gold"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+          {/* Right: Nav pill (desktop only) */}
+          <div className="ml-auto hidden lg:block">
+            <div className="rounded-full border border-white/10 bg-black/55 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+              <nav className="flex items-center gap-1 pl-2 pr-2 py-2">
+                {navPrimary.map((item) => {
+                  const active = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={cn(
+                        "px-3 py-1.5 rounded-full uppercase tracking-wider text-[12px] font-medium transition-colors",
+                        active ? "hsq-gold" : "text-white/90 hover:text-white"
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
 
-          {/* Contact & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <a 
-              href="tel:+925112334567" 
-              className="hidden sm:flex items-center space-x-2 text-sm text-muted-foreground hover:hsq-gold hsq-transition"
-            >
-              <Phone className="w-4 h-4" />
-              <span>+92 51 123 4567</span>
-            </a>
+                {/* Divider before socials */}
+                <div className="mx-1 h-6 w-px bg-white/15" />
 
+                {/* Social icons inside the pill */}
+                <div className="flex items-center gap-1 pr-1">
+                  {navSocial.map(({ Icon, href, label, external }) =>
+                    external ? (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/30 text-white/90 bg-black/30 hover:bg-black/50 hover:text-white hover:border-white/60 transition-colors"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <Link
+                        key={label}
+                        to={href}
+                        aria-label={label}
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/30 text-white/90 bg-black/30 hover:bg-black/50 hover:text-white hover:border-white/60 transition-colors"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </Link>
+                    )
+                  )}
+                </div>
+
+                {/* Book Now chip */}
+                <div className="pl-1">
+                  <Link to="/book">
+                    <Button
+                      size="sm"
+                      className="rounded-full h-8 px-4 text-[12px] font-semibold hsq-gradient-gold text-white hover:opacity-90"
+                    >
+                      Book Now
+                    </Button>
+                  </Link>
+                </div>
+              </nav>
+            </div>
+          </div>
+
+          {/* Mobile hamburger pinned far right */}
+          <div className="ml-auto lg:hidden -mr-2 sm:mr-0">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="sm" className="lg:hidden">
@@ -91,8 +136,17 @@ export const Header = () => {
                   <div className="text-xl font-heading font-bold hsq-gold">
                     HSQ Hotels
                   </div>
-                  <nav className="flex flex-col space-y-4">
-                    {navigation.map((item) => (
+
+                  <a
+                    href="tel:+925112334567"
+                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:hsq-gold transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>+92 51 123 4567</span>
+                  </a>
+
+                  <nav className="flex flex-col space-y-3 pt-2">
+                    {navPrimary.map((item) => (
                       <Link
                         key={item.name}
                         to={item.href}
@@ -107,7 +161,37 @@ export const Header = () => {
                         {item.name}
                       </Link>
                     ))}
+
+                    {/* Social links in mobile drawer */}
+                    <div className="pt-4 flex items-center gap-3">
+                      {navSocial.map(({ Icon, href, label, external }) =>
+                        external ? (
+                          <a
+                            key={label}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={label}
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-foreground hover:hsq-gold transition-colors"
+                          >
+                            <Icon className="w-5 h-5" />
+                          </a>
+                        ) : (
+                          <Link
+                            key={label}
+                            to={href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            aria-label={label}
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-foreground hover:hsq-gold transition-colors"
+                          >
+                            <Icon className="w-5 h-5" />
+                          </Link>
+                        )
+                      )}
+                    </div>
                   </nav>
+
+                  {/* Booking widget in mobile drawer */}
                   <div className="pt-6 border-t">
                     <BookingWidget />
                   </div>
