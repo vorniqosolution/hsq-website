@@ -7,11 +7,30 @@ import { OfferCard } from "@/components/cards/OfferCard";
 import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { AmenityGrid } from "@/components/AmenityGrid";
 import { Button } from "@/components/ui/enhanced-button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { useRoomsData, useOffersData, useTestimonialsData, useFAQData, useDiningData, useSpaData } from "@/hooks/useData";
+import amenities_bg from "@/assets/amenities_bg.svg";
+import navIcon from "@/assets/amenities_logo.svg";
+
+import { useEffect, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  useRoomsData,
+  useOffersData,
+  useTestimonialsData,
+  useFAQData,
+  useDiningData,
+  useSpaData,
+} from "@/hooks/useData";
 import { Link } from "react-router-dom";
 import restaurantImage from "@/assets/restaurant.jpg";
 import spaImage from "@/assets/spa-treatment.jpg";
+import { BookingWidget } from "@/components/BookingWidget";
+// import { Footer } from "@/components/layout/Footer";
+// import Image from "next/image";
 
 const Index = () => {
   const { data: rooms } = useRoomsData();
@@ -24,19 +43,30 @@ const Index = () => {
   return (
     <>
       <SEO />
-      
-      {/* Hero Section */}
-      <Hero />
+      <section id="hero-section">
+        <Hero />
+      </section>
 
-      {/* Brand Intro */}
-      <Section padding="lg">
-        <div className="text-center max-w-3xl mx-auto">
+      <Section padding="lg" className=" relative ">
+        <div
+          className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
+                  w-full max-w-5xl z-40"
+        >
+          <div className="rounded-2xl ">
+            <div className="px-3 py-3 sm:px-4 sm:py-4">
+              <BookingWidget />
+            </div>
+          </div>
+        </div>
+        <div className="pt-28 sm:pt-48 md:pt-36 text-center max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
             Welcome to HSQ Hotels Murree
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Nestled in the breathtaking mountains of Murree, HSQ Hotels offers an unparalleled luxury experience 
-            where timeless elegance meets modern comfort. Every detail has been crafted to create memories that last a lifetime.
+            Nestled in the breathtaking mountains of Murree, HSQ Hotels offers
+            an unparalleled luxury experience where timeless elegance meets
+            modern comfort. Every detail has been crafted to create memories
+            that last a lifetime.
           </p>
           <div className="w-24 h-0.5 hsq-gradient-gold mx-auto" />
         </div>
@@ -62,13 +92,47 @@ const Index = () => {
       </Section>
 
       {/* Amenities */}
-      <Section>
-        <SectionHeader
-          eyebrow="Experience"
-          title="World-Class Amenities"
-          subtitle="Discover the exceptional services and facilities that make HSQ Hotels your perfect mountain getaway."
-        />
-        <AmenityGrid />
+      <Section className="relative overflow-hidden py-14 md:py-20 h-auto">
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={amenities_bg}
+            alt="HSQ Towers"
+            className="h-full w-full object-cover"
+          />
+          {/* Overlay (optional, for readability) */}
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        <div className="mx-auto mt-24 grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:px-8 md:grid-cols-2">
+          <div className="text-center flex flex-col items-center">
+            <img
+              src={navIcon}
+              alt="HSQ Towers"
+              width={140}
+              height={140}
+              className="h-52 w-auto hidden md:block"
+            />
+
+            <h2 className="mt-6 text-3xl font-extrabold leading-tight text-white md:text-4xl">
+              Where Comfort Meets Luxury
+              <br /> Hotel Guest Facilities
+            </h2>
+
+            <a
+              href="/amenities"
+              className="mt-8 inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-neutral-900 transition hover:brightness-110"
+            >
+              Learn More
+            </a>
+          </div>
+
+          {/* Right: Amenities grid */}
+          <div className="md:justify-self-end">
+            <div className="w-full max-w-xl">
+              <AmenityGrid />
+            </div>
+          </div>
+        </div>
       </Section>
 
       {/* Dining */}
@@ -86,9 +150,9 @@ const Index = () => {
             </Button>
           </div>
           <div className="relative">
-            <img 
-              src={restaurantImage} 
-              alt="Fine dining restaurant" 
+            <img
+              src={restaurantImage}
+              alt="Fine dining restaurant"
               className="rounded-2xl hsq-shadow-luxury w-full h-96 object-cover"
             />
           </div>
@@ -99,9 +163,9 @@ const Index = () => {
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 lg:order-1">
-            <img 
-              src={spaImage} 
-              alt="Luxury spa treatment" 
+            <img
+              src={spaImage}
+              alt="Luxury spa treatment"
               className="rounded-2xl hsq-shadow-luxury w-full h-96 object-cover"
             />
           </div>
@@ -146,9 +210,12 @@ const Index = () => {
           subtitle="Located at the heart of Pakistan's most beautiful hill station, offering cool mountain air, spectacular views, and easy access to local attractions."
         />
         <div className="bg-muted rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-heading font-semibold mb-4">Kashmir Point, Murree</h3>
+          <h3 className="text-xl font-heading font-semibold mb-4">
+            Kashmir Point, Murree
+          </h3>
           <p className="text-muted-foreground">
-            Experience the perfect blend of natural beauty and luxury hospitality in the refreshing mountain climate of Murree.
+            Experience the perfect blend of natural beauty and luxury
+            hospitality in the refreshing mountain climate of Murree.
           </p>
         </div>
       </Section>
@@ -178,7 +245,9 @@ const Index = () => {
           <Accordion type="single" collapsible>
             {faq?.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
+                <AccordionTrigger className="text-left">
+                  {item.q}
+                </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
                   {item.a}
                 </AccordionContent>
@@ -195,13 +264,18 @@ const Index = () => {
             Begin Your Luxury Mountain Experience
           </h2>
           <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-            Book your stay at HSQ Hotels and discover why we're Murree's premier luxury destination.
+            Book your stay at HSQ Hotels and discover why we're Murree's premier
+            luxury destination.
           </p>
           <Button variant="hero" size="xl">
             Book Your Stay Now
           </Button>
         </div>
       </Section>
+
+      <section>
+        {/* <Footer/> */}
+      </section>
     </>
   );
 };

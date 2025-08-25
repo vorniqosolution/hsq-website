@@ -1,50 +1,87 @@
 import { useState } from "react";
-import { Calendar, Users, BedDouble } from "lucide-react";
+import { Calendar, Users, BedDouble, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import floating_logo_2 from "@/assets/logo.png";
 
 export const BookingWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Card className="p-6 bg-white/95 backdrop-blur-sm hsq-shadow-luxury">
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div className="flex items-center space-x-2 text-sm">
-            <Calendar className="w-4 h-4 text-primary" />
-            <span>Check-in</span>
+      <Card className="p-3 md:p-4 bg-black/90 backdrop-blur-sm rounded-md md:rounded-tl-[65px] md:rounded-bl-[0px] md:rounded-br-[65px] md:rounded-tr-[0px] max-w-7xl mx-auto border-4 border-primary">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 +md:gap-6">
+          {/* Logo */}
+          <div className="flex items-center mb-4 md:mb-0">
+            <img
+              // src={floating_logo}
+              src={floating_logo_2}
+              alt="Hotel Logo"
+              className="w-16 h-16 md:w-[150px] md:h-[112px] hidden md:block lg:block"
+            />
           </div>
-          <div className="flex items-center space-x-2 text-sm">
-            <Calendar className="w-4 h-4 text-primary" />
-            <span>Check-out</span>
+
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 flex-1 w-full">
+            <div className="flex flex-col w-full md:min-w-0 md:flex-1">
+              <label htmlFor="Arrival Date" className="text-white mb-1">
+                {" "}
+                Arrival :
+              </label>
+              <input
+                type="date"
+                className="w-full bg-white rounded px-3 py-2.5 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-12"
+                placeholder="Departure Date"
+              />
+            </div>
+
+            <div className="flex flex-col w-full md:min-w-0 md:flex-1">
+              <label htmlFor="Departure Date" className="text-white mb-1">
+                {" "}
+                Departure :
+              </label>
+
+              <input
+                type="date"
+                className="w-full bg-white rounded px-3 py-2.5 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-12"
+                placeholder="Arrival Date"
+              />
+            </div>
+
+            {/* Guests Dropdown */}
+            <div className="flex flex-col w-full md:min-w-0 md:flex-1">
+              <label htmlFor="Departure Date" className="text-white mb-1">
+                {" "}
+                Guests :
+              </label>
+              <select className="w-full bg-white rounded px-3 py-2.5 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-12">
+                <option value="">Select Guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5+ Guests</option>
+              </select>
+            </div>
           </div>
-          <div className="flex items-center space-x-2 text-sm">
-            <Users className="w-4 h-4 text-primary" />
-            <span>2 Guests</span>
-          </div>
+
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button className="w-full hsq-gradient-gold text-white font-semibold hover:opacity-90 hsq-transition">
-                Book Now
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Demo Booking Flow</DialogTitle>
-              </DialogHeader>
-              <div className="py-6 text-center">
-                <BedDouble className="w-16 h-16 mx-auto mb-4 text-primary" />
-                <p className="text-lg mb-4">This is a demonstration booking system.</p>
-                <p className="text-muted-foreground mb-6">
-                  In a live implementation, this would connect to a real booking engine 
-                  with availability, pricing, and payment processing.
-                </p>
-                <Button onClick={() => setIsOpen(false)} variant="outline">
-                  Close Demo
-                </Button>
+              <div className="mt-6 relative bg-transparent hover:bg-yellow-600 border border-primary transition-all duration-200 rounded-full h-12 flex items-center cursor-pointer group">
+                <span className="text-white font-semibold px-6 py-2.5 text-sm">
+                  Check availability
+                </span>
+                <div className="bg-yellow-600 group-hover:bg-yellow-700 rounded-full w-12 h-12 flex items-center justify-center ml-2">
+                  <ArrowRight className="w-5 h-5 text-black" />
+                </div>
               </div>
-            </DialogContent>
+            </DialogTrigger>
           </Dialog>
         </div>
       </Card>

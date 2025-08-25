@@ -43,8 +43,8 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 h-20 transition-[background-color,backdrop-filter] duration-300",
-        isScrolled ? "bg-black/20 backdrop-blur-sm" : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 h-20 duration-300",
+        isScrolled ? "bg-transparent" : "bg-transparent"
       )}
     >
       <Container className="relative h-full">
@@ -78,8 +78,20 @@ export const Header = () => {
                   );
                 })}
 
+                {/* Book Now chip */}
+                <div className="pl-1">
+                  <Link to="/book">
+                    <Button
+                      size="sm"
+                      className="rounded-full h-8 px-4 text-[12px] font-semibold hsq-gradient-gold text-white hover:opacity-90"
+                    >
+                      Book Now
+                    </Button>
+                  </Link>
+                </div>
+
                 {/* Divider before socials */}
-                <div className="mx-1 h-6 w-px bg-white/15" />
+                <div className="mx-1 h-6 w-px bg-primary" />
 
                 {/* Social icons inside the pill */}
                 <div className="flex items-center gap-1 pr-1">
@@ -107,18 +119,6 @@ export const Header = () => {
                     )
                   )}
                 </div>
-
-                {/* Book Now chip */}
-                <div className="pl-1">
-                  <Link to="/book">
-                    <Button
-                      size="sm"
-                      className="rounded-full h-8 px-4 text-[12px] font-semibold hsq-gradient-gold text-white hover:opacity-90"
-                    >
-                      Book Now
-                    </Button>
-                  </Link>
-                </div>
               </nav>
             </div>
           </div>
@@ -137,14 +137,6 @@ export const Header = () => {
                     HSQ Hotels
                   </div>
 
-                  <a
-                    href="tel:+925112334567"
-                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:hsq-gold transition-colors"
-                  >
-                    <Phone className="w-4 h-4" />
-                    <span>+92 51 123 4567</span>
-                  </a>
-
                   <nav className="flex flex-col space-y-3 pt-2">
                     {navPrimary.map((item) => (
                       <Link
@@ -161,40 +153,12 @@ export const Header = () => {
                         {item.name}
                       </Link>
                     ))}
-
-                    {/* Social links in mobile drawer */}
-                    <div className="pt-4 flex items-center gap-3">
-                      {navSocial.map(({ Icon, href, label, external }) =>
-                        external ? (
-                          <a
-                            key={label}
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={label}
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-foreground hover:hsq-gold transition-colors"
-                          >
-                            <Icon className="w-5 h-5" />
-                          </a>
-                        ) : (
-                          <Link
-                            key={label}
-                            to={href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            aria-label={label}
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-foreground hover:hsq-gold transition-colors"
-                          >
-                            <Icon className="w-5 h-5" />
-                          </Link>
-                        )
-                      )}
-                    </div>
                   </nav>
 
                   {/* Booking widget in mobile drawer */}
-                  <div className="pt-6 border-t">
+                  {/* <div className="pt-6 border-t">
                     <BookingWidget />
-                  </div>
+                  </div> */}
                 </div>
               </SheetContent>
             </Sheet>

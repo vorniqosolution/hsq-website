@@ -2,194 +2,138 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "./layout/Container";
 import { BookingWidget } from "./BookingWidget";
-// import heroImage from "@/assets/hero-bg.png";
-// import heroImagev1 from "@/assets/v1.svg";
-// import heroImagev2 from "@/assets/v2.svg";
-// import heroImagev3 from "@/assets/v3.svg";
-// import heroImagev4 from "@/assets/v4.svg";
+
 import heroImagev1 from "@/assets/v1.png";
 import heroImagev2 from "@/assets/v2.png";
 import heroImagev3 from "@/assets/v3.png";
 import heroImagev4 from "@/assets/v4.png";
 
-/* Clickable gallery tile: cycles its own slides and reports the new slide up */
-function GalleryTile({ slides, onSlideChange }) {
-  const [idx, setIdx] = useState(0);
-
-  const next = () => {
-    const n = (idx + 1) % slides.length;
-    setIdx(n);
-    onSlideChange?.(slides[n], n);
-  };
-
-  const slide = slides[idx];
-
-  return (
-    <button
-      type="button"
-      onClick={next}
-      className="group relative overflow-hidden rounded-xl border bg-white/5 backdrop-blur-sm 
-                 shadow-[0_10px_30px_rgba(0,0,0,0.45)] outline-none focus-visible:ring-2 
-                 focus-visible:ring-white/60 transition
-                 w-[250px] h-[140px]" // 👈 fixed size here
-      style={{ borderColor: "hsl(var(--hsq-gold) / 0.85)" }}
-      aria-label={slide.alt || "Gallery image"}
-    >
-      <img
-        src={slide.src}
-        alt={slide.alt || ""}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" // 👈 fills fixed box
-        loading="lazy"
-      />
-      {slide.caption && (
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 m-2 rounded-md 
-                        bg-black/55 px-3 py-2 text-left text-white text-sm leading-snug 
-                        border border-white/10 opacity-0 translate-y-1 
-                        transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
-        >
-          {slide.caption}
-        </div>
-      )}
-    </button>
-  );
-}
+const SECTIONS = [
+  {
+    key: "hotel",
+    letter: "H",
+    title: "Welcome. Bonjour. Hola!",
+    desc: "At HSQ Hotels, we redefine modern hospitality—blending style, innovation, and authentic warmth. From smart design and inspired dining to unique experiences surrounded by nature, every detail is crafted to make your journey effortless and unforgettable.",
+    image: heroImagev1,
+  },
+  {
+    key: "restaurant",
+    letter: "R",
+    title: "Restaurant",
+    desc: "Step into our restaurant and indulge in a culinary journey where every dish is a masterpiece—crafted with passion, precision, and flavor that lingers long after the last bite. Our chefs don’t just cook, they turn your cravings into unforgettable experiences.",
+    image: heroImagev2,
+  },
+  {
+    key: "activities",
+    letter: "A",
+    title: "Activities",
+    desc: "At our hotels, every moment is designed around you. From exciting tours and fascinating excursions to world‑class exhibitions and vibrant shows, we bring experiences that match your every wish.",
+    image: heroImagev4,
+  },
+  {
+    key: "rooms",
+    letter: "R",
+    title: "Rooms & Suites",
+    desc: "At HSQ Towers, discover a selection of elegant living spaces—from cozy standard rooms to deluxe suites and spacious two-bedroom apartments. Each residence blends modern design, essential amenities, and breathtaking window views.",
+    image: heroImagev3,
+  },
+];
 
 export const Hero = () => {
-  const slidesA = [
-    {
-      src: heroImagev1,
-      caption: "Balcony lounge — sunrise view",
-      alt: "Balcony",
-    },
-  ];
-  const slidesB = [
-    {
-      src: heroImagev2,
-      caption: "Fine dining — chef’s tasting menu",
-      alt: "Dining",
-    },
-  ];
-  const slidesC = [
-    {
-      src: heroImagev3,
-      caption: "Deluxe suite — HSQ signature bedding",
-      alt: "Suite",
-    },
-  ];
-  const slidesD = [
-    {
-      src: heroImagev4,
-      caption: "Infinity patio — stargaze nights",
-      alt: "Patio",
-    }, // 👈 4th tile
-  ];
-
-  // Default hero should be the 1st image of the first tile
-  const firstSlide = slidesA[0];
-
-  // Dynamic caption and background
-  const [activeCaption, setActiveCaption] = useState(firstSlide.caption);
-  const [bgSrc, setBgSrc] = useState(firstSlide.src);
+  const [active, setActive] = useState(0);
+  const current = SECTIONS[active];
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      {/* Background image */}
       <div className="absolute inset-0">
         <img
-          key={bgSrc} // key change triggers fade-in
-          src={bgSrc || heroImagev1}
+          key={current.image}
+          src={current.image}
           alt=""
           className="h-full w-full object-cover transition-opacity duration-500"
         />
+
+        <div className="absolute inset-0 bg-black/5" />
       </div>
 
-      <Container className="relative z-10 w-full">
+      <Container className="relative z-10 w-full ">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center py-20 lg:py-28">
-          {/* Left: Content panel */}
-          <div className="lg:col-span-8">
-            <div className="">
-              {/* Watermark H */}
-              {/* <div
-                aria-hidden
-                className="pointer-events-none absolute -top-8 -left-5 sm:-top-12 sm:-left-8 text-[16rem] sm:text-[20rem] leading-none font-heading font-black text-[#dcb96c]/15 select-none"
+          <div className="lg:col-span-8 relative ml-4 md:ml-14 ">
+            <div
+              aria-hidden
+              className="hidden lg:block pointer-events-none absolute -top-8 -left-5 sm:-top-12 sm:-left-8 md:-top-28 md:-left-4
+               text-[16rem] md:text-[27rem] leading-none font-heading font-black 
+               text-primary/50 select-none"
+            >
+              {current.letter}
+            </div>
+
+            <div className="relative inline-block bg-black/50 p-6 rounded-xl shadow-xl max-w-2xl">
+              <h1
+                className="font-heading font-bold leading-[1.05] tracking-tight 
+                   text-4xl sm:text-5xl lg:text-4xl xl:text-5xl mb-4 
+                   text-transparent bg-clip-text hsq-gradient-gold"
               >
-                H
-              </div> */}
+                {current.title}
+              </h1>
 
-              {/* Headline */}
-              {/* <h1 className="relative font-heading font-bold leading-[1.05] tracking-tight text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-4 text-transparent bg-clip-text hsq-gradient-gold">
-                Welcome. Bonjour. Hola!
-              </h1> */}
+              <p className="text-base sm:text-lg lg:text-xl text-gray-100/90">
+                {current.desc}
+              </p>
+            </div>
 
-              {/* Dynamic text from thumbnail clicks */}
-              {/* <p className="relative text-base sm:text-lg lg:text-xl text-gray-100/90 max-w-2xl transition-opacity duration-300">
-                {activeCaption}
-              </p> */}
-
-              {/* CTA */}
-              {/* <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="mt-20 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <a href="/about" className="inline-block">
                 <Button
                   size="lg"
-                  className="hsq-gradient-gold text-white font-semibold px-7 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full hsq-transition"
+                  className="w-full md:w-auto hsq-gradient-gold text-white font-semibold 
+             px-7 sm:px-8 py-3 sm:py-4 text-base sm:text-lg 
+             rounded-sm hsq-transition"
                 >
                   More Info
                 </Button>
-              </div> */}
+              </a>
             </div>
           </div>
 
-          {/* Right: 4 interactive tiles (desktop only) */}
           <aside className="hidden lg:flex lg:col-span-4 flex-col gap-4">
-            <GalleryTile
-              slides={slidesA}
-              onSlideChange={(slide) => {
-                setActiveCaption(slide.caption);
-                setBgSrc(slide.src);
-              }}
-            />
-            <GalleryTile
-              slides={slidesB}
-              onSlideChange={(slide) => {
-                setActiveCaption(slide.caption);
-                setBgSrc(slide.src);
-              }}
-            />
-            <GalleryTile
-              slides={slidesC}
-              onSlideChange={(slide) => {
-                setActiveCaption(slide.caption);
-                setBgSrc(slide.src);
-              }}
-            />
-            <GalleryTile
-              slides={slidesD}
-              onSlideChange={(slide) => {
-                setActiveCaption(slide.caption);
-                setBgSrc(slide.src);
-              }}
-            />
+            {SECTIONS.map((s, i) => (
+              <button
+                key={s.key}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={s.title}
+                aria-selected={active === i}
+                className={`relative overflow-hidden rounded-xl border bg-white/5 backdrop-blur-sm 
+                            shadow-[0_10px_30px_rgba(0,0,0,0.45)] outline-none transition
+                            w-[250px] h-[140px] text-left
+                            ${
+                              active === i
+                                ? "ring-2 ring-offset-2 ring-[#dcb96c] ring-offset-black/10"
+                                : ""
+                            }`}
+                style={{ borderColor: "hsl(var(--hsq-black)/100)" }}
+              >
+                <img
+                  src={s.image}
+                  alt=""
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+              </button>
+            ))}
           </aside>
         </div>
 
-        {/* Booking Widget: floating near bottom center */}
-        {/* <div className="relative">
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full max-w-5xl">
-            <div className="rounded-2xl bg-black/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur-sm border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.65)]">
-              <div className="px-3 py-3 sm:px-4 sm:py-4">
-                <BookingWidget />
-              </div>
-            </div>
-          </div>
-        </div> */}
       </Container>
-
-      {/* WhatsApp Quick Chat */}
       <a
         href="https://wa.me/923001234567"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-4 bottom-6 z-50 inline-flex items-center gap-2 rounded-full px-4 py-3 bg-[#25D366] text-white font-medium shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:brightness-110 transition"
       >
+        {/* icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"

@@ -1,176 +1,150 @@
-import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Container } from "./Container";
-import { useSiteData } from "@/hooks/useData";
+// components/Footer.tsx
+import {
+  Mail, Phone, MapPin, Clock,
+  Linkedin, Instagram, Twitter, Facebook, Youtube, Globe
+} from "lucide-react";
 
-const footerLinks = {
-  hotel: [
-    { name: "Rooms & Suites", href: "/rooms" },
-    { name: "Dining", href: "/dining" },
-    { name: "Spa & Wellness", href: "/spa" },
-    { name: "Gallery", href: "/gallery" },
-  ],
-  services: [
-    { name: "Special Offers", href: "/offers" },
-    { name: "Events & Meetings", href: "/contact" },
-    { name: "Airport Transfer", href: "/contact" },
-    { name: "Concierge", href: "/contact" },
-  ],
-  info: [
-    { name: "About HSQ", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms & Conditions", href: "/terms" },
-  ],
-};
+// ---- Local assets (swap paths to yours) ----
+import logo from "@/assets/hsq_logo.png";
+import marbleBg from "@/assets/marble.svg";
 
-export const Footer = () => {
-  const { data: siteData } = useSiteData();
+import visa from "@/assets/Payment/visa.svg";
+import mastercard from "@/assets/Payment/master-card.svg";
+import dsc from "@/assets/Payment/discover.svg";
+import amex from "@/assets/Payment/american.svg";
+
+// Some bundlers import images as strings, others as { src: string }
+const asUrl = (img: any): string => (typeof img === "string" ? img : img?.src || "");
+
+export function Footer() {
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-hsq-black text-hsq-white">
-      <Container>
-        <div className="pt-16 pb-8">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {/* Brand & Contact */}
-            <div className="lg:col-span-1">
-              <div className="mb-6">
-                <div className="text-2xl font-heading font-bold hsq-gold mb-2">
-                  HSQ Hotels
-                </div>
-                <p className="text-sm text-gray-300">
-                  Luxury mountain retreat in the heart of Murree
-                </p>
-              </div>
-              
-              {siteData && (
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-4 h-4 mt-0.5 text-primary shrink-0" />
-                    <span className="text-gray-300">{siteData.address}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-4 h-4 text-primary shrink-0" />
-                    <a href={`tel:${siteData.phone}`} className="text-gray-300 hover:hsq-gold hsq-transition">
-                      {siteData.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-4 h-4 text-primary shrink-0" />
-                    <a href={`mailto:${siteData.email}`} className="text-gray-300 hover:hsq-gold hsq-transition">
-                      {siteData.email}
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
+    <footer
+      className="relative text-white"
+      style={{
+        backgroundImage: `url(${asUrl(marbleBg)})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* dark overlay so text pops */}
+      <div className="absolute inset-0 bg-black/70" aria-hidden />
 
-            {/* Hotel Links */}
-            <div>
-              <h3 className="font-semibold text-white mb-4">Hotel</h3>
-              <ul className="space-y-2">
-                {footerLinks.hotel.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      to={link.href} 
-                      className="text-sm text-gray-300 hover:hsq-gold hsq-transition"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className="relative mx-auto max-w-7xl px-6 py-12 md:py-16">
+        {/* Top grid */}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+          {/* Brand / description */}
+          <div className="space-y-5">
+            <img
+              src={asUrl(logo)}
+              alt="HSQ Towers"
+              className="h-16 w-auto"
+              loading="lazy"
+            />
+            <p className="max-w-sm text-sm leading-relaxed text-white/80">
+              Welcome to HSQ Towers, a haven of style and elegance.
+              Enjoy modern comforts, exceptional service, and a stay that
+              feels like home—with grandeur.
+            </p>
 
-            {/* Services Links */}
-            <div>
-              <h3 className="font-semibold text-white mb-4">Services</h3>
-              <ul className="space-y-2">
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      to={link.href} 
-                      className="text-sm text-gray-300 hover:hsq-gold hsq-transition"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Newsletter & Social */}
-            <div>
-              <h3 className="font-semibold text-white mb-4">Stay Connected</h3>
-              <p className="text-sm text-gray-300 mb-4">
-                Subscribe for exclusive offers and updates
+            {/* Payment methods */}
+            <div className="pt-2">
+              <p className="mb-2 text-xs font-semibold tracking-wide text-primary">
+                Accepted payment methods
               </p>
-              <div className="flex space-x-2 mb-6">
-                <Input 
-                  type="email" 
-                  placeholder="Your email"
-                  className="bg-hsq-graphite border-gray-600 text-white placeholder-gray-400"
-                />
-                <Button size="sm" className="hsq-gradient-gold text-white">
-                  Subscribe
-                </Button>
+              <div className="flex items-center gap-3">
+                <img src={asUrl(visa)} alt="Visa" className="h-6 w-auto" loading="lazy" />
+                <img src={asUrl(mastercard)} alt="Mastercard" className="h-6 w-auto" loading="lazy" />
+                <img src={asUrl(amex)} alt="Amex" className="h-6 w-auto" loading="lazy" />
+                <img src={asUrl(dsc)} alt="Amex" className="h-6 w-auto" loading="lazy" />
               </div>
-              
-              {siteData?.social && (
-                <div className="flex space-x-4">
-                  {siteData.social.facebook && (
-                    <a 
-                      href={siteData.social.facebook}
-                      className="text-gray-300 hover:hsq-gold hsq-transition"
-                      aria-label="Facebook"
-                    >
-                      <Facebook className="w-5 h-5" />
-                    </a>
-                  )}
-                  {siteData.social.instagram && (
-                    <a 
-                      href={siteData.social.instagram}
-                      className="text-gray-300 hover:hsq-gold hsq-transition"
-                      aria-label="Instagram"
-                    >
-                      <Instagram className="w-5 h-5" />
-                    </a>
-                  )}
-                  {siteData.social.twitter && (
-                    <a 
-                      href={siteData.social.twitter}
-                      className="text-gray-300 hover:hsq-gold hsq-transition"
-                      aria-label="Twitter"
-                    >
-                      <Twitter className="w-5 h-5" />
-                    </a>
-                  )}
-                </div>
-              )}
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-gray-800 pt-8">
-            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-              <p className="text-sm text-gray-400">
-                {siteData?.copyright || "© 2024 HSQ Hotels. All rights reserved."}
-              </p>
-              <div className="flex space-x-6">
-                <Link to="/privacy" className="text-sm text-gray-400 hover:hsq-gold hsq-transition">
-                  Privacy Policy
-                </Link>
-                <Link to="/terms" className="text-sm text-gray-400 hover:hsq-gold hsq-transition">
-                  Terms & Conditions
-                </Link>
-              </div>
+          {/* For Customers */}
+          <div>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-primary">
+              For Customers
+            </h4>
+            <ul className="space-y-3 text-sm text-white/85">
+              <li><a className="hover:text-primary" href="/about">About Hsq Towers</a></li>
+              <li><a className="hover:text-primary" href="/support">Customer Care/Help</a></li>
+              <li><a className="hover:text-primary" href="/corporate-accounts">Corporate Accounts</a></li>
+              <li><a className="hover:text-primary" href="/financials">Financial Information</a></li>
+              <li><a className="hover:text-primary" href="/terms">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+
+          {/* Other Links */}
+          <div>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-primary">
+              Other Links
+            </h4>
+            <ul className="space-y-3 text-sm text-white/85">
+              <li><a className="hover:text-primary" href="/hotel">About Hotel</a></li>
+              <li><a className="hover:text-primary" href="/privacy">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-primary">
+              Contact Us
+            </h4>
+            <ul className="space-y-3 text-sm text-white/85">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 text-primary" />
+                Hsq towers, Main Jhika Gali, Murree,<br />Rawalpindi, Punjab
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary" />
+                <a className="hover:text-primary" href="mailto:hsqtowers@gmail.com">hsqtowers@gmail.com</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary" />
+                <a className="hover:text-primary" href="tel:+923300049479">+92 330 004 9479</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="h-4 w-4 text-primary" />
+                24/7 Customer Service
+              </li>
+            </ul>
+
+            {/* Socials */}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {[
+                { Icon: Linkedin, href: "#" },
+                { Icon: Instagram, href: "#" },
+                { Icon: Twitter, href: "#" },
+                { Icon: Facebook, href: "#" },
+                { Icon: Youtube, href: "#" },
+                { Icon: Globe, href: "#" },
+              ].map(({ Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#D4A32E] text-black transition hover:brightness-110"
+                  aria-label="social"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
+
+            <p className="mt-4 text-right text-[11px] text-white/70">
+              Designed and developed by <span className="text-primary">Vornipo solutions</span>
+            </p>
           </div>
         </div>
-      </Container>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="relative border-t border-white/10 bg-black/70">
+        <div className="mx-auto max-w-7xl px-6 py-3 text-center text-xs text-white/80">
+          Hsq Towers © {year}. All Rights Reserved
+        </div>
+      </div>
     </footer>
   );
-};
+}

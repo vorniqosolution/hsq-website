@@ -27,7 +27,7 @@ All colors MUST be HSL for proper theming.
     --popover-foreground: 240 4% 4%;
 
     /* --primary: 43 79% 53%;        HSQ gold */
-    --primary: 43 63% 53%;        /* HSQ gold */
+    --primary: 41 63% 58%;        /* HSQ gold 41 63% 58% */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 4% 11%;      /* HSQ graphite */
@@ -49,7 +49,7 @@ All colors MUST be HSL for proper theming.
     --radius: 1rem;               /* More luxury feel */
     
     /* Custom HSQ Design Tokens */
-    --gradient-gold: linear-gradient(135deg, hsl(var(--hsq-gold)), hsl(43 63% 45%));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--hsq-gold)), hsl(41 63% 58%));
     --gradient-dark: linear-gradient(135deg, hsl(var(--hsq-black)), hsl(var(--hsq-graphite)));
     --shadow-luxury: 0 25px 50px -12px hsl(var(--hsq-black) / 0.25);
     --shadow-gold: 0 10px 30px -10px hsl(var(--hsq-gold) / 0.3);
