@@ -55,36 +55,11 @@ const Index = () => {
         <Hero />
       </section>
 
-      {/* <Section padding="lg" className=" relative ">
-        <div
-          className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
-                  w-full max-w-5xl z-40"
-        >
-          <div className="rounded-2xl ">
-            <div className="px-3 py-3 sm:px-4 sm:py-4">
-              <BookingWidget />
-            </div>
-          </div>
-        </div>
-        <div className="pt-28 sm:pt-48 md:pt-36 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
-            Welcome to HSQ Hotels Murree
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Nestled in the breathtaking mountains of Murree, HSQ Hotels offers
-            an unparalleled luxury experience where timeless elegance meets
-            modern comfort. Every detail has been crafted to create memories
-            that last a lifetime.
-          </p>
-          <div className="w-24 h-0.5 hsq-gradient-gold mx-auto" />
-        </div>
-      </Section> */}
-
-      <Section className="relative py-20 md:py-32 border border-b-red-700">
+      <Section className="relative h-[660px] py-20 md:py-52">
         {/* Floating Booking */}
         <div
           className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
-                  w-full max-w-5xl z-40"
+            w-full max-w-5xl z-40 hidden lg:block"
         >
           <div className="rounded-2xl ">
             <div className="px-3 py-3 sm:px-4 sm:py-4">
@@ -94,15 +69,15 @@ const Index = () => {
         </div>
 
         {/* LOGO */}
-        <div className="absolute left-1/2 top-20 z-200 -translate-x-1/2">
+        <div className="absolute left-1/2 top-5 z-200 -translate-x-1/2">
           <img
-            src={crest} // or your logo source
+            src={crest}
             alt="HSQ Towers"
             className="h-20 w-auto md:h-[600px]"
           />
         </div>
 
-        {/* Decorative florals (optional) */}
+        {/* Decorative florals */}
         <img
           src={asUrl(floralTL)}
           alt=""
@@ -114,57 +89,59 @@ const Index = () => {
           className="pointer-events-none absolute bottom-0 right-0 z-190 w-32 md:w-80"
         />
 
-        {/* Content grid */}
-        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 md:grid-cols-2">
-          {/* LEFT — overlapping photos */}
-          <div className="relative mx-auto w-full max-w-[560px] md:mx-0">
-            <div className="overflow-hidden">
-              <img
-                src={asUrl(photoA)}
-                alt="HSQ Towers exterior"
-                className="hidden md:block h-[420px] w-[300px] object-cover"
-              />
-            </div>
-
-            <div className="absolute left-1/2 -bottom-8 -translate-x-1/2">
-              <div className="overflow-hidden">
+        {/* Content grid - PERFECTLY CENTERED with more side spacing */}
+        <div className="absolute inset-0 flex items-center justify-center px-12 sm:px-20 ">
+          <div className="relative z-150 mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-8">
+            {/* LEFT - Images */}
+            <div className="flex mx-auto w-full md:mx-0 ">
+              <div className="relative">
                 <img
-                  src={asUrl(photoB)}
-                  alt="HSQ Towers rooms"
-                  className="hidden md:block h-[420px] w-[300px] object-cover"
+                  src={asUrl(photoA)}
+                  alt="HSQ Towers exterior"
+                  className="hidden md:block h-[310px] w-[250px] object-cover border-4 border-primary"
                 />
               </div>
+
+              <div className="absolute left-[330px] -bottom-32 -translate-x-1/2">
+                <div className="overflow-hidden">
+                  <img
+                    src={asUrl(photoB)}
+                    alt="HSQ Towers rooms"
+                    className="hidden md:block h-[310px] w-[250px] object-cover border-4 border-primary"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* RIGHT — text + crest watermark */}
-          <div className="relative">
-            <img
-              src={asUrl(crest)}
-              alt=""
-              className="pointer-events-none absolute -right-6 top-1/2 -z-10 hidden w-[520px] -translate-y-1/2 opacity-[0.08] md:block"
-            />
+            {/* RIGHT - Text content */}
+            <div className="relative text-center">
+              <img
+                src={asUrl(crest)}
+                alt=""
+                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-[0.08] md:block"
+              />
 
-            <h3 className="text-3xl md:text-4xl font-serif font-semibold text-[#D4A32E]">
-              Welcome to Hsq Towers
-            </h3>
+              <h3 className="text-3xl md:text-4xl font-serif font-semibold text-primary">
+                Welcome to Hsq Towers
+              </h3>
 
-            <p className="mt-4 text-xl font-serif text-black">
-              Where Comfort Meets Luxury
-            </p>
+              <p className="mt-4 text-xl font-serif text-black">
+                Where Comfort Meets Luxury
+              </p>
 
-            <p className="mt-4 max-w-prose text-[15px] leading-7 text-black/80">
-              At HSQ Tower, elegance meets convenience — the perfect stay for
-              guests who seek charm, comfort, and the ideal location to explore
-              Murree.
-            </p>
+              <p className="mt-4 mx-auto max-w-prose text-[15px] leading-7 text-black/80">
+                At HSQ Tower, elegance meets convenience — the perfect stay for
+                guests who seek charm, comfort, and the ideal location to
+                explore Murree.
+              </p>
 
-            <a
-              href="/about"
-              className="mt-6 inline-flex items-center rounded-full bg-[#D4A32E] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
-            >
-              EXPLORE MORE
-            </a>
+              <a
+                href="/about"
+                className="mt-6 inline-flex items-center rounded-[5px] bg-primary px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
+              >
+                EXPLORE MORE
+              </a>
+            </div>
           </div>
         </div>
       </Section>
