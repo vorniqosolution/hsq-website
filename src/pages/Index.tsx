@@ -9,6 +9,11 @@ import { AmenityGrid } from "@/components/AmenityGrid";
 import { Button } from "@/components/ui/enhanced-button";
 import amenities_bg from "@/assets/amenities_bg.svg";
 import navIcon from "@/assets/amenities_logo.svg";
+import floralTL from "@/assets/BG/fower_01.svg";
+import floralBR from "@/assets/BG/fower_02.svg";
+import crest from "@/assets/BG/HSQ_LOGO_ab.svg";
+import photoA from "@/assets/BG/hs1_01.svg"; // back image
+import photoB from "@/assets/BG/hs1_02.svg"; // back image
 
 import { useEffect, useState } from "react";
 import {
@@ -29,6 +34,7 @@ import { Link } from "react-router-dom";
 import restaurantImage from "@/assets/restaurant.jpg";
 import spaImage from "@/assets/spa-treatment.jpg";
 import { BookingWidget } from "@/components/BookingWidget";
+
 // import { Footer } from "@/components/layout/Footer";
 // import Image from "next/image";
 
@@ -40,6 +46,8 @@ const Index = () => {
   const { data: dining } = useDiningData();
   const { data: spa } = useSpaData();
 
+  const asUrl = (img: any) => (typeof img === "string" ? img : img?.src || "");
+
   return (
     <>
       <SEO />
@@ -47,7 +55,7 @@ const Index = () => {
         <Hero />
       </section>
 
-      <Section padding="lg" className=" relative ">
+      {/* <Section padding="lg" className=" relative ">
         <div
           className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
                   w-full max-w-5xl z-40"
@@ -69,6 +77,95 @@ const Index = () => {
             that last a lifetime.
           </p>
           <div className="w-24 h-0.5 hsq-gradient-gold mx-auto" />
+        </div>
+      </Section> */}
+
+      <Section className="relative py-20 md:py-32 border border-b-red-700">
+        {/* Floating Booking */}
+        <div
+          className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
+                  w-full max-w-5xl z-40"
+        >
+          <div className="rounded-2xl ">
+            <div className="px-3 py-3 sm:px-4 sm:py-4">
+              <BookingWidget />
+            </div>
+          </div>
+        </div>
+
+        {/* LOGO */}
+        <div className="absolute left-1/2 top-20 z-200 -translate-x-1/2">
+          <img
+            src={crest} // or your logo source
+            alt="HSQ Towers"
+            className="h-20 w-auto md:h-[600px]"
+          />
+        </div>
+
+        {/* Decorative florals (optional) */}
+        <img
+          src={asUrl(floralTL)}
+          alt=""
+          className="pointer-events-none absolute left-0 top-0 z-190 w-32 md:w-80"
+        />
+        <img
+          src={asUrl(floralBR)}
+          alt=""
+          className="pointer-events-none absolute bottom-0 right-0 z-190 w-32 md:w-80"
+        />
+
+        {/* Content grid */}
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 md:grid-cols-2">
+          {/* LEFT — overlapping photos */}
+          <div className="relative mx-auto w-full max-w-[560px] md:mx-0">
+            <div className="overflow-hidden">
+              <img
+                src={asUrl(photoA)}
+                alt="HSQ Towers exterior"
+                className="hidden md:block h-[420px] w-[300px] object-cover"
+              />
+            </div>
+
+            <div className="absolute left-1/2 -bottom-8 -translate-x-1/2">
+              <div className="overflow-hidden">
+                <img
+                  src={asUrl(photoB)}
+                  alt="HSQ Towers rooms"
+                  className="hidden md:block h-[420px] w-[300px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — text + crest watermark */}
+          <div className="relative">
+            <img
+              src={asUrl(crest)}
+              alt=""
+              className="pointer-events-none absolute -right-6 top-1/2 -z-10 hidden w-[520px] -translate-y-1/2 opacity-[0.08] md:block"
+            />
+
+            <h3 className="text-3xl md:text-4xl font-serif font-semibold text-[#D4A32E]">
+              Welcome to Hsq Towers
+            </h3>
+
+            <p className="mt-4 text-xl font-serif text-black">
+              Where Comfort Meets Luxury
+            </p>
+
+            <p className="mt-4 max-w-prose text-[15px] leading-7 text-black/80">
+              At HSQ Tower, elegance meets convenience — the perfect stay for
+              guests who seek charm, comfort, and the ideal location to explore
+              Murree.
+            </p>
+
+            <a
+              href="/about"
+              className="mt-6 inline-flex items-center rounded-full bg-[#D4A32E] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
+            >
+              EXPLORE MORE
+            </a>
+          </div>
         </div>
       </Section>
 
@@ -272,10 +369,6 @@ const Index = () => {
           </Button>
         </div>
       </Section>
-
-      <section>
-        {/* <Footer/> */}
-      </section>
     </>
   );
 };

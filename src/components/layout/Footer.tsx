@@ -3,6 +3,7 @@ import {
   Mail, Phone, MapPin, Clock,
   Linkedin, Instagram, Twitter, Facebook, Youtube, Globe
 } from "lucide-react";
+import { PiTiktokLogo } from "react-icons/pi";
 
 // ---- Local assets (swap paths to yours) ----
 import logo from "@/assets/hsq_logo.png";
@@ -29,7 +30,7 @@ export function Footer() {
       }}
     >
       {/* dark overlay so text pops */}
-      <div className="absolute inset-0 bg-black/70" aria-hidden />
+      <div className="absolute inset-0 bg-black/20" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-6 py-12 md:py-16">
         {/* Top grid */}
@@ -118,13 +119,13 @@ export function Footer() {
                 { Icon: Instagram, href: "#" },
                 { Icon: Twitter, href: "#" },
                 { Icon: Facebook, href: "#" },
-                { Icon: Youtube, href: "#" },
-                { Icon: Globe, href: "#" },
+                { Icon: PiTiktokLogo, href: "#" },
+                // { Icon: Globe, href: "#" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
                   href={href}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#D4A32E] text-black transition hover:brightness-110"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-black transition hover:brightness-110"
                   aria-label="social"
                 >
                   <Icon className="h-4 w-4" />
@@ -132,7 +133,7 @@ export function Footer() {
               ))}
             </div>
 
-            <p className="mt-4 text-right text-[11px] text-white/70">
+            <p className="mt-6 text-[11px] text-white/70">
               Designed and developed by <span className="text-primary">Vornipo solutions</span>
             </p>
           </div>
