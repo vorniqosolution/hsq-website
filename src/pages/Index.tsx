@@ -14,6 +14,7 @@ import floralBR from "@/assets/BG/fower_02.svg";
 import crest from "@/assets/BG/HSQ_LOGO_ab.svg";
 import photoA from "@/assets/BG/hs1_01.svg"; // back image
 import photoB from "@/assets/BG/hs1_02.svg"; // back image
+import rightImage from "@/assets/BG/dining.svg";
 
 import { useEffect, useState } from "react";
 import {
@@ -34,9 +35,7 @@ import { Link } from "react-router-dom";
 import restaurantImage from "@/assets/restaurant.jpg";
 import spaImage from "@/assets/spa-treatment.jpg";
 import { BookingWidget } from "@/components/BookingWidget";
-
-// import { Footer } from "@/components/layout/Footer";
-// import Image from "next/image";
+import { RestaurantSection } from "@/components/DiningData";
 
 const Index = () => {
   const { data: rooms } = useRoomsData();
@@ -54,9 +53,7 @@ const Index = () => {
       <section id="hero-section">
         <Hero />
       </section>
-
       <Section className="relative h-[660px] py-20 md:py-52">
-        {/* Floating Booking */}
         <div
           className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
             w-full max-w-5xl z-40 hidden lg:block"
@@ -73,7 +70,7 @@ const Index = () => {
           <img
             src={crest}
             alt="HSQ Towers"
-            className="h-20 w-auto md:h-[600px] opacity-50"
+            className="h-20 w-auto md:h-[600px] opacity-50 "
           />
         </div>
 
@@ -81,12 +78,12 @@ const Index = () => {
         <img
           src={asUrl(floralTL)}
           alt=""
-          className="pointer-events-none absolute left-0 top-0 z-190 w-32 md:w-80"
+          className="pointer-events-none absolute left-0 top-0 z-190 w-32 md:w-80 border-4 border-x-red-500"
         />
         <img
           src={asUrl(floralBR)}
           alt=""
-          className="pointer-events-none absolute bottom-0 right-0 z-190 w-32 md:w-80"
+          className="pointer-events-none absolute bottom-0 right-0 z-190 w-32 md:w-80 border-4 border-x-red-500"
         />
 
         {/* Content grid - PERFECTLY CENTERED with more side spacing */}
@@ -145,8 +142,6 @@ const Index = () => {
           </div>
         </div>
       </Section>
-
-      {/* Featured Rooms */}
       <Section background="muted">
         <SectionHeader
           eyebrow="Accommodations"
@@ -164,7 +159,6 @@ const Index = () => {
           </Button>
         </div>
       </Section>
-
       {/* Amenities */}
       <Section className="relative overflow-hidden py-14 md:py-20 h-auto">
         <div className="absolute inset-0 -z-10">
@@ -209,30 +203,41 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Dining */}
-      <Section background="muted">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <SectionHeader
-              eyebrow="Culinary Excellence"
-              title="Dining & Bar"
-              subtitle={dining?.overview}
-              alignment="left"
-            />
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/dining">Explore Dining</Link>
-            </Button>
+      <Section className="relative py-20 md:py-20">
+        <img
+          src={asUrl(floralTL)}
+          alt=""
+          className="pointer-events-none absolute left-0 top-0 -z-100 w-32 md:w-80 border-4 border-x-red-500"
+        />
+        <img
+          src={asUrl(floralBR)}
+          alt=""
+          className="pointer-events-none absolute bottom-0 right-0 -z-100 w-32 md:w-80 border-4 border-x-red-500"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-4 border-x-red-500 max-w-screen-lg mx-auto p-8 z-100">
+          <div className="text-center">
+
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-bg-primary mb-6">
+              Our Restaurant
+            </h2>
+
+            <p className="text-lg text-gray-700 italic max-w-prose mx-auto mb-10">
+              “Indulge in a gourmet buffet breakfast, thoughtfully served in our
+              sophisticated lounge or on the serene patio for a touch of
+              open-air luxury.”
+            </p>
           </div>
-          <div className="relative">
+
+          <div className="flex items-center justify-center">
             <img
-              src={restaurantImage}
-              alt="Fine dining restaurant"
-              className="rounded-2xl hsq-shadow-luxury w-full h-96 object-cover"
+              src={asUrl(rightImage)}
+              alt="Elegant dining area at Our Restaurant"
+              className="w-80 h-[500px] object-cover shadow-xl"
             />
           </div>
         </div>
       </Section>
-
       {/* Spa */}
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -256,7 +261,6 @@ const Index = () => {
           </div>
         </div>
       </Section>
-
       {/* Offers */}
       <Section background="muted">
         <SectionHeader
@@ -275,7 +279,6 @@ const Index = () => {
           </Button>
         </div>
       </Section>
-
       {/* Location */}
       <Section>
         <SectionHeader
@@ -293,7 +296,6 @@ const Index = () => {
           </p>
         </div>
       </Section>
-
       {/* Testimonials */}
       <Section background="muted">
         <SectionHeader
@@ -307,7 +309,6 @@ const Index = () => {
           ))}
         </div>
       </Section>
-
       {/* FAQ */}
       <Section>
         <SectionHeader
@@ -330,7 +331,6 @@ const Index = () => {
           </Accordion>
         </div>
       </Section>
-
       {/* CTA */}
       <Section background="gradient-dark" padding="xl">
         <div className="text-center">
