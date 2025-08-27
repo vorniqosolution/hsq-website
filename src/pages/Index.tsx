@@ -73,7 +73,7 @@ const Index = () => {
           <img
             src={crest}
             alt="HSQ Towers"
-            className="h-20 w-auto md:h-[600px]"
+            className="h-20 w-auto md:h-[600px] opacity-50"
           />
         </div>
 
@@ -137,7 +137,7 @@ const Index = () => {
 
               <a
                 href="/about"
-                className="mt-6 inline-flex items-center rounded-[5px] bg-primary px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
+                className="mt-6 w-full md:w-auto inline-flex items-center justify-center rounded-[5px] bg-primary px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
               >
                 EXPLORE MORE
               </a>
