@@ -178,8 +178,8 @@ const Index = () => {
             />
 
             <h2 className="mt-6 text-3xl font-extrabold leading-tight text-white md:text-4xl">
-              Where Comfort Meets Luxury
-              <br /> Hotel Guest Facilities
+              Hotel Guest Facilities
+              <br /> Where Every Detail  Meets Luxury
             </h2>
 
             <a
