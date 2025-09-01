@@ -12,13 +12,14 @@ import navIcon from "@/assets/amenities_logo.svg";
 import floralTL from "@/assets/BG/fower_01.svg";
 import floralBR from "@/assets/BG/fower_02.svg";
 import crest from "@/assets/BG/HSQ_LOGO_ab.svg";
-import photoA from "@/assets/BG/hs1_01.svg"; // back image
-import photoB from "@/assets/BG/hs1_02.svg"; // back image
+import photoA from "@/assets/BG/hs1_01.svg";
+import photoB from "@/assets/BG/hs1_02.svg";
 import rightImage from "@/assets/BG/dining.svg";
 import photogallary from "@/assets/BG/photogallary.svg";
 import photogallaryLogo from "@/assets/BG/photoGallaryLogo.svg";
 
 import { useEffect, useState } from "react";
+import Restaurant from "@/data/restaurant.json";
 import {
   Accordion,
   AccordionContent,
@@ -34,27 +35,23 @@ import {
   useSpaData,
 } from "@/hooks/useData";
 import { Link } from "react-router-dom";
-import restaurantImage from "@/assets/restaurant.jpg";
-import spaImage from "@/assets/spa-treatment.jpg";
 import { BookingWidget } from "@/components/BookingWidget";
-// import { RestaurantSection } from "@/components/DiningData";
 
 const Index = () => {
   const { data: rooms } = useRoomsData();
-  const { data: offers } = useOffersData();
   const { data: testimonials } = useTestimonialsData();
-  const { data: faq } = useFAQData();
-  const { data: dining } = useDiningData();
-  const { data: spa } = useSpaData();
 
   const asUrl = (img: any) => (typeof img === "string" ? img : img?.src || "");
 
   return (
     <>
       <SEO />
+      {/* Home */}
       <section id="hero-section">
         <Hero />
       </section>
+
+      {/* About */}
       <Section className="relative h-[660px] py-20 md:py-52">
         <div
           className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 
@@ -143,22 +140,18 @@ const Index = () => {
           </div>
         </div>
       </Section>
-      {/* rooms */}
+
+      {/* Reviews */}
       <Section background="muted">
         <SectionHeader
-          eyebrow="Accommodations"
-          title="Luxury Rooms & Suites"
-          subtitle="Each room is a sanctuary of comfort and elegance, designed to provide the ultimate mountain retreat experience."
+          eyebrow="Guest Reviews"
+          title="What Our Guests Say"
+          subtitle="Read about the exceptional experiences our guests have had during their stay with us."
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {rooms?.slice(0, 3).map((room) => (
-            <RoomCard key={room.id} room={room} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials?.map((testimonial, index) => (
+            <TestimonialCard key={index} testimonial={testimonial} />
           ))}
-        </div>
-        <div className="text-center">
-          <Button variant="outline" size="lg" asChild>
-            <Link to="/rooms">View All Rooms</Link>
-          </Button>
         </div>
       </Section>
 
@@ -170,7 +163,7 @@ const Index = () => {
             alt="HSQ Towers"
             className="h-full w-full object-cover"
           />
-          
+
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
@@ -206,6 +199,26 @@ const Index = () => {
         </div>
       </Section>
 
+      {/* rooms */}
+      <Section background="muted">
+        <SectionHeader
+          eyebrow="Accommodations"
+          title="Luxury Rooms & Suites"
+          subtitle="Each room is a sanctuary of comfort and elegance, designed to provide the ultimate mountain retreat experience."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {rooms?.slice(0, 3).map((room) => (
+            <RoomCard key={room.id} room={room} />
+          ))}
+        </div>
+        <div className="text-center">
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/rooms">View All Rooms</Link>
+          </Button>
+        </div>
+      </Section>
+
+      {/* Restaurant */}
       <Section className="relative py-20 md:py-20">
         <img
           src={asUrl(floralTL)}
@@ -220,7 +233,7 @@ const Index = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-screen-lg mx-auto z-100">
           <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-bg-primary mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
               Our Restaurant
             </h2>
 
@@ -229,18 +242,33 @@ const Index = () => {
               sophisticated lounge or on the serene patio for a touch of
               open-air luxury.”
             </p>
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible>
+                {Restaurant?.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-right">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
 
           <div className="flex items-center justify-center">
             <img
               src={asUrl(rightImage)}
               alt="Elegant dining area at Our Restaurant"
-              className="w-80 h-[500px] object-cover shadow-xl"
+              className="w-96 h-[500px] object-cover shadow-xl"
             />
           </div>
         </div>
       </Section>
 
+      {/* Photo Gallary */}
       <Section className="relative py-20 md:py-20 ">
         <img
           src={asUrl(floralTL)}
@@ -249,11 +277,11 @@ const Index = () => {
         />
 
         <div className="flex flex-col place-items-start justify-center h-full z-[100]">
-          <div className=" ml-24 mb-6  ">
-            <h4 className="text-4xl md:text-[11px] font-serif font-bold text-bg-primary ">
+          <div className="ml-4 md:ml-24 mb-4 md:mb-6">
+            <h4 className="text- md:text-[10px] font-serif font-bold text-bg-primary">
               WELLCOME TO OUR PHOTO GALLARY
             </h4>
-            <span className="text-4xl md:text-2xl font-serif font-bold text-bg-primary mb-3 ">
+            <span className="text-xl md:text-2xl font-serif font-bold text-bg-primary mb-3">
               Photo Gallery of Our Hotel
             </span>
           </div>
@@ -271,7 +299,7 @@ const Index = () => {
               <img
                 src={asUrl(photogallaryLogo)}
                 alt="Elegant dining area at Our Restaurant"
-                className="w-60 h-60"
+                className="hidden md:block w-80 h-80"
               />
               <a
                 href="/amenities"
@@ -284,8 +312,26 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Spa */}
+      {/* Location */}
       <Section>
+        <SectionHeader
+          eyebrow="Location"
+          title="LOCATION"
+          subtitle="Located at the heart of Pakistan's most beautiful hill station, offering cool mountain air, spectacular views, and easy access to local attractions."
+        />
+        <div className="bg-muted rounded-2xl p-8 text-center">
+          <h3 className="text-xl font-heading font-semibold mb-4">
+            Kashmir Point, Murree
+          </h3>
+          <p className="text-muted-foreground">
+            Experience the perfect blend of natural beauty and luxury
+            hospitality in the refreshing mountain climate of Murree.
+          </p>
+        </div>
+      </Section>
+
+      {/* Spa */}
+      {/* <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 lg:order-1">
             <img
@@ -306,9 +352,10 @@ const Index = () => {
             </Button>
           </div>
         </div>
-      </Section>
+      </Section> */}
+
       {/* Offers */}
-      <Section background="muted">
+      {/* <Section background="muted">
         <SectionHeader
           eyebrow="Special Offers"
           title="Exclusive Packages"
@@ -324,39 +371,10 @@ const Index = () => {
             <Link to="/offers">View All Offers</Link>
           </Button>
         </div>
-      </Section>
-      {/* Location */}
-      <Section>
-        <SectionHeader
-          eyebrow="Location"
-          title="Murree Mountains"
-          subtitle="Located at the heart of Pakistan's most beautiful hill station, offering cool mountain air, spectacular views, and easy access to local attractions."
-        />
-        <div className="bg-muted rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-heading font-semibold mb-4">
-            Kashmir Point, Murree
-          </h3>
-          <p className="text-muted-foreground">
-            Experience the perfect blend of natural beauty and luxury
-            hospitality in the refreshing mountain climate of Murree.
-          </p>
-        </div>
-      </Section>
-      {/* Testimonials */}
-      <Section background="muted">
-        <SectionHeader
-          eyebrow="Guest Reviews"
-          title="What Our Guests Say"
-          subtitle="Read about the exceptional experiences our guests have had during their stay with us."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials?.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
-          ))}
-        </div>
-      </Section>
+      </Section> */}
+
       {/* FAQ */}
-      <Section>
+      {/* <Section>
         <SectionHeader
           eyebrow="Questions & Answers"
           title="Frequently Asked Questions"
@@ -376,9 +394,10 @@ const Index = () => {
             ))}
           </Accordion>
         </div>
-      </Section>
+      </Section> */}
+
       {/* CTA */}
-      <Section background="gradient-dark" padding="xl">
+      {/* <Section background="gradient-dark" padding="xl">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
             Begin Your Luxury Mountain Experience
@@ -391,7 +410,7 @@ const Index = () => {
             Book Your Stay Now
           </Button>
         </div>
-      </Section>
+      </Section> */}
     </>
   );
 };
