@@ -15,6 +15,8 @@ import crest from "@/assets/BG/HSQ_LOGO_ab.svg";
 import photoA from "@/assets/BG/hs1_01.svg"; // back image
 import photoB from "@/assets/BG/hs1_02.svg"; // back image
 import rightImage from "@/assets/BG/dining.svg";
+import photogallary from "@/assets/BG/photogallary.svg";
+import photogallaryLogo from "@/assets/BG/photoGallaryLogo.svg";
 
 import { useEffect, useState } from "react";
 import {
@@ -35,7 +37,7 @@ import { Link } from "react-router-dom";
 import restaurantImage from "@/assets/restaurant.jpg";
 import spaImage from "@/assets/spa-treatment.jpg";
 import { BookingWidget } from "@/components/BookingWidget";
-import { RestaurantSection } from "@/components/DiningData";
+// import { RestaurantSection } from "@/components/DiningData";
 
 const Index = () => {
   const { data: rooms } = useRoomsData();
@@ -70,7 +72,7 @@ const Index = () => {
           <img
             src={crest}
             alt="HSQ Towers"
-            className="h-20 w-auto md:h-[600px] opacity-50 "
+            className="h-20 w-auto md:h-[600px] opacity-50"
           />
         </div>
 
@@ -78,15 +80,14 @@ const Index = () => {
         <img
           src={asUrl(floralTL)}
           alt=""
-          className="pointer-events-none absolute left-0 top-0 z-190 w-32 md:w-80 border-4 border-x-red-500"
+          className="hidden md:block lg:block pointer-events-none absolute left-0 top-0 z-190 w-32 md:w-80 "
         />
         <img
           src={asUrl(floralBR)}
           alt=""
-          className="pointer-events-none absolute bottom-0 right-0 z-190 w-32 md:w-80 border-4 border-x-red-500"
+          className="hidden md:block lg:block pointer-events-none absolute bottom-0 right-0 z-190 w-32 md:w-80"
         />
 
-        {/* Content grid - PERFECTLY CENTERED with more side spacing */}
         <div className="absolute inset-0 flex items-center justify-center px-12 sm:px-20 ">
           <div className="relative z-150 mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-8">
             {/* LEFT - Images */}
@@ -95,7 +96,7 @@ const Index = () => {
                 <img
                   src={asUrl(photoA)}
                   alt="HSQ Towers exterior"
-                  className="hidden md:block h-[310px] w-[250px] object-cover border-4 border-primary"
+                  className="hidden md:block lg:block h-[390px] w-[250px] object-cover border-4 border-primary"
                 />
               </div>
 
@@ -104,7 +105,7 @@ const Index = () => {
                   <img
                     src={asUrl(photoB)}
                     alt="HSQ Towers rooms"
-                    className="hidden md:block h-[310px] w-[250px] object-cover border-4 border-primary"
+                    className="hidden md:block lg:block h-[390px] w-[250px] object-cover border-4 border-primary"
                   />
                 </div>
               </div>
@@ -142,6 +143,7 @@ const Index = () => {
           </div>
         </div>
       </Section>
+      {/* rooms */}
       <Section background="muted">
         <SectionHeader
           eyebrow="Accommodations"
@@ -159,6 +161,7 @@ const Index = () => {
           </Button>
         </div>
       </Section>
+
       {/* Amenities */}
       <Section className="relative overflow-hidden py-14 md:py-20 h-auto">
         <div className="absolute inset-0 -z-10">
@@ -167,7 +170,7 @@ const Index = () => {
             alt="HSQ Towers"
             className="h-full w-full object-cover"
           />
-          {/* Overlay (optional, for readability) */}
+          
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
@@ -207,17 +210,16 @@ const Index = () => {
         <img
           src={asUrl(floralTL)}
           alt=""
-          className="pointer-events-none absolute left-0 top-0 -z-100 w-32 md:w-80 border-4 border-x-red-500"
+          className="hidden md:block lg:block pointer-events-none absolute left-0 top-0 -z-100 w-32 md:w-80"
         />
         <img
           src={asUrl(floralBR)}
           alt=""
-          className="pointer-events-none absolute bottom-0 right-0 -z-100 w-32 md:w-80 border-4 border-x-red-500"
+          className="hidden md:block lg:block pointer-events-none absolute bottom-0 right-0 -z-100 w-32 md:w-80"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-4 border-x-red-500 max-w-screen-lg mx-auto p-8 z-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-screen-lg mx-auto z-100">
           <div className="text-center">
-
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-bg-primary mb-6">
               Our Restaurant
             </h2>
@@ -238,6 +240,50 @@ const Index = () => {
           </div>
         </div>
       </Section>
+
+      <Section className="relative py-20 md:py-20 ">
+        <img
+          src={asUrl(floralTL)}
+          alt=""
+          className="hidden md:block lg:block pointer-events-none absolute right-0 top-0 -z-100 w-32 md:w-80 scale-x-[-1] "
+        />
+
+        <div className="flex flex-col place-items-start justify-center h-full z-[100]">
+          <div className=" ml-24 mb-6  ">
+            <h4 className="text-4xl md:text-[11px] font-serif font-bold text-bg-primary ">
+              WELLCOME TO OUR PHOTO GALLARY
+            </h4>
+            <span className="text-4xl md:text-2xl font-serif font-bold text-bg-primary mb-3 ">
+              Photo Gallery of Our Hotel
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-screen-lg mx-auto p-0 z-100 ">
+            <div className="flex items-center justify-center">
+              <img
+                src={asUrl(photogallary)}
+                alt="Elegant dining area at Our Restaurant"
+                className="w-full h-[382px] object-cover shadow-xl rounded-tl-[80px] rounded-br-[80px]"
+              />
+            </div>
+
+            <div className="flex flex-col items-center justify-center h-full">
+              <img
+                src={asUrl(photogallaryLogo)}
+                alt="Elegant dining area at Our Restaurant"
+                className="w-60 h-60"
+              />
+              <a
+                href="/amenities"
+                className="mt-1 inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-neutral-900 transition hover:brightness-110"
+              >
+                View Gallary
+              </a>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* Spa */}
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
