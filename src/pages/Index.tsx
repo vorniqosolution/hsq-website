@@ -27,6 +27,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import {
   useRoomsData,
   useOffersData,
   useTestimonialsData,
@@ -42,6 +49,7 @@ const Index = () => {
   const { data: testimonials } = useTestimonialsData();
 
   const asUrl = (img: any) => (typeof img === "string" ? img : img?.src || "");
+  
 
   return (
     <>
@@ -179,7 +187,7 @@ const Index = () => {
 
             <h2 className="mt-6 text-3xl font-extrabold leading-tight text-white md:text-4xl">
               Hotel Guest Facilities
-              <br /> Where Every Detail  Meets Luxury
+              <br /> Where Every Detail Meets Luxury
             </h2>
 
             <a
@@ -277,8 +285,8 @@ const Index = () => {
         />
 
         <div className="flex flex-col place-items-start justify-center h-full z-[100]">
-          <div className="ml-4 md:ml-24 mb-4 md:mb-6">
-            <h4 className="text- md:text-[10px] font-serif font-bold text-bg-primary">
+          <div className="ml-4 md:ml-24 mb-2 md:mb-4">
+            <h4 className="text- md:text-[10px] font-serif font-bold text-primary">
               WELLCOME TO OUR PHOTO GALLARY
             </h4>
             <span className="text-xl md:text-2xl font-serif font-bold text-bg-primary mb-3">
@@ -286,12 +294,12 @@ const Index = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-screen-lg mx-auto p-0 z-100 ">
-            <div className="flex items-center justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-80 items-center max-w-screen-lg mx-auto z-100 ">
+            <div className="w-screen">
               <img
                 src={asUrl(photogallary)}
                 alt="Elegant dining area at Our Restaurant"
-                className="w-full h-[382px] object-cover shadow-xl rounded-tl-[80px] rounded-br-[80px]"
+                className="w-sm h-[382px] object-cover rounded-tl-[80px] rounded-br-[80px] "
               />
             </div>
 
