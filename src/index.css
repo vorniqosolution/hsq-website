@@ -15,7 +15,7 @@ All colors MUST be HSL for proper theming.
     --hsq-white: 0 0% 100%;      /* #FFFFFF */
     --hsq-offwhite: 60 14% 96%;  /* #F7F7F5 */
     --hsq-graphite: 240 4% 11%;  /* #1A1A1C */
-    
+
     /* Primary theme mapping */
     --background: 60 14% 96%;     /* HSQ off-white */
     --foreground: 240 4% 4%;      /* HSQ black */
@@ -47,7 +47,7 @@ All colors MUST be HSL for proper theming.
     --ring: 43 63% 53%;           /* HSQ gold */
 
     --radius: 1rem;               /* More luxury feel */
-    
+
     /* Custom HSQ Design Tokens */
     --gradient-gold: linear-gradient(135deg, hsl(var(--hsq-gold)), hsl(41 63% 58%));
     --gradient-dark: linear-gradient(135deg, hsl(var(--hsq-black)), hsl(var(--hsq-graphite)));
@@ -109,6 +109,9 @@ All colors MUST be HSL for proper theming.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  .theme {
+    --animate-meteor: meteor 5s linear infinite;
+  }
 }
 
 @layer base {
@@ -119,7 +122,7 @@ All colors MUST be HSL for proper theming.
   body {
     @apply bg-background text-foreground font-body;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
@@ -130,24 +133,55 @@ All colors MUST be HSL for proper theming.
   .hsq-gold {
     @apply text-[hsl(var(--hsq-gold))];
   }
-  
+
   .hsq-gradient-gold {
     background: var(--gradient-gold);
   }
-  
+
   .hsq-gradient-dark {
     background: var(--gradient-dark);
   }
-  
+
   .hsq-shadow-luxury {
     box-shadow: var(--shadow-luxury);
   }
-  
+
   .hsq-shadow-gold {
     box-shadow: var(--shadow-gold);
   }
-  
+
   .hsq-transition {
     transition: var(--transition-smooth);
+  }
+}
+
+/* ---break---
+*/
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ---break---
+*/
+
+@theme inline {
+  @keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+    }
+  70% {
+    opacity: 1;
+    }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+    }
   }
 }

@@ -27,14 +27,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-// import Autoplay from "embla-carousel-autoplay"
+import { Meteors } from "@/components/magicui/meteors";
+import { Particles } from "@/components/magicui/particles";
 import {
   useRoomsData,
   useOffersData,
@@ -68,13 +62,14 @@ const Index = () => {
             </div>
           </div>
         </div>
+        
 
         {/* LOGO */}
-        <div className="absolute left-1/2 top-3 sm:top-5 z-200 -translate-x-1/2">
+        <div className="absolute left-1/2 top-3 sm:top-5 z-200 -translate-x-1/2 ">
           <img
             src={crest}
             alt="HSQ Towers"
-            className="h-16 sm:h-20 w-auto md:h-[600px] opacity-40 sm:opacity-50"
+            className="hidden md:block lg:block h-20 sm:h-24 md:h-32 lg:h-[600px] w-auto"
           />
         </div>
 
@@ -113,12 +108,7 @@ const Index = () => {
             </div>
 
             {/* RIGHT - Text content */}
-            <div className="relative text-center px-2 sm:px-4 md:px-0">
-              <img
-                src={asUrl(crest)}
-                alt=""
-                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[400px] sm:w-[800px] md:w-[600px] lg:w-[700px] -translate-x-1/2 -translate-y-1/2 opacity-[0.15] sm:opacity-[0.12] md:opacity-[0.08]"
-              />
+            <div className="relative text-center px-2 sm:px-4 md:px-0 ">
 
               {/* Mobile Eyebrow Text */}
               <p className="block md:hidden text-xs sm:text-sm font-medium tracking-wider uppercase hsq-gold mb-3 sm:mb-4">
