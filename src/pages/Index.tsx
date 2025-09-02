@@ -62,14 +62,13 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
 
         {/* LOGO */}
-        <div className="absolute left-1/2 top-3 sm:top-5 z-200 -translate-x-1/2 ">
+        <div className="absolute left-1/2 top-3 sm:top-5 z-200 -translate-x-1/2">
           <img
             src={crest}
             alt="HSQ Towers"
-            className="hidden md:block lg:block h-20 sm:h-24 md:h-32 lg:h-[600px] w-auto"
+            className="lg:block h-20 sm:h-24 md:h-32 lg:h-[600px] w-auto opacity-100 drop-shadow-lg"
           />
         </div>
 
@@ -109,7 +108,6 @@ const Index = () => {
 
             {/* RIGHT - Text content */}
             <div className="relative text-center px-2 sm:px-4 md:px-0 ">
-
               {/* Mobile Eyebrow Text */}
               <p className="block md:hidden text-xs sm:text-sm font-medium tracking-wider uppercase hsq-gold mb-3 sm:mb-4">
                 Luxury Mountain Resort
@@ -125,9 +123,6 @@ const Index = () => {
                 comfort, and the ideal location to explore Murree.
               </p>
 
-              {/* Mobile Decorative Line */}
-              <div className="block md:hidden w-16 sm:w-24 h-0.5 hsq-gradient-gold mx-auto mb-6 sm:mb-8" />
-
               <a
                 href="/about"
                 className="w-full sm:w-auto md:w-auto inline-flex items-center justify-center rounded-[5px] bg-primary px-6 sm:px-8 py-3 sm:py-4 text-sm font-semibold text-black transition hover:brightness-110"
@@ -135,6 +130,8 @@ const Index = () => {
                 EXPLORE MORE
               </a>
             </div>
+            {/* Mobile Decorative Line */}
+              <div className="block md:hidden w-16 sm:w-24 h-0.5 hsq-gradient-gold mx-auto mt-6 sm:mt-8" />
           </div>
         </div>
       </Section>
