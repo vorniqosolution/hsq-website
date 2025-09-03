@@ -1,3 +1,5 @@
+// pages
+import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/layout/Section";
@@ -7,19 +9,23 @@ import { OfferCard } from "@/components/cards/OfferCard";
 import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { AmenityGrid } from "@/components/AmenityGrid";
 import { Button } from "@/components/ui/enhanced-button";
+import { BookingWidget } from "@/components/BookingWidget";
+
+//  backgrounds
 import amenities_bg from "@/assets/amenities_bg.svg";
 import navIcon from "@/assets/amenities_logo.svg";
 import floralTL from "@/assets/BG/fower_01.svg";
 import floralBR from "@/assets/BG/fower_02.svg";
 import crest from "@/assets/BG/HSQ_LOGO_ab.svg";
-import photoA from "@/assets/BG/hs1_01.svg";
+// import photoA from "@/assets/BG/hs1_01.svg";
+import photoA from "@/assets/about/about-bg.svg";
 import photoB from "@/assets/BG/hs1_02.svg";
 import rightImage from "@/assets/BG/dining.svg";
 import photogallary from "@/assets/BG/photogallary.svg";
 import photogallaryLogo from "@/assets/BG/photoGallaryLogo.svg";
 import PhotoCarousal from "@/components/PhotoCarousal";
 
-
+// components
 import { useEffect, useState } from "react";
 import Restaurant from "@/data/restaurant.json";
 import {
@@ -28,8 +34,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Meteors } from "@/components/magicui/meteors";
-import { Particles } from "@/components/magicui/particles";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "../lib/motion";
+
+// helpers
 import {
   useRoomsData,
   useOffersData,
@@ -38,8 +46,6 @@ import {
   useDiningData,
   useSpaData,
 } from "@/hooks/useData";
-import { Link } from "react-router-dom";
-import { BookingWidget } from "@/components/BookingWidget";
 
 const Index = () => {
   const { data: rooms } = useRoomsData();
@@ -55,7 +61,7 @@ const Index = () => {
         <Hero />
       </section>
 
-      <Section className="relative h-[500px] sm:h-[600px] md:h-[660px] py-8 sm:py-12 md:py-52">
+      {/* <Section className="relative h-[500px] sm:h-[600px] md:h-[660px] py-8 sm:py-12 md:py-52">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 w-full max-w-5xl z-40 hidden lg:block">
           <div className="rounded-2xl">
             <div className="px-3 py-3 sm:px-4 sm:py-4">
@@ -64,7 +70,7 @@ const Index = () => {
           </div>
         </div>
 
-        {/* LOGO */}
+       
         <div className="absolute left-1/2 top-3 sm:top-5 z-200 -translate-x-1/2">
           <img
             src={crest}
@@ -73,7 +79,7 @@ const Index = () => {
           />
         </div>
 
-        {/* Decorative florals */}
+        
         <img
           src={asUrl(floralTL)}
           alt=""
@@ -87,7 +93,7 @@ const Index = () => {
 
         <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <div className="relative z-150 mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-6 sm:gap-8 md:grid-cols-2">
-            {/* LEFT - Images */}
+            
             <div className="flex mx-auto w-full md:mx-0">
               <div className="relative">
                 <img
@@ -107,16 +113,16 @@ const Index = () => {
               </div>
             </div>
 
-            {/* RIGHT - Text content */}
+          
             <div className="relative text-center px-2 sm:px-4 md:px-0">
-              {/* Background Crest */}
+              
               <img
                 src={asUrl(crest)}
                 alt=""
                 className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[400px] sm:w-[500px] md:w-[600px] lg:w-[700px] -translate-x-1/2 -translate-y-1/2 opacity-[0.15] sm:opacity-[0.12] md:opacity-[0.08]"
               />
 
-              {/* Mobile Eyebrow Text */}
+             
               <p className="block md:hidden text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-3 sm:mb-4">
                 Luxury Mountain Resort
               </p>
@@ -131,7 +137,7 @@ const Index = () => {
                 comfort, and the ideal location to explore Murree.
               </p>
 
-              {/* Mobile Decorative Line */}
+              
               <div className="block md:hidden w-16 sm:w-24 h-0.5 hsq-gradient-gold mx-auto mb-6 sm:mb-8" />
 
               <a
@@ -143,10 +149,73 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </Section>
+      </Section> */}
+
+      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative bg-white">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 w-full max-w-5xl z-40 hidden lg:block">
+          <div className="rounded-2xl">
+            <div className="px-3 py-3 sm:px-4 sm:py-4">
+              <BookingWidget />
+            </div>
+          </div>
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-6 sm:gap-8 mt-10"
+        >
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-sm font-medium tracking-wider uppercase hsq-gold mb-2">
+              Our Story
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 leading-tight">
+              Welcome to HSQ Tower
+            </h2>
+            <div className="w-16 h-1 bg-hsq-gold mx-auto md:mx-0 mb-6" />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto md:mx-0 mb-8 sm:mb-12 leading-relaxed">
+              {/* HSQ Towers is more than just a destination; it is a sanctuary
+              where every detail is meticulously curated to surpass
+              expectations. Our commitment to unparalleled service, refined
+              elegance, and an atmosphere of tranquility defines the essence of
+              a truly 5-star experience. From the moment you arrive, you will be
+              enveloped in a world of bespoke luxury designed exclusively for
+              you. */}
+              At HSQ Tower, elegance meets convenience — the perfect stay for
+              guests who seek charm, comfort, and the ideal location to explore
+              Murree.
+            </p>
+            <a
+              href="#"
+              className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110"
+            >
+              Explore Our Story
+            </a>
+          </div>
+          <div className="relative w-full max-w-md mx-auto md:max-w-none md:mx-0">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <img
+                src={photoA}
+                alt="A stunning, full-height image of the luxury resort."
+                className="w-full h-[200px] md:h-[500px] lg:h-[500px] object-cover rounded-3xl border-4 border-hsq-gold transform transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg border border-hsq-gold/20 backdrop-blur-sm">
+              <p className="text-xl sm:text-2xl font-bold font-heading text-hsq-gold">
+                HSQ Towers
+              </p>
+              <p className="text-xs sm:text-sm text-gray-500">
+                The height of luxury living
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
       {/* Reviews */}
-      <Section background="muted" className="py-8 sm:py-12 md:py-16">
+      {/* <Section background="muted" className="py-8 sm:py-12 md:py-16">
         <SectionHeader
           eyebrow="Guest Reviews"
           title="What Our Guests Say"
@@ -157,6 +226,33 @@ const Index = () => {
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </div>
+      </Section> */}
+      {/* Reviews */}
+      <Section background="muted" className="py-8 sm:py-12 md:py-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+        >
+          <SectionHeader
+            eyebrow="Guest Reviews"
+            title="What Our Guests Say"
+            subtitle="Read about the exceptional experiences our guests have had during their stay with us."
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
+          {testimonials?.map((testimonial, index) => (
+            <TestimonialCard key={index} testimonial={testimonial} />
+          ))}
+        </motion.div>
       </Section>
 
       {/* Amenities */}
@@ -170,7 +266,13 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 md:grid-cols-2">
             <div className="text-center flex flex-col items-center">
               <img
@@ -208,7 +310,7 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Section>
 
       {/* Rooms */}
@@ -218,11 +320,17 @@ const Index = () => {
           title="Luxury Rooms & Suites"
           subtitle="Each room is a sanctuary of comfort and elegance, designed to provide the ultimate mountain retreat experience."
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12"
+        >
           {rooms?.slice(0, 3).map((room) => (
             <RoomCard key={room.id} room={room} />
           ))}
-        </div>
+        </motion.div>
         <div className="text-center">
           <Button variant="outline" size="lg" asChild>
             <Link to="/rooms">View All Rooms</Link>
@@ -243,7 +351,13 @@ const Index = () => {
           className="hidden md:block lg:block pointer-events-none absolute bottom-0 right-0 -z-100 w-32 md:w-80"
         />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div className="text-center">
               <SectionHeader
@@ -276,7 +390,7 @@ const Index = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </Section>
 
       {/* Photo Gallery */}
@@ -287,7 +401,13 @@ const Index = () => {
           className="hidden md:block lg:block pointer-events-none absolute right-0 top-0 -z-100 w-32 md:w-80 scale-x-[-1]"
         />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <SectionHeader
             eyebrow="Photo Gallery"
             title="Photo Gallery of Our Hotel"
@@ -318,7 +438,7 @@ const Index = () => {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Section>
 
       {/* Location */}
@@ -328,7 +448,13 @@ const Index = () => {
           title="LOCATION"
           subtitle="Located at the heart of Pakistan's most beautiful hill station, offering cool mountain air, spectacular views, and easy access to local attractions."
         />
-        <div className="bg-muted rounded-2xl p-6 sm:p-8 text-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="bg-muted rounded-2xl p-6 sm:p-8 text-center"
+        >
           <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary mb-3 sm:mb-4">
             Kashmir Point, Murree
           </h3>
@@ -336,7 +462,7 @@ const Index = () => {
             Experience the perfect blend of natural beauty and luxury
             hospitality in the refreshing mountain climate of Murree.
           </p>
-        </div>
+        </motion.div>
       </Section>
 
       {/* Spa */}
