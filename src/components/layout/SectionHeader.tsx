@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Highlighter } from "@/components/magicui/highlighter";
 
 interface SectionHeaderProps {
   eyebrow?: string;
@@ -24,8 +25,11 @@ export const SectionHeader = ({
           {eyebrow}
         </p>
       )}
+
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-6">
+        <Highlighter action="underline" color="#d7ab4e">
         {title}
+        </Highlighter>
       </h2>
       {subtitle && (
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

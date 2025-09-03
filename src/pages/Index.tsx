@@ -19,6 +19,7 @@ import photogallary from "@/assets/BG/photogallary.svg";
 import photogallaryLogo from "@/assets/BG/photoGallaryLogo.svg";
 import PhotoCarousal from "@/components/PhotoCarousal";
 
+
 import { useEffect, useState } from "react";
 import Restaurant from "@/data/restaurant.json";
 import {
@@ -107,9 +108,16 @@ const Index = () => {
             </div>
 
             {/* RIGHT - Text content */}
-            <div className="relative text-center px-2 sm:px-4 md:px-0 ">
+            <div className="relative text-center px-2 sm:px-4 md:px-0">
+              {/* Background Crest */}
+              <img
+                src={asUrl(crest)}
+                alt=""
+                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[400px] sm:w-[500px] md:w-[600px] lg:w-[700px] -translate-x-1/2 -translate-y-1/2 opacity-[0.15] sm:opacity-[0.12] md:opacity-[0.08]"
+              />
+
               {/* Mobile Eyebrow Text */}
-              <p className="block md:hidden text-xs sm:text-sm font-medium tracking-wider uppercase hsq-gold mb-3 sm:mb-4">
+              <p className="block md:hidden text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-3 sm:mb-4">
                 Luxury Mountain Resort
               </p>
 
@@ -123,6 +131,9 @@ const Index = () => {
                 comfort, and the ideal location to explore Murree.
               </p>
 
+              {/* Mobile Decorative Line */}
+              <div className="block md:hidden w-16 sm:w-24 h-0.5 hsq-gradient-gold mx-auto mb-6 sm:mb-8" />
+
               <a
                 href="/about"
                 className="w-full sm:w-auto md:w-auto inline-flex items-center justify-center rounded-[5px] bg-primary px-6 sm:px-8 py-3 sm:py-4 text-sm font-semibold text-black transition hover:brightness-110"
@@ -130,8 +141,6 @@ const Index = () => {
                 EXPLORE MORE
               </a>
             </div>
-            {/* Mobile Decorative Line */}
-              <div className="block md:hidden w-16 sm:w-24 h-0.5 hsq-gradient-gold mx-auto mt-6 sm:mt-8" />
           </div>
         </div>
       </Section>
@@ -172,11 +181,11 @@ const Index = () => {
                 className="h-32 sm:h-40 md:h-52 w-auto hidden sm:block mb-8"
               />
 
-              <p className="text-sm font-medium tracking-wider uppercase hsq-gold mb-4">
+              <p className="text-sm font-medium tracking-wider uppercase text-primary mb-4">
                 Hotel Amenities
               </p>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-6">
                 Hotel Guest Facilities
               </h2>
 
@@ -186,7 +195,7 @@ const Index = () => {
 
               <a
                 href="/amenities"
-                className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-neutral-900 transition hover:brightness-110"
+                className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110"
               >
                 Learn More
               </a>
@@ -283,13 +292,15 @@ const Index = () => {
             eyebrow="Photo Gallery"
             title="Photo Gallery of Our Hotel"
             subtitle="Explore the beauty and elegance of HSQ Towers through our curated collection of images."
-            alignment="left"
+            alignment="center"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* First Column - Carousel */}
-            <div className="flex justify-center">
-              <PhotoCarousal />
+            <div className="flex justify-evenly">
+              <div className="w-[1000px]">
+                <PhotoCarousal />
+              </div>
             </div>
 
             {/* Second Column - Logo and Button */}
@@ -301,7 +312,7 @@ const Index = () => {
               />
               <a
                 href="/amenities"
-                className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-neutral-900 transition hover:brightness-110"
+                className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110"
               >
                 View Gallery
               </a>
@@ -318,7 +329,7 @@ const Index = () => {
           subtitle="Located at the heart of Pakistan's most beautiful hill station, offering cool mountain air, spectacular views, and easy access to local attractions."
         />
         <div className="bg-muted rounded-2xl p-6 sm:p-8 text-center">
-          <h3 className="text-lg sm:text-xl font-heading font-semibold mb-3 sm:mb-4">
+          <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary mb-3 sm:mb-4">
             Kashmir Point, Murree
           </h3>
           <p className="text-sm sm:text-base text-muted-foreground">
