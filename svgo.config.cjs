@@ -1,15 +1,19 @@
+// svgo.config.cjs
 module.exports = {
   multipass: true,
   plugins: [
+    { name: "preset-default" },
+
+    // keep the viewBox (important for responsiveness)
+    { name: "removeViewBox", active: false },
+
+    // keep width/height flexible
+    { name: "removeDimensions", active: true },
+
+    // optional: simplify path data with 2 decimal precision
     {
-      name: "preset-default",
-      params: {
-        overrides: {
-          removeViewBox: false, // keep responsive scaling
-          cleanupIDs: false     // don't break refs/animations
-        }
-      }
-    },
-    "removeDimensions" // remove width/height attributes so CSS can control sizing
+      name: "cleanupNumericValues",
+      params: { floatPrecision: 2 }
+    }
   ]
 };

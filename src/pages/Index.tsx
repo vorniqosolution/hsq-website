@@ -199,6 +199,7 @@ const Index = () => {
               <img
                 src={photoA}
                 alt="A stunning, full-height image of the luxury resort."
+                loading="lazy" 
                 className="w-full h-[200px] md:h-[500px] lg:h-[500px] object-cover rounded-3xl border-4 border-hsq-gold transform transition-transform duration-500 hover:scale-105"
               />
             </div>
@@ -261,6 +262,7 @@ const Index = () => {
           <img
             src={amenities_bg}
             alt="HSQ Towers"
+            loading="lazy" 
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
@@ -280,6 +282,7 @@ const Index = () => {
                 alt="HSQ Towers"
                 width={140}
                 height={140}
+                loading="lazy" 
                 className="h-32 sm:h-40 md:h-52 w-auto hidden sm:block mb-8"
               />
 
@@ -344,11 +347,13 @@ const Index = () => {
         <img
           src={asUrl(floralTL)}
           alt=""
+          loading="lazy" 
           className="hidden md:block lg:block pointer-events-none absolute left-0 top-0 -z-100 w-32 md:w-80"
         />
         <img
           src={asUrl(floralBR)}
           alt=""
+          loading="lazy" 
           className="hidden md:block lg:block pointer-events-none absolute bottom-0 right-0 -z-100 w-32 md:w-80"
         />
 
@@ -387,6 +392,7 @@ const Index = () => {
               <img
                 src={asUrl(rightImage)}
                 alt="Elegant dining area at Our Restaurant"
+                loading="lazy" 
                 className="w-full max-w-md h-[400px] sm:h-[500px] object-cover shadow-xl"
               />
             </div>
@@ -399,6 +405,7 @@ const Index = () => {
         <img
           src={asUrl(floralTL)}
           alt=""
+          loading="lazy" 
           className="hidden md:block lg:block pointer-events-none absolute right-0 top-0 -z-100 w-32 md:w-80 scale-x-[-1]"
         />
 
@@ -442,6 +449,7 @@ const Index = () => {
                 src={asUrl(photogallaryLogo)}
                 alt="Photo Gallery Logo"
                 className="hidden md:block w-48 h-48 lg:w-60 lg:h-60 xl:w-80 xl:h-80"
+                loading="lazy" 
               />
               <a
                 href="/amenities"
