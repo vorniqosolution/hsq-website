@@ -401,7 +401,7 @@ const Index = () => {
       </Section>
 
       {/* Photo Gallery */}
-      <Section className="relative py-8 sm:py-12 md:py-16">
+      {/* <Section className="relative py-8 sm:py-12 md:py-16">
         <img
           src={asUrl(floralTL)}
           alt=""
@@ -437,7 +437,7 @@ const Index = () => {
               </div>
             </motion.div>
 
-            {/* Second Column - Logo and Button */}
+            
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -460,7 +460,84 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
-      </Section>
+      </Section> */}
+
+      <Section className="relative overflow-hidden py-8 sm:py-12 md:py-16">
+  {/* Background video */}
+  <div className="absolute inset-0 z-[-200] pointer-events-none">
+    <video
+      className="w-full h-full object-cover hidden motion-safe:block"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster="/images/gallery-poster.jpg"   // optional fallback image
+      aria-hidden="true"
+      tabIndex={-1}
+    >
+      <source
+        src="https://pixfort-space.sfo2.cdn.digitaloceanspaces.com/wordpress/essentials/assets/minimal-demo/minimal-intro-bg-video.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+
+  {/* Optional: subtle dark overlay for readability (sits above video, below content) */}
+  {/* <div className="absolute inset-0 bg-black/30 z-[-150] pointer-events-none" aria-hidden="true" /> */}
+
+  <img
+    src={asUrl(floralTL)}
+    alt=""
+    loading="lazy"
+    className="hidden md:block lg:block pointer-events-none absolute right-0 top-0 -z-100 w-32 md:w-80 scale-x-[-1]"
+  />
+
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeUp(0.2, 0.8, 30)}
+    >
+      <SectionHeader
+        eyebrow="Photo Gallery"
+        title="Photo Gallery of Our Hotel"
+        subtitle="Explore the beauty and elegance of HSQ Towers through our curated collection of images."
+        alignment="center"
+      />
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+      <motion.div className="flex justify-evenly">
+        <div className="w-[1000px]">
+          <PhotoCarousal />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={slideIn("right", 0.4, 0.8, 40)}
+        className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8"
+      >
+        <img
+          src={asUrl(photogallaryLogo)}
+          alt="Photo Gallery Logo"
+          className="hidden md:block w-48 h-48 lg:w-60 lg:h-60 xl:w-80 xl:h-80"
+          loading="lazy"
+        />
+        <a
+          href="/amenities"
+          className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110"
+        >
+          View Gallery
+        </a>
+      </motion.div>
+    </div>
+  </div>
+</Section>
 
       {/* Location */}
       <Section className="py-8 sm:py-12 md:py-16">
