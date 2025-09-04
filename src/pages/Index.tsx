@@ -35,7 +35,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer } from "../lib/motion";
+import { fadeUp, slideIn, staggerContainer } from "../lib/motion";
 
 // helpers
 import {
@@ -215,19 +215,6 @@ const Index = () => {
       </section>
 
       {/* Reviews */}
-      {/* <Section background="muted" className="py-8 sm:py-12 md:py-16">
-        <SectionHeader
-          eyebrow="Guest Reviews"
-          title="What Our Guests Say"
-          subtitle="Read about the exceptional experiences our guests have had during their stay with us."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {testimonials?.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
-          ))}
-        </div>
-      </Section> */}
-      {/* Reviews */}
       <Section background="muted" className="py-8 sm:py-12 md:py-16">
         <motion.div
           initial="hidden"
@@ -242,7 +229,7 @@ const Index = () => {
           />
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -251,6 +238,19 @@ const Index = () => {
         >
           {testimonials?.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
+          ))}
+        </motion.div> */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp()}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
+          {testimonials?.map((testimonial, index) => (
+            <motion.div key={index} variants={staggerContainer(0.2, 0.1)}>
+              <TestimonialCard testimonial={testimonial} />
+            </motion.div>
           ))}
         </motion.div>
       </Section>
@@ -315,27 +315,28 @@ const Index = () => {
 
       {/* Rooms */}
       <Section background="muted" className="py-8 sm:py-12 md:py-16">
-        <SectionHeader
-          eyebrow="Accommodations"
-          title="Luxury Rooms & Suites"
-          subtitle="Each room is a sanctuary of comfort and elegance, designed to provide the ultimate mountain retreat experience."
-        />
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp()}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12"
         >
-          {rooms?.slice(0, 3).map((room) => (
-            <RoomCard key={room.id} room={room} />
-          ))}
+          <SectionHeader
+            eyebrow="Accommodations"
+            title="Luxury Rooms & Suites"
+            subtitle="Each room is a sanctuary of comfort and elegance, designed to provide the ultimate mountain retreat experience."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+            {rooms?.slice(0, 3).map((room) => (
+              <RoomCard key={room.id} room={room} />
+            ))}
+          </div>
+          <div className="text-center">
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/rooms">View All Rooms</Link>
+            </Button>
+          </div>
         </motion.div>
-        <div className="text-center">
-          <Button variant="outline" size="lg" asChild>
-            <Link to="/rooms">View All Rooms</Link>
-          </Button>
-        </div>
       </Section>
 
       {/* Restaurant */}
@@ -401,30 +402,42 @@ const Index = () => {
           className="hidden md:block lg:block pointer-events-none absolute right-0 top-0 -z-100 w-32 md:w-80 scale-x-[-1]"
         />
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp()}
-          className="container mx-auto px-4 sm:px-6 lg:px-8"
-        >
-          <SectionHeader
-            eyebrow="Photo Gallery"
-            title="Photo Gallery of Our Hotel"
-            subtitle="Explore the beauty and elegance of HSQ Towers through our curated collection of images."
-            alignment="center"
-          />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp(0.2, 0.8, 30)} // smaller distance = smoother
+          >
+            <SectionHeader
+              eyebrow="Photo Gallery"
+              title="Photo Gallery of Our Hotel"
+              subtitle="Explore the beauty and elegance of HSQ Towers through our curated collection of images."
+              alignment="center"
+            />
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-            {/* First Column - Carousel */}
-            <div className="flex justify-evenly">
+            <motion.div
+              // initial={false}
+              // whileInView="visible"
+              // viewport={{ once: true, amount: 0.3 }}
+              // variants={slideIn("left", 0.2, 0.8, 20)}
+              className="flex justify-evenly"
+            >
               <div className="w-[1000px]">
                 <PhotoCarousal />
               </div>
-            </div>
+            </motion.div>
 
             {/* Second Column - Logo and Button */}
-            <div className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={slideIn("right", 0.4, 0.8, 40)}
+              className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8"
+            >
               <img
                 src={asUrl(photogallaryLogo)}
                 alt="Photo Gallery Logo"
@@ -436,9 +449,9 @@ const Index = () => {
               >
                 View Gallery
               </a>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </Section>
 
       {/* Location */}

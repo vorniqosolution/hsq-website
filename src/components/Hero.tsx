@@ -63,7 +63,7 @@
 //             <div
 //               aria-hidden
 //               className=" lg:block pointer-events-none absolute -top-8 -left-5 sm:-top-12 sm:-left-8 md:-top-28 md:-left-4
-//                text-[16rem] md:text-[27rem] leading-none font-heading font-black 
+//                text-[16rem] md:text-[27rem] leading-none font-heading font-black
 //                text-primary/50 select-none"
 //             >
 //               {current.letter}
@@ -71,8 +71,8 @@
 
 //             <div className="relative inline-block bg-black/50 p-6 rounded-xl shadow-xl max-w-2xl">
 //               <h1
-//                 className="font-heading font-bold leading-[1.05] tracking-tight 
-//                    text-4xl sm:text-md lg:text-4xl xl:text-5xl mb-4 
+//                 className="font-heading font-bold leading-[1.05] tracking-tight
+//                    text-4xl sm:text-md lg:text-4xl xl:text-5xl mb-4
 //                    text-transparent bg-clip-text hsq-gradient-gold"
 //               >
 //                 {current.title}
@@ -87,8 +87,8 @@
 //               <a href="/about" className="inline-block">
 //                 <Button
 //                   size="lg"
-//                   className="w-full md:w-auto hsq-gradient-gold text-white font-semibold 
-//              px-7 sm:px-8 py-3 sm:py-4 text-base sm:text-lg 
+//                   className="w-full md:w-auto hsq-gradient-gold text-white font-semibold
+//              px-7 sm:px-8 py-3 sm:py-4 text-base sm:text-lg
 //              rounded-sm hsq-transition"
 //                 >
 //                   More Info
@@ -105,7 +105,7 @@
 //                 onClick={() => setActive(i)}
 //                 aria-label={s.title}
 //                 aria-selected={active === i}
-//                 className={`relative overflow-hidden rounded-xl border bg-white/5 backdrop-blur-sm 
+//                 className={`relative overflow-hidden rounded-xl border bg-white/5 backdrop-blur-sm
 //                             shadow-[0_10px_30px_rgba(0,0,0,0.45)] outline-none transition
 //                             w-[250px] h-[140px] text-left
 //                             ${
@@ -164,6 +164,8 @@ const SECTIONS = [
     letter: "H",
     title: "Welcome. Bonjour. Hola!",
     desc: "At HSQ Hotels, we redefine modern hospitality—blending style, innovation, and authentic warmth. From smart design and inspired dining to unique experiences surrounded by nature, every detail is crafted to make your journey effortless and unforgettable.",
+    descB:
+      "At HSQ Hotels, we redefine modern hospitality—blending style, innovation, and authentic warmth.",
     image: heroImagev1,
   },
   {
@@ -171,13 +173,16 @@ const SECTIONS = [
     letter: "R",
     title: "Restaurant",
     desc: "Step into our restaurant and indulge in a culinary journey where every dish is a masterpiece—crafted with passion, precision, and flavor that lingers long after the last bite. Our chefs don't just cook, they turn your cravings into unforgettable experiences.",
+    descB:
+      "Step into our restaurant and indulge in a culinary journey where every dish is a masterpiece—crafted with passion.",
     image: heroImagev2,
   },
   {
     key: "activities",
     letter: "A",
     title: "Activities",
-    desc: "At our hotels, every moment is designed around you. From exciting tours and fascinating excursions to world‑class exhibitions and vibrant shows, we bring experiences that match your every wish.",
+    desc: "At our hotels, every moment is designed around you. From exciting tours and fascinating excursions to world‑class exhibitions and vibrant shows.",
+    descB: "At our hotels, every moment is designed around you.",
     image: heroImagev4,
   },
   {
@@ -185,6 +190,8 @@ const SECTIONS = [
     letter: "R",
     title: "Rooms & Suites",
     desc: "At HSQ Towers, discover a selection of elegant living spaces—from cozy standard rooms to deluxe suites and spacious two-bedroom apartments. Each residence blends modern design, essential amenities, and breathtaking window views.",
+    descB:
+      "At HSQ Towers, discover a selection of elegant living spaces—from cozy.",
     image: heroImagev3,
   },
 ];
@@ -195,7 +202,6 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-      {/* Background image */}
       <div className="absolute inset-0">
         <img
           key={current.image}
@@ -203,7 +209,7 @@ export const Hero = () => {
           alt=""
           className="h-full w-full object-cover transition-opacity duration-500"
         />
-        <div className="absolute inset-0 bg-black/5" />
+        {/* <div className="absolute inset-0 bg-black/5" /> */}
       </div>
 
       <Container className="relative z-10 w-full">
@@ -219,21 +225,29 @@ export const Hero = () => {
             </div>
 
             <div className="relative inline-block bg-black/50 p-6 sm:p-8 rounded-xl shadow-xl max-w-2xl">
-              <p className="text-sm font-medium tracking-wider uppercase hsq-gold mb-4">
-                {current.key === "hotel" ? "Luxury Mountain Resort" : 
-                 current.key === "restaurant" ? "Dining Experience" :
-                 current.key === "activities" ? "Guest Experiences" : "Accommodations"}
+              <p className="hidden md:block text-sm font-medium tracking-wider uppercase hsq-gold mb-4">
+                {current.key === "hotel"
+                  ? "Luxury Mountain Resort"
+                  : current.key === "restaurant"
+                  ? "Dining Experience"
+                  : current.key === "activities"
+                  ? "Guest Experiences"
+                  : "Accommodations"}
               </p>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-6 text-transparent bg-clip-text hsq-gradient-gold">
                 {current.title}
               </h1>
 
-              <p className="text-lg text-white/90 max-w-2xl mb-8">
+              {/* Show on md & lg (hidden on sm) */}
+              <p className="hidden md:block text-lg text-white/90 max-w-2xl mb-8">
                 {current.desc}
               </p>
 
-              <div className="w-24 h-0.5 hsq-gradient-gold" />
+              {/* Show only on sm (hidden on md & up) */}
+              <p className="block md:hidden text-lg text-white/90 max-w-2xl mb-8">
+                {current.descB}
+              </p>
             </div>
 
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-6 sm:gap-8">
