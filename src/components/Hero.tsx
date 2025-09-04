@@ -6,6 +6,7 @@ import heroImagev1 from "@/assets/v1.png";
 import heroImagev2 from "@/assets/v2.png";
 import heroImagev3 from "@/assets/v3.png";
 import heroImagev4 from "@/assets/v4.png";
+import WHATSAPP_LOGO from "@/assets/Logos/WHATSAPP_LOGO.svg";
 
 const SECTIONS = [
   {
@@ -48,6 +49,7 @@ const SECTIONS = [
 export const Hero = () => {
   const [active, setActive] = useState(0);
   const current = SECTIONS[active];
+  const WHATSAPP_LINK  = import.meta.env.VITE_WHATSAPP_LINK;
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
@@ -225,21 +227,17 @@ export const Hero = () => {
       </Container>
 
       <a
-        href="https://wa.me/923001234567"
+        href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-4 bottom-6 z-50 inline-flex items-center gap-2 rounded-full px-4 py-3 bg-[#25D366] text-white font-medium shadow-xl hover:brightness-110 transition"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          viewBox="0 0 32 32"
-          fill="currentColor"
-        >
-          <path d="M19.11 17.53c-.27-.14-1.6-.79-1.84-.88-.24-.09-.42-.14-.6.14s-.69.88-.84 1.06-.31.21-.58.07a8.66 8.66 0 0 1-2.54-1.57 9.54 9.54 0 0 1-1.77-2.2c-.19-.33 0-.51.14-.65s.33-.35.49-.54a2.17 2.17 0 0 0 .33-.56.58.58 0 0 0 0-.54c0-.14-.6-1.44-.83-1.98s-.44-.46-.6-.46h-.51a1 1 0 0 0-.72.33 3 3 0 0 0-.95 2.23 5.23 5.23 0 0 0 1.09 2.78c.13.18 1.86 2.84 4.5 3.99s2.69.75 3.17.71a2.7 2.7 0 0 0 1.77-1.24 2.26 2.26 0 0 0 .16-1.24c-.06-.1-.23-.16-.5-.3z" />
-          <path d="M26.62 5.38A12.25 12.25 0 0 0 5.38 26.62L4 30l3.46-1.35a12.25 12.25 0 0 0 19.16-9.24 12.18 12.18 0 0 0-.94-6.06 12.34 12.34 0 0 0-4.06-5.97zm-10.62 20a9.38 9.38 0 1 1 9.38-9.38 9.38 9.38 0 0 1-9.38 9.38z" />
-        </svg>
-        <span>Quick Chat</span>
+        <img
+          src={WHATSAPP_LOGO} // Use the imported image variable
+          alt="WhatsApp Logo"
+          className="h-5 w-5" // Keep the same sizing as the SVG
+        />
+        <span>Chat ON WHATSAPP</span>
       </a>
     </section>
   );
