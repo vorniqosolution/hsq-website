@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "./layout/Container";
-
 import heroImagev1 from "@/assets/v1.png";
 import heroImagev2 from "@/assets/v2.png";
 import heroImagev3 from "@/assets/v3.png";

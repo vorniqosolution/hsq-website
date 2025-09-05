@@ -11,6 +11,11 @@ import { AmenityGrid } from "@/components/AmenityGrid";
 import { Button } from "@/components/ui/enhanced-button";
 import { BookingWidget } from "@/components/BookingWidget";
 
+// icons
+import { PiBuildingsLight } from "react-icons/pi";
+import { PiMountainsLight } from "react-icons/pi";
+import { LiaCocktailSolid } from "react-icons/lia";
+
 //  backgrounds
 import amenities_bg from "@/assets/amenities_bg.svg";
 import navIcon from "@/assets/amenities_logo.svg";
@@ -19,11 +24,12 @@ import floralBR from "@/assets/BG/fower_02.svg";
 import crest from "@/assets/BG/HSQ_LOGO_ab.svg";
 // import photoA from "@/assets/BG/hs1_01.svg";
 import photoA from "@/assets/about/about-bg.svg";
-import photoB from "@/assets/BG/hs1_02.svg";
 import rightImage from "@/assets/BG/dining.svg";
 import photogallary from "@/assets/BG/photogallary.svg";
 import photogallaryLogo from "@/assets/BG/photoGallaryLogo.svg";
 import PhotoCarousal from "@/components/PhotoCarousal";
+import mainHeroImage from "@/assets/images/hsq-tower-exterior.jpg";
+import trianglePattern from "@/assets/BG/triangle.svg";
 
 // components
 import { useEffect, useState } from "react";
@@ -47,11 +53,17 @@ import {
   useSpaData,
 } from "@/hooks/useData";
 
+const asUrl = (img: any) => (typeof img === "string" ? img : img?.src || "");
+type FeatureItem = { icon: React.ElementType; label: string };
+const FEATURES: FeatureItem[] = [
+  { icon: PiBuildingsLight, label: "LUXURY ROOMS" },
+  { icon: PiMountainsLight, label: "SCENIC VIEWS" },
+  { icon: LiaCocktailSolid, label: "FINE DINING" },
+];
+
 const Index = () => {
   const { data: rooms } = useRoomsData();
   const { data: testimonials } = useTestimonialsData();
-
-  const asUrl = (img: any) => (typeof img === "string" ? img : img?.src || "");
 
   return (
     <>
@@ -59,6 +71,75 @@ const Index = () => {
       {/* Home */}
       <section id="hero-section">
         <Hero />
+      </section>
+
+      {/* About */}
+      <section className="relative w-full min-h-screen lg:min-h-[90vh] py-12 lg:py-0 ">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 w-full max-w-5xl z-40 hidden lg:block">
+          <div className="rounded-2xl">
+            <div className="px-3 py-3 sm:px-4 sm:py-4">
+              <BookingWidget />
+            </div>
+          </div>
+        </div>
+
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 lg:min-h-[90vh] ">
+          <div className="lg:order-2 flex justify-end">
+            {" "}
+            <img
+              src={asUrl(photoA)}
+              alt="HSQ Tower Exterior View with green mountains"
+              className="w-full h-64 md:h-96 lg:h-full object-cover border-4 border-primary right-0" // Assuming border-primary, removed temporary red border
+              loading="lazy"
+            />
+          </div>
+
+          <div
+            className="lg:order-1 flex flex-col justify-center items-center text-center /* Removed lg:items-start lg:text-left */
+             p-4 md:p-8 lg:p-12 xl:p-16 justify-self-center" /* Added justify-self-center */
+          >
+            <h2
+              className="font-heading text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold
+               text-transparent bg-clip-text hsq-gradient-gold mb-3 md:mb-4"
+            >
+              Welcome to Hsq Tower
+              <span className="block w-24 h-1 bg-primary mx-auto /* Removed lg:mx-0 */ mt-2" />
+            </h2>
+
+            <p className="font-body text-xl md:text-2xl text-foreground italic mb-6">
+              Where Comfort Meets Luxury
+            </p>
+
+            <p className="font-body text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl mb-10">
+              At HSQ Tower, elegance meets convenience – the perfect stay for
+              guests who seek charm, comfort, and the ideal location to explore
+              Murree.
+            </p>
+
+            <div className="grid grid-cols-3 gap-6 sm:gap-8 mb-12 w-full max-w-md ">
+              {FEATURES.map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center justify-center text-center"
+                >
+                  <feature.icon
+                    className="h-14 w-14 md:h-16 md:w-16 mb-2 text-primary" /* text-hsq-gold changed to text-primary */
+                    aria-hidden="true"
+                  />
+                  <p className="text-xs sm:text-sm font-semibold uppercase text-foreground">
+                    {feature.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <a href="/explore">
+              <Button className="bg-primary text-black font-semibold px-8 py-3.5 rounded-full transition hover:brightness-110 hsq-shadow-gold">
+                EXPLORE MORE
+              </Button>
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* <Section className="relative h-[500px] sm:h-[600px] md:h-[660px] py-8 sm:py-12 md:py-52">
@@ -151,7 +232,7 @@ const Index = () => {
         </div>
       </Section> */}
 
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative bg-white">
+      {/* <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 relative bg-white">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 w-full max-w-5xl z-40 hidden lg:block">
           <div className="rounded-2xl">
             <div className="px-3 py-3 sm:px-4 sm:py-4">
@@ -176,13 +257,6 @@ const Index = () => {
             </h2>
             <div className="w-16 h-1 bg-hsq-gold mx-auto md:mx-0 mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto md:mx-0 mb-8 sm:mb-12 leading-relaxed">
-              {/* HSQ Towers is more than just a destination; it is a sanctuary
-              where every detail is meticulously curated to surpass
-              expectations. Our commitment to unparalleled service, refined
-              elegance, and an atmosphere of tranquility defines the essence of
-              a truly 5-star experience. From the moment you arrive, you will be
-              enveloped in a world of bespoke luxury designed exclusively for
-              you. */}
               At HSQ Tower, elegance meets convenience — the perfect stay for
               guests who seek charm, comfort, and the ideal location to explore
               Murree.
@@ -213,7 +287,7 @@ const Index = () => {
             </div>
           </div>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Reviews */}
       <Section background="muted" className="py-8 sm:py-12 md:py-16">
@@ -401,67 +475,6 @@ const Index = () => {
       </Section>
 
       {/* Photo Gallery */}
-      {/* <Section className="relative py-8 sm:py-12 md:py-16">
-        <img
-          src={asUrl(floralTL)}
-          alt=""
-          loading="lazy" 
-          className="hidden md:block lg:block pointer-events-none absolute right-0 top-0 -z-100 w-32 md:w-80 scale-x-[-1]"
-        />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeUp(0.2, 0.8, 30)} // smaller distance = smoother
-          >
-            <SectionHeader
-              eyebrow="Photo Gallery"
-              title="Photo Gallery of Our Hotel"
-              subtitle="Explore the beauty and elegance of HSQ Towers through our curated collection of images."
-              alignment="center"
-            />
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-            <motion.div
-              // initial={false}
-              // whileInView="visible"
-              // viewport={{ once: true, amount: 0.3 }}
-              // variants={slideIn("left", 0.2, 0.8, 20)}
-              className="flex justify-evenly"
-            >
-              <div className="w-[1000px]">
-                <PhotoCarousal />
-              </div>
-            </motion.div>
-
-            
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={slideIn("right", 0.4, 0.8, 40)}
-              className="flex flex-col items-center justify-center h-full space-y-6 sm:space-y-8"
-            >
-              <img
-                src={asUrl(photogallaryLogo)}
-                alt="Photo Gallery Logo"
-                className="hidden md:block w-48 h-48 lg:w-60 lg:h-60 xl:w-80 xl:h-80"
-                loading="lazy" 
-              />
-              <a
-                href="/amenities"
-                className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110"
-              >
-                View Gallery
-              </a>
-            </motion.div>
-          </div>
-        </div>
-      </Section> */}
-
       <Section className="relative overflow-hidden py-8 sm:py-12 md:py-16">
         {/* Background video */}
         <div className="absolute inset-0 z-[-200] pointer-events-none">
@@ -562,88 +575,6 @@ const Index = () => {
           </p>
         </motion.div>
       </Section>
-
-      {/* Spa */}
-      {/* <Section>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative order-2 lg:order-1">
-            <img
-              src={spaImage}
-              alt="Luxury spa treatment"
-              className="rounded-2xl hsq-shadow-luxury w-full h-96 object-cover"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <SectionHeader
-              eyebrow="Wellness & Rejuvenation"
-              title="Spa & Wellness"
-              subtitle={spa?.overview}
-              alignment="left"
-            />
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/spa">View Treatments</Link>
-            </Button>
-          </div>
-        </div>
-      </Section> */}
-
-      {/* Offers */}
-      {/* <Section background="muted">
-        <SectionHeader
-          eyebrow="Special Offers"
-          title="Exclusive Packages"
-          subtitle="Discover our carefully curated packages designed to enhance your luxury mountain experience."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {offers?.map((offer) => (
-            <OfferCard key={offer.id} offer={offer} />
-          ))}
-        </div>
-        <div className="text-center">
-          <Button variant="hero" size="lg" asChild>
-            <Link to="/offers">View All Offers</Link>
-          </Button>
-        </div>
-      </Section> */}
-
-      {/* FAQ */}
-      {/* <Section>
-        <SectionHeader
-          eyebrow="Questions & Answers"
-          title="Frequently Asked Questions"
-          subtitle="Find answers to common questions about your stay at HSQ Hotels."
-        />
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible>
-            {faq?.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </Section> */}
-
-      {/* CTA */}
-      {/* <Section background="gradient-dark" padding="xl">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-6">
-            Begin Your Luxury Mountain Experience
-          </h2>
-          <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-            Book your stay at HSQ Hotels and discover why we're Murree's premier
-            luxury destination.
-          </p>
-          <Button variant="hero" size="xl">
-            Book Your Stay Now
-          </Button>
-        </div>
-      </Section> */}
     </>
   );
 };
