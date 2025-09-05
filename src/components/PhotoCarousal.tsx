@@ -3,7 +3,7 @@ import v1 from "@/assets/Gallary/v1.svg";
 import v2 from "@/assets/Gallary/v2.svg";
 import v3 from "@/assets/Gallary/v3.svg";
 import v4 from "@/assets/Gallary/v4.svg";
-import { Highlighter } from "@/components/magicui/highlighter";
+import LazySection from "@/components/LazySection";
 
 const PhotoCarousal = () => {
   const images = [
@@ -26,6 +26,7 @@ const PhotoCarousal = () => {
   }, [images.length]);
 
   return (
+    <LazySection threshold={0}>
     <div className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto relative">
       <div className="relative bg-gray-100 rounded-none md:rounded-tl-[80px] md:rounded-br-[80px] lg:rounded-tl-[80px] lg:rounded-br-[80px] overflow-hidden border-4 border-primary">
         <div className="relative w-full h-64 md:h-80 lg:h-96 xl:h-[28rem] 2xl:h-[32rem] overflow-hidden">
@@ -45,6 +46,7 @@ const PhotoCarousal = () => {
         </div>
       </div>
     </div>
+    </LazySection >
   );
 };
 

@@ -72,13 +72,14 @@ const Index = () => {
       <SEO />
 
       {/* Home */}
-        <section id="hero-section">
-          <Hero />
-        </section>
-      
+      <section id="hero-section">
+        <Hero />
+      </section>
+
       {/* About */}
       <LazySection>
-        <section className="relative w-full min-h-screen lg:min-h-[90vh] py-12 lg:py-0 ">
+        <section className="relative w-full min-h-screen lg:min-h-[90vh] py-12 lg:py-0 border-b-[10px] border-b-primary">
+          {/* Booking Widget floating on top */}
           <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 sm:-translate-y-1/2 w-full max-w-5xl z-40 hidden lg:block">
             <div className="rounded-2xl">
               <div className="px-3 py-3 sm:px-4 sm:py-4">
@@ -87,71 +88,27 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 lg:min-h-[90vh] left-0 right-0">
-            <div className="lg:order-2 flex justify-end">
-              {" "}
+          {/* Make grid full width instead of container */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 relative z-10 lg:min-h-[90vh] w-full">
+            {/* Image side */}
+            <div className="lg:order-2 flex">
               <img
                 src={asUrl(photoA)}
                 alt="HSQ Tower Exterior View with green mountains"
-                className="w-full h-64 md:h-96 lg:h-full object-cover border-4 border-primary right-0"
+                className="w-full h-64 md:h-96 lg:h-full object-cover top-0"
                 loading="lazy"
               />
             </div>
 
-            {/* <div
-            className="lg:order-1 flex flex-col justify-center items-center text-center
-             p-4 md:p-8 lg:p-12 xl:p-16 justify-self-center  border-2 border-red-800"
-          >
-
-            <SectionHeader
-              eyebrow="Where Comfort Meets Luxury"
-              title="Welcome to HSQ Tower"
-              subtitle="At HSQ Tower, elegance meets convenience — the perfect stay for guests who seek charm, comfort, and the ideal location to explore Murree."
-              alignment="center"
-            />
-
-            <div className="grid grid-cols-3 gap-6 sm:gap-8 mb-12 w-full max-w-md ">
-              {FEATURES.map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center text-center"
-                >
-                  <feature.icon
-                    className="h-14 w-14 md:h-16 md:w-16 mb-2 text-primary"
-                    aria-hidden="true"
-                  />
-                  <p className="text-xs sm:text-sm font-semibold uppercase text-foreground">
-                    {feature.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="#"
-              className="inline-flex rounded-[5px] bg-primary px-6 py-3 font-semibold text-black transition hover:brightness-110"
-            >
-              Explore Our Story
-            </a>
-          </div> */}
-
-            <div
-              className="relative lg:order-1 flex flex-col justify-center items-center text-center
-      p-4 md:p-8 lg:p-12 xl:p-16 justify-self-center border-2 border-red-800 overflow-hidden"
-            >
-              {/* Background Image with lazy load */}
-              {/* <img
-        src="/images/bg.jpg"
-        alt="Background"
-        priority={false} // allows lazy loading
-        className="object-cover object-center z-0"
-      /> */}
-
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 z-10"></div>
-
-              {/* Content */}
-              <div className="relative z-20">
+            {/* Text side */}
+            <div className="relative lg:order-1 flex flex-col justify-center items-center text-center p-4 md:p-8 lg:p-12 xl:p-16">
+              <img
+                src={trianglePattern}
+                alt="Decorative background"
+                className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
+                loading="lazy"
+              />
+              <div className="z-[200]">
                 <SectionHeader
                   eyebrow="Where Comfort Meets Luxury"
                   title="Welcome to HSQ Tower"
