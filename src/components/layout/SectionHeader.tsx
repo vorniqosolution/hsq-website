@@ -21,15 +21,15 @@ export const SectionHeader = ({
   return (
     <div className={cn("mb-12", alignmentClasses, className)}>
       {eyebrow && (
-        <p className="text-sm font-medium tracking-wider uppercase hsq-gold mb-4">
+        <p className="text-sm font-medium tracking-wider uppercase font-heading mb-4">
           {eyebrow}
         </p>
       )}
 
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-6">
-        {/* <Highlighter action="circle" color="#d7ab4e"> */}
+      <h2 className="text-3xl sm:text-4xl lg:text-4xl hsq-gold font-bold mb-6">
+      
         {title}
-        {/* </Highlighter> */}
+        
       </h2>
       {subtitle && (
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
