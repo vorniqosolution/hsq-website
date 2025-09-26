@@ -4,7 +4,7 @@ import { Menu, Instagram, Globe, User, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Container } from "./Container";
-import { BookingWidget } from "../BookingWidget";
+// import { BookingWidget } from "../BookingWidget";
 import { cn } from "@/lib/utils";
 import navIcon from "@/assets/hsq_logo.png";
 

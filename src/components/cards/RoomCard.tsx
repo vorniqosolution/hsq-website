@@ -1,56 +1,28 @@
-import { Link } from "react-router-dom";
-import { Users, Maximize, BedDouble } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/enhanced-button";
-import type { Room } from "@/types";
-import deluxeRoom from "@/assets/deluxe-room.jpg";
-
 interface RoomCardProps {
-  room: Room;
+  price: string;
+  title: string;
+  image: string;
 }
-
-export const RoomCard = ({ room }: RoomCardProps) => {
+export default function RoomCard({ price, title, image }: RoomCardProps) {
   return (
-    <Card className="overflow-hidden group hover:hsq-shadow-luxury hsq-transition">
-      <div className="relative overflow-hidden">
-        <img 
-          src={deluxeRoom} 
-          alt={room.name}
-          className="w-full h-64 object-cover group-hover:scale-105 hsq-transition"
-        />
-        <div className="absolute top-4 right-4 bg-hsq-gold text-white px-3 py-1 rounded-full text-sm font-medium">
-          PKR {room.pricePerNight.toLocaleString()}/night
-        </div>
+    <div className="relative w-60 h-64 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-105 rounded-xl overflow-hidden shadow-lg bg-white group">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+
+      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent group-hover:from-[#D7AB4E]/80 group-hover:to-transparent transition-all duration-1000"></div>
+
+      <div className="absolute top-3 left-3 bg-white px-3 w-24 rounded-full shadow-md">
+        <span className="text-black font-bold text-sm">{price}</span>
       </div>
-      
-      <CardContent className="p-6">
-        <h3 className="text-xl font-heading font-semibold mb-2">{room.name}</h3>
-        <p className="text-muted-foreground mb-4 line-clamp-2">{room.shortDescription}</p>
-        
-        <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
-          <div className="flex items-center space-x-1">
-            <Users className="w-4 h-4" />
-            <span>{room.guests} guests</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <Maximize className="w-4 h-4" />
-            <span>{room.sizeSqm} sqm</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <BedDouble className="w-4 h-4" />
-            <span>{room.bed}</span>
-          </div>
-        </div>
-        
-        <div className="flex space-x-2">
-          <Button variant="outline" size="sm" asChild className="flex-1">
-            <Link to={`/rooms#${room.slug}`}>View Details</Link>
-          </Button>
-          <Button variant="hero" size="sm" className="flex-1">
-            Book Now
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+      <div className="absolute bottom-3 w-full text-center">
+        <p className="text-white text-sm poppins-bold drop-shadow-md">
+          {title}
+        </p>
+      </div>
+    </div>
   );
-};
+}

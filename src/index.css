@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,36 +7,174 @@
 /* HSQ Hotels Design System - Luxury Mountain Resort 
 All colors MUST be HSL for proper theming.
 */
+.poppins-thin {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
 
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bookbtn {
+  background-color: white;
+  color: black;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #000;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* .swiper-button-prev,
+.swiper-button-next {
+  color: black !important; 
+  fill: black !important; 
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important; 
+  font-weight: bold;
+} */
+
+.backgroundcolor {
+  background-color: #fff2db;
+}
 @layer base {
   :root {
     /* HSQ Brand Colors */
-    --hsq-gold: 41 63% 58%;      /* #d7ab4e - Updated */
-    --hsq-black: 240 4% 4%;      /* #0B0B0C */
-    --hsq-white: 0 0% 100%;      /* #FFFFFF */
-    --hsq-offwhite: 60 14% 96%;  /* #F7F7F5 */
-    --hsq-graphite: 240 4% 11%;  /* #1A1A1C */
-    
-    /* Primary theme mapping */
-    --background: 60 14% 96%;     /* HSQ off-white */
-    --foreground: 240 4% 4%;      /* HSQ black */
+    --hsq-gold: 41 63% 58%; /* #d7ab4e - Updated */
+    --hsq-black: 240 4% 4%; /* #0B0B0C */
+    --hsq-white: 0 0% 100%; /* #FFFFFF */
+    --hsq-offwhite: 60 14% 96%; /* #F7F7F5 */
+    --hsq-graphite: 240 4% 11%; /* #1A1A1C */
 
-    --card: 0 0% 100%;            /* HSQ white */
+    /* Primary theme mapping */
+    --background: 60 14% 96%; /* HSQ off-white */
+    --foreground: 240 4% 4%; /* HSQ black */
+
+    --card: 0 0% 100%; /* HSQ white */
     --card-foreground: 240 4% 4%; /* HSQ black */
 
     --popover: 0 0% 100%;
     --popover-foreground: 240 4% 4%;
 
-    --primary: 41 63% 58%;        /* #d7ab4e - Updated to match hsq-gold */
+    --primary: 41 63% 58%; /* #d7ab4e - Updated to match hsq-gold */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4% 11%;      /* HSQ graphite */
+    --secondary: 240 4% 11%; /* HSQ graphite */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 60 14% 96%;          /* HSQ off-white */
+    --muted: 60 14% 96%; /* HSQ off-white */
     --muted-foreground: 240 4% 45%;
 
-    --accent: 41 63% 58%;         /* #d7ab4e - Updated to match primary */
+    --accent: 41 63% 58%; /* #d7ab4e - Updated to match primary */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -42,13 +182,17 @@ All colors MUST be HSL for proper theming.
 
     --border: 240 4% 85%;
     --input: 240 4% 85%;
-    --ring: 41 63% 58%;           /* #d7ab4e - Updated to match primary */
+    --ring: 41 63% 58%; /* #d7ab4e - Updated to match primary */
 
-    --radius: 1rem;               
+    --radius: 1rem;
 
     /* Custom HSQ Design Tokens */
     --gradient-gold: linear-gradient(135deg, hsl(41 63% 58%), hsl(41 63% 58%));
-    --gradient-dark: linear-gradient(135deg, hsl(var(--hsq-black)), hsl(var(--hsq-graphite)));
+    --gradient-dark: linear-gradient(
+      135deg,
+      hsl(var(--hsq-black)),
+      hsl(var(--hsq-graphite))
+    );
     --shadow-luxury: 0 25px 50px -12px hsl(var(--hsq-black) / 0.25);
     --shadow-gold: 0 10px 30px -10px hsl(41 63% 58% / 0.3);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -57,16 +201,16 @@ All colors MUST be HSL for proper theming.
   }
 
   .dark {
-    --background: 240 4% 4%;      /* HSQ black */
-    --foreground: 0 0% 100%;      /* HSQ white */
+    --background: 240 4% 4%; /* HSQ black */
+    --foreground: 0 0% 100%; /* HSQ white */
 
-    --card: 240 4% 11%;           /* HSQ graphite */
+    --card: 240 4% 11%; /* HSQ graphite */
     --card-foreground: 0 0% 100%;
 
     --popover: 240 4% 11%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 41 63% 58%;        /* #d7ab4e - Updated */
+    --primary: 41 63% 58%; /* #d7ab4e - Updated */
     --primary-foreground: 240 4% 4%;
 
     --secondary: 240 4% 15%;
@@ -75,7 +219,7 @@ All colors MUST be HSL for proper theming.
     --muted: 240 4% 15%;
     --muted-foreground: 240 4% 65%;
 
-    --accent: 41 63% 58%;         /* #d7ab4e - Updated */
+    --accent: 41 63% 58%; /* #d7ab4e - Updated */
     --accent-foreground: 240 4% 4%;
 
     --destructive: 0 62.8% 30.6%;
@@ -83,8 +227,8 @@ All colors MUST be HSL for proper theming.
 
     --border: 240 4% 20%;
     --input: 240 4% 20%;
-    --ring: 41 63% 58%;           /* #d7ab4e - Updated */
-    
+    --ring: 41 63% 58%; /* #d7ab4e - Updated */
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -108,7 +252,12 @@ All colors MUST be HSL for proper theming.
     @apply bg-background text-foreground font-body;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 }
@@ -157,16 +306,16 @@ All colors MUST be HSL for proper theming.
 
 @theme inline {
   @keyframes meteor {
-  0% {
-    transform: rotate(var(--angle)) translateX(0);
-    opacity: 1;
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
     }
-  70% {
-    opacity: 1;
+    70% {
+      opacity: 1;
     }
-  100% {
-    transform: rotate(var(--angle)) translateX(-500px);
-    opacity: 0;
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
     }
   }
 }
