@@ -45,11 +45,11 @@ const Rooms = () => {
             loading="lazy"
           />
           <div className="pt-10 ml-6 z-50 relative mr-6">
-            <RoomCard
+            {/* <RoomCard
               price="Rs14,000/-"
               title="One Bed Deluxe Room"
               image={roomimage}
-            />
+            /> */}
           </div>
         </div>
       </div>

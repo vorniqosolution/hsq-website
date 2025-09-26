@@ -120,6 +120,25 @@ All colors MUST be HSL for proper theming.
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Tuesday";
+  src: url("/TuesdayNight.woff2") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.Tuesdaynight {
+  font-family: "Tuesday", "Great Vibes", cursive;
+  font-weight: lighter;
+  /* font-size: 50px; */
+}
+
+/* .sacramento-regular {
+  font-family: "Sacramento", cursive;
+  font-weight: 400;
+  font-style: normal;
+} */
+
 .bookbtn {
   background-color: white;
   color: black;

@@ -1,6 +1,5 @@
-// "use client";
-import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, animate } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { useMotionValue, animate, useInView, motion } from "framer-motion";
 
 interface Titleprop {
   total: string;
@@ -12,18 +11,33 @@ const AboutCard: React.FC<Titleprop> = ({ total, title, icon }) => {
   const count = useMotionValue(0);
   const [displayCount, setDisplayCount] = useState(0);
 
-  useEffect(() => {
-    const controls = animate(count, parseInt(total), {
-      duration: 5, // animation speed (seconds)
-      ease: "easeOut",
-      onUpdate: (latest) => setDisplayCount(Math.floor(latest)),
-    });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  // `once: true` → runs only first time
+  // `margin` → triggers a little earlier when scrolling
 
-    return controls.stop; // cleanup on unmount
-  }, [total, count]);
+  // Extract numeric and symbol parts
+  const numericPart = parseInt(total.replace(/\D/g, "")); // 3000
+  const suffix = total.replace(/[0-9]/g, ""); // "+"
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, numericPart, {
+        duration: 3, // animation speed in seconds
+        ease: "easeOut",
+        onUpdate: (latest) => setDisplayCount(Math.floor(latest)),
+      });
+
+      return controls.stop;
+    }
+  }, [isInView, total, count]);
 
   return (
-    <div
+    <motion.div
+      ref={ref}
+      initial={{ x: -100, opacity: 0 }} //start from left
+      whileInView={{ x: 0, opacity: 1 }} // apni jagah pe aa jaye
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className="
         w-64 h-36
         rounded-2xl 
@@ -61,10 +75,13 @@ const AboutCard: React.FC<Titleprop> = ({ total, title, icon }) => {
       <div className="flex flex-col justify-end h-full mt-4">
         <p className="text-white text-4xl cursor-pointer lg:text-5xl hover:text-primary duration-200 ease-out hover:scale-110 poppins-bold mb-2 self-end">
           {displayCount}
+          {suffix}
         </p>
-        <p className="text-white text-xl poppins-medium self-end">{title}</p>
+        <p className="text-white text-lg lg:text-xl poppins-medium self-end">
+          {title}
+        </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

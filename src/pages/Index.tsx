@@ -1,5 +1,6 @@
 // hooks
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // Components
 import BookingWidget from "@/components/BookingWidget";
 import Hero from "@/components/Hero";
@@ -194,7 +195,9 @@ const Index = () => {
             ))}
           </div>
           <div className="flex justify-center lg:justify-start">
-            <CommanButton label="Explore More" />
+            <Link to="/about">
+              <CommanButton label="Explore More" />
+            </Link>
           </div>
         </div>
         {/* right */}
