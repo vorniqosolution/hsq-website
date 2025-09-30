@@ -3,7 +3,7 @@ import Mainimage from "../assets/Weather/Mainimage.png";
 // import WeatherLogo from "../assets/Weather/WeatherLogo.json";
 import WeatherAnimation from "../components/LottieFiles/Weather";
 import weather2 from "../assets/Weather/weather2.png";
-import { Footer } from "../components/layout/Footer";
+import Footer from "@/components/layout/Footer";
 import { Thermometer, CloudSun, Droplets } from "lucide-react";
 // import
 import axios from "axios";

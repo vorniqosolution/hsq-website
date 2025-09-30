@@ -1,93 +1,145 @@
-// import React from "react";
-// import faqimage from "../assets/BG/faqimage.png";
-import decorbg from "../assets/Decor/decorBg.png";
-import { MdQuestionMark } from "react-icons/md";
-import fower_01 from "../assets/BG/fower_01.svg";
-import FaqsCard from "@/components/cards/FaqsCard";
-import { Footer } from "../components/layout/Footer";
+import roomimage from "@/assets/BG/roomimage.png";
+import React, { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+
 function Faqs() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    // ✅ only one open at a time
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "HOW DO I BOOK A ROOM?",
+      answer: "Book Online, Call Us, Or Whatsapp For Instant Confirmation.",
+    },
+    {
+      question: "WHAT’S YOUR CANCELLATION POLICY?",
+      answer:
+        "Free Cancellation Up To 48 Hours Before Check-In (On Standard Bookings).",
+    },
+    {
+      question: "DO YOU OFFER GROUP/EVENT PACKAGES?",
+      answer:
+        "Yes, Customized Wedding, Birthday & Corporate Packages Are Available.",
+    },
+    {
+      question: "CAN I REQUEST EARLY CHECK-IN OR LATE CHECK-OUT?",
+      answer: "Yes, Based On Availability (Extra Charges May Apply).",
+    },
+    {
+      question: "WHAT DO I NEED FOR CHECK-IN?",
+      answer: "CNIC Or Passport For All Guests.",
+    },
+    {
+      question: "WHAT ROOM TYPES DO YOU OFFER?",
+      answer: "Standard, Executive, And Family Suites.",
+    },
+    {
+      question: "IS BREAKFAST INCLUDED?",
+      answer: "Yes, Complimentary Gourmet Breakfast For All Guests.",
+    },
+    {
+      question: "DO YOU HAVE WI-FI?",
+      answer: "Yes, Free High-Speed Wi-Fi Throughout The Hotel.",
+    },
+    {
+      question: "CAN I REQUEST EXTRA BEDS OR CRIBS?",
+      answer:
+        "Yes, Available On Request, But Only 1 If You Need More (Charges Will Be Applied)",
+    },
+    {
+      question: "CAN YOU ARRANGE CANDLELIGHT DINNERS?",
+      answer: "Yes, Romantic And Private Dining Setups Are Available.",
+    },
+    {
+      question: "DO YOU HAVE FREE PARKING?",
+      answer: "Yes, Secure Complimentary Parking Is Available.",
+    },
+    {
+      question: "WHAT PAYMENT METHODS DO YOU ACCEPT?",
+      answer: "Cash, Bank Transfer, Debit/Credit Cards.",
+    },
+    {
+      question: "DO YOU HAVE FAMILY ROOMS?",
+      answer: "Yes, Spacious Family-Friendly Rooms.",
+    },
+    {
+      question: "WHAT MAKES HSQ TOWERS THE CHOICE ABOVE PC AND SHANGRILA?",
+      answer:
+        "HSQ Towers Is Not Just Another Hotel In Murree — It Is A New Definition Of Luxury Living.",
+    },
+  ];
+
   return (
     <>
-      <div>
-        {/* front section  */}
-        <div
-          className="w-full h-screen bg-cover bg-center  relative flex justify-center items-center"
-          style={{ backgroundImage: `url(${decorbg})` }}
-        >
-          <MdQuestionMark size={400} color="#d7ab4e" className="opacity-55" />
-          <h1 className="text-primary absolute text-2xl md:text-3xl font-bold lg:text-5xl">
-            Frequently Asked Questions
+      {/* Hero Section */}
+      <section
+        className="w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh] relative"
+        style={{ backgroundImage: `url(${roomimage})` }}
+      >
+        {/* when use final image remove this div */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-32">
+          <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
+            FAQS
           </h1>
-          <p className="absolute pt-44  text-sm md:text-lg sm:text-xl text-white">
-            We&rsquo;ve Got All the Answers You&rsquo;re Looking For
+          <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center">
+            FREQUENTLY ASKED QUESTIONS
+          </h1>
+          <p className="text-center w-96 sm:w-1/2">
+            We’ve Got All the Answers You’re Looking For
           </p>
         </div>
-        {/* Questions section*/}
-        <div className="bg-primary/50 min-h-screen relative ">
-          <img
-            className="absolute top-0 w-52 sm:w-72 left-0 bottom-0"
-            src={fower_01}
-            alt="flower"
-          />
-          <img
-            className=" absolute  right-1 bottom-0 w-72  rotate-180"
-            src={fower_01}
-            alt="flower"
-          />
-          <div className="pl-24 pt-14  sm:pt-20  sm:pl-24  flex flex-col sm:flex-row space-y-4 justify-center sm:justify-between items-baseline mr-20">
-            <p className="text-sm  sm:text-2xl font-semibold lg:font-extrabold">
-              Your Queries, Answered
-            </p>
-            <button className="text-black font-semibold sm:font-bold bg-primary px-2 py-1 sm:px-3 sm:py-2 rounded-full">
-              ASk A Question
-            </button>
+      </section>
+      {/* FAQ Section */}
+      <section className="backgroundcolor py-10 px-6">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row  items-center justify-center lg:justify-between gap-6 mb-10">
+            <h2 className="text-2xl poppins-extrabold lg:text-4xl">
+              Your Queries Answered
+            </h2>
+            <div className="relative ">
+              <button className=" text-black poppins-semibold px-8 py-2  bg-gradient-to-r from-[#D7AA4D] to-[#D49237] transition rounded-full">
+                Ask a Question
+              </button>
+              <div className="absolute right-1  rounded-full bg-black px-[2px] py-[2px] top-2">
+                <ChevronRight size={20} color="white" />
+              </div>
+            </div>
           </div>
-          {/* faqs cards */}
-          <div className="pl-1 z-50 md:pl-1 pb-5 lg:pl-20">
-            <FaqsCard
-              lable="How do I book a room?"
-              description="Book online, call us, or WhatsApp for instant confirmation."
-            />
-            <FaqsCard
-              lable="Do you offer group/event packages?"
-              description="Yes, customized wedding, birthday & corporate packages are available."
-            />
-            <FaqsCard
-              lable="Can I request early check-in or late check-out?"
-              description="Yes, based on availability (extra charges may apply)."
-            />
-            <FaqsCard
-              lable="What do I need for check-in?"
-              description="CNIC or passport for all guests."
-            />
-            <FaqsCard
-              lable="Is breakfast included?"
-              description="Yes, complimentary gourmet breakfast for all guests."
-            />
-            <FaqsCard
-              lable="Do you have Wi-Fi?"
-              description="Yes, free high-speed Wi-Fi throughout the hotel."
-            />
-            <FaqsCard
-              lable="Can I request extra beds or cribs?"
-              description="Yes, available on request,but only 1 if you need more (charges will be applied)"
-            />
-            <FaqsCard
-              lable="Can you arrange candlelight dinners?"
-              description="Yes, romantic and private dining setups are available."
-            />
-            <FaqsCard
-              lable="Do you have free parking?"
-              description="Yes, secure complimentary parking is available."
-            />
-            <FaqsCard
-              lable="Is breakfast included?"
-              description="Yes, complimentary gourmet breakfast for all guests."
-            />
+
+          {/* Accordion */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-sm border-l-4 border-black px-4 py-3 cursor-pointer"
+                onClick={() => toggleAccordion(index)}
+              >
+                <div className="flex justify-between items-center">
+                  <p className="font-semibold text-sm text-gray-900">
+                    {faq.question}
+                  </p>
+                  <ChevronDown
+                    className={`w-5 h-5 text-black transform transition-transform duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
+
+                {/* ✅ Show only the clicked one */}
+                {openIndex === index && (
+                  <p className="mt-2 text-gray-600 text-sm">{faq.answer}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
-        <Footer />
-      </div>
+      </section>
     </>
   );
 }

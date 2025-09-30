@@ -150,18 +150,6 @@ All colors MUST be HSL for proper theming.
   font-style: normal;
 }
 
-/* .swiper-button-prev,
-.swiper-button-next {
-  color: black !important; 
-  fill: black !important; 
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 20px !important; 
-  font-weight: bold;
-} */
-
 .backgroundcolor {
   background-color: #fff2db;
 }

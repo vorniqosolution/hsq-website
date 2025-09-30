@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Instagram, Globe, User, Phone } from "lucide-react";
+import { Menu, Instagram, Globe, User, Phone, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Container } from "./Container";
 // import { BookingWidget } from "../BookingWidget";
 import { cn } from "@/lib/utils";
 import navIcon from "@/assets/hsq_logo.png";
-
+import { FaFacebookF } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa";
 // Primary navigation (desktop)
 const navPrimary = [
   { name: "Weather", href: "/weather" },
@@ -21,9 +22,24 @@ const navPrimary = [
 
 // Social links (shown inside the pill on desktop, in drawer on mobile)
 const navSocial = [
-  { label: "Instagram", href: "https://instagram.com/", external: true, Icon: Instagram },
-  { label: "Website", href: "https://hsq.example.com", external: true, Icon: Globe },
-  { label: "Account", href: "/account", external: false, Icon: User },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/hsqtowers/",
+    external: true,
+    Icon: Instagram,
+  },
+  {
+    label: "Tiktok",
+    href: "https://www.tiktok.com/@hsqtowers",
+    external: true,
+    Icon: FaTiktok,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/hsq.towers/",
+    external: true,
+    Icon: FaFacebookF,
+  },
 ];
 
 export const Header = () => {
@@ -145,8 +161,8 @@ export const Header = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
                           "text-lg font-medium hsq-transition",
-                          location.pathname === item.href 
-                            ? "hsq-gold" 
+                          location.pathname === item.href
+                            ? "hsq-gold"
                             : "text-foreground hover:hsq-gold"
                         )}
                       >

@@ -1,100 +1,18 @@
-// import ExclusiveAmenity from "@/components/ExclusiveAmenity";
-// import bookbg from "../assets/BG/bookbg.svg";
-// import { SlCalender } from "react-icons/sl";
-// import BookingCard from "../components/cards/BookingCard";
-// import { RiGalleryFill } from "react-icons/ri";
-// function Booking() {
-//   return (
-//     <>
-//       <div>
-//         {/* main section */}
-//         <div className="relative w-full min-h-screen  flex pt-32">
-//           {/* Background image */}
-//           <div
-//             className="absolute inset-0 bg-cover bg-center"
-//             style={{ backgroundImage: `url(${bookbg})` }}
-//           />
-//           {/* Black shade overlay */}
-//           <div className="absolute inset-0 bg-black/65" />
-
-//           <div className="relative flex flex-col justify-center items-center w-full">
-//             <h1 className="text-primary font-bold text-xl md:text-3xl lg:text-3xl text-center">
-//               Choose from our five unique room types
-//             </h1>
-//             <div
-//               id="card"
-//               className="flex mb-10 flex-col flex-wrap justify-center items-center gap-10  pt-10 sm:flex-row  md:pl-2 md:my-10 lg:my-28 "
-//             >
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//               <BookingCard />
-//             </div>
-//           </div>
-//         </div>
-//         {/* second section  */}
-//         <div className="bg-primary/50  flex flex-col justify-center items-center  space-y-8 pt-10">
-//           <h1 className="text-2xl font-semibold lg:text-3xl sm:font-bold">
-//             Exclusive Amenities
-//           </h1>
-//           <div className="space-x-10 flex flex-row align-baseline ">
-//             <p>A</p>
-//             <p>Stay</p>
-//             <p>Beyond</p>
-//             <p>Expectations</p>
-//           </div>
-//           <ExclusiveAmenity />
-//           <div className="gap-5 flex pb-10 space-x-6 font-serif">
-//             <button className="flex items-center gap-2 bg-white text-sm border rounded-lg px-3 py-2">
-//               <span>Explore Our Gallery</span>
-//               <RiGalleryFill className="text-lg" />
-//             </button>
-
-//             <button
-//               onClick={() => {
-//                 document
-//                   .getElementById("card")
-//                   ?.scrollIntoView({ behavior: "smooth" });
-//               }}
-//               className="flex items-center gap-2 bg-primary text-sm border rounded-lg px-3 py-2"
-//             >
-//               <span>Reserve Your Stay</span>
-//               <SlCalender className="text-lg" />
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Booking;
-
-// UPDATE CODE
 import bookbg from "../assets/Book/bookbg.svg";
-import {
-  ArrowRight,
-  Wifi,
-  Dumbbell,
-  WashingMachine,
-  CircleParking,
-  Building,
-  Utensils,
-  PhoneCall,
-  MailIcon,
-  Bell,
-} from "lucide-react";
+import { ArrowRight, PhoneCall, MailIcon } from "lucide-react";
 import BookingCard from "../components/cards/BookingCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaLocationPin } from "react-icons/fa6";
+// Svg images components
+import Wifi from "@/components/svg/Wifi";
+import Gym from "@/components/svg/Gym";
+import Laundry from "@/components/svg/Laundry";
+import Parking from "@/components/svg/Parking";
+import Conference from "@/components/svg/Conference";
+import Breakfast from "@/components/svg/Breakfast";
 function Booking() {
   return (
     <>
@@ -181,7 +99,8 @@ function Booking() {
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
-                <Wifi className="text-primary" size={25} strokeWidth={3} />
+                {/* <Wifi className="text-primary" size={25} strokeWidth={3} /> */}
+                <Wifi />
               </div>
               <p className="mt-2 font-medium">Wifi</p>
             </div>
@@ -190,12 +109,8 @@ function Booking() {
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
-              <div className="bg-black relative rounded-full w-12 h-12">
-                <Dumbbell
-                  className="absolute top-3 left-3 text-primary"
-                  size={25}
-                  strokeWidth={3}
-                />
+              <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
+                <Gym />
               </div>
               <p>Fitness</p>
             </div>
@@ -204,12 +119,8 @@ function Booking() {
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
-              <div className="bg-black relative rounded-full w-12 h-12">
-                <WashingMachine
-                  className="absolute top-3 left-3 text-primary"
-                  size={25}
-                  strokeWidth={3}
-                />
+              <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
+                <Laundry />
               </div>
               <p>Laundry </p>
             </div>
@@ -218,26 +129,18 @@ function Booking() {
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
-              <div className="bg-black relative rounded-full w-12 h-12">
-                <Building
-                  className="absolute top-3 left-3 text-primary"
-                  size={25}
-                  strokeWidth={3}
-                />
+              <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
+                <Conference />
               </div>
               <p>Conference</p>
             </div>
-            {/* room service */}
+            {/* breakfast */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
-              <div className="bg-black relative rounded-full w-12 h-12">
-                <Bell
-                  className="absolute top-3 left-3 text-primary"
-                  size={25}
-                  strokeWidth={3}
-                />
+              <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
+                <Breakfast />
               </div>
               <p>Service</p>
             </div>
@@ -246,12 +149,8 @@ function Booking() {
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
-              <div className="bg-black relative rounded-full w-12 h-12">
-                <CircleParking
-                  className="absolute top-3 left-3 text-primary"
-                  size={25}
-                  strokeWidth={3}
-                />
+              <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
+                <Parking />
               </div>
               <p>Parking</p>
             </div>

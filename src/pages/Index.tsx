@@ -328,7 +328,9 @@ const Index = () => {
           /> */}
         </div>
         <div className="mt-5">
-          <CommanButton label="View All" />
+          <Link to="/rooms">
+            <CommanButton label="View All" />
+          </Link>
         </div>
       </section>
       {/* Gallery */}
@@ -341,16 +343,16 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/50" />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center space-y-3 text-center px-4">
-          <h1 className="great-vibes-regular text-lg md:text-4xl">
-            Look Of The
-          </h1>
-          <p className="poppins-bold text-xl md:text-3xl lg:text-5xl">
-            Photo Gallery Of Our Hotel
+        <div className="relative z-10 flex flex-col items-center  space-y-3 text-center px-4">
+          <h1 className="Tuesdaynight text-lg md:text-4xl">Look at The</h1>
+          <p className="poppins-bold  sm:w-[70%] text-xl md:text-3xl lg:text-5xl">
+            PHOTO GALLERY OF OUR HOTEL
           </p>
           <p className="text-sm">Welcome to our photo gallery</p>
           {/* Button */}
-          <Viewbutton label="  View Gallery" />
+          <Link to="/gallery">
+            <Viewbutton label="  View Gallery" />
+          </Link>
         </div>
       </section>
       {/* Restaurent*/}
@@ -443,11 +445,13 @@ const Index = () => {
           <div>
             {/* review card */}
             <div className="w-64 h-fit  text-black my-4">
-              <div className="bg-primary/80">
-                <h1>Hsq towers,Jhika Gali, Murree</h1>
+              <div className="bg-[#D7AB4E] p-2">
+                <h1 className="poppins-semibold">
+                  Hsq towers,Jhika Gali, Murree
+                </h1>
                 <p>4.8 29 Google reviews</p>
               </div>
-              <div className="bg-primary p-2 flex justify-center poppins-semibold flex-row gap-3 items-center">
+              <div className="bg-[#FFD680] p-2 flex justify-center poppins-semibold flex-row gap-3 items-center">
                 <p className="underline text-sm text-center hover:cursor-pointer">
                   View larger map
                 </p>

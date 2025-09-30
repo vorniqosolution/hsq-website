@@ -41,11 +41,11 @@ const Hero: React.FC<HeroCarouselProps> = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center mt-32 md:mt-40 lg:mt-24 h-full  text-center text-white px-6">
-        <h3 className="text-2xl sm:text-7xl   great-vibes-regular  mb-2">
+      <div className="relative z-10 flex flex-col items-center mt-32 md:mt-40 lg:mt-24 xl:mt-32 h-full  text-center text-white px-6">
+        <h3 className="text-4xl sm:text-6xl Tuesdaynight mb-2">
           {slides[current].subtitle}
         </h3>
-        <h1 className="text-3xl lg:text-5xl poppins-bold mb-2 lg:mb-4">
+        <h1 className="text-4xl lg:text-5xl poppins-bold mb-2 lg:mb-4">
           {slides[current].title}
         </h1>
         <p className="max-w-2xl  mx-auto mb-6 poppins-regular text-sm sm:text-lg">
@@ -55,7 +55,7 @@ const Hero: React.FC<HeroCarouselProps> = ({
       </div>
 
       {/* Controls with line between */}
-      <div className="absolute top-[60%] left-0 right-0 flex items-center justify-between px-12">
+      <div className="absolute top-[65%] left-0 right-0 flex items-center justify-between px-12">
         <button
           onClick={prevSlide}
           className="border-white border p-3 hover:bg-black/50 rounded-full"
