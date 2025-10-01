@@ -1,5 +1,5 @@
 import decorbg from "../assets/Decor/decorBg.png";
-import Tick from "../components/LottieFiles/Review";
+// import Tick from "../components/LottieFiles/Review";
 import fower_01 from "../assets/BG/fower_01.svg";
 function Review() {
   return (
@@ -9,7 +9,7 @@ function Review() {
         style={{ backgroundImage: `url(${decorbg})` }}
       >
         <div className="absolute inset-0 flex items-center justify-center ">
-          <Tick />
+          {/* <Tick /> */}
           <h1 className="z-50 absolute text-primary text-3xl md:text-3xl lg:text-5xl text-center">
             Stories of Satisfaction
           </h1>

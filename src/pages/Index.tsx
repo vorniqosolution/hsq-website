@@ -128,6 +128,7 @@ const Index = () => {
       description:
         "At HSQ Tower, we redefine modern hospitality—blending style, innovation, and authentic warmth. ",
       buttonText: "More Info",
+      href: "/about",
     },
     {
       image: v2,
@@ -136,6 +137,7 @@ const Index = () => {
       description:
         "Step Into our restaurant and indulge in a culinary journey where every dish is a masterpiece-crafter with passion",
       buttonText: "More Info",
+      href: "/aminities",
     },
     {
       image: v3,
@@ -144,6 +146,7 @@ const Index = () => {
       description:
         "At HSQ Tower, Discover a selection of elegant living spaces-from cozy standard rooms to deluxe suites.",
       buttonText: "More Info",
+      href: "/rooms",
     },
     {
       image: v4,
@@ -152,6 +155,7 @@ const Index = () => {
       description:
         "At HSQ Tower, every moment is designed around you .From exciting tours and fascinating to world class exhibition and vibrant trade show.",
       buttonText: "More Info",
+      href: "/aminities",
     },
     // { ... }
   ];

@@ -44,6 +44,7 @@ import BookingFoam from "./components/BookingFoam";
 import BookingCard from "./components/cards/BookingCard";
 import BookingWidget from "./components/BookingWidget";
 import Hero from "./components/Hero";
+import Aminities from "./pages/Aminities";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -74,6 +75,7 @@ const App = () => (
                   <Route path="/reviews" element={<Review />} />
                   <Route path="/faqs" element={<Faqs />} />
                   <Route path="/book" element={<Booking />} />
+                  <Route path="/aminities" element={<Aminities />}></Route>
                   <Route path="/logo" element={<BookingWidget />} />
                   {/* <Route path="/logo" element={<Hero />} /> */}
                 </Routes>

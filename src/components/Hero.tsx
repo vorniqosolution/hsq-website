@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Viewbutton from "./buttons/Viewbutton";
+import { Link } from "react-router-dom";
 interface Slide {
   image: string;
   title: string;
   subtitle: string;
   description: string;
   buttonText: string;
+  href: string;
 }
 
 interface HeroCarouselProps {
@@ -51,7 +53,9 @@ const Hero: React.FC<HeroCarouselProps> = ({
         <p className="max-w-2xl  mx-auto mb-6 poppins-regular text-sm sm:text-lg">
           {slides[current].description}
         </p>
-        <Viewbutton label="View More" />
+        <Link to={slides[current].href}>
+          <Viewbutton className="px-8" label={slides[current].buttonText} />
+        </Link>
       </div>
 
       {/* Controls with line between */}
@@ -67,7 +71,7 @@ const Hero: React.FC<HeroCarouselProps> = ({
         <div className="flex-1 mx-6 border-t border-white" />
         <button
           onClick={nextSlide}
-          className="border-white border p-3 hover:bg-black/50 rounded-full"
+          className="border-white  border p-3 hover:bg-black/50 rounded-full"
         >
           <ChevronRight size={24} className="text-white" />
         </button>
