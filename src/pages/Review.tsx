@@ -1,80 +1,86 @@
-import decorbg from "../assets/Decor/decorBg.png";
+// import decorbg from "../assets/Decor/decorBg.png";
 // import Tick from "../components/LottieFiles/Review";
-import fower_01 from "../assets/BG/fower_01.svg";
+// import fower_01 from "../assets/BG/fower_01.svg";
+import dummyreview from "@/assets/indexpage/dummyreview.svg";
+import reviewbg from "@/assets/Review/reviewbg.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import CommanButton from "@/components/buttons/Button";
+import Footer from "@/components/layout/Footer";
+import WhatsAppButton from "@/components/buttons/Whatsapp";
+import "swiper/css";
+import "swiper/css/navigation";
 function Review() {
   return (
     <>
-      <div
-        className="w-full h-screen bg-cover bg-center relative flex flex-col  items-center justify-center"
-        style={{ backgroundImage: `url(${decorbg})` }}
-      >
-        <div className="absolute inset-0 flex items-center justify-center ">
-          {/* <Tick /> */}
-          <h1 className="z-50 absolute text-primary text-3xl md:text-3xl lg:text-5xl text-center">
-            Stories of Satisfaction
+      <div>
+        {/* upper section */}
+        <section
+          className="w-full bg-cover bg-bottom h-[30vh] lg:h-[70vh]"
+          style={{ backgroundImage: `url(${reviewbg})` }}
+        >
+          <div className="flex flex-col  text-white justify-center items-center pt-14 md:pt-24 lg:pt-36 space-y-2">
+            <h1 className="Tuesdaynight text-2xl md:text-3xl lg:text-5xl">
+              Stories
+            </h1>
+            <h1 className="poppins-bold text-3xl md:text-4xl lg:text-5xl">
+              OF SATISFACTION
+            </h1>
+            <p className="text-sm text-center">
+              Discover what makes every stay at HSQ Towers truly unforgettable
+            </p>
+          </div>
+          <div className="relative">
+            <WhatsAppButton></WhatsAppButton>
+          </div>
+        </section>
+        {/* body section */}
+        <section className="backgroundcolor">
+          <h1 className="poppins-bold text-2xl pt-12 text-center">
+            Stories Shared by Our Visitors
           </h1>
-        </div>
-        <p className="text-white text-md lg:text-lg  pt-72">
-          Discover what makes every stay at HSQ Towers truly unforgettable
-        </p>
-      </div>
-      {/* Second section */}
-      <div className="relative bg-primary/50 w-full min-h-[60vh] flex flex-col items-center justify-center px-6 py-16 overflow-hidden">
-        {/* Left Flower*/}
-        <img
-          src={fower_01}
-          alt="flower"
-          className="absolute bottom-0  left-0 w-28 sm:w-44 md:w-56  scale-x-[-1] rotate-180"
-        />
-
-        {/* Right Flower*/}
-        <img
-          src={fower_01}
-          alt="flower"
-          className="absolute top-0 right-0 w-28 sm:w-44 md:w-56 scale-x-[-1] pointer-events-none select-none"
-        />
-
-        {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-black mb-12">
-          Stories Shared by Our Visitors
-        </h2>
-
-        {/* Cards Wrapper */}
-        <div className="flex flex-col sm:flex-row gap-8 w-full max-w-6xl justify-center relative z-10">
-          {/* Card 1 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex-1 text-center">
-            <p className="text-xs font-semibold text-primary mb-2">
-              AT THE HEART OF COMMUNITIES
-            </p>
-            <p className="text-sm text-gray-700 mb-4">⭐⭐⭐⭐⭐</p>
-            <p className="text-gray-800 mb-4">
-              Prime living concept in Murree, accompanied with quality finishing
-              and furnishing.
-            </p>
-            <p className="font-semibold text-orange-600">
-              Haris Ibrar <span className="text-blue-500">ⓖ</span>
-            </p>
+          {/* cards with crousel */}
+          <div className="w-full  px-4 pt-10">
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              spaceBetween={16} // gap between cards
+              loop={true}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              breakpoints={{
+                0: { slidesPerView: 1 }, // mobile → 1 card
+                768: { slidesPerView: 2 }, // tablet → 2 cards
+                1024: { slidesPerView: 3 }, // desktop → 3 cards
+                1280: { slidesPerView: 4 }, // large desktop → 4 cards
+              }}
+              className="w-full"
+            >
+              {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="space-y-5">
+                    <img
+                      src={dummyreview}
+                      alt={`Review ${index}`}
+                      className="w-full h-auto rounded-2xl shadow-xl object-cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-
-          {/* Card 2 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex-1 text-center">
-            <p className="text-xs font-semibold text-gray-500 mb-2">
-              AT THE HEART OF COMMUNITIES
-            </p>
-            <p className="text-sm text-gray-700 mb-4">⭐⭐⭐⭐⭐</p>
-            <p className="text-gray-800 mb-4">
-              First time seen professionalism in Murree hoteling
-            </p>
-            <p className="font-semibold text-orange-600">
-              Sharjeel Satti <span className="text-blue-500">ⓖ</span>
-            </p>
+          <div className="flex items-center justify-center pt-16 pb-28">
+            <a
+              href="https://maps.app.goo.gl/fcSZV2ReQKyBtRGp7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CommanButton
+                className="underline"
+                label="Write A Review"
+              ></CommanButton>
+            </a>
           </div>
-        </div>
-
-        {/* Button */}
-        <button className="mt-10 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-800 transition relative z-10">
-          Add a review ✨
-        </button>
+          <Footer />
+        </section>
       </div>
     </>
   );

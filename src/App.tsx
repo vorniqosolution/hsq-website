@@ -41,10 +41,12 @@ const Booking = lazy(() => import("./pages/Booking"));
 // testing route
 import ConfirmationDialog from "./pages/ConfirmationDialog";
 import BookingFoam from "./components/BookingFoam";
+import BookingFormpage from "./pages/BookingFormpage";
 import BookingCard from "./components/cards/BookingCard";
 import BookingWidget from "./components/BookingWidget";
 import Hero from "./components/Hero";
 import Aminities from "./pages/Aminities";
+import WhatsAppButton from "@/components/buttons/Whatsapp";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -75,8 +77,10 @@ const App = () => (
                   <Route path="/reviews" element={<Review />} />
                   <Route path="/faqs" element={<Faqs />} />
                   <Route path="/book" element={<Booking />} />
-                  <Route path="/aminities" element={<Aminities />}></Route>
-                  <Route path="/logo" element={<BookingWidget />} />
+                  <Route path="/aminities" element={<Aminities />} />
+                  <Route path="/logo" element={<WhatsAppButton />} />
+                  <Route path="/bookingform" element={<BookingFormpage />} />
+
                   {/* <Route path="/logo" element={<Hero />} /> */}
                 </Routes>
               </main>

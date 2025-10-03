@@ -4,135 +4,144 @@ import formbg from "../assets/BG/foambg.svg";
 function BookingFoam() {
   return (
     <>
-      <div
-        className="w-1/3 h-screen bg-cover bg-center mt-20"
-        style={{ backgroundImage: `url(${formbg})` }}
-      >
-        <div className="bg-black p-4 ">
-          <h1 className="text-primary text-2xl pl-20 font-semibold">
-            GUEST DETAILS
-          </h1>
+      <div className="bg-[#FFFAF1]  w-full  rounded-lg h-full pb-5">
+        {/* heading */}
+        <div className="bg-primary h-12 p-4 text-white  rounded-tl-3xl rounded-tr-3xl">
+          <h1 className="poppins-bold">Guest Details</h1>
         </div>
-        <form className="w-full max-w-2xl p-6 space-y-4 ">
-          {/* Full Name */}
-          <div>
-            <label
-              className="block text-sm font-medium text-gray-800 mb-1"
-              htmlFor="name"
-            >
-              Full Name
-            </label>
-            <input
-              className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your full name"
-            />
-          </div>
-
-          {/* Address */}
-          <div>
-            <label
-              className="block text-sm font-medium text-gray-800 mb-1"
-              htmlFor="address"
-            >
-              Address
-            </label>
-            <input
-              className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Enter your address"
-            />
-          </div>
-
-          {/* Phone & Email */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label
-                className="block text-sm font-medium text-gray-800 mb-1"
-                htmlFor="phone"
-              >
-                Phone
-              </label>
+        <div className="pt-10 p-3 ">
+          <form className="">
+            {/* NAME AND CONTACT NUMBER */}
+            <div className="flex flex-col lg:flex-row gap-4 mb-5">
               <input
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="03XXXXXXXXX"
-              />
-            </div>
-            <div>
-              <label
-                className="block text-sm font-medium text-gray-800 mb-1"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="example@email.com"
-              />
-            </div>
-          </div>
-
-          {/* CNIC & Arrival Time */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label
-                className="block text-sm font-medium text-gray-800 mb-1"
-                htmlFor="cnic"
-              >
-                CNIC
-              </label>
-              <input
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
                 type="text"
-                id="cnic"
-                name="cnic"
-                placeholder="XXXXX-XXXXXXX-X"
+                name=""
+                id=""
+                placeholder="Full Name"
+              />
+              <input
+                className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="text"
+                placeholder="Contact Number"
               />
             </div>
-            <div>
-              <label
-                className="block text-sm font-medium  text-gray-800 mb-1"
-                htmlFor="arrival"
-              >
-                Expected Arrival Time
-              </label>
-              <select
-                id="arrival"
-                name="arrival"
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="">Select time</option>
-                <option value="morning">Morning (8AM - 12PM)</option>
-                <option value="afternoon">Afternoon (12PM - 4PM)</option>
-                <option value="evening">Evening (4PM - 8PM)</option>
-                <option value="night">Night (8PM - 12AM)</option>
-              </select>
+            {/*  Address Email*/}
+            <div className="flex  flex-col lg:flex-row gap-4 mb-5">
+              <input
+                className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="text"
+                name=""
+                id=""
+                placeholder="Address:"
+              />
+              <input
+                className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="text"
+                placeholder="Email:"
+              />
             </div>
-          </div>
-
-          {/* Submit Button
-          <div className="pt-4">
-            <button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition"
-            >
-              Submit
-            </button>
-          </div> */}
-        </form>
+            {/* CNIC Arrival Time */}
+            <div className="flex  flex-col lg:flex-row gap-4 mb-5">
+              <input
+                className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="text"
+                name=""
+                id=""
+                placeholder="CNIC:"
+              />
+              <input
+                className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="text"
+                placeholder="Arrival Time: 12:00AM"
+              />
+            </div>
+            {/* Promo code */}
+            <div className="flex  flex-col lg:flex-row gap-4 mb-5">
+              <input
+                className="pl-5 py-2 rounded-md  border border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+                type="text"
+                name=""
+                id=""
+                placeholder="Promo Code:"
+              />
+            </div>
+            {/* special request  */}
+            <div className="w-full">
+              <textarea
+                name="message"
+                id="message"
+                rows={4}
+                cols={50}
+                placeholder="Special message...."
+                className="border p-2 w-full rounded-md border-gray-300 
+             focus:outline-none focus:ring-2 focus:ring-blue-400"
+              ></textarea>
+            </div>
+            {/* payment method */}
+            <p className="poppins-reguler text-gray-400">Payment Method</p>
+            <div className="pt-3 gap-5 flex  flex-col lg:flex-row poppins-reguler text-neutral-700">
+              <div className="flex  items-center space-x-2">
+                <input
+                  type="radio"
+                  id="cash"
+                  name="payment"
+                  className="accent-blue-600"
+                />
+                <label htmlFor="cash">Cash</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="card"
+                  name="payment"
+                  className="accent-blue-600"
+                />
+                <label htmlFor="card">Card</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="online"
+                  name="payment"
+                  className="accent-blue-600"
+                />
+                <label htmlFor="online">Online</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="hotel"
+                  name="payment"
+                  className="accent-blue-600"
+                />
+                <label htmlFor="hotel">Pay At Hotel</label>
+              </div>
+            </div>
+            {/* terms and condition */}
+            <div className="flex  items-center space-x-2 mt-10">
+              <input
+                type="radio"
+                id="terms"
+                name="payment"
+                className="accent-blue-600"
+              />
+              <label htmlFor="terms">
+                I agree with <span className="underline">terms conditions</span>{" "}
+                and <span className="underline">privacy policy</span>
+              </label>
+            </div>
+          </form>
+        </div>
       </div>
     </>
-    // <div>BookingFoam</div>
   );
 }
 

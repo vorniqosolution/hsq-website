@@ -13,11 +13,11 @@ const Contact = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Contact Us - HSQ Hotels Murree"
         description="Get in touch with HSQ Hotels for reservations, inquiries, or assistance. We're here to help make your stay exceptional."
       />
-      
+
       <div className="pt-20">
         <Section background="muted" padding="xl">
           <SectionHeader
@@ -32,7 +32,9 @@ const Contact = () => {
             {/* Contact Form */}
             <Card>
               <CardContent className="p-8">
-                <h3 className="text-2xl font-heading font-semibold mb-6">Send us a Message</h3>
+                <h3 className="text-2xl font-heading font-semibold mb-6">
+                  Send us a Message
+                </h3>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Input placeholder="Full Name" />
@@ -55,7 +57,9 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary mt-1" />
                     <div>
                       <h4 className="font-semibold mb-2">Address</h4>
-                      <p className="text-muted-foreground">{siteData?.address}</p>
+                      <p className="text-muted-foreground">
+                        {siteData?.address}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
