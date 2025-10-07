@@ -13,30 +13,40 @@ import Laundry from "@/components/svg/Laundry";
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
 import Breakfast from "@/components/svg/Breakfast";
+// booking widget
+import BookingWidget from "@/components/BookingWidget";
+import WhatsAppButton from "@/components/buttons/Whatsapp";
 function Booking() {
   return (
     <>
       <div className="w-full h-full">
         {/* main section */}
         <div
-          className="bg-cover bg-center  flex-col space-y-3  text-white items-center h-[50vh] lg:h-[60vh] flex justify-center"
+          className="relative bg-cover bg-center h-[50vh] lg:h-[80vh] text-white "
           style={{ backgroundImage: `url(${bookbg})` }}
         >
-          <p className="poppins-thin text-sm">
-            Get Directions on(Google Maps/Apple Maps)
-          </p>
-          <h1 className="poppins-bold text-2xl  lg:text-5xl lg:w-1/2 text-center">
-            Stay your way – six rooms, six unique vibes
-          </h1>
-          <button className="bookbtn flex items-center gap-2">
-            BOOK NOW
-            <div className="bg-black rounded-full">
-              <ArrowRight color="white" size={20} />
-            </div>
-          </button>
+          {/* heading */}
+          <div className="flex justify-center space-y-3 pt-20 md:pt-36  lg:pt-[150px] xl:pt-48 flex-col items-center">
+            <p className="poppins-thin text-sm">
+              Get Directions on(Google Maps/Apple Maps)
+            </p>
+            <h1 className="poppins-bold text-2xl  lg:text-5xl lg:w-1/2 text-center">
+              Stay your way – six rooms, six unique vibes
+            </h1>
+            <button className="bookbtn flex items-center gap-2">
+              BOOK NOW
+              <div className="bg-black rounded-full">
+                <ArrowRight color="white" size={20} />
+              </div>
+            </button>
+          </div>
+          {/* booking widget */}
+          <div className="absolute -bottom-36 md:-bottom-24 lg:-bottom-14 w-full ">
+            <BookingWidget />
+          </div>
         </div>
         {/* body section*/}
-        <div className="bg-primary/25 pt-10  flex flex-col text-center space-y-5 ">
+        <div className="bg-primary/25 pt-40 sm:pt-32  flex flex-col text-center space-y-5 ">
           <h1 className="poppins-bold  text-3xl sm:text-4xl">
             Our
             <span className="text-primary"> Featured </span>
@@ -154,6 +164,10 @@ function Booking() {
               </div>
               <p>Parking</p>
             </div>
+          </div>
+          {/* whatsapp button */}
+          <div className="relative bottom-2 right-2">
+            <WhatsAppButton />
           </div>
           {/* Footer Section */}
           <div className="bg-black w-full mt-16 p-10 flex flex-col sm:flex-row justify-between text-white">

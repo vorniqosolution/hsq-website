@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import RoomCard from "@/components/cards/RoomCard";
 import Viewbutton from "@/components/buttons/Viewbutton";
+import WhatsAppButton from "@/components/buttons/Whatsapp";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -25,12 +26,6 @@ import {
   // DumbbellIcon,
   Mountain,
   Wine,
-  // WashingMachine,
-  // CircleParking,
-  // Wifi,
-  // Users,
-  // Coffee,
-  // ChevronRight,
   ArrowRight,
   Plus,
   Minus,
@@ -281,9 +276,11 @@ const Index = () => {
               <h1 className="text-white text-center poppins-extrabold  sm:text-2xl">
                 Hotel Guest Facilities <p>Where Every Detail Meets Luxury</p>
               </h1>
-              <div className="flex justify-center mt-4">
-                <CommanButton label="Learn More" />
-              </div>
+              <Link to="/aminities">
+                <div className="flex justify-center mt-4">
+                  <CommanButton label="Learn More" />
+                </div>
+              </Link>
             </div>
             <div className="flex flex-row justify-center  order-1 lg:order-2 gap-3 w-full md:w-[60%] m-auto lg:w-[40%] flex-wrap">
               {Aminities.map((data, index) => (
@@ -331,8 +328,9 @@ const Index = () => {
             image={roomimage}
           /> */}
         </div>
+        {/* button */}
         <div className="mt-5">
-          <Link to="/rooms">
+          <Link to="/book">
             <CommanButton label="View All" />
           </Link>
         </div>
@@ -381,7 +379,7 @@ const Index = () => {
                     onClick={() => toggleAccordion(index)}
                     className="w-full flex items-center justify-between px-4 py-2 transition"
                   >
-                    <span className="text-black  poppins-regular">
+                    <span className="text-black poppins-medium">
                       {kitchen.title}
                     </span>
                     {activeIndex === index ? (
@@ -393,7 +391,7 @@ const Index = () => {
 
                   {/* Description */}
                   {activeIndex === index && (
-                    <div className="px-4 pb-4  poppins-light text-sm text-black/70">
+                    <div className="px-4 pb-4 poppins-reguler text-sm text-black">
                       <div className="border-t opacity-15 border-black" />{" "}
                       <p className="pt-1">{kitchen.description}</p>
                     </div>
@@ -485,6 +483,9 @@ const Index = () => {
           ></iframe>
         </div>
       </section>
+      <div className="relative">
+        <WhatsAppButton />
+      </div>
       <Footer />
     </>
   );

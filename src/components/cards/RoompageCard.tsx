@@ -103,7 +103,7 @@ function RoompageCard() {
         </div>
         <div className="relative flex justify-center">
           <Button label="Book Now" className="w-52" />
-          <div className="absolute px-1 py-1 rounded-full right-3 md:right-[37%] lg:right-6 top-[2px] bg-black">
+          <div className="absolute px-1 py-1 rounded-full right-5 md:right-[37%] lg:right-6 top-[2px] bg-black">
             <ChevronRight color="white" size={20} />
           </div>
         </div>

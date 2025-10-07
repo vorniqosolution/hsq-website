@@ -39,7 +39,7 @@ const Review = lazy(() => import("./pages/Review"));
 const Faqs = lazy(() => import("./pages/Faqs"));
 const Booking = lazy(() => import("./pages/Booking"));
 // testing route
-import ConfirmationDialog from "./pages/ConfirmationDialog";
+import ConfirmationDialog from "./components/ConfirmationDialog";
 import BookingFoam from "./components/BookingFoam";
 import BookingFormpage from "./pages/BookingFormpage";
 import BookingCard from "./components/cards/BookingCard";
@@ -80,7 +80,6 @@ const App = () => (
                   <Route path="/aminities" element={<Aminities />} />
                   <Route path="/logo" element={<WhatsAppButton />} />
                   <Route path="/bookingform" element={<BookingFormpage />} />
-
                   {/* <Route path="/logo" element={<Hero />} /> */}
                 </Routes>
               </main>

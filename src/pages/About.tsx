@@ -20,7 +20,7 @@ function About() {
         {/* hero section */}
         <section
           className="relative w-full bg-center lg:bg-top h-[60vh]  lg:h-[80vh] bg-cover"
-          style={{ backgroundImage: `url(${aboutbg})` }} 
+          style={{ backgroundImage: `url(${aboutbg})` }}
         >
           {/* Overlay for dark effect */}
           {/* <div className="absolute inset-0 bg-black/50"></div> */}
@@ -48,7 +48,7 @@ function About() {
             </button> */}
           </div>
         </section>
-        {/* hostel card section */}
+        {/* hotel card section */}
         <section className="backgroundcolor h-[85vh] lg:h-64">
           <section className="w-full flex flex-col  pt-10 lg:pt-0  justify-center lg:-bottom-10  items-center  lg:mt-0 absolute ">
             <div className="bg-[#FFF3DB] rounded-[30px] shadow-[0px_20px_0px_rgb(215,171,78),0_35px_60px_-15px_rgba(0,0,0,0.3)]  flex flex-col lg:flex-row items-center justify-center space-y-7 md:space-y-2 lg:space-y-0  pt-10 pb-7 lg:pt-0 w-[90%] md:w-[60%] lg:w-full  max-w-5xl h-full lg:h-48 ">

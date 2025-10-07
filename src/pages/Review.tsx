@@ -30,9 +30,6 @@ function Review() {
               Discover what makes every stay at HSQ Towers truly unforgettable
             </p>
           </div>
-          <div className="relative">
-            <WhatsAppButton></WhatsAppButton>
-          </div>
         </section>
         {/* body section */}
         <section className="backgroundcolor">
@@ -79,8 +76,11 @@ function Review() {
               ></CommanButton>
             </a>
           </div>
-          <Footer />
         </section>
+        <div className="relative">
+          <WhatsAppButton />
+        </div>
+        <Footer />
       </div>
     </>
   );
