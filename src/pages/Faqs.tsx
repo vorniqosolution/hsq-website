@@ -1,7 +1,7 @@
 import roomimage from "@/assets/BG/roomimage.png";
 import React, { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
-
+import { Link } from "react-router-dom";
 function Faqs() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -103,10 +103,13 @@ function Faqs() {
               Your Queries Answered
             </h2>
             <div className="relative ">
-              <button className=" text-black poppins-semibold px-8 py-2  bg-gradient-to-r from-[#D7AA4D] to-[#D49237] transition rounded-full">
-                Ask a Question
-              </button>
-              <div className="absolute right-1  rounded-full bg-black px-[2px] py-[2px] top-2">
+              <Link to={"/contact"}>
+                <button className="text-black poppins-semibold px-8 pl-3 py-2  bg-gradient-to-r from-[#D7AA4D] to-[#D49237] transition rounded-full">
+                  Ask a Question
+                </button>
+              </Link>
+
+              <div className="absolute right-1  rounded-full  bg-black px-[2px] py-[2px] top-[6px]">
                 <ChevronRight size={20} color="white" />
               </div>
             </div>
