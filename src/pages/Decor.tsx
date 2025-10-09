@@ -1,5 +1,6 @@
 import roomimage from "@/assets/BG/roomimage.png";
 import DecorCard from "@/components/cards/DecorCard";
+import Footer from "@/components/layout/Footer";
 function Decor() {
   return (
     <>
@@ -31,6 +32,7 @@ function Decor() {
           <DecorCard></DecorCard>
           <DecorCard></DecorCard>
         </section>
+        <Footer />
       </div>
     </>
   );

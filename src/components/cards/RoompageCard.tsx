@@ -15,6 +15,9 @@ function RoompageCard() {
       </div>
       {/* Middle Content */}
       <div className="flex-1 flex flex-col justify-between">
+        <div className="bg-green-200 border-2 border-[#42DE56] text-center w-fit px-5 py-2 rounded-lg ">
+          3 Rooms Available
+        </div>
         <div>
           <h2 className="poppins-bold text-2xl">One Bed Deluxe Room</h2>
           <p className="text-black mt-2 poppins-medium text-sm">

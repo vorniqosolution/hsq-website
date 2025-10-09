@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import navIcon from "@/assets/hsq_logo.png";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
+
+import { motion } from "framer-motion";
 // Primary navigation (desktop)
 const navPrimary = [
   { name: "Weather", href: "/weather" },
@@ -76,8 +78,14 @@ export const Header = () => {
 
           {/* Right: Nav pill (desktop only) */}
           <div className="ml-auto hidden lg:block">
-            <div className="rounded-full border border-white/10 bg-black/55 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-              <nav className="flex items-center gap-1 pl-2 pr-2 py-2">
+            <div
+              className={
+                isScrolled
+                  ? "rounded-full border border-white/20 bg-black/35  backdrop-blur-lg shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                  : "rounded-full border border-white/20 bg-white/10  backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+              }
+            >
+              <nav className="flex items-center gap-1 pl-2 pr-2 py-2 ">
                 {navPrimary.map((item) => {
                   const active = location.pathname === item.href;
                   return (
@@ -85,8 +93,8 @@ export const Header = () => {
                       key={item.name}
                       to={item.href}
                       className={cn(
-                        "px-3 py-1.5 rounded-full uppercase tracking-wider text-[12px] font-medium transition-colors",
-                        active ? "hsq-gold" : "text-white/90 hover:text-white"
+                        "px-3 py-1.5 rounded-full uppercase tracking-wider text-[12px] poppins-semibold transition-colors",
+                        active ? "hsq-gold" : "text-white hover:text-primary"
                       )}
                     >
                       {item.name}
@@ -143,17 +151,17 @@ export const Header = () => {
           <div className="ml-auto lg:hidden -mr-2 sm:mr-0">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="lg:hidden">
-                  <Menu className="w-5 h-5" />
+                <Button size="sm" variant="burger" className="lg:hidden">
+                  <Menu color="white" className="w-5 h-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
                 <div className="flex flex-col space-y-6 mt-8">
-                  <div className="text-xl font-heading font-bold hsq-gold">
+                  <div className="text-2xl text-center font-heading poppins-bold hsq-gold">
                     HSQ Hotels
                   </div>
 
-                  <nav className="flex flex-col space-y-3 pt-2">
+                  <nav className="flex flex-col  items-center space-y-3 pt-2">
                     {navPrimary.map((item) => (
                       <Link
                         key={item.name}
@@ -170,6 +178,16 @@ export const Header = () => {
                       </Link>
                     ))}
                   </nav>
+                  <div>
+                    <Link className="flex justify-center" to="/book">
+                      <Button
+                        size="sm"
+                        className="rounded-full h-8 px-4 text-[12px] poppins-semibold hsq-gradient-gold text-white hover:opacity-90"
+                      >
+                        Book Now
+                      </Button>
+                    </Link>
+                  </div>
 
                   {/* Booking widget in mobile drawer */}
                   {/* <div className="pt-6 border-t">

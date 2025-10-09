@@ -31,13 +31,15 @@ const Offers = lazy(() => import("./pages/Offers"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Privacy = lazy(() => import("./pages/Privacy"));
-const Terms = lazy(() => import("./pages/Terms"));
+const TermsAndCondition = lazy(() => import("./pages/TermsAndCondition"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Decor = lazy(() => import("./pages/Decor"));
 const Weather = lazy(() => import("./pages/Weather"));
 const Review = lazy(() => import("./pages/Review"));
 const Faqs = lazy(() => import("./pages/Faqs"));
 const Booking = lazy(() => import("./pages/Booking"));
+// Loading component
+import FrontLogo from "@/components/layout/FrontLogo";
 // testing route
 import ConfirmationDialog from "./components/ConfirmationDialog";
 import BookingFoam from "./components/BookingFoam";
@@ -50,7 +52,7 @@ import WhatsAppButton from "@/components/buttons/Whatsapp";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={<FrontLogo />}>
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <TooltipProvider>
@@ -59,30 +61,30 @@ const App = () => (
           <BrowserRouter>
             <div className="min-h-screen flex flex-col">
               <Header />
-              <main className="flex-1">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/rooms" element={<Rooms />} />
-                  {/* <Route path="/dining" element={<Dining />} /> */}
-                  {/* <Route path="/spa" element={<Spa />} /> */}
-                  <Route path="/gallery" element={<Gallery />} />
-                  <Route path="/offers" element={<Offers />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/privacy" element={<Privacy />} />
-                  <Route path="/terms" element={<Terms />} />
-                  <Route path="*" element={<NotFound />} />
-                  <Route path="/decor" element={<Decor />} />
-                  <Route path="/weather" element={<Weather />} />
-                  <Route path="/reviews" element={<Review />} />
-                  <Route path="/faqs" element={<Faqs />} />
-                  <Route path="/book" element={<Booking />} />
-                  <Route path="/aminities" element={<Aminities />} />
-                  <Route path="/logo" element={<WhatsAppButton />} />
-                  <Route path="/bookingform" element={<BookingFormpage />} />
-                  {/* <Route path="/logo" element={<Hero />} /> */}
-                </Routes>
-              </main>
+              {/* <main className="flex-1"> */}
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/rooms" element={<Rooms />} />
+                {/* <Route path="/dining" element={<Dining />} /> */}
+                {/* <Route path="/spa" element={<Spa />} /> */}
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/offers" element={<Offers />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<TermsAndCondition />} />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/decor" element={<Decor />} />
+                <Route path="/weather" element={<Weather />} />
+                <Route path="/reviews" element={<Review />} />
+                <Route path="/faqs" element={<Faqs />} />
+                <Route path="/book" element={<Booking />} />
+                <Route path="/aminities" element={<Aminities />} />
+                <Route path="/logo" element={<FrontLogo />} />
+                <Route path="/bookingform" element={<BookingFormpage />} />
+                {/* <Route path="/logo" element={<Hero />} /> */}
+              </Routes>
+              {/* </main> */}
               {/* <Footer /> */}
             </div>
 

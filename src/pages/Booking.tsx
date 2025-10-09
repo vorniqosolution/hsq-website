@@ -1,5 +1,5 @@
 import bookbg from "../assets/Book/bookbg.svg";
-import { ArrowRight, PhoneCall, MailIcon } from "lucide-react";
+import { ArrowRight, PhoneCall, MailIcon, MapPin } from "lucide-react";
 import BookingCard from "../components/cards/BookingCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -41,12 +41,12 @@ function Booking() {
             </button>
           </div>
           {/* booking widget */}
-          <div className="absolute -bottom-36 md:-bottom-24 lg:-bottom-14 w-full ">
+          <div className="absolute -bottom-44 md:-bottom-24 lg:-bottom-14 w-full ">
             <BookingWidget />
           </div>
         </div>
         {/* body section*/}
-        <div className="bg-primary/25 pt-40 sm:pt-32  flex flex-col text-center space-y-5 ">
+        <div className="bg-primary/25 pt-52 sm:pt-32  flex flex-col text-center space-y-5 ">
           <h1 className="poppins-bold  text-3xl sm:text-4xl">
             Our
             <span className="text-primary"> Featured </span>
@@ -179,7 +179,7 @@ function Booking() {
               {/* location */}
               <div className="flex flex-row items-center gap-4">
                 <div className="relative bg-primary h-12 w-24 md:w-16 lg:w-12 rounded-full">
-                  <FaLocationPin
+                  <MapPin
                     size={25}
                     className="text-black absolute top-3 left-3"
                     strokeWidth={3}
@@ -215,8 +215,8 @@ function Booking() {
               {/* Review */}
               <div>
                 {/* review card */}
-                <div className="w-64 h-fit  text-black my-4">
-                  <div className="bg-primary/80">
+                {/* <div className="w-64 h-fit  text-black my-4">
+                  <div className="bg-primary/80 ">
                     <h1>Hsq towers,Jhika Gali, Murree</h1>
                     <p>4.8 29 Google reviews</p>
                   </div>
@@ -232,11 +232,38 @@ function Booking() {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
+                {/* Review */}
+                <a
+                  href="https://maps.app.goo.gl/fcSZV2ReQKyBtRGp7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="w-64 h-fit  text-black my-4">
+                    <div className="bg-[#D7AB4E] p-2">
+                      <h1 className="poppins-semibold">
+                        Hsq towers,Jhika Gali, Murree
+                      </h1>
+                      <p>4.8 29 Google reviews</p>
+                    </div>
+                    <div className="bg-[#FFD680] p-2 flex justify-center poppins-semibold flex-row gap-3 items-center">
+                      <p className="underline text-sm text-center hover:cursor-pointer">
+                        View larger map
+                      </p>
+                      <div className="relative bg-black w-7 h-7 rounded-full">
+                        <ArrowRight
+                          color="white"
+                          className="absolute top-1 left-1"
+                          size={20}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
             {/* right */}
-            <div className="w-fit sm:w-1/2 ">
+            <div className="w-fit sm:w-1/2">
               {/* <img className="order-2" src={bookbg} alt="" /> */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.0013501276594!2d73.41395537442568!3d33.91536482494771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfd78972fd4569%3A0xdc3c75a9dc210b41!2sHSQ%20Towers!5e0!3m2!1sen!2s!4v1758212472901!5m2!1sen!2s"

@@ -8,7 +8,7 @@ const WhatsAppButton = () => {
     <>
       <motion.button
         onClick={handleClick}
-        className="hidden  sm:flex z-50  fixed right-0 bottom-10 items-center 
+        className="hidden  sm:flex z-50  fixed right-0 bottom-20 items-center 
                    bg-green-500 hover:bg-green-600 text-white font-bold 
                    rounded-l-xl rounded-tl-[31px] rounded-bl-[31px] h-10
                    shadow-lg overflow-hidden"

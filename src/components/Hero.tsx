@@ -30,12 +30,15 @@ const Hero: React.FC<HeroCarouselProps> = ({
   useEffect(() => {
     const interval = setInterval(nextSlide, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [current, autoPlayInterval]);
+  }, [autoPlayInterval]);
+
+  // console.log("Current slide index:", current);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background */}
       <div
+        key={current}
         className="absolute inset-0 bg-cover bg-center transition-all duration-700"
         style={{ backgroundImage: `url(${slides[current].image})` }}
       >
@@ -62,16 +65,15 @@ const Hero: React.FC<HeroCarouselProps> = ({
       <div className="absolute top-[65%] left-0 right-0 flex items-center justify-between px-12">
         <button
           onClick={prevSlide}
-          className="border-white border p-3 hover:bg-black/50 rounded-full"
+          className="border-white border p-3 hover:bg-black/50 rounded-full cursor-pointer z-50"
         >
           <ChevronLeft size={24} className="text-white" />
         </button>
-
         {/* Straight line */}
         <div className="flex-1 mx-6 border-t border-white" />
         <button
           onClick={nextSlide}
-          className="border-white  border p-3 hover:bg-black/50 rounded-full"
+          className="border-white border p-3 hover:bg-black/50 rounded-full hover:cursor-pointer z-50"
         >
           <ChevronRight size={24} className="text-white" />
         </button>

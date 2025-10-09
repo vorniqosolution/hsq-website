@@ -87,9 +87,12 @@ const DecorCard = () => {
           </p>
         </div>
         <div className="border-t-[1px] hidden lg:block border-neutral-400 w-full mt-1" />
-        <div className="relative  mt-10 md:mt-0 md:ml-32 lg:ml-0 lg:mt-10">
-          <Button label="Book Now" className="pl-1" />
-          <div className="absolute px-1 py-1 rounded-full right-1 lg:right-9 top-[2px] bg-black">
+        <div className="relative  mt-10 md:mt-0 md:ml-32 lg:ml-0 lg:mt-5">
+          <Button
+            label="Book Now"
+            className="pl-4 text-left py-2 lg:w-44 lg:pl-6 "
+          />
+          <div className="absolute ease-out px-1 py-1 rounded-full right-1 lg:right-3 top-[6px] bg-black">
             <ChevronRight color="white" size={20} />
           </div>
         </div>

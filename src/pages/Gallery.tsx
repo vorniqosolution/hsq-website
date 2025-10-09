@@ -15,7 +15,8 @@ const ConferenceHall = React.lazy(
 const Bar = React.lazy(() => import("@/components/gallery/Bar"));
 const Decor = React.lazy(() => import("@/components/gallery/Decor"));
 const Gym = React.lazy(() => import("@/components/gallery/Gym"));
-
+// Loading Component
+import FrontLogo from "@/components/layout/FrontLogo";
 const categories = [
   { name: "Restaurant", component: Restaurant },
   { name: "Rooms", component: Rooms },
@@ -26,13 +27,6 @@ const categories = [
   { name: "Decor", component: Decor },
   { name: "Bar", component: Bar },
 ];
-// "Rooms",
-// "Outdoor",
-// "Conference  Hall",
-// "Bar",
-// "Snow",
-// "Decor",
-// "Gym",
 function Gallery() {
   const [active, setActive] = useState("Restaurant");
 
@@ -100,11 +94,7 @@ function Gallery() {
             ))}
           </div>
           <div className="w-full flex  p-5  pb-16 lg:justify-center gap-3 lg:gap-10 flex-wrap  flex-row">
-            <Suspense
-              fallback={
-                <div className="col-span-3 text-center">Loading...</div>
-              }
-            >
+            <Suspense fallback={<FrontLogo />}>
               {ActiveComponent && <ActiveComponent />}
             </Suspense>
           </div>

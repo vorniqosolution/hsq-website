@@ -16,6 +16,7 @@ interface LableProp {
 const Datepicker: React.FC<LableProp> = ({ title }) => {
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(undefined);
+  // console.log("Date", date);
 
   return (
     <div className="flex flex-col gap-3 ">

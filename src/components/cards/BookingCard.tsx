@@ -31,6 +31,12 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import roomimage from "../../assets/Book/roomimage.svg";
 function BookingCard() {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <Card className="rounded-2xl relative shadow-lg overflow-hidden bg-white w-72 sm:w-64 ">
@@ -55,8 +61,11 @@ function BookingCard() {
 
           {/* Button */}
           <div className="flex justify-center">
-            <button className="w-full bg-yellow-600/80  text-black font-medium py-2 hover:bg-white hover:text-yellow-600   poppins-medium-italic transition">
-              View Details
+            <button
+              onClick={handleScrollToTop}
+              className="w-full bg-yellow-600/80  text-black font-medium py-2 hover:bg-white hover:text-yellow-600   poppins-medium-italic transition"
+            >
+              Book now
             </button>
           </div>
         </CardContent>

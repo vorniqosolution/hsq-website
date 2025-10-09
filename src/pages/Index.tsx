@@ -444,8 +444,11 @@ const Index = () => {
             <p> Get Directions on(Google Maps/Apple Maps)</p>
           </div>
           {/* Review */}
-          <div>
-            {/* review card */}
+          <a
+            href="https://maps.app.goo.gl/fcSZV2ReQKyBtRGp7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div className="w-64 h-fit  text-black my-4">
               <div className="bg-[#D7AB4E] p-2">
                 <h1 className="poppins-semibold">
@@ -466,7 +469,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         {/* right */}
         <div className="w-fit sm:w-1/2 ">
