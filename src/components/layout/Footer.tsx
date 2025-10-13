@@ -214,7 +214,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-3 text-center text-xs text-white/80">
-          Hsq Towers © {year}. All Rights Reserved
+          Vorniqo solutions © {year}. All Rights Reserved
         </div>
       </div>
     </footer>

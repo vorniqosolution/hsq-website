@@ -1,4 +1,4 @@
-import roomimage from "@/assets/BG/roomimage.png";
+import roomimage from "@/assets/BG/Faqbg.png";
 import React, { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ function Faqs() {
       answer: "Book Online, Call Us, Or Whatsapp For Instant Confirmation.",
     },
     {
-      question: "WHAT’S YOUR CANCELLATION POLICY?",
+      question: "WHAT'S YOUR CANCELLATION POLICY?",
       answer:
         "Free Cancellation Up To 48 Hours Before Check-In (On Standard Bookings).",
     },
@@ -55,8 +55,9 @@ function Faqs() {
       answer: "Yes, Romantic And Private Dining Setups Are Available.",
     },
     {
-      question: "DO YOU HAVE FREE PARKING?",
-      answer: "Yes, Secure Complimentary Parking Is Available.",
+      question: "DO YOU HAVE VALET PARKING?",
+      answer:
+        "Yes, Complimentary Valet Parking Is Available For All Guests, Ensuring A Hassle-Free Arrival And Departure.",
     },
     {
       question: "WHAT PAYMENT METHODS DO YOU ACCEPT?",
@@ -67,9 +68,49 @@ function Faqs() {
       answer: "Yes, Spacious Family-Friendly Rooms.",
     },
     {
-      question: "WHAT MAKES HSQ TOWERS THE CHOICE ABOVE PC AND SHANGRILA?",
+      question: "WHERE IS THE HOTEL LOCATED?",
       answer:
-        "HSQ Towers Is Not Just Another Hotel In Murree — It Is A New Definition Of Luxury Living.",
+        "Ideally Located In Jhika Gali, Murree Just Minutes From Mall Road And Local Attractions, Offering Both Convenience And Tranquility.",
+    },
+    {
+      question: "IS HOT WATER AVAILABLE?",
+      answer:
+        "Yes, We Provide 24/7 Hot And Cold Water In All Rooms To Ensure Your Comfort Throughout Your Stay.",
+    },
+    {
+      question: "IS THERE A FIRE SAFETY SYSTEM IN PLACE?",
+      answer:
+        "Yes, Our Hotel Is Fully Equipped With Fire Extinguishers, Alarms, And Clearly Marked Fire Exits On Every Floor. We Follow Strict Safety Protocols To Ensure The Well-Being And Security Of All Our Guests In Case Of Any Emergency.",
+    },
+    {
+      question: "DOES THE HOTEL HAVE A GYM OR FITNESS CENTER?",
+      answer:
+        "Yes, Our Gym Is Equipped With Modern Fitness Equipment, Allowing You To Stay Active During Your Stay.",
+    },
+    {
+      question: "IS ROOM SERVICE AVAILABLE 24/7?",
+      answer:
+        "Yes, Our Staff Is Available Around The Clock To Serve Meals, Refreshments, Or Assist With Any In-Room Needs.",
+    },
+    {
+      question: "IS THERE A GAMING AREA FOR ENTERTAINMENT?",
+      answer:
+        "Yes, Our Dedicated Gaming Arena Features Fun Indoor Games And Activities For Guests Of All Ages.",
+    },
+    {
+      question: "DOES THE HOTEL HAVE A LIFT?",
+      answer:
+        "Yes, Our Hotel Is Equipped With A Modern Lift For Convenient Access To All Floors.",
+    },
+    {
+      question: "ARE ROOM HEATERS AVAILABLE DURING WINTER?",
+      answer:
+        "Absolutely. All Rooms Are Equipped With Efficient Heating Systems To Keep You Warm And Cozy During The Cold Murree Weather.",
+    },
+    {
+      question: "DOES THE HOTEL HAVE AN ON-SITE RESTAURANT?",
+      answer:
+        "Yes, Our Rooftop Restaurant Offers A Variety Of Cuisines And Scenic Views, Perfect For Any Time Of The Day.",
     },
   ];
 
@@ -77,12 +118,12 @@ function Faqs() {
     <>
       {/* Hero Section */}
       <section
-        className="w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh] relative"
+        className="w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh]"
         style={{ backgroundImage: `url(${roomimage})` }}
       >
         {/* when use final image remove this div */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-32">
+
+        <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-36">
           <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
             FAQS
           </h1>

@@ -4,8 +4,9 @@ function Conference() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={80.67}
-      height={36.67}
+      // width={90.67}
+      // height={46.67}
+      className="w-[90.67%] h-[46.67%] lg:w-[100%] lg:h-[46.67%]"
       viewBox="0 0 24 24"
     >
       <g fill="#d7ab4e" fillRule="evenodd" clipRule="evenodd">

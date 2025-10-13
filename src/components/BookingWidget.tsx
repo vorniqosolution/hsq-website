@@ -6,17 +6,17 @@ function BookingWidget() {
   return (
     <>
       <div className="flex justify-center items-center ">
-        <div className="border-t-yellow-500 border-l-yellow-500 border-2 rounded-3xl lg:rounded-full bg-gradient-to-l from-[#303030] to-[#111111]  w-[80%] md:w-[60%] lg:w-[80%]  m-auto h-fit lg:h-32  p-0 lg:p-14 gap-5 flex flex-col lg:flex-row items-center ">
+        <div className="border-t-[#D7AB4E] border-l-[#D7AB4E] border-r-[#666666] border-b-[#666666] border-2 rounded-3xl lg:rounded-full bg-gradient-to-l from-[#303030] to-[#111111]  w-[80%] md:w-[60%] lg:w-[80%]  m-auto h-fit lg:h-32  p-0 lg:p-14 gap-5 flex flex-col lg:flex-row items-center ">
           <img className="w-28 h-20 mt-3 lg:h-28" src={logo} alt="Hsqlogo" />
           <div className="flex gap-3 lg:gap-7 sm:flex-row">
-            <Datepicker title="Departure" />
             <Datepicker title="Arrival" />
+            <Datepicker title="Departure" />
           </div>
 
           {/* Guests Dropdown */}
-          <div className="hidden lg:block">
-            <label className="text-white  px-1  poppins-light">Guests :</label>
-            <select className="w-full text-black bg-white  rounded-md px-3 py-2 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-10">
+          <div className="hidden  lg:block">
+            <label className="text-white px-1 poppins-light">Guests :</label>
+            <select className="w-full text-black  bg-white  rounded-md px-3 py-2 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-10">
               <option value="">Select Guests</option>
               <option value="1">1 Guest</option>
               <option value="2">2 Guests</option>

@@ -3,7 +3,7 @@
 // import { SectionHeader } from "@/components/layout/SectionHeader";
 // import { RoomCard } from "@/components/cards/RoomCard";
 // import { useRoomsData } from "@/hooks/useData";
-import roomimage from "../assets/BG/roomimage.png";
+import roomimage from "../assets/BG/roombg.png";
 // import fower_01 from "../assets/BG/fower_01.svg";
 import RoomCard from "../components/cards/RoomCard";
 import RoompageCard from "@/components/cards/RoompageCard";
@@ -13,11 +13,11 @@ const Rooms = () => {
       <div>
         {/* Upper section */}
         <section
-          className="w-full  bg-cover  bg-bottom h-[60vh] lg:h-[90vh]"
+          className="w-full  bg-cover  bg-bottom h-[60vh] lg:h-[85vh]"
           style={{ backgroundImage: `url(${roomimage})` }}
         >
           <div className="inset-0 bg-black/50" />
-          <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-32">
+          <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-40">
             <h1 className="Tuesdaynight text-[35px] sm:text-[50px] text-center">
               Look at The
             </h1>

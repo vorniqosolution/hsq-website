@@ -1,30 +1,44 @@
-import { useEffect } from "react";
-import weatherbg from "@/assets/Weather/weatherbg.png";
+import { useEffect, useRef } from "react";
+// import weatherbg from "";
 import DailyForecastCard from "@/components/cards/DailyForecast";
 import Footer from "@/components/layout/Footer";
 import WeatherAnimation from "@/components/LottieFiles/Weather";
+import bgone from "../../public/Weather/bgone.png";
+import bgtwo from "../../public/Weather/bgtwo.png";
+import bgthree from "../../public/Weather/bgthree.png";
+// import
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  useInView,
+} from "framer-motion";
 function Weather() {
+  const ref = useRef(null);
+  const inview = useInView(ref, { once: true });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.floor(latest));
 
   useEffect(() => {
-    const animation = animate(count, 27, {
-      duration: 2, // animation duration (seconds)
-      ease: "easeOut",
-    });
-    return animation.stop;
-  }, [27, count]);
+    if (inview) {
+      const animation = animate(count, 27, {
+        duration: 2, // animation duration (seconds)
+        ease: "easeOut",
+      });
+      return animation.stop;
+    }
+  }, [27, count, inview]);
 
   return (
     <>
       {/* hero section */}
       <section
         className=" w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh] "
-        style={{ backgroundImage: `url(${weatherbg})` }}
+        style={{ backgroundImage: `url(../../public/Weather/weatherbg.png)` }}
       >
-        <div className="flex flex-col text-white justify-center items-center space-y-3 pt-20 sm:pt-32">
+        <div className="flex flex-col text-white justify-center items-center space-y-3 pt-20 sm:pt-36">
           <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
             Weather
           </h1>
@@ -55,6 +69,7 @@ function Weather() {
           <div className="flex mb-2 lg:mb-5 flex-row items-center justify-around gap-4 lg:gap-8 p-2 md:p-6 ">
             {/* Current Temperature Box */}
             <motion.div
+              ref={ref}
               className="p-2 rounded-xl bg-[#D49237] text-2xl shadow-lg flex items-center justify-center 
                  w-32 h-32 md:w-40 md:h-24 lg:w-36 lg:h-24 text-white poppins-bold md:text-4xl lg:p-6"
               initial={{ opacity: 0, scale: 0.5 }}
@@ -92,19 +107,19 @@ function Weather() {
             day="Saturday"
             maxTemp="23 C"
             minTemp="5 C"
-            image={weatherbg}
+            image={bgone}
           />
           <DailyForecastCard
             day="Friday"
             maxTemp="20 C"
             minTemp="10 C"
-            image={weatherbg}
+            image={bgtwo}
           />
           <DailyForecastCard
             day="Sunday"
             maxTemp="15 C"
             minTemp="12 C"
-            image={weatherbg}
+            image={bgthree}
           />
         </div>
       </section>

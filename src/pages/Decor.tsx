@@ -1,4 +1,4 @@
-import roomimage from "@/assets/BG/roomimage.png";
+import roomimage from "@/assets/BG/Decorbg.png";
 import DecorCard from "@/components/cards/DecorCard";
 import Footer from "@/components/layout/Footer";
 function Decor() {
@@ -11,7 +11,7 @@ function Decor() {
           style={{ backgroundImage: `url(${roomimage})` }}
         >
           <div className="inset-0 bg-black/50" />
-          <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-32">
+          <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-36">
             <h1 className="Tuesdaynight text-[30px] sm:text-[50px] text-center">
               Look at The
             </h1>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import bookbg from "../assets/Book/bookbg.svg";
 import { ArrowRight, PhoneCall, MailIcon, MapPin } from "lucide-react";
 import BookingCard from "../components/cards/BookingCard";
@@ -5,18 +6,45 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FaLocationPin } from "react-icons/fa6";
+import { useQuery } from "@tanstack/react-query";
+import { Get_All_Available_Room } from "@/api/roomsApi";
+import Room from "@/types/Room";
+// store
+import { useRoomStore } from "@/store/store";
 // Svg images components
-import Wifi from "@/components/svg/Wifi";
-import Gym from "@/components/svg/Gym";
-import Laundry from "@/components/svg/Laundry";
-import Parking from "@/components/svg/Parking";
-import Conference from "@/components/svg/Conference";
-import Breakfast from "@/components/svg/Breakfast";
+import Wifi from "@/components/svg/Bookingpage/Wifi";
+import Gym from "@/components/svg/Bookingpage/Gym";
+import Laundry from "@/components/svg/Bookingpage/Laundry";
+import Parking from "@/components/svg/Bookingpage/Parking";
+import Conference from "@/components/svg/Bookingpage/Conference";
+import Roomservice from "@/components/svg/Bookingpage/Roomservice";
 // booking widget
 import BookingWidget from "@/components/BookingWidget";
 import WhatsAppButton from "@/components/buttons/Whatsapp";
+// import { P } from "node_modules/framer-motion/dist/types.d-Cjd591yU.js";
+
 function Booking() {
+  const { setRooms, rooms } = useRoomStore();
+  const { data, isLoading, isError, error, isSuccess } = useQuery<Room[]>({
+    queryKey: ["FetchRooms"],
+    queryFn: Get_All_Available_Room,
+    staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
+    gcTime: 60 * 60 * 1000,
+    refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
+    refetchOnMount: false, // don’t refetch when remounting component
+    refetchOnReconnect: false,
+  });
+  useEffect(() => {
+    if (isSuccess && data) {
+      setRooms(data);
+    }
+  }, [isSuccess, data, setRooms]);
+
+  if (isLoading) return <p>isloading</p>;
+
+  if (isError) return <p>Error</p>;
+  // console.log("Data", data);
+  console.log("Store data", rooms);
   return (
     <>
       <div className="w-full h-full">
@@ -80,13 +108,15 @@ function Booking() {
               }}
               // className="pb-10" // give bottom space for arrows if needed
             >
-              {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+              {rooms.map((data, index) => (
                 <SwiperSlide
                   key={index}
-                  // className="flex justify-center items-center  lg:ml-1"
+                  className="flex justify-center items-center  lg:ml-1"
                 >
                   <div className="flex justify-center">
-                    <BookingCard />
+                    {/* {data.map((data, index) => ( */}
+                    <BookingCard room={data} />
+                    {/* // ))} */}
                   </div>
                 </SwiperSlide>
               ))}
@@ -108,7 +138,7 @@ function Booking() {
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
-              <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
+              <div className="bg-black relative rounded-full  w-12 h-12 flex items-center justify-center">
                 {/* <Wifi className="text-primary" size={25} strokeWidth={3} /> */}
                 <Wifi />
               </div>
@@ -144,13 +174,13 @@ function Booking() {
               </div>
               <p>Conference</p>
             </div>
-            {/* breakfast */}
+            {/* Roomservice */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
                 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
-                <Breakfast />
+                <Roomservice />
               </div>
               <p>Service</p>
             </div>

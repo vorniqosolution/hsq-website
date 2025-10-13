@@ -10,6 +10,8 @@ import { Navigation, Autoplay } from "swiper/modules";
 import RoomCard from "@/components/cards/RoomCard";
 import Viewbutton from "@/components/buttons/Viewbutton";
 import WhatsAppButton from "@/components/buttons/Whatsapp";
+import "swiper/css";
+import "swiper/css/navigation";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -18,8 +20,9 @@ import Laundry from "@/components/svg/Laundry";
 import Breakfast from "@/components/svg/Breakfast";
 import Gym from "@/components/svg/Gym";
 import Footer from "@/components/layout/Footer";
-import "swiper/css";
-import "swiper/css/navigation";
+import AboutBed from "@/components/svg/AboutBed";
+import AboutSenicView from "@/components/svg/AboutSenicView";
+import AboutDinning from "@/components/svg/AboutDinning";
 // icons
 import {
   BedDouble,
@@ -50,9 +53,9 @@ import restaurent from "@/assets/indexpage/restaurent.png";
 
 type FeatureItem = { icon: React.ElementType; label: string };
 const FEATURES: FeatureItem[] = [
-  { icon: BedDouble, label: "LUXURY ROOMS" },
-  { icon: Mountain, label: "SCENIC VIEWS" },
-  { icon: Wine, label: "FINE DINING" },
+  { icon: AboutBed, label: "LUXURY ROOMS" },
+  { icon: AboutSenicView, label: "SCENIC VIEWS" },
+  { icon: AboutDinning, label: "FINE DINING" },
 ];
 
 type AminitiesItem = { icon: React.ElementType; lable: string };
@@ -172,24 +175,25 @@ const Index = () => {
       <section className="backgroundcolor flex flex-col lg:flex-row justify-between ">
         {/* left  */}
         <div className="flex flex-col mt-[270px] w-[70%] lg:mt-48 lg:w-1/3 m-auto order-1 text-center space-y-2 lg:space-y-4 ">
-          <h1 className="poppins-bold text-xl  lg:text-3xl ">
+          <h1 className="poppins-bold text-left text-xl  lg:text-3xl ">
             Welcome To HSQ Tower
           </h1>
-          <p className="poppins-medium text-sm">
+          <p className="poppins-medium text-sm text-left">
             At HSQ Tower, elegance meets convenience — the perfect stay for
             guests who seek charm, comfort, and the ideal location to explore
             Murree.
           </p>
           {/* icons */}
-          <div className="flex flex-row  gap-3">
+          <div className="flex flex-row  gap-4">
             {FEATURES.map((data, index) => (
               <div
                 key={index}
-                className="bg-primary/30 my-8 h-20 w-full lg:w-40 lg:h-32 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  poppins-semibold  rounded-3xl flex items-center justify-center flex-col"
+                className="bg-primary/15 my-8 h-20 w-full lg:w-52 lg:h-28 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  poppins-semibold  rounded-3xl flex items-center justify-center flex-col"
               >
-                <data.icon className="text-primary w-10 h-10 lg:w-16 lg:h-16" />
-
-                <p className="text-[9px] sm:text-sm ">{data.label}</p>
+                <data.icon />
+                <p className="text-[9px] poppins-semibold sm:text-[10px] pt-2">
+                  {data.label}
+                </p>
               </div>
             ))}
           </div>
@@ -259,7 +263,7 @@ const Index = () => {
       {/* Aminities Section */}
       <section className="w-full  pt-32 backgroundcolor">
         <div
-          className="bg-cover relative bg-center w-[90%] rounded-3xl m-auto h-full md:h-[70%] lg:h-[90%] lg:w-[85%]  "
+          className="bg-cover relative bg-center w-[90%] rounded-3xl m-auto h-full md:h-[70%] lg:h-full lg:w-[85%]  "
           style={{ backgroundImage: `url(${amenitiebg})` }}
         >
           <div className="absolute  inset-0 bg-black/50  rounded-3xl" />
@@ -286,12 +290,12 @@ const Index = () => {
               {Aminities.map((data, index) => (
                 <div
                   key={index}
-                  className=" w-28 h-28 rounded-2xl bg-white/5 border-[1px] transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  border-white/20 backdrop-blur-lg flex flex-col items-center justify-center  shadow-lg"
+                  className=" w-28 h-28 lg:h-32 lg:w-32 rounded-2xl bg-white/5 border-[1px] transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  border-white/20 backdrop-blur-lg flex flex-col items-center justify-center  shadow-lg"
                 >
                   {/* <data.icon size={40} className="text-primary" /> */}
                   <data.icon />
 
-                  <p className="text-white text-[12px] font-medium">
+                  <p className="text-white text-[12px] font-medium pt-1">
                     {data.lable}
                   </p>
                 </div>

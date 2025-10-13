@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import { lazy, Suspense } from "react";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+// import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -54,45 +54,45 @@ const queryClient = new QueryClient();
 const App = () => (
   <Suspense fallback={<FrontLogo />}>
     <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              {/* <main className="flex-1"> */}
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/rooms" element={<Rooms />} />
-                {/* <Route path="/dining" element={<Dining />} /> */}
-                {/* <Route path="/spa" element={<Spa />} /> */}
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/offers" element={<Offers />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/terms" element={<TermsAndCondition />} />
-                <Route path="*" element={<NotFound />} />
-                <Route path="/decor" element={<Decor />} />
-                <Route path="/weather" element={<Weather />} />
-                <Route path="/reviews" element={<Review />} />
-                <Route path="/faqs" element={<Faqs />} />
-                <Route path="/book" element={<Booking />} />
-                <Route path="/aminities" element={<Aminities />} />
-                <Route path="/logo" element={<FrontLogo />} />
-                <Route path="/bookingform" element={<BookingFormpage />} />
-                {/* <Route path="/logo" element={<Hero />} /> */}
-              </Routes>
-              {/* </main> */}
-              {/* <Footer /> */}
-            </div>
+      {/* <HelmetProvider> */}
+      {/* <TooltipProvider> */}
+      {/* <Toaster /> */}
+      {/* <Sonner /> */}
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          {/* <main className="flex-1"> */}
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/rooms" element={<Rooms />} />
+            {/* <Route path="/dining" element={<Dining />} /> */}
+            {/* <Route path="/spa" element={<Spa />} /> */}
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/offers" element={<Offers />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<TermsAndCondition />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/decor" element={<Decor />} />
+            <Route path="/weather" element={<Weather />} />
+            <Route path="/reviews" element={<Review />} />
+            <Route path="/faqs" element={<Faqs />} />
+            <Route path="/book" element={<Booking />} />
+            <Route path="/aminities" element={<Aminities />} />
+            <Route path="/logo" element={<FrontLogo />} />
+            <Route path="/bookingform" element={<BookingFormpage />} />
+            {/* <Route path="/logo" element={<Hero />} /> */}
+          </Routes>
+          {/* </main> */}
+          {/* <Footer /> */}
+        </div>
 
-            {/* Add DevTools */}
-            <ReactQueryDevtools initialIsOpen={false} />
-          </BrowserRouter>
-        </TooltipProvider>
-      </HelmetProvider>
+        {/* Add DevTools */}
+        <ReactQueryDevtools initialIsOpen={false} />
+      </BrowserRouter>
+      {/* </TooltipProvider> */}
+      {/* </HelmetProvider> */}
     </QueryClientProvider>
   </Suspense>
 );

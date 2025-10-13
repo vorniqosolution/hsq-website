@@ -1,5 +1,5 @@
 import React from "react";
-import { FaWifi } from "react-icons/fa";
+// import { FaWifi } from "react-icons/fa";
 import { CgGym } from "react-icons/cg";
 import { FaMugSaucer } from "react-icons/fa6";
 import { GiWashingMachine } from "react-icons/gi";
@@ -10,7 +10,7 @@ type AmenityItem = { key: string; label: string; icon: React.ElementType };
 
 const AMENITY_ITEMS: AmenityItem[] = [
   { key: "fitness-center", label: "Fitness Center", icon: CgGym },
-  { key: "wifi", label: "Free Wifi", icon: FaWifi },
+  // { key: "wifi", label: "Free Wifi", icon: FaWifi },
   { key: "free-breakfast", label: "Free Breakfast", icon: FaMugSaucer },
   { key: "laundry-service", label: "Laundry Service", icon: GiWashingMachine },
   { key: "conference-hall", label: "Conference Hall", icon: HiUserGroup },
