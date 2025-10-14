@@ -25,6 +25,7 @@ const DailyForecastCard: FC<DailyForecastCardProps> = ({
   //   const bgImageClasses =
   //     "bg-gray-800 bg-opacity-70 w-32 h-32 text-white relative overflow-hidden";
 
+  console.log(day);
   return (
     <>
       <div

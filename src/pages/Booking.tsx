@@ -25,24 +25,24 @@ import WhatsAppButton from "@/components/buttons/Whatsapp";
 
 function Booking() {
   const { setRooms, rooms } = useRoomStore();
-  const { data, isLoading, isError, error, isSuccess } = useQuery<Room[]>({
-    queryKey: ["FetchRooms"],
-    queryFn: Get_All_Available_Room,
-    staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
-    gcTime: 60 * 60 * 1000,
-    refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
-    refetchOnMount: false, // don’t refetch when remounting component
-    refetchOnReconnect: false,
-  });
-  useEffect(() => {
-    if (isSuccess && data) {
-      setRooms(data);
-    }
-  }, [isSuccess, data, setRooms]);
+  // const { data, isLoading, isError, error, isSuccess } = useQuery<Room[]>({
+  //   queryKey: ["FetchRooms"],
+  //   queryFn: Get_All_Available_Room,
+  //   staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
+  //   gcTime: 60 * 60 * 1000,
+  //   refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
+  //   refetchOnMount: false, // don’t refetch when remounting component
+  //   refetchOnReconnect: false,
+  // });
+  // useEffect(() => {
+  //   if (isSuccess && data) {
+  //     setRooms(data);
+  //   }
+  // }, [isSuccess, data, setRooms]);
 
-  if (isLoading) return <p>isloading</p>;
+  // if (isLoading) return <p>isloading</p>;
 
-  if (isError) return <p>Error</p>;
+  // if (isError) return <p>Error</p>;
   // console.log("Data", data);
   console.log("Store data", rooms);
   return (

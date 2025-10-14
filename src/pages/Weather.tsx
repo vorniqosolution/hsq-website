@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 // import weatherbg from "";
 import DailyForecastCard from "@/components/cards/DailyForecast";
 import Footer from "@/components/layout/Footer";
@@ -6,7 +7,6 @@ import WeatherAnimation from "@/components/LottieFiles/Weather";
 import bgone from "../../public/Weather/bgone.png";
 import bgtwo from "../../public/Weather/bgtwo.png";
 import bgthree from "../../public/Weather/bgthree.png";
-// import
 
 import {
   motion,
@@ -15,12 +15,28 @@ import {
   animate,
   useInView,
 } from "framer-motion";
+import { WeatherApi } from "@/api/roomsApi";
 function Weather() {
+  // const { data, isLoading, isError, error, isSuccess } = useQuery({
+  //   queryKey: ["FetchWeather"],
+  //   queryFn: WeatherApi,
+  //   staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
+  //   gcTime: 60 * 60 * 1000,
+  //   refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
+  //   refetchOnMount: false, // don’t refetch when remounting component
+  //   refetchOnReconnect: false,
+  // });
   const ref = useRef(null);
   const inview = useInView(ref, { once: true });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.floor(latest));
+  const date = new Date();
+  const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+  // console.log("day", date.getDay());
+  // console.log("da", date.getMonth() + 1);
 
+  // if (isLoading) return <p>Loading</p>;
+  // if (isError) return <p>Error</p>;
   useEffect(() => {
     if (inview) {
       const animation = animate(count, 27, {
@@ -30,6 +46,13 @@ function Weather() {
       return animation.stop;
     }
   }, [27, count, inview]);
+
+  const getNextDayName = (addDays: number) => {
+    const newDate = new Date();
+    newDate.setDate(date.getDate() + addDays);
+    return newDate.toLocaleDateString("en-US", { weekday: "long" });
+  };
+  console.log(getNextDayName(3));
 
   return (
     <>
@@ -61,8 +84,18 @@ function Weather() {
           {/* Header */}
           <header className="text-center">
             <h1 className="text-xl poppins-semibold text-black">
-              Murree, Punjab | <br className="block sm:hidden" /> Thursday,
-              28/8/25 | 3:43 pm
+              Murree, Punjab | <br className="block sm:hidden" /> {dayName},
+              {`${date.getDate().toString().padStart(2, "0")}/${(
+                date.getMonth() + 1
+              )
+                .toString()
+                .padStart(2, "0")}/${date.getFullYear()} | ${date
+                .getHours()
+                .toString()
+                .padStart(2, "0")}:${date
+                .getMinutes()
+                .toString()
+                .padStart(2, "0")}`}
             </h1>
           </header>
           {/* Current Weather Section */}
@@ -104,19 +137,19 @@ function Weather() {
         </div>
         <div className="pt-10 pb-10 flex flex-col items-center lg:flex-row lg:pt-16 gap-6 justify-center">
           <DailyForecastCard
-            day="Saturday"
+            day={getNextDayName(1)}
             maxTemp="23 C"
             minTemp="5 C"
             image={bgone}
           />
           <DailyForecastCard
-            day="Friday"
+            day={getNextDayName(2)}
             maxTemp="20 C"
             minTemp="10 C"
             image={bgtwo}
           />
           <DailyForecastCard
-            day="Sunday"
+            day={getNextDayName(3)}
             maxTemp="15 C"
             minTemp="12 C"
             image={bgthree}

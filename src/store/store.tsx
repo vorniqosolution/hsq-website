@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import Room from "@/types/Room";
+import { RoomsGroupedResponse } from "@/types/Room";
 
 interface RoomState {
-  rooms: Room[]; // store the rooms data
-  setRooms: (rooms: Room[]) => void; // function to update rooms
+  rooms: RoomsGroupedResponse; // store the rooms data
+  setRooms: (rooms: RoomsGroupedResponse) => void; // function to update rooms
   clearRooms: () => void; // optional: clear the state
 }
 

@@ -1,5 +1,5 @@
 // hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // Components
 import BookingWidget from "@/components/BookingWidget";
@@ -12,6 +12,9 @@ import Viewbutton from "@/components/buttons/Viewbutton";
 import WhatsAppButton from "@/components/buttons/Whatsapp";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { Get_All_Available_Room } from "@/api/roomsApi";
+import { RoomsGroupedResponse } from "@/types/Room";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -51,6 +54,8 @@ import roomimage from "@/assets/Book/roomimage.svg";
 import galleryimage from "@/assets/indexpage/gallerybg.svg";
 import restaurent from "@/assets/indexpage/restaurent.png";
 
+// store
+import { useRoomStore } from "@/store/store";
 type FeatureItem = { icon: React.ElementType; label: string };
 const FEATURES: FeatureItem[] = [
   { icon: AboutBed, label: "LUXURY ROOMS" },
@@ -117,48 +122,81 @@ const kitchens = [
       "From Chinese stir-fries to Japanese sushi and Thai curries, our Asian kitchen offers a diverse and flavorful experience.",
   },
 ];
+const slides = [
+  {
+    image: v1,
+    title: "HSQ TOWER",
+    subtitle: "Welcome To",
+    description:
+      "At HSQ Tower, we redefine modern hospitality—blending style, innovation, and authentic warmth. ",
+    buttonText: "More Info",
+    href: "/about",
+  },
+  {
+    image: v2,
+    title: "RESTAURANT",
+    subtitle: "Our",
+    description:
+      "Step Into our restaurant and indulge in a culinary journey where every dish is a masterpiece-crafter with passion",
+    buttonText: "More Info",
+    href: "/aminities",
+  },
+  {
+    image: v3,
+    title: "ROOMS & SUITES",
+    subtitle: "Signature",
+    description:
+      "At HSQ Tower, Discover a selection of elegant living spaces-from cozy standard rooms to deluxe suites.",
+    buttonText: "More Info",
+    href: "/rooms",
+  },
+  {
+    image: v4,
+    title: "AMENITIES",
+    subtitle: "Hotel",
+    description:
+      "At HSQ Tower, every moment is designed around you .From exciting tours and fascinating to world class exhibition and vibrant trade show.",
+    buttonText: "More Info",
+    href: "/aminities",
+  },
+  // { ... }
+];
 const Index = () => {
-  const slides = [
-    {
-      image: v1,
-      title: "HSQ TOWER",
-      subtitle: "Welcome To",
-      description:
-        "At HSQ Tower, we redefine modern hospitality—blending style, innovation, and authentic warmth. ",
-      buttonText: "More Info",
-      href: "/about",
-    },
-    {
-      image: v2,
-      title: "RESTAURANT",
-      subtitle: "Our",
-      description:
-        "Step Into our restaurant and indulge in a culinary journey where every dish is a masterpiece-crafter with passion",
-      buttonText: "More Info",
-      href: "/aminities",
-    },
-    {
-      image: v3,
-      title: "ROOMS & SUITES",
-      subtitle: "Signature",
-      description:
-        "At HSQ Tower, Discover a selection of elegant living spaces-from cozy standard rooms to deluxe suites.",
-      buttonText: "More Info",
-      href: "/rooms",
-    },
-    {
-      image: v4,
-      title: "AMENITIES",
-      subtitle: "Hotel",
-      description:
-        "At HSQ Tower, every moment is designed around you .From exciting tours and fascinating to world class exhibition and vibrant trade show.",
-      buttonText: "More Info",
-      href: "/aminities",
-    },
-    // { ... }
-  ];
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  const { setRooms, rooms } = useRoomStore();
+  const { data, isLoading, isError, error, isSuccess } =
+    useQuery<RoomsGroupedResponse>({
+      queryKey: ["FetchRooms"],
+      queryFn: Get_All_Available_Room,
+      staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
+      gcTime: 60 * 60 * 1000,
+      refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
+      refetchOnMount: false, // don’t refetch when remounting component
+      refetchOnReconnect: false,
+    });
+  useEffect(() => {
+    if (isSuccess && data) {
+      setRooms(data);
+    }
+  }, [isSuccess, data, setRooms]);
+
+  if (isLoading) return <p>isloading</p>;
+
+  if (isError) return <p>Error</p>;
+  // console.log("Data", data);
+  console.log("Store data", rooms);
+  const allowedCategories = ["Deluxe", "Executive", "Presidential"];
+
+  const filtered = rooms
+    .filter((cat) => allowedCategories.includes(cat.categoryName)) // only these 3
+    .map((cat) => ({
+      categoryName: cat.categoryName,
+      room: cat.rooms[0], // pick the first room
+    }))
+    .filter((cat) => cat.room); // remove any empty ones
+
+  console.log(filtered);
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -311,21 +349,28 @@ const Index = () => {
           Discover Our Collection of Elegant Rooms
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <RoomCard
+          {filtered.map((value, index) => (
+            <p className="text-2xl text-red-700">
+              {value.room.publicDescription}
+              {value.room.rate}
+              {value.room.publicName}
+            </p>
+          ))}
+          {/* <RoomCard
             price="Rs14,000/-"
             title="One Bed Deluxe Room"
             image={roomimage}
-          />
-          <RoomCard
+          /> */}
+          {/* <RoomCard
             price="Rs14,000/-"
             title="One Bed Deluxe Room"
             image={roomimage}
-          />
-          <RoomCard
+          /> */}
+          {/* <RoomCard
             price="Rs14,000/-"
             title="One Bed Deluxe Room"
             image={roomimage}
-          />
+          /> */}
           {/* <RoomCard
             price="Rs14,000/-"
             title="One Bed Deluxe Room"

@@ -1,11 +1,15 @@
-export default  interface Room {
-  publicDescription?: string | null;
-  startingRate?: number;
-  amenities?: string[];
-  cleanliness?: string | null;
-  category?: string;
-  bedType?: string;
-  imageUrl?: string | null;
-  publicName?: string;
-  adultsCapacity?: string;
+export interface Room {
+  id?: string;
+  rate: number;
+  images: string[];
+  publicName: string;
+  publicDescription: string;
+  // bedType?: string;
+  // category?: string;
 }
+
+export interface CategoryGroup {
+  categoryName: string;
+  rooms: Room[];
+}
+export type RoomsGroupedResponse = CategoryGroup[];
