@@ -3,9 +3,9 @@ import WeatherAnimation from "@/components/LottieFiles/Weather";
 // Define the interface for the component's props
 export interface DailyForecastCardProps {
   day: string;
-  maxTemp: string; // Assuming temperature strings include ' °C'
-  minTemp: string; // Assuming temperature strings include ' °C'
-  isCurrent?: boolean; // Optional prop, used if you wanted to highlight the current day
+  maxTemp: number; // Assuming temperature strings include ' °C'
+  minTemp: number; // Assuming temperature strings include ' °C'
+  // isCurrent?: boolean; // Optional prop, used if you wanted to highlight the current day
   image: React.ReactNode;
 }
 
@@ -14,7 +14,7 @@ const DailyForecastCard: FC<DailyForecastCardProps> = ({
   day,
   maxTemp,
   minTemp,
-  isCurrent,
+  // isCurrent,
   image,
 }) => {
   // Base styling for the card
@@ -40,21 +40,26 @@ const DailyForecastCard: FC<DailyForecastCardProps> = ({
           <p className="font-semibold text-lg text-white  uppercase ">{day}</p>
           {/* Weather Icon (Placeholder) */}
           <div className="flex justify-around items-center ">
-            {/* <div className="text-4xl">☀️☁️</div> */}
             <WeatherAnimation />
             <div className="flex flex-col poppins-semibold space-x-">
-              <div className="relative">
+              <div className="relative ">
                 <div className="absolute -top-2  right-4">
                   <p className="text-white">o</p>
                 </div>
-                <p className="text-2xl text-white ">{maxTemp}</p>
+                <p className="text-2xl text-white">
+                  {maxTemp}
+                  <span className="pl-2">C</span>
+                </p>
               </div>
 
               <div className="relative">
-                <div className="absolute -top-2  right-4">
+                <div className="absolute -top-2  right-5">
                   <p className="text-white">o</p>
                 </div>
-                <p className="text-2xl text-white ">{minTemp}</p>
+                <p className="text-2xl text-white">
+                  {minTemp}
+                  <span className="pl-2">C</span>
+                </p>
               </div>
             </div>
           </div>

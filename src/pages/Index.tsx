@@ -28,17 +28,17 @@ import AboutSenicView from "@/components/svg/AboutSenicView";
 import AboutDinning from "@/components/svg/AboutDinning";
 // icons
 import {
-  BedDouble,
+  // BedDouble,
   // DumbbellIcon,
-  Mountain,
-  Wine,
+  // Mountain,
+  // Wine,
   ArrowRight,
   Plus,
   Minus,
 } from "lucide-react";
-import { IoIosFitness } from "react-icons/io";
-import { IoMdFitness } from "react-icons/io";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { IoIosFitness } from "react-icons/io";
+// import { IoMdFitness } from "react-icons/io";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // images
 import v1 from "@/assets/indexpage/v1.png";
@@ -50,7 +50,7 @@ import reviewbg from "@/assets/indexpage/reviewbg.svg";
 import dummmyreview from "@/assets/indexpage/dummyreview.svg";
 import amenitiebg from "@/assets/indexpage/amenitiebg.svg";
 import logo from "@/assets/logo.png";
-import roomimage from "@/assets/Book/roomimage.svg";
+// import roomimage from "@/assets/Book/roomimage.svg";
 import galleryimage from "@/assets/indexpage/gallerybg.svg";
 import restaurent from "@/assets/indexpage/restaurent.png";
 
@@ -181,9 +181,9 @@ const Index = () => {
     }
   }, [isSuccess, data, setRooms]);
 
-  if (isLoading) return <p>isloading</p>;
+  // if (isLoading) return <p>isloading</p>;
 
-  if (isError) return <p>Error</p>;
+  // if (isError) return <p>Error</p>;
   // console.log("Data", data);
   console.log("Store data", rooms);
   const allowedCategories = ["Deluxe", "Executive", "Presidential"];
@@ -350,17 +350,20 @@ const Index = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
           {filtered.map((value, index) => (
-            <p className="text-2xl text-red-700">
-              {value.room.publicDescription}
-              {value.room.rate}
-              {value.room.publicName}
-            </p>
+            // <p className="text-2xl text-red-700">
+            //   {value.room.publicDescription}
+            //   {value.room.rate}
+            //   {value.room.publicName}
+            // </p>
+            <div key={value.room.id}>
+              <RoomCard
+                price={value.room.rate}
+                title={value.room.publicName}
+                image={value.room.images[0]}
+              />
+            </div>
           ))}
-          {/* <RoomCard
-            price="Rs14,000/-"
-            title="One Bed Deluxe Room"
-            image={roomimage}
-          /> */}
+
           {/* <RoomCard
             price="Rs14,000/-"
             title="One Bed Deluxe Room"

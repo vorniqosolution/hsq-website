@@ -6,10 +6,8 @@ const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
 const APIKEY = import.meta.env.VITE_WEATHER_API_KEY;
 const latitude = 33.91511892911634;
 const longitude = 73.41887619512994;
-// const WEATHERAPI_URL = ``;
+const WEATHERAPI_URL = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${APIKEY}`;
 // console.log("BackendURL", BACKEND_URL);
-console.log("Weatherapi", APIKEY);
-// For the main "Our Rooms" page catalog
 export const getRoomCatalog = () => apiClient.get("/category-details");
 
 // For the search results
@@ -40,8 +38,11 @@ export const Get_All_Available_Room =
   };
 
 export const WeatherApi = async () => {
-  const response = await axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=abdd7a55dc60037c02f64bfaaf6fb9f8`
-  );
-  console.log("Weather Response", response.data);
+  try {
+    const response = await axios.get(`${WEATHERAPI_URL}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching rooms:", error);
+    throw new Error("Failed To Fetch Available Rooms");
+  }
 };

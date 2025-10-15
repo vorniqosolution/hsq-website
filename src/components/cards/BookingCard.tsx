@@ -1,9 +1,16 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import roomimage from "../../assets/Book/roomimage.svg";
-import Room from "@/types/Room";
+// import Room from "@/types/Room";
+interface RoomData {
+  id?: string;
+  images: string[];
+  rate: number;
+  publicName: string;
+  publicDescription?: string;
+}
 interface BookingCardProps {
-  room: Room;
+  room: RoomData;
 }
 const BookingCard: React.FC<BookingCardProps> = ({ room }) => {
   const handleScrollToTop = () => {
@@ -17,12 +24,12 @@ const BookingCard: React.FC<BookingCardProps> = ({ room }) => {
       <Card className="rounded-2xl relative shadow-lg overflow-hidden bg-white w-72 sm:w-64 ">
         {/* Price Badge */}
         <div className="absolute top-3 left-3 bg-white rounded-full px-3 py-1 z-50 shadow text-sm poppins-semibold-italic">
-          Rs {room.startingRate}/-
+          Rs {room.rate}/-
           {/* {} */}
         </div>
         {/* Room Image */}
         <img
-          src={room.imageUrl}
+          src={room.images[0]}
           alt="One Bed Deluxe Room"
           className="w-full h-52 object-cover relative rounded-lg"
         />
@@ -31,11 +38,13 @@ const BookingCard: React.FC<BookingCardProps> = ({ room }) => {
           <div className="text-left">
             <h2 className="poppins-extrabold-italic">
               {/* Standard Room */}
-              {room.category}
+              {room.publicName}
             </h2>
             <p className="text-sm poppins-regular-italic">
               {/* Where elegance meets relaxation for an unforgettable */}
-              {room.publicDescription}
+              {/* {room.publicDescription} */}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui,
+              rem?
             </p>
           </div>
 

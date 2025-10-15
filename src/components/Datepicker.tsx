@@ -10,12 +10,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-interface LableProp {
+interface DatepickerProps {
   title: string;
+  value?: string;
+  onChange?: (date: Date | null) => void;
 }
-const Datepicker: React.FC<LableProp> = ({ title }) => {
+const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
   const [open, setOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date | undefined>(undefined);
+  // const [date, setDate] = React.useState<Date | undefined>(undefined);
   // console.log("Date", date);
 
   return (
@@ -30,17 +32,18 @@ const Datepicker: React.FC<LableProp> = ({ title }) => {
             id="date"
             className="w-32 sm:w-48 justify-between poppins-regular"
           >
-            {date ? date.toLocaleDateString() : "Select date"}
+            {value ? value : "Select date"}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0 " align="start">
           <Calendar
             mode="single"
-            selected={date}
+            // selected={value}
             captionLayout="dropdown"
-            onSelect={(date) => {
-              setDate(date);
+            onSelect={(SelectedDate) => {
+              // setDate(date);
+              onChange(SelectedDate ?? null);
               setOpen(false);
             }}
           />

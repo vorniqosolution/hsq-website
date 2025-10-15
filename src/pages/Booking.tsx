@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { Get_All_Available_Room } from "@/api/roomsApi";
-import Room from "@/types/Room";
+// import {Room} from "@/types/Room";
 // store
 import { useRoomStore } from "@/store/store";
 // Svg images components
@@ -24,7 +24,7 @@ import WhatsAppButton from "@/components/buttons/Whatsapp";
 // import { P } from "node_modules/framer-motion/dist/types.d-Cjd591yU.js";
 
 function Booking() {
-  const { setRooms, rooms } = useRoomStore();
+  const { rooms } = useRoomStore();
   // const { data, isLoading, isError, error, isSuccess } = useQuery<Room[]>({
   //   queryKey: ["FetchRooms"],
   //   queryFn: Get_All_Available_Room,
@@ -44,7 +44,11 @@ function Booking() {
 
   // if (isError) return <p>Error</p>;
   // console.log("Data", data);
-  console.log("Store data", rooms);
+  const allRooms = rooms.flatMap((category) => category.rooms);
+  const justrooms = rooms.map((value) => value.rooms);
+  console.log("All rooms:", allRooms);
+  console.log("Rooms Array", justrooms);
+
   return (
     <>
       <div className="w-full h-full">
@@ -87,7 +91,7 @@ function Booking() {
           <div className="w-full overflow-hidden">
             <Swiper
               modules={[Navigation, Autoplay]}
-              spaceBetween={16} // <-- gap between cards
+              spaceBetween={1} // <-- gap between cards
               loop={true}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               // centeredSlides={true}
@@ -108,15 +112,15 @@ function Booking() {
               }}
               // className="pb-10" // give bottom space for arrows if needed
             >
-              {rooms.map((data, index) => (
+              {allRooms.map((data, index) => (
                 <SwiperSlide
                   key={index}
-                  className="flex justify-center items-center  lg:ml-1"
+                  className="flex justify-center items-center "
                 >
                   <div className="flex justify-center">
                     {/* {data.map((data, index) => ( */}
                     <BookingCard room={data} />
-                    {/* // ))} */}
+                    {/* ))} */}
                   </div>
                 </SwiperSlide>
               ))}

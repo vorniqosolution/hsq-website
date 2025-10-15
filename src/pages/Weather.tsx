@@ -7,7 +7,6 @@ import WeatherAnimation from "@/components/LottieFiles/Weather";
 import bgone from "../../public/Weather/bgone.png";
 import bgtwo from "../../public/Weather/bgtwo.png";
 import bgthree from "../../public/Weather/bgthree.png";
-
 import {
   motion,
   useMotionValue,
@@ -17,43 +16,41 @@ import {
 } from "framer-motion";
 import { WeatherApi } from "@/api/roomsApi";
 function Weather() {
-  // const { data, isLoading, isError, error, isSuccess } = useQuery({
-  //   queryKey: ["FetchWeather"],
-  //   queryFn: WeatherApi,
-  //   staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
-  //   gcTime: 60 * 60 * 1000,
-  //   refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
-  //   refetchOnMount: false, // don’t refetch when remounting component
-  //   refetchOnReconnect: false,
-  // });
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["FetchWeather"],
+    queryFn: WeatherApi,
+    staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
+    gcTime: 60 * 60 * 1000,
+    refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
+    refetchOnMount: false, // don’t refetch when remounting component
+    refetchOnReconnect: false,
+  });
   const ref = useRef(null);
   const inview = useInView(ref, { once: true });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.floor(latest));
   const date = new Date();
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-  // console.log("day", date.getDay());
-  // console.log("da", date.getMonth() + 1);
 
-  // if (isLoading) return <p>Loading</p>;
-  // if (isError) return <p>Error</p>;
   useEffect(() => {
-    if (inview) {
-      const animation = animate(count, 27, {
-        duration: 2, // animation duration (seconds)
-        ease: "easeOut",
-      });
-      return animation.stop;
-    }
-  }, [27, count, inview]);
+    if (!inview && !data?.current?.temp) return;
+    const controls = animate(count, data.current.temp, {
+      duration: 2,
+      ease: "easeOut",
+    });
+    return () => controls.stop();
+  }, [data?.current?.temp, inview]);
 
   const getNextDayName = (addDays: number) => {
     const newDate = new Date();
     newDate.setDate(date.getDate() + addDays);
     return newDate.toLocaleDateString("en-US", { weekday: "long" });
   };
-  console.log(getNextDayName(3));
-
+  // console.log(getNextDayName(3));
+  // if (isLoading) return <p>Loading</p>;
+  // if (isError) return <p>Error</p>;
+  console.log("Data", data?.daily[0]?.temp?.day);
+  console.log("Min", data?.daily[0]?.temp?.min);
   return (
     <>
       {/* hero section */}
@@ -115,13 +112,16 @@ function Weather() {
             {/* Details (Max Temp, Dew, Humidity) */}
             <div className="flex flex-col space-y-3 my-6 md:my-0 text-black poppins-reguler text-lg">
               <div className="flex items-center text-[15px] sm:text-lg ">
-                <span className="mr-3 text-2xl ">🌡️</span> Max Temp: 28 °C
+                <span className="mr-3 text-2xl ">🌡️</span> Feels like:{" "}
+                {data?.current?.feels_like} °C
               </div>
               <div className="flex items-center text-[15px] sm:text-lg ">
-                <span className="mr-3 text-2xl">💧</span> Dew: 28 °C
+                <span className="mr-3 text-2xl">💧</span> Dew:{" "}
+                {data?.current?.dew_point} °C
               </div>
               <div className="flex items-center text-[15px] sm:text-lg ">
-                <span className="mr-3 text-2xl">💨</span> Humidity: 80%
+                <span className="mr-3 text-2xl">💨</span> Humidity:{" "}
+                {data?.current?.humidity}%
               </div>
             </div>
 
@@ -138,20 +138,20 @@ function Weather() {
         <div className="pt-10 pb-10 flex flex-col items-center lg:flex-row lg:pt-16 gap-6 justify-center">
           <DailyForecastCard
             day={getNextDayName(1)}
-            maxTemp="23 C"
-            minTemp="5 C"
+            maxTemp={data?.daily[0]?.temp?.day}
+            minTemp={data?.daily[0]?.temp?.min}
             image={bgone}
           />
           <DailyForecastCard
             day={getNextDayName(2)}
-            maxTemp="20 C"
-            minTemp="10 C"
+            maxTemp={data?.daily[1]?.temp?.day}
+            minTemp={data?.daily[1]?.temp?.min}
             image={bgtwo}
           />
           <DailyForecastCard
             day={getNextDayName(3)}
-            maxTemp="15 C"
-            minTemp="12 C"
+            maxTemp={data?.daily[2]?.temp?.day}
+            minTemp={data?.daily[2]?.temp?.min}
             image={bgthree}
           />
         </div>
