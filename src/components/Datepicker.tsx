@@ -12,7 +12,7 @@ import {
 
 interface DatepickerProps {
   title: string;
-  value?: string;
+  value?: string | null;
   onChange?: (date: Date | null) => void;
 }
 const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
@@ -32,15 +32,23 @@ const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
             id="date"
             className="w-32 sm:w-48 justify-between poppins-regular"
           >
-            {value ? value : "Select date"}
+            {value || "Select date"}
+
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0 " align="start">
           <Calendar
+            // className="text-black"
             mode="single"
-            // selected={value}
+            selected={value ? new Date(value) : undefined}
             captionLayout="dropdown"
+            modifiers={{
+              today: undefined,
+            }}
+            modifiersClassNames={{
+              selected: "text-white rounded-full",
+            }}
             onSelect={(SelectedDate) => {
               // setDate(date);
               onChange(SelectedDate ?? null);

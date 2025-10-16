@@ -1,27 +1,69 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import Datepicker from "../components/Datepicker";
+import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { format } from "date-fns";
+import { useQuery } from "@tanstack/react-query";
+import { SearchAvailableRooms } from "@/api/roomsApi";
+import { toast } from "react-toastify";
+import { AvailableRoomGroupedResponse } from "@/types/Room";
 function BookingWidget() {
   const [departure, setDeparture] = useState<string | null>(null);
   const [arrival, setArrival] = useState<string | null>(null);
+  const [guests, setGuests] = useState<string>("");
+  const navigate = useNavigate();
+  const {
+    data: rooms,
+    isFetching,
+    refetch,
+    error,
+  } = useQuery<AvailableRoomGroupedResponse>({
+    queryKey: ["available-rooms", arrival, departure, guests],
+    queryFn: () =>
+      SearchAvailableRooms({ checkin: arrival, checkout: departure, guests }),
+    enabled: false, // 👈 Don't run automatically
+  });
 
   const handleDepartureChange = (date: Date | null) => {
+    console.log("date", date);
     setDeparture(date ? format(date, "yyyy-MM-dd") : null);
   };
-
   const handleArrivalChange = (date: Date | null) => {
     setArrival(date ? format(date, "yyyy-MM-dd") : null);
   };
 
-  const handleSubmit = () => {
-    console.log("Departure:", departure);
-    console.log("Arrival:", arrival);
+  const Validation = () => {
+    if (!arrival || !guests || !departure) {
+      return toast.error("All Fields Required", {
+        position: "top-center",
+      });
+    }
 
-    // Example: send to backend
-    // axios.post("/api/bookings", { departure, arrival });
+    const arrivalDate = new Date(arrival);
+    const departureDate = new Date(departure);
+
+    if (departureDate < arrivalDate) {
+      return toast.error("Check-out must be after check-in.", {
+        position: "top-center",
+      });
+    }
+    // console.log("data", arrival, guests, departure);
+    refetch();
+    navigate("/rooms")
   };
+
+  // console.log("IS Rooms Error", error.name);
+  // const handleSubmit = () => {
+  console.log("Departure:", departure);
+  console.log("Arrival:", arrival);
+  console.log("Guests", guests);
+  // Example: send to backend
+  // axios.post("/api/bookings", { departure, arrival });
+  // };
+  // if (rooms) {
+  //   console.log("Available Rooms", rooms);
+  // }
   return (
     <>
       <div className="flex justify-center items-center ">
@@ -30,13 +72,13 @@ function BookingWidget() {
           <div className="flex gap-3 lg:gap-7 sm:flex-row">
             <Datepicker
               title="Arrival"
-              value={departure}
+              value={arrival}
               onChange={handleArrivalChange}
             />
 
             <Datepicker
               title="Departure"
-              value={arrival}
+              value={departure}
               onChange={handleDepartureChange}
             />
           </div>
@@ -44,7 +86,11 @@ function BookingWidget() {
           {/* Guests Dropdown */}
           <div className="hidden  lg:block">
             <label className="text-white px-1 poppins-light">Guests :</label>
-            <select className="w-full text-black  bg-white  rounded-md px-3 py-2 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-10">
+            <select
+              value={guests}
+              onChange={(e) => setGuests(e.target.value)}
+              className="w-full text-black  bg-white  rounded-md px-3 py-2 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-10"
+            >
               <option value="">Select Guests</option>
               <option value="1">1 Guest</option>
               <option value="2">2 Guests</option>
@@ -54,7 +100,10 @@ function BookingWidget() {
             </select>
           </div>
           <div className="poppins-semibold relative lg:mt-5  flex justify-center w-full sm:w-fit items-center mb-5 lg:mb-0 ">
-            <button className="bg-gradient-to-l  w-[270px]  sm:w-fit px-12  py-2 text-black rounded-full from-[#D7AB4E] to-[#D49136]">
+            <button
+              onClick={Validation}
+              className="bg-gradient-to-l  w-[270px]  sm:w-fit px-12  py-2 text-black rounded-full from-[#D7AB4E] to-[#D49136]"
+            >
               Search
             </button>
             <div className="absolute top-2 left-7 sm:left-3 bg-black rounded-full px-1 py-1">
