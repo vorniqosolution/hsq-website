@@ -13,7 +13,7 @@ export interface AvailableRooms {
   roomNumber: string;
   rate: number;
   images: string[];
-  adults: 2;
+  adults: number;
 }
 export interface CategoryGroupAvailableRoom {
   adultsCapacity: string;
@@ -22,18 +22,17 @@ export interface CategoryGroupAvailableRoom {
   availableRooms: AvailableRooms[];
   bedType: string;
   category: string;
-  cleanliness: string | null;
+  cleanliness?: string | null;
   imageUrl?: string | null;
   publicDescription?: string | null;
   publicName: string;
   startingRate: number;
-  message: string;
+  // message: string;
 }
+export type AvailableRoomGroupedResponse = CategoryGroupAvailableRoom[];
 
 export interface CategoryGroup {
   categoryName: string;
   rooms: Room[];
 }
 export type RoomsGroupedResponse = CategoryGroup[];
-
-export type AvailableRoomGroupedResponse = CategoryGroupAvailableRoom[];

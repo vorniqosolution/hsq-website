@@ -8,62 +8,70 @@ import { useQuery } from "@tanstack/react-query";
 import { SearchAvailableRooms } from "@/api/roomsApi";
 import { toast } from "react-toastify";
 import { AvailableRoomGroupedResponse } from "@/types/Room";
+import { useRoomStore } from "@/store/store";
 function BookingWidget() {
   const [departure, setDeparture] = useState<string | null>(null);
   const [arrival, setArrival] = useState<string | null>(null);
-  const [guests, setGuests] = useState<string>("");
+  const [guests, setGuests] = useState<string | null>(null);
+  const { setAvaibleRooms } = useRoomStore();
   const navigate = useNavigate();
-  const {
-    data: rooms,
-    isFetching,
-    refetch,
-    error,
-  } = useQuery<AvailableRoomGroupedResponse>({
+  const { refetch } = useQuery<AvailableRoomGroupedResponse>({
     queryKey: ["available-rooms", arrival, departure, guests],
     queryFn: () =>
       SearchAvailableRooms({ checkin: arrival, checkout: departure, guests }),
-    enabled: false, // 👈 Don't run automatically
+    enabled: false,
   });
 
   const handleDepartureChange = (date: Date | null) => {
-    console.log("date", date);
+    // console.log("date", date);
     setDeparture(date ? format(date, "yyyy-MM-dd") : null);
   };
   const handleArrivalChange = (date: Date | null) => {
     setArrival(date ? format(date, "yyyy-MM-dd") : null);
   };
 
-  const Validation = () => {
+  const Validation = async () => {
     if (!arrival || !guests || !departure) {
       return toast.error("All Fields Required", {
         position: "top-center",
+        style: {
+          background: "#dfab4e", // light orange background
+          color: "black", // deep amber text
+          border: "1px solid #fbbf24",
+          fontWeight: "600",
+        },
       });
     }
 
     const arrivalDate = new Date(arrival);
     const departureDate = new Date(departure);
-
     if (departureDate < arrivalDate) {
       return toast.error("Check-out must be after check-in.", {
         position: "top-center",
+        style: {
+          background: "#dfab4e", // light orange background
+          color: "black", // deep amber text
+          border: "1px solid #fbbf24",
+          fontWeight: "600",
+        },
       });
     }
-    // console.log("data", arrival, guests, departure);
-    refetch();
-    navigate("/rooms")
+    try {
+      const { data } = await refetch();
+      // console.log("Available Rooms", data);
+      setAvaibleRooms(data);
+      navigate("/rooms");
+    } catch (err: any) {
+      setDeparture("");
+      setArrival("");
+      setGuests("");
+      toast.error(err.message || "Something went wrong", {
+        position: "top-center",
+      });
+      // console.error("Error fetching rooms:", err);
+    }
   };
 
-  // console.log("IS Rooms Error", error.name);
-  // const handleSubmit = () => {
-  console.log("Departure:", departure);
-  console.log("Arrival:", arrival);
-  console.log("Guests", guests);
-  // Example: send to backend
-  // axios.post("/api/bookings", { departure, arrival });
-  // };
-  // if (rooms) {
-  //   console.log("Available Rooms", rooms);
-  // }
   return (
     <>
       <div className="flex justify-center items-center ">

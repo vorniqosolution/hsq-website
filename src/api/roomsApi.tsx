@@ -30,15 +30,13 @@ export const SearchAvailableRooms = async ({
         params: { checkin, checkout, guests },
       }
     );
-    console.log("Response", response.data);
+    // console.log("Response", response.data);
 
     return response.data;
-  } catch (err) {
-    // const error = err as AxiosError<{ message?: string }>;
-    // console.log("Error  rooms:", error.response?.data?.message);
-    // throw new Error(
-    return err.response?.data?.message;
-    // );
+  } catch (err: any) {
+    const message =
+      err.response?.data?.message || "Failed to fetch available rooms";
+    throw new Error(message);
   }
 };
 

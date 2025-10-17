@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import bookbg from "../assets/Book/bookbg.svg";
 import { ArrowRight, PhoneCall, MailIcon, MapPin } from "lucide-react";
 import BookingCard from "../components/cards/BookingCard";
@@ -6,8 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { Get_All_Available_Room } from "@/api/roomsApi";
+// import { useQuery } from "@tanstack/react-query";
+// import { Get_All_Available_Room } from "@/api/roomsApi";
 // import {Room} from "@/types/Room";
 // store
 import { useRoomStore } from "@/store/store";
@@ -21,29 +21,9 @@ import Roomservice from "@/components/svg/Bookingpage/Roomservice";
 // booking widget
 import BookingWidget from "@/components/BookingWidget";
 import WhatsAppButton from "@/components/buttons/Whatsapp";
-// import { P } from "node_modules/framer-motion/dist/types.d-Cjd591yU.js";
 
 function Booking() {
   const { rooms } = useRoomStore();
-  // const { data, isLoading, isError, error, isSuccess } = useQuery<Room[]>({
-  //   queryKey: ["FetchRooms"],
-  //   queryFn: Get_All_Available_Room,
-  //   staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
-  //   gcTime: 60 * 60 * 1000,
-  //   refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
-  //   refetchOnMount: false, // don’t refetch when remounting component
-  //   refetchOnReconnect: false,
-  // });
-  // useEffect(() => {
-  //   if (isSuccess && data) {
-  //     setRooms(data);
-  //   }
-  // }, [isSuccess, data, setRooms]);
-
-  // if (isLoading) return <p>isloading</p>;
-
-  // if (isError) return <p>Error</p>;
-  // console.log("Data", data);
   const allRooms = rooms.flatMap((category) => category.rooms);
   const justrooms = rooms.map((value) => value.rooms);
   console.log("All rooms:", allRooms);
@@ -74,7 +54,8 @@ function Booking() {
           </div>
           {/* booking widget */}
           <div className="absolute -bottom-44 md:-bottom-24 lg:-bottom-14 w-full ">
-            <BookingWidget />
+            <BookingWidget></BookingWidget>
+            {/* <Bookin */}
           </div>
         </div>
         {/* body section*/}

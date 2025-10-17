@@ -171,8 +171,8 @@ const Index = () => {
       queryFn: Get_All_Available_Room,
       staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
       gcTime: 60 * 60 * 1000,
-      refetchOnWindowFocus: false, // don’t refetch when window/tab gets focus again
-      refetchOnMount: false, // don’t refetch when remounting component
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
       refetchOnReconnect: false,
     });
   useEffect(() => {
@@ -185,7 +185,7 @@ const Index = () => {
 
   // if (isError) return <p>Error</p>;
   // console.log("Data", data);
-  console.log("Store data", rooms);
+  // console.log("Store data", rooms);
   const allowedCategories = ["Deluxe", "Executive", "Presidential"];
 
   const filtered = rooms
