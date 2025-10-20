@@ -1,16 +1,40 @@
+import { addDays, differenceInDays } from "date-fns";
 import React, { useState, lazy, Suspense } from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import tembookingform from "@/assets/tembookingform.png";
-import Viewbutton from "@/components/buttons/Viewbutton";
+// import Viewbutton from "@/components/buttons/Viewbutton";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import BookingFoam from "@/components/BookingFoam";
 import Footer from "@/components/layout/Footer";
+import { useRoomStore } from "../store/store";
 // import ConfirmationDialog from "@/components/ConfirmationDialog";
 const ConfirmationDialog = React.lazy(
   () => import("@/components/ConfirmationDialog")
 );
 function BookingFormpage() {
   const [Confirmation, setConfirmation] = useState(false);
+  const { Bookingwidget } = useRoomStore();
+  const { state } = useLocation();
+  const room = state;
+  const firstAvailableRoom = room?.availableRooms?.[0];
+  const Firstimage = firstAvailableRoom?.images?.[0];
+  // console.log("FirstAvaileRoom", firstAvailableRoom);
+  // console.log("First Imge", Firstimage);
+  const checkin = new Date(Bookingwidget.checkin);
+  const checkout = new Date(Bookingwidget.checkout);
+  const totalNights = differenceInDays(checkout, checkin);
+  // const TotalRent = room?.startingRate * totalNights;
+  // console.log("TotalRent", TotalRent);
+  // console.log("TotalNights", totalNights);
+
+  // const finaldate = addDays(Bookingwidget.checkin, Bookingwidget.checkout);
+
+  // console.log("Navigate Rooms", room);
+  // console.log("BED TYPE", room.bedType);
+  // const firstimage = room.availableRooms.map((value) => value.images[0]);
+  // console.log("Firsimage", firstimage);
+  // console.log("bookigcheckin", Bookingwidget.checkin);
+  // console.log("bookingcheckout", Bookingwidget.checkout);
   return (
     <>
       {Confirmation ? (
@@ -22,18 +46,22 @@ function BookingFormpage() {
           {/* upper section */}
           <div
             className="relative w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh]"
-            style={{ backgroundImage: `url(${tembookingform})` }}
+            style={{
+              backgroundImage: `url(${
+                Firstimage ? Firstimage : tembookingform
+              })`,
+            }}
           >
             {/* shadow div */}
             {/* <div className="" /> */}
             <div className="absolute left-[20%] top-[30%]   md:left-[30%] md:top-[40%] lg:left-[35%] lg:top-[30%]">
-              <h1 className="text-white poppins-extrabold uppercase text-2xl  md:text-4xl lg:text-5xl">
-                Standard room
+              <h1 className="text-white poppins-extrabold uppercase text-2xl  md:text-4xl lg:text-5xl ">
+                {room?.category ? room?.category : null} room
               </h1>
             </div>
             <div className="absolute flex flex-col bottom-0 md:left-16  lg:left-24 sm:bottom-24 text-white">
               <h1 className="poppins-extrabold text-2xl sm:text-5xl">
-                RS.14000
+                RS.{room?.startingRate ? room?.startingRate : 0}
                 <span className="poppins-regular text-lg lg:text-2xl">
                   /Night
                 </span>
@@ -73,35 +101,47 @@ function BookingFormpage() {
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Room type:</h1>
-                    <p>ONE BED DELUXE ROOM</p>
+                    <p className="uppercase ">
+                      {room?.bedType}
+                      <span className="pl-1"> {room?.category}</span>
+                      {/* ONE BED DELUXE ROOM */}
+                    </p>
                   </div>
                 </div>
                 {/* room number */}
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Room number:</h1>
-                    <p>506</p>
+                    <p>{firstAvailableRoom?.roomNumber}</p>
                   </div>
                 </div>
                 {/* check-in */}
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Check-in:</h1>
-                    <p>2025-08-29</p>
+                    <p>
+                      {Bookingwidget?.checkin
+                        ? Bookingwidget?.checkin
+                        : "2025-08-29"}
+                    </p>
                   </div>
                 </div>
                 {/* check-out */}
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Check-out:</h1>
-                    <p>2025-08-30</p>
+                    <p>
+                      {Bookingwidget?.checkout
+                        ? Bookingwidget?.checkout
+                        : "2025-10-30"}
+                    </p>
                   </div>
                 </div>
                 {/* nights */}
                 <div className="flex flex-col p-4 mb-5">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Nights:</h1>
-                    <p>03</p>
+                    <p>0{totalNights}</p>
                   </div>
                 </div>
                 {/* line */}
@@ -113,8 +153,12 @@ function BookingFormpage() {
                 {/* one day date */}
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
-                    <h1 className="poppins-bold">29/5/2025</h1>
-                    <p>Rs. 20000/-</p>
+                    <h1 className="poppins-bold">
+                      {Bookingwidget?.checkin
+                        ? Bookingwidget?.checkin
+                        : "2025-08-29"}
+                    </h1>
+                    <p>Rs.{room?.startingRate ? room?.startingRate : 0}/-</p>
                   </div>
                 </div>
                 {/* Price Summary */}
@@ -125,14 +169,16 @@ function BookingFormpage() {
                 <div className="flex flex-col p-4 bg-[#FFF2DD]  w-[90%] lg:w-96 rounded-md m-auto">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Room Rate:</h1>
-                    <p>PKR 42000</p>
+                    <p>
+                      PKR {room?.startingRate ? room?.startingRate : "20000"}
+                    </p>
                   </div>
                 </div>
                 {/* tax */}
                 <div className="flex flex-col p-4 ">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Tax</h1>
-                    <p>PKR 2100</p>
+                    <p className="pr-5">PKR 0.0</p>
                   </div>
                 </div>
                 {/* line */}
@@ -141,7 +187,9 @@ function BookingFormpage() {
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Total</h1>
-                    <p className="poppins-bold">PKR 44,100</p>
+                    <p className="poppins-bold">
+                      PKR {room?.startingRate * totalNights}
+                    </p>
                   </div>
                 </div>
                 {/* booking button */}

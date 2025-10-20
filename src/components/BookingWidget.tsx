@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.svg";
 import Datepicker from "../components/Datepicker";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ function BookingWidget() {
   const [departure, setDeparture] = useState<string | null>(null);
   const [arrival, setArrival] = useState<string | null>(null);
   const [guests, setGuests] = useState<string | null>(null);
-  const { setAvaibleRooms } = useRoomStore();
+  const { setAvaibleRooms, setBookingwidget, Bookingwidget } = useRoomStore();
   const navigate = useNavigate();
   const { refetch } = useQuery<AvailableRoomGroupedResponse>({
     queryKey: ["available-rooms", arrival, departure, guests],
@@ -23,8 +23,10 @@ function BookingWidget() {
   });
 
   const handleDepartureChange = (date: Date | null) => {
-    // console.log("date", date);
     setDeparture(date ? format(date, "yyyy-MM-dd") : null);
+
+    // console.log("actual date", date);
+    // console.log("departure", departure);
   };
   const handleArrivalChange = (date: Date | null) => {
     setArrival(date ? format(date, "yyyy-MM-dd") : null);
@@ -42,7 +44,6 @@ function BookingWidget() {
         },
       });
     }
-
     const arrivalDate = new Date(arrival);
     const departureDate = new Date(departure);
     if (departureDate < arrivalDate) {
@@ -61,6 +62,11 @@ function BookingWidget() {
       // console.log("Available Rooms", data);
       setAvaibleRooms(data);
       navigate("/rooms");
+      setBookingwidget({
+        ...Bookingwidget,
+        checkout: departure,
+        checkin: arrival,
+      });
     } catch (err: any) {
       setDeparture("");
       setArrival("");
@@ -71,7 +77,9 @@ function BookingWidget() {
       // console.error("Error fetching rooms:", err);
     }
   };
-
+  // useEffect(() => {
+  //   console.log("Updated departure:", departure);
+  // }, [departure]);
   return (
     <>
       <div className="flex justify-center items-center ">

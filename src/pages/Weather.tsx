@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
+
 // import weatherbg from "";
 import DailyForecastCard from "@/components/cards/DailyForecast";
 import Footer from "@/components/layout/Footer";
@@ -15,6 +16,7 @@ import {
   useInView,
 } from "framer-motion";
 import { WeatherApi } from "@/api/roomsApi";
+import FrontLogo from "@/components/layout/FrontLogo";
 function Weather() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["FetchWeather"],
@@ -47,10 +49,11 @@ function Weather() {
     return newDate.toLocaleDateString("en-US", { weekday: "long" });
   };
   // console.log(getNextDayName(3));
-  // if (isLoading) return <p>Loading</p>;
+  if (isLoading) return <FrontLogo />;
   // if (isError) return <p>Error</p>;
   console.log("Data", data?.daily[0]?.temp?.day);
   console.log("Min", data?.daily[0]?.temp?.min);
+
   return (
     <>
       {/* hero section */}
