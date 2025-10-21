@@ -3,13 +3,22 @@ import {
   RoomsGroupedResponse,
   AvailableRoomGroupedResponse,
 } from "@/types/Room";
-
+import { BookingFormDataType } from "@/types/BookingForm";
+// interface BookingFormDataType {
+//   name: string;
+//   contact: string;
+//   address: string;
+//   email: string;
+//   cnic: string;
+//   arrivaltime: string;
+//   promocode: string;
+//   requestmsg: string;
+//   paymentmethod: string;
+// }
 interface RoomState {
   // For get api
   rooms: RoomsGroupedResponse; // store the rooms data
   setRooms: (rooms: RoomsGroupedResponse) => void; // function to update rooms
-  // clearRooms: () => void; // optional: clear the state
-  // For available Room
   AvaibleRooms: AvailableRoomGroupedResponse;
   setAvaibleRooms: (AvaibleRooms: AvailableRoomGroupedResponse) => void;
   // Save checkin and Check out
@@ -18,6 +27,8 @@ interface RoomState {
     checkout: string;
   };
   setBookingwidget: (data: { checkin: string; checkout: string }) => void;
+  BookingFormData: BookingFormDataType;
+  setBookingFormData: (data: BookingFormDataType) => void;
 }
 
 export const useRoomStore = create<RoomState>((set) => ({
@@ -27,12 +38,25 @@ export const useRoomStore = create<RoomState>((set) => ({
     checkin: "",
     checkout: "",
   },
+  BookingFormData: {
+    name: "",
+    contact: "",
+    address: "",
+    email: "",
+    cnic: "",
+    arrivaltime: "",
+    promocode: "",
+    requestmsg: "",
+    paymentmethod: "",
+  },
   setRooms: (rooms) => set({ rooms }),
-  // clearRooms: () => set({ rooms: [] }),
   setAvaibleRooms: (AvaibleRooms) => set({ AvaibleRooms }),
   setBookingwidget: (data) =>
     set(() => ({
       Bookingwidget: data,
     })),
-  // clearRooms
+  setBookingFormData: (data) =>
+    set((state) => ({
+      BookingFormData: { ...state.BookingFormData, ...data },
+    })),
 }));

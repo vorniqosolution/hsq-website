@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import emailjs from "@emailjs/browser";
 function ContactFoam() {
+  // emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", "#myForm").then(
+  //   (response) => {
+  //     console.log("SUCCESS!", response.status, response.text);
+  //   },
+  //   (error) => {
+  //     console.log("FAILED...", error);
+  //   }
+  // );
+  const [contactForm, setcontactForm] = useState({
+    firstName: "",
+    lastName: "",
+    contact: "",
+    email: "",
+    message: "",
+  });
+
+  // Step 2: Handle input changes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    // console.log("", name, value);
+    setcontactForm({
+      ...contactForm, // keep old values
+      [name]: value, // update only the changed field
+    });
+  };
+  console.log("LastName", contactForm.lastName);
   return (
     <>
       {/* main card */}
-      <div className="relative z-10 bg-[#FFF9EF] shadow-xl rounded-3xl">
+      <div className="relative  z-10 bg-[#FFF9EF] shadow-xl rounded-3xl">
         {/* Top Right Clip Shape */}
         <div
           className="absolute top-0 right-0 bg-primary rounded-3xl w-[400px] lg:w-[500px] h-[400px]"
@@ -28,6 +57,9 @@ function ContactFoam() {
               <input
                 className="px-5 py-[10px] rounded-md"
                 type="text"
+                name="firstName"
+                value={contactForm.firstName}
+                onChange={handleChange}
                 placeholder="First Name:"
               />
             </div>
@@ -36,6 +68,9 @@ function ContactFoam() {
               <input
                 className="px-5 py-[10px] rounded-md"
                 type="text"
+                name="lastName"
+                value={contactForm.lastName}
+                onChange={handleChange}
                 placeholder="Last Name:"
               />
             </div>
@@ -44,12 +79,18 @@ function ContactFoam() {
               <input
                 className="px-5 py-[10px] rounded-md"
                 type="text"
+                name="contact"
+                value={contactForm.contact}
+                onChange={handleChange}
                 placeholder="Contact Num:"
               />
             </div>
             {/* email */}
             <div className="">
               <input
+                name="email"
+                value={contactForm.email}
+                onChange={handleChange}
                 className="px-5 py-[10px] rounded-md"
                 type="text"
                 placeholder="Email Address:"
@@ -59,6 +100,9 @@ function ContactFoam() {
             <div className="md:col-span-2">
               <textarea
                 placeholder="Message...."
+                name="message"
+                value={contactForm.message}
+                onChange={handleChange}
                 rows={5}
                 className="p-4 rounded-lg border-none outline-none bg-white shadow-sm w-full md:col-span-2"
               ></textarea>

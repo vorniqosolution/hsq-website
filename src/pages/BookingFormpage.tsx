@@ -1,24 +1,29 @@
 import { addDays, differenceInDays } from "date-fns";
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Mutation, useMutation } from "@tanstack/react-query";
+import Toastify from "@/components/Toastify";
 import tembookingform from "@/assets/tembookingform.png";
-// import Viewbutton from "@/components/buttons/Viewbutton";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import BookingFoam from "@/components/BookingFoam";
 import Footer from "@/components/layout/Footer";
 import { useRoomStore } from "../store/store";
+import { CreateReservation } from "@/api/roomsApi";
+import { PostBookingData } from "@/types/BookingForm";
+import { toast } from "react-toastify";
 // import ConfirmationDialog from "@/components/ConfirmationDialog";
 const ConfirmationDialog = React.lazy(
   () => import("@/components/ConfirmationDialog")
 );
 function BookingFormpage() {
   const [Confirmation, setConfirmation] = useState(false);
-  const { Bookingwidget } = useRoomStore();
+  const { Bookingwidget, BookingFormData } = useRoomStore();
   const { state } = useLocation();
   const room = state;
   const firstAvailableRoom = room?.availableRooms?.[0];
   const Firstimage = firstAvailableRoom?.images?.[0];
   // console.log("FirstAvaileRoom", firstAvailableRoom);
+  // console.log("RoomID", firstAvailableRoom?._id);
   // console.log("First Imge", Firstimage);
   const checkin = new Date(Bookingwidget.checkin);
   const checkout = new Date(Bookingwidget.checkout);
@@ -35,6 +40,102 @@ function BookingFormpage() {
   // console.log("Firsimage", firstimage);
   // console.log("bookigcheckin", Bookingwidget.checkin);
   // console.log("bookingcheckout", Bookingwidget.checkout);
+  // console.log("booking name", BookingFormData.name);
+  // console.log("contact", BookingFormData);
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: PostBookingData) => CreateReservation(data),
+    onSuccess: (res) => {
+      console.log("Booking created successfully:", res);
+      console.log("ResponseSucessMessage", res.message);
+      toast.success(res.message, {
+        position: "top-center",
+        style: {
+          background: "#dfab4e", // light orange background
+          color: "black", // deep amber text
+          border: "1px solid #fbbf24",
+          fontWeight: "600",
+        },
+      });
+      setConfirmation(true);
+    },
+    onError: (err: any) => {
+      const message =
+        err?.res?.data?.message || // from backend
+        err?.message || // from JS Error
+        "Something went wrong!";
+      console.log("MessageReservation", message);
+      // <Toastify message={message} />;
+      Toastify({ message: message });
+    },
+  });
+  const HandleValidation = () => {
+    let isValid = true; // assume valid until proven otherwise
+    const errors: Record<string, string> = {}; // store field-wise errors
+
+    if (!BookingFormData.name.trim()) {
+      errors.name = "Name is required";
+      isValid = false;
+    }
+    if (!BookingFormData.address.trim()) {
+      errors.address = "Address is required";
+      isValid = false;
+    }
+    if (!BookingFormData.email.trim()) {
+      errors.email = "Email is required";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(BookingFormData.email)) {
+      errors.email = "Invalid email format";
+      isValid = false;
+    }
+    if (!BookingFormData.contact.trim()) {
+      errors.contact = "Contact number is required";
+      isValid = false;
+    } else if (!/^\d{10,15}$/.test(BookingFormData.contact)) {
+      errors.contact = "Contact must be 10–15 digits";
+      isValid = false;
+    }
+    if (!BookingFormData.cnic.trim()) {
+      errors.cnic = "CNIC is required";
+      isValid = false;
+    } else if (!/^\d{13}$/.test(BookingFormData.cnic)) {
+      errors.cnic = "CNIC must be 13 digits";
+      isValid = false;
+    }
+    if (!BookingFormData.arrivaltime.trim()) {
+      errors.arrivaltime = "Arrival time is required";
+      isValid = false;
+    }
+    if (!BookingFormData.paymentmethod.trim()) {
+      errors.paymentmethod = "Payment method is required";
+      isValid = false;
+    }
+    if (!isValid) {
+      Object.values(errors).forEach((msg) => Toastify({ message: msg }));
+    }
+
+    return { isValid, errors };
+  };
+  const HandleSubmit = async () => {
+    const { isValid } = HandleValidation();
+    if (isValid) {
+      console.log("✅ Form is valid, proceeding...");
+      const mergeData = {
+        fullName: BookingFormData.name,
+        phone: BookingFormData.contact,
+        address: BookingFormData.address,
+        email: BookingFormData.email,
+        cnic: BookingFormData.cnic,
+        expectedArrivalTime: BookingFormData.arrivaltime,
+        promoCode: BookingFormData.promocode,
+        specialRequest: BookingFormData.requestmsg,
+        paymentMethod: BookingFormData.paymentmethod,
+        checkInDate: Bookingwidget.checkin,
+        checkOutDate: Bookingwidget.checkout,
+        roomId: firstAvailableRoom?._id,
+      };
+      mutate(mergeData);
+    }
+  };
   return (
     <>
       {Confirmation ? (
@@ -53,7 +154,7 @@ function BookingFormpage() {
             }}
           >
             {/* shadow div */}
-            {/* <div className="" /> */}
+            <div className="absolute inset-0 bg-black/50" />
             <div className="absolute left-[20%] top-[30%]   md:left-[30%] md:top-[40%] lg:left-[35%] lg:top-[30%]">
               <h1 className="text-white poppins-extrabold uppercase text-2xl  md:text-4xl lg:text-5xl ">
                 {room?.category ? room?.category : null} room
@@ -141,7 +242,7 @@ function BookingFormpage() {
                 <div className="flex flex-col p-4 mb-5">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Nights:</h1>
-                    <p>0{totalNights}</p>
+                    <p className="pr-2">{totalNights}</p>
                   </div>
                 </div>
                 {/* line */}
@@ -194,10 +295,7 @@ function BookingFormpage() {
                 </div>
                 {/* booking button */}
                 {/* <Link to={"/confirmation"}> */}
-                <div
-                  onClick={() => setConfirmation(!Confirmation)}
-                  className="pt-8 pb-10"
-                >
+                <div onClick={HandleSubmit} className="pt-8 pb-10">
                   <button className="bg-gradient-to-r from-[#D7AA4D] to-[#D49237] text-black w-80 m-auto py-2 rounded-full flex items-center pl-24 gap-2 poppins-bold hover:bg-neutral-200 transition relative">
                     Book Now
                     <div className="absolute right-1 bg-black p-2 rounded-full">

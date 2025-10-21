@@ -5,6 +5,7 @@ import {
   RoomsGroupedResponse,
   AvailableRoomGroupedResponse,
 } from "@/types/Room";
+import { BookingFormDataType, PostBookingData } from "@/types/BookingForm";
 const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
 const APIKEY = import.meta.env.VITE_WEATHER_API_KEY;
 const latitude = 33.91511892911634;
@@ -17,6 +18,7 @@ interface SearchAvailableRoomsParams {
   checkout: string;
   guests: string;
 }
+interface FormBookingData {}
 // For the search results
 export const SearchAvailableRooms = async ({
   checkin,
@@ -64,5 +66,21 @@ export const WeatherApi = async () => {
   } catch (error) {
     console.error("Error fetching rooms:", error);
     throw new Error("Failed To Fetch Available Rooms");
+  }
+};
+
+// Create Reservation Api
+export const CreateReservation = async (BookingData: PostBookingData) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/public/reservations`,
+      BookingData
+    );
+    return response.data;
+  } catch (err: any) {
+    const message =
+      err.response?.data?.message || "Failed to fetch available rooms";
+    console.log(" ReservationMessage", message);
+    throw new Error(message);
   }
 };

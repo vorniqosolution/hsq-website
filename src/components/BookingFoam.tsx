@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import formbg from "../assets/BG/foambg.svg";
-
+import { useRoomStore } from "@/store/store";
 // import
 function BookingFoam() {
+  const { setBookingFormData, BookingFormData } = useRoomStore();
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
@@ -20,12 +21,28 @@ function BookingFoam() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    console.log("", name, value);
+    // console.log("", name, value);
+
     setFormData({
       ...formData, // keep old values
       [name]: value, // update only the changed field
     });
+    // setBookingFormData({
+    //   ...BookingFormData,
+    //   name: formData.name,
+    //   contact: formData.contact,
+    //   address: formData.address,
+    //   email: formData.email,
+    //   cnic: formData.cnic,
+    //   arrivaltime: formData.arrivaltime,
+    //   promocode: formData.promocode,
+    //   requestmsg: formData.requestmsg,
+    //   paymentmethod: formData.paymentmethod,
+    // });
   };
+  useEffect(() => {
+    setBookingFormData(formData);
+  }, [formData, setBookingFormData]);
   return (
     <>
       <div className="bg-[#FFFAF1]  w-full  rounded-lg h-full pb-5">
@@ -136,8 +153,8 @@ function BookingFoam() {
                   type="radio"
                   id="cash"
                   name="paymentmethod"
-                  value="cash"
-                  checked={formData.paymentmethod === "cash"}
+                  value="Cash"
+                  checked={formData.paymentmethod === "Cash"}
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
@@ -148,8 +165,8 @@ function BookingFoam() {
                   type="radio"
                   id="card"
                   name="paymentmethod"
-                  value="card"
-                  checked={formData.paymentmethod === "card"}
+                  value="Card"
+                  checked={formData.paymentmethod === "Card"}
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
@@ -160,8 +177,8 @@ function BookingFoam() {
                   type="radio"
                   id="online"
                   name="paymentmethod"
-                  value="online"
-                  checked={formData.paymentmethod === "online"}
+                  value="Online"
+                  checked={formData.paymentmethod === "Online"}
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
@@ -172,8 +189,8 @@ function BookingFoam() {
                   type="radio"
                   id="hotel"
                   name="paymentmethod"
-                  value="payhotel"
-                  checked={formData.paymentmethod === "payhotel"}
+                  value="PayAtHotel"
+                  checked={formData.paymentmethod === "PayAtHotel"}
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
