@@ -49,7 +49,7 @@ export const Get_All_Available_Room =
       const response = await axios.get(
         `${BACKEND_URL}/api/public/category-details`
       );
-      console.log("Response", response.data);
+      // console.log("GET Available Response", response.data);
 
       return response.data;
     } catch (error) {
@@ -83,4 +83,11 @@ export const CreateReservation = async (BookingData: PostBookingData) => {
     console.log(" ReservationMessage", message);
     throw new Error(message);
   }
+};
+
+// Google Review Api
+export const GoogleReview = async () => {
+  const response = await axios.get(`${BACKEND_URL}/api/public/googlereview`);
+  console.log("Goole_Review_Response", response.data);
+  return response.data;
 };

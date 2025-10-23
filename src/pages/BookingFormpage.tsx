@@ -109,6 +109,10 @@ function BookingFormpage() {
       errors.paymentmethod = "Payment method is required";
       isValid = false;
     }
+    if (!BookingFormData.terms.trim()) {
+      errors.paymentmethod = "Please checked Terms&Conditions";
+      isValid = false;
+    }
     if (!isValid) {
       Object.values(errors).forEach((msg) => Toastify({ message: msg }));
     }

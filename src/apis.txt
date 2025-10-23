@@ -14,3 +14,22 @@ clip-path: ellipse(62% 8% at 2% 100%);
 
 right top
 clip-path: polygon(100% 0, 83% 0, 100% 19%);
+
+GOOGLE MAP API
+
+AIzaSyCya6Ym-01n5KIMf-XTv3nTsVh2Sl11l0A
+
+place ID
+ChIJaUX9conX3zgRQQsh3Kl1PNw
+
+FETCH THE PLACE ID 
+https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=hsqtower&inputtype=textquery&fields=place_id&key=AIzaSyCya6Ym-01n5KIMf-XTv3nTsVh2Sl11l0A
+
+
+https://maps.googleapis.com/maps/api/place/details/json?place_id=PLACE_ID&fields=name,rating,reviews,user_ratings_total&key=YOUR_API_KEY
+
+serpapi
+https://serpapi.com/search.json?engine=google_maps_reviews&data_id=ChIJaUX9conX3zgRQQsh3Kl1PNw:0xa4969e07ce3108de&hl=fr
+
+serpid data id
+0x38dfd78972fd4569:0xdc3c75a9dc210b41

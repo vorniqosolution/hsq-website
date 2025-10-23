@@ -8,6 +8,7 @@ export interface BookingFormDataType {
   promocode?: string;
   requestmsg?: string;
   paymentmethod: string;
+  terms: string;
 }
 
 export interface PostBookingData {

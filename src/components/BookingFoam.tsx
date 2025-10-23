@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import formbg from "../assets/BG/foambg.svg";
 import { useRoomStore } from "@/store/store";
+import { useNavigate } from "react-router-dom";
 // import
 function BookingFoam() {
+  const navigate = useNavigate();
   const { setBookingFormData, BookingFormData } = useRoomStore();
   const [formData, setFormData] = useState({
     name: "",
@@ -14,6 +16,7 @@ function BookingFoam() {
     promocode: "",
     requestmsg: "",
     paymentmethod: "",
+    terms: "",
   });
 
   // Step 2: Handle input changes
@@ -68,7 +71,7 @@ function BookingFoam() {
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
              focus:outline-none focus:ring-2 focus:ring-blue-400"
                 type="text"
-                placeholder="Contact Number"
+                placeholder="03123456789"
                 name="contact"
                 value={formData.contact}
                 onChange={handleChange}
@@ -106,7 +109,7 @@ function BookingFoam() {
                 value={formData.cnic}
                 onChange={handleChange}
                 id=""
-                placeholder="CNIC:"
+                placeholder="CNIC WithOut Dash"
               />
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
@@ -201,13 +204,22 @@ function BookingFoam() {
             <div className="flex  items-center space-x-2 mt-10">
               <input
                 type="radio"
-                id="terms"
-                name="payment"
+                id="term"
+                name="terms"
+                value="terms"
+                checked={formData.terms === "terms"}
+                onChange={handleChange}
                 className="accent-blue-600"
               />
-              <label htmlFor="terms">
-                I agree with <span className="underline">terms conditions</span>{" "}
-                and <span className="underline">privacy policy</span>
+              <label onClick={() => navigate("/terms")} htmlFor="term">
+                I agree with{" "}
+                <span className="underline hover:cursor-pointer">
+                  terms conditions
+                </span>{" "}
+                and{" "}
+                <span className="underline hover:cursor-pointer">
+                  privacy policy
+                </span>
               </label>
             </div>
           </form>

@@ -4,7 +4,7 @@ import { useRoomStore } from "@/store/store";
 import Zerorooms from "@/components/cards/Zerorooms";
 const Rooms = () => {
   const { AvaibleRooms } = useRoomStore();
-  console.log("Store data AvaibleRooms", AvaibleRooms);
+  // console.log("Store data AvaibleRooms", AvaibleRooms);
   return (
     <>
       <div>

@@ -4,6 +4,8 @@ import {
   AvailableRoomGroupedResponse,
 } from "@/types/Room";
 import { BookingFormDataType } from "@/types/BookingForm";
+import { ReviewSummary } from "@/types/Review";
+// import Review from "@/pages/Review";
 // interface BookingFormDataType {
 //   name: string;
 //   contact: string;
@@ -31,6 +33,11 @@ interface RoomState {
   setBookingFormData: (data: BookingFormDataType) => void;
 }
 
+interface ReviewState {
+  reviews: ReviewSummary[];
+  setReviews: (reviews: ReviewSummary[]) => void;
+}
+
 export const useRoomStore = create<RoomState>((set) => ({
   rooms: [],
   AvaibleRooms: [],
@@ -48,6 +55,7 @@ export const useRoomStore = create<RoomState>((set) => ({
     promocode: "",
     requestmsg: "",
     paymentmethod: "",
+    terms: "",
   },
   setRooms: (rooms) => set({ rooms }),
   setAvaibleRooms: (AvaibleRooms) => set({ AvaibleRooms }),
@@ -59,4 +67,9 @@ export const useRoomStore = create<RoomState>((set) => ({
     set((state) => ({
       BookingFormData: { ...state.BookingFormData, ...data },
     })),
+}));
+
+export const useReviewStore = create<ReviewState>((set) => ({
+  reviews: [],
+  setReviews: (reviews) => set({ reviews }),
 }));

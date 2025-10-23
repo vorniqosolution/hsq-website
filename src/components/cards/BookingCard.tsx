@@ -42,9 +42,12 @@ const BookingCard: React.FC<BookingCardProps> = ({ room }) => {
             </h2>
             <p className="text-sm poppins-regular-italic">
               {/* Where elegance meets relaxation for an unforgettable */}
-              {/* {room.publicDescription} */}
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui,
-              rem?
+              {/* {room?.publicDescription} */}
+              {room?.publicDescription
+                ? room.publicDescription.length > 70
+                  ? room.publicDescription.slice(0, 70) + "..."
+                  : room.publicDescription
+                : "A cozy and elegant space featuring a king-size bed, modern furnishings, and a serene mountain view — perfect for a relaxing stay"}
             </p>
           </div>
 

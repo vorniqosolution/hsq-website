@@ -10,11 +10,13 @@ import { Navigation, Autoplay } from "swiper/modules";
 import RoomCard from "@/components/cards/RoomCard";
 import Viewbutton from "@/components/buttons/Viewbutton";
 import WhatsAppButton from "@/components/buttons/Whatsapp";
+import GoogleReviewCard from "@/components/cards/GoogleReview";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { Get_All_Available_Room } from "@/api/roomsApi";
+import { Get_All_Available_Room, GoogleReview } from "@/api/roomsApi";
 import { RoomsGroupedResponse } from "@/types/Room";
+import { ReviewSummary } from "@/types/Review";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -55,7 +57,7 @@ import galleryimage from "@/assets/indexpage/gallerybg.svg";
 import restaurent from "@/assets/indexpage/restaurent.png";
 
 // store
-import { useRoomStore } from "@/store/store";
+import { useRoomStore, useReviewStore } from "@/store/store";
 type FeatureItem = { icon: React.ElementType; label: string };
 const FEATURES: FeatureItem[] = [
   { icon: AboutBed, label: "LUXURY ROOMS" },
@@ -165,6 +167,7 @@ const Index = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const { setRooms, rooms } = useRoomStore();
+  const { setReviews, reviews } = useReviewStore();
   const { data, isLoading, isError, error, isSuccess } =
     useQuery<RoomsGroupedResponse>({
       queryKey: ["FetchRooms"],
@@ -175,11 +178,47 @@ const Index = () => {
       refetchOnMount: false,
       refetchOnReconnect: false,
     });
+  // Fetched Reviews api
+  const { data: Reviews, isSuccess: isReviewSuccess } = useQuery({
+    queryKey: ["GoogleReviews"],
+    queryFn: GoogleReview,
+    staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
+    gcTime: 60 * 60 * 1000,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    select: (reviews) =>
+      reviews.map((review: any) => ({
+        name: review.user?.name,
+        thumbnail: review.user?.thumbnail,
+        snippet: review.extracted_snippet?.original || review.snippet,
+        date: review.date,
+      })),
+  });
+
   useEffect(() => {
     if (isSuccess && data) {
       setRooms(data);
     }
-  }, [isSuccess, data, setRooms]);
+    if (isReviewSuccess && Reviews) {
+      setReviews(Reviews);
+      // console.log("Reviews", Reviews[0]);
+      // console.log(
+      //   "Total Reviews:",
+      //   Reviews.map((data) => data.name)
+      // );
+      // console.log(
+      //   "Reviews d",
+      //   reviews.map((data) => data.thumbnail)
+      // );
+    }
+    // console.log("Store Reviews", reviews);
+  }, [isSuccess, data, setRooms, isReviewSuccess]);
+  // useEffect(() => {
+  //   // if(Reviews){
+  //   console.log("Goole_Review_Response", Reviews);
+  //   // }
+  // }, [Reviews]);
 
   // if (isLoading) return <p>isloading</p>;
 
@@ -196,7 +235,7 @@ const Index = () => {
     }))
     .filter((cat) => cat.room); // remove any empty ones
 
-  console.log(filtered);
+  // console.log("Filtered Data",filtered);
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -270,28 +309,49 @@ const Index = () => {
           </a>
         </div>
         {/* cards with crousel */}
-        <div className="w-full mt-2 px-4">
+        <div className="w-full absolute mt-2 ">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={10}
+            // spaceBetween={30}
             loop={true}
+            // centeredSlides={true}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             breakpoints={{
-              0: { slidesPerView: 1 }, // mobile → 1 card
-              768: { slidesPerView: 2 }, // tablet → 2 cards
-              1024: { slidesPerView: 3 }, // desktop → 3 cards
-              1280: { slidesPerView: 4 }, // large desktop → 4 cards
+              0: { slidesPerView: 1.3, spaceBetween: 40 }, // mobile → 1 card
+              768: {
+                slidesPerView: 1.2,
+                spaceBetween: -130,
+                centeredSlides: true,
+              }, // tablet → 2 cards
+              1024: { slidesPerView: 2.2 }, // desktop → 3 cards
+              1280: {
+                slidesPerView: 2.2,
+                spaceBetween: -100,
+                centeredSlides: true,
+              }, // large desktop → 4 cards
             }}
             className="w-full"
           >
-            {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+            {reviews?.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="flex justify-center">
-                  <img
+                <div className=" mt-8 sm:mt-10  mx-10">
+                  {/* <img
                     src={dummmyreview}
                     alt={`Review ${index}`}
                     className="w-full rounded-2xl shadow-md"
+                  /> */}
+                  {/* {console.log("Review map", typeof)} */}
+                  {/* {.map((data, index) => ( */}
+                  {/* // <p>hello world</p> */}
+                  {/* // <p>{d} </p> */}
+                  {/* <p>{item.name}</p> */}
+                  <GoogleReviewCard
+                    name={item.name}
+                    thumbnail={item.thumbnail}
+                    snippet={item.snippet}
+                    date={item.date}
                   />
+                  {/* ))} */}
                 </div>
               </SwiperSlide>
             ))}
