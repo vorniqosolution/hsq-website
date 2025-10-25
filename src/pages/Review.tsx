@@ -92,7 +92,7 @@ function Review() {
           {/* review button  */}
           <div className="flex items-center justify-center pt-16 pb-28">
             <a
-              href="https://maps.app.goo.gl/fcSZV2ReQKyBtRGp7"
+              href="https://g.page/r/CUELIdypdTzcEBM/review"
               target="_blank"
               rel="noopener noreferrer"
             >

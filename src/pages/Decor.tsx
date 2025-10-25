@@ -27,10 +27,10 @@ function Decor() {
         </section>
         {/* body section with cards */}
         <section className="backgroundcolor space-y-6 pt-10 pb-10">
-          <DecorCard></DecorCard>
-          <DecorCard></DecorCard>
-          <DecorCard></DecorCard>
-          <DecorCard></DecorCard>
+          <DecorCard image="/public/Gallery/Decor/decor1.svg" />
+          <DecorCard image="/public/Gallery/Decor/decor2.svg" />
+          <DecorCard image="/public/Gallery/Decor/decor3.svg" />
+          <DecorCard image="/public/Gallery/Decor/decor4.svg" />
         </section>
         <Footer />
       </div>

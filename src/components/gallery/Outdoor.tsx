@@ -1,12 +1,11 @@
-
 export default function Outdoor() {
   const images = [
-    "src/assets/Gallary/v1.svg",
-    "src/assets/Gallary/v2.svg",
-    "src/assets/Gallary/v3.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
+    "/public/Gallery/Outdoor/outdoor1.svg",
+    "/public/Gallery/Outdoor/outdoor2.svg",
+    "/public/Gallery/Outdoor/outdoor3.svg",
+    "/public/Gallery/Outdoor/outdoor4.svg",
+    "/public/Gallery/Outdoor/outdoor5.svg",
+    "/public/Gallery/Outdoor/outdoor6.svg",
   ];
 
   return (
@@ -14,7 +13,7 @@ export default function Outdoor() {
       {images.map((src, i) => (
         <div
           key={i}
-          className="rounded-md overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
+          className=" overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
         >
           <img
             src={src}

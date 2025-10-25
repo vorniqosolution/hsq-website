@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { ChevronRight } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 function ContactFoam() {
-  // emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", "#myForm").then(
-  //   (response) => {
-  //     console.log("SUCCESS!", response.status, response.text);
-  //   },
-  //   (error) => {
-  //     console.log("FAILED...", error);
-  //   }
-  // );
   const [contactForm, setcontactForm] = useState({
     firstName: "",
     lastName: "",
@@ -17,7 +10,46 @@ function ContactFoam() {
     email: "",
     message: "",
   });
+  // console.log("First name", contactForm.firstName);
 
+  const SendEmail = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // setLoading(true);
+
+    try {
+      const response = await emailjs.send(
+        "service_iht1fpf", // e.g. service_123xyz
+        "template_8lgky9l", // e.g. template_abc456
+        contactForm,
+        "gs8s5T3xdOSCgEC7p" // e.g. 0aBcDeFgHiJk
+      );
+
+      // console.log("SUCCESS!", response.status, response.text);
+      // alert();
+      toast.success("Email sent successfully!", {
+        position: "top-center",
+        style: {
+          background: "#dfab4e", // light orange background
+          color: "black", // deep amber text
+          border: "1px solid #fbbf24",
+          fontWeight: "600",
+        },
+      });
+      // Reset form
+      setcontactForm({
+        firstName: "",
+        lastName: "",
+        contact: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("❌ FAILED...", error);
+      alert("Failed to send email. Please try again.");
+    } finally {
+      // setLoading(false);
+    }
+  };
   // Step 2: Handle input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,7 +61,14 @@ function ContactFoam() {
       [name]: value, // update only the changed field
     });
   };
-  console.log("LastName", contactForm.lastName);
+  // console.log(
+  //   "LastName",
+  //   contactForm.lastName,
+  //   contactForm.lastName,
+  //   contactForm.email,
+  //   contactForm.message,
+  //   contactForm.contact
+  // );
   return (
     <>
       {/* main card */}
@@ -51,7 +90,10 @@ function ContactFoam() {
         <div className="p-10">
           <h1 className="poppins-bold text-2xl">Send Your</h1>
           <h1 className="poppins-bold text-2xl">Message To Us</h1>
-          <form className="grid grid-cols-1 sm:grid-cols-2 pt-5 gap-5">
+          <form
+            onSubmit={SendEmail}
+            className="grid grid-cols-1 sm:grid-cols-2 pt-5 gap-5"
+          >
             {/* first  */}
             <div className="">
               <input

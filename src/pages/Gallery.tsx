@@ -5,30 +5,30 @@ import Footer from "@/components/layout/Footer";
 import { useState, lazy, Suspense } from "react";
 
 // import components
-const Restaurant = React.lazy(() => import("@/components/gallery/Restaurant"));
+// const Restaurant = React.lazy(() => import("@/components/gallery/Restaurant"));
 const Rooms = React.lazy(() => import("@/components/gallery/Rooms"));
 const Snow = React.lazy(() => import("@/components/gallery/Snow"));
 const Outdoor = React.lazy(() => import("@/components/gallery/Outdoor"));
-const ConferenceHall = React.lazy(
-  () => import("@/components/gallery/ConferenceHall")
-);
-const Bar = React.lazy(() => import("@/components/gallery/Bar"));
+// const ConferenceHall = React.lazy(
+//   () => import("@/components/gallery/ConferenceHall")
+// );
+// const Bar = React.lazy(() => import("@/components/gallery/Bar"));
 const Decor = React.lazy(() => import("@/components/gallery/Decor"));
-const Gym = React.lazy(() => import("@/components/gallery/Gym"));
+// const Gym = React.lazy(() => import("@/components/gallery/Gym"));
 // Loading Component
 import FrontLogo from "@/components/layout/FrontLogo";
 const categories = [
-  { name: "Restaurant", component: Restaurant },
+  // { name: "Restaurant", component: Restaurant },
   { name: "Rooms", component: Rooms },
-  { name: "Gym", component: Gym },
+  // { name: "Gym", component: Gym },
   { name: "Outdoor", component: Outdoor },
   { name: "Snow", component: Snow },
-  { name: "ConferenceHall", component: ConferenceHall },
+  // { name: "ConferenceHall", component: ConferenceHall },
   { name: "Decor", component: Decor },
-  { name: "Bar", component: Bar },
+  // { name: "Bar", component: Bar },
 ];
 function Gallery() {
-  const [active, setActive] = useState("Restaurant");
+  const [active, setActive] = useState("Rooms");
 
   const ActiveComponent = categories.find(
     (cat) => cat.name === active
@@ -64,8 +64,8 @@ function Gallery() {
         {/* gallery section */}
         <section className="backgroundcolor ">
           <div className="flex flex-col p-10 space-y-6 justify-center lg:flex-row  lg:justify-between">
-            <div className="poppins-bold text-center text-4xl lg:text-start lg:w-1/3">
-              <h1>Discover Elegance Frame By Frame</h1>
+            <div className=" text-center text-4xl lg:text-start lg:w-1/3">
+              <h1 className="poppins-bold">Discover Elegance Frame By Frame</h1>
             </div>
             <div className=" text-center  text-sm poppins-medium  lg:w-1/3">
               <p>
@@ -76,7 +76,7 @@ function Gallery() {
             </div>
           </div>
           {/* rebin */}
-          <div className="flex rounded-md  gap-2 bg-[#FDEBC7] w-full justify-center flex-wrap  lg:w-[90%] m-auto mb-8 ">
+          <div className="flex rounded-md  gap-2 bg-[#FDEBC7] w-full justify-center flex-wrap  lg:w-[43%] m-auto mb-8 ">
             {categories.map((cat) => (
               <div className="">
                 <button
@@ -93,7 +93,7 @@ function Gallery() {
               </div>
             ))}
           </div>
-          <div className="w-full flex  p-5  pb-16 lg:justify-center gap-3 lg:gap-10 flex-wrap  flex-row">
+          <div className="w-full  flex  p-5 pb-16 lg:justify-center gap-3 lg:gap-10 flex-wrap  flex-row">
             <Suspense fallback={<FrontLogo />}>
               {ActiveComponent && <ActiveComponent />}
             </Suspense>

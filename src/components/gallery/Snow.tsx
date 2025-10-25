@@ -1,11 +1,11 @@
 export default function Snow() {
   const images = [
-    "src/assets/Gallary/v1.svg",
-    "src/assets/Gallary/v2.svg",
-    "src/assets/Gallary/v3.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
+    "/public/Gallery/Snow/snow1.svg",
+    "/public/Gallery/Snow/snow2.svg",
+    "/public/Gallery/Snow/snow3.svg",
+    "/public/Gallery/Snow/snow4.svg",
+    "/public/Gallery/Snow/snow5.svg",
+    "/public/Gallery/Snow/snow6.svg",
   ];
 
   return (
@@ -13,7 +13,7 @@ export default function Snow() {
       {images.map((src, i) => (
         <div
           key={i}
-          className="rounded-md overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
+          className="overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
         >
           <img
             src={src}

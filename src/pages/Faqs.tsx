@@ -6,7 +6,7 @@ function Faqs() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {
-    // ✅ only one open at a time
+    //  only one open at a time
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -31,11 +31,11 @@ function Faqs() {
     },
     {
       question: "WHAT DO I NEED FOR CHECK-IN?",
-      answer: "CNIC Or Passport For All Guests.",
+      answer: "ID Card Verification For All Guests.",
     },
     {
       question: "WHAT ROOM TYPES DO YOU OFFER?",
-      answer: "Standard, Executive, And Family Suites.",
+      answer: "Standard, Executive,Deluxe,Presedential, And Family Suites.",
     },
     {
       question: "IS BREAKFAST INCLUDED?",
@@ -175,7 +175,7 @@ function Faqs() {
                   />
                 </div>
 
-                {/* ✅ Show only the clicked one */}
+                {/*  Show only the clicked one */}
                 {openIndex === index && (
                   <p className="mt-2 text-gray-600 text-sm">{faq.answer}</p>
                 )}

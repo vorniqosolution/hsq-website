@@ -17,6 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Get_All_Available_Room, GoogleReview } from "@/api/roomsApi";
 import { RoomsGroupedResponse } from "@/types/Room";
 import { ReviewSummary } from "@/types/Review";
+import FrontLogo from "@/components/layout/FrontLogo";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -141,7 +142,7 @@ const slides = [
     description:
       "Step Into our restaurant and indulge in a culinary journey where every dish is a masterpiece-crafter with passion",
     buttonText: "More Info",
-    href: "/aminities",
+    href: "/restaurent",
   },
   {
     image: v3,
@@ -150,7 +151,7 @@ const slides = [
     description:
       "At HSQ Tower, Discover a selection of elegant living spaces-from cozy standard rooms to deluxe suites.",
     buttonText: "More Info",
-    href: "/rooms",
+    href: "/book",
   },
   {
     image: v4,
@@ -220,8 +221,6 @@ const Index = () => {
   //   // }
   // }, [Reviews]);
 
-  // if (isLoading) return <p>isloading</p>;
-
   // if (isError) return <p>Error</p>;
   // console.log("Data", data);
   // console.log("Store data", rooms);
@@ -239,6 +238,7 @@ const Index = () => {
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  if (isLoading) return <FrontLogo />;
   return (
     <>
       {/* Landing page */}
@@ -301,7 +301,7 @@ const Index = () => {
             Guest Feedback You Can Trust
           </h1>
           <a
-            href="https://www.google.com/maps/place/HSQ+Towers/@33.9153648,73.4139554,17z/data=!4m16!1m9!3m8!1s0x38dfd78972fd4569:0xdc3c75a9dc210b41!2sHSQ+Towers!8m2!3d33.9153604!4d73.4165303!9m1!1b1!16s%2Fg%2F11t057j5b2!3m5!1s0x38dfd78972fd4569:0xdc3c75a9dc210b41!8m2!3d33.9153604!4d73.4165303!16s%2Fg%2F11t057j5b2?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+            href="https://g.page/r/CUELIdypdTzcEBM/review"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -408,7 +408,7 @@ const Index = () => {
         <p className="text-sm poppins-medium">
           Discover Our Collection of Elegant Rooms
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
+        <div className="flex flex-col lg:flex-row gap-4 mt-10">
           {filtered.map((value, index) => (
             // <p className="text-2xl text-red-700">
             //   {value.room.publicDescription}

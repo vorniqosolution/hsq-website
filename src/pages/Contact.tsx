@@ -24,7 +24,7 @@ function Contact() {
       {/* body section */}
       <section className="backgroundcolor pb-20">
         {/* contact form */}
-        <div className="absolute -bottom-[12rem] left-3  md:left-20 md:bottom-[4rem] lg:-bottom-[17rem] lg:left-1/4 ">
+        <div className="absolute -bottom-[14rem] left-7  md:left-20 md:bottom-[4rem] lg:-bottom-[17rem] lg:left-1/4 ">
           <ContactFoam />
         </div>
         {/* We’d Love to Hear From You */}

@@ -4,6 +4,7 @@ import { ArrowRight, PhoneCall, MailIcon, MapPin } from "lucide-react";
 import BookingCard from "../components/cards/BookingCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import Viewbutton from "@/components/buttons/Viewbutton";
 import "swiper/css";
 import "swiper/css/navigation";
 // import { useQuery } from "@tanstack/react-query";
@@ -45,12 +46,13 @@ function Booking() {
             <h1 className="poppins-bold text-2xl  lg:text-5xl lg:w-1/2 text-center">
               Stay your way – six rooms, six unique vibes
             </h1>
-            <button className="bookbtn flex items-center gap-2">
+            <Viewbutton label="Book Now" />
+            {/* <button className="bookbtn flex items-center gap-2">
               BOOK NOW
               <div className="bg-black rounded-full">
                 <ArrowRight color="white" size={20} />
               </div>
-            </button>
+            </button> */}
           </div>
           {/* booking widget */}
           <div className="absolute -bottom-44 md:-bottom-24 lg:-bottom-14 w-full ">

@@ -1,11 +1,11 @@
 export default function Rooms() {
   const images = [
-    "src/assets/Gallary/v1.svg",
-    "src/assets/Gallary/v2.svg",
-    "src/assets/Gallary/v3.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
+    "/public/Gallery/Rooms/room1.svg",
+    "/public/Gallery/Rooms/room2.svg",
+    "/public/Gallery/Rooms/room3.svg",
+    "/public/Gallery/Rooms/room4.svg",
+    "/public/Gallery/Rooms/room5.svg",
+    "/public/Gallery/Rooms/room6.svg",
   ];
 
   return (
@@ -13,7 +13,7 @@ export default function Rooms() {
       {images.map((src, i) => (
         <div
           key={i}
-          className="rounded-md overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
+          className="rounded-m overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
         >
           <img
             src={src}

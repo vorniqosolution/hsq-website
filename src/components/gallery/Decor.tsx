@@ -1,11 +1,11 @@
 export default function Decor() {
   const images = [
-    "src/assets/Gallary/v1.svg",
-    "src/assets/Gallary/v2.svg",
-    "src/assets/Gallary/v3.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
-    "src/assets/Gallary/v4.svg",
+    "/public/Gallery/Decor/decor1.svg",
+    "/public/Gallery/Decor/decor2.svg",
+    "/public/Gallery/Decor/decor3.svg",
+    "/public/Gallery/Decor/decor4.svg",
+    "/public/Gallery/Decor/decor5.svg",
+    "/public/Gallery/Decor/decor6.svg",
   ];
 
   return (
@@ -13,7 +13,7 @@ export default function Decor() {
       {images.map((src, i) => (
         <div
           key={i}
-          className="rounded-md overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
+          className="overflow-hidden shadow-lg ease-out duration-500 hover:scale-105"
         >
           <img
             src={src}

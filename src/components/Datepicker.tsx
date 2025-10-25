@@ -30,11 +30,11 @@ const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
           <Button
             variant="default"
             id="date"
-            className="w-32 sm:w-48 justify-between poppins-regular text-black"
+            className="w-28 pl-2 sm:w-48 lg:pl-4 justify-between poppins-regular text-black"
           >
-            {value || "Select date"}
+            {value || "Select Date"}
 
-            <ChevronDownIcon />
+            <ChevronDownIcon className="hidden lg:block" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0 " align="start">

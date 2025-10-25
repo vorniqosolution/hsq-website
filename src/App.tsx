@@ -10,7 +10,7 @@ import { Header } from "@/components/layout/Header";
 // import  Footer  from "@/components/layout/Footer";
 
 // Pages
-// import Index from "./pages/Index";
+import Index from "@/pages/Index";
 // import Rooms from "./pages/Rooms";
 // import Dining from "./pages/Dining";
 // import Spa from "./pages/Spa";
@@ -24,7 +24,7 @@ import { Header } from "@/components/layout/Header";
 // import Decor from "./pages/Decor";
 // import Weather from "./pages/Weather";
 // import Review from "./pages/Review" ;
-const Index = lazy(() => import("./pages/Index"));
+// const Index = lazy(() => import("./pages/Index"));
 const Rooms = lazy(() => import("./pages/Rooms"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const Offers = lazy(() => import("./pages/Offers"));
@@ -48,6 +48,7 @@ import BookingCard from "./components/cards/BookingCard";
 import BookingWidget from "./components/BookingWidget";
 import Hero from "./components/Hero";
 import Aminities from "./pages/Aminities";
+import Restaurent from "@/pages/Restaurent";
 import WhatsAppButton from "@/components/buttons/Whatsapp";
 const queryClient = new QueryClient();
 
@@ -82,6 +83,8 @@ const App = () => (
             <Route path="/aminities" element={<Aminities />} />
             <Route path="/logo" element={<FrontLogo />} />
             <Route path="/bookingform" element={<BookingFormpage />} />
+            <Route path="/restaurent" element={<Restaurent />} />
+
             {/* <Route path="/logo" element={<Hero />} /> */}
           </Routes>
           {/* </main> */}
@@ -89,7 +92,7 @@ const App = () => (
         </div>
 
         {/* Add DevTools */}
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </BrowserRouter>
       {/* </TooltipProvider> */}
       {/* </HelmetProvider> */}

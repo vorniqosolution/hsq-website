@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* For Customers */}
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-primary">
+            <h4 className="mb-4 text-sm poppins-bold uppercase tracking-wide text-primary">
               For Customers
             </h4>
             <ul className="space-y-3 text-sm text-white/85">
@@ -128,7 +128,7 @@ export default function Footer() {
 
           {/* Other Links */}
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-primary">
+            <h4 className="mb-4 text-sm poppins-bold uppercase tracking-wide text-primary">
               Other Links
             </h4>
             <ul className="space-y-3 text-sm text-white/85">
@@ -147,7 +147,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-primary">
+            <h4 className="mb-4 text-sm poppins-bold uppercase tracking-wide text-primary">
               Contact Us
             </h4>
             <ul className="space-y-3 text-sm text-white/85">
@@ -163,7 +163,7 @@ export default function Footer() {
                   className="hover:text-primary"
                   href="mailto:hsqtowers@gmail.com"
                 >
-                  hsqtowers@gmail.com
+                  hsqtower@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -207,9 +207,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex justify-end">
-        <p className="text-end text-sm">
+        {/* <p className="text-end text-sm">
           Designed and developed by Vorniqo solutions
-        </p>
+        </p> */}
       </div>
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-black">
