@@ -1,13 +1,20 @@
 export default function Rooms() {
+  // const images = [
+  //   "/public/Gallery/Rooms/room1.svg",
+  //   "/public/Gallery/Rooms/room2.svg",
+  //   "/public/Gallery/Rooms/room3.svg",
+  //   "/public/Gallery/Rooms/room4.svg",
+  //   "/public/Gallery/Rooms/room5.svg",
+  //   "/public/Gallery/Rooms/room6.svg",
+  // ];
   const images = [
-    "/public/Gallery/Rooms/room1.svg",
-    "/public/Gallery/Rooms/room2.svg",
-    "/public/Gallery/Rooms/room3.svg",
-    "/public/Gallery/Rooms/room4.svg",
-    "/public/Gallery/Rooms/room5.svg",
-    "/public/Gallery/Rooms/room6.svg",
+    "/Gallery/Rooms/room1.svg",
+    "/Gallery/Rooms/room2.svg",
+    "/Gallery/Rooms/room3.svg",
+    "/Gallery/Rooms/room4.svg",
+    "/Gallery/Rooms/room5.svg",
+    "/Gallery/Rooms/room6.svg",
   ];
-
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {images.map((src, i) => (

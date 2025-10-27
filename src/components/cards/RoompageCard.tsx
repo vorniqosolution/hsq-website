@@ -1,5 +1,5 @@
 import React from "react";
-import v2 from "@/assets/Gallary/v2.svg";
+// import v2 from ;
 import { ChevronRight } from "lucide-react";
 import Button from "@/components/buttons/Button";
 import { CategoryGroupAvailableRoom } from "@/types/Room";
@@ -19,7 +19,7 @@ const RoompageCard: React.FC<RoomCardProps> = ({ room }) => {
       <div className="w-full  lg:w-1/4 ">
         {/* {firstRoom.map((value, index) => ( */}
         <img
-          src={firstRoom?.images?.[0] || v2}
+          src={firstRoom?.images?.[0] || "/Gallery/room2.svg"}
           alt="Standard Room"
           className="w-full lg:w-[90%] bg-center h-72 md:h-72 object-cover overflow-hidden rounded-xl"
         />

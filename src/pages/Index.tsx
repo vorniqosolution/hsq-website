@@ -230,9 +230,9 @@ const Index = () => {
     .filter((cat) => allowedCategories.includes(cat.categoryName)) // only these 3
     .map((cat) => ({
       categoryName: cat.categoryName,
-      room: cat.rooms[0], // pick the first room
+      room: cat.rooms[0],
     }))
-    .filter((cat) => cat.room); // remove any empty ones
+    .filter((cat) => cat.room);
 
   // console.log("Filtered Data",filtered);
   const toggleAccordion = (index: number) => {
@@ -315,7 +315,7 @@ const Index = () => {
             // spaceBetween={30}
             loop={true}
             // centeredSlides={true}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             breakpoints={{
               0: { slidesPerView: 1.3, spaceBetween: 40 }, // mobile → 1 card
               768: {

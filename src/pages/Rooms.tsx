@@ -1,4 +1,4 @@
-import roomimage from "../assets/BG/roombg.png";
+import roomimage from "@/assets/BG/roombg.png";
 import RoompageCard from "@/components/cards/RoompageCard";
 import { useRoomStore } from "@/store/store";
 import Zerorooms from "@/components/cards/Zerorooms";

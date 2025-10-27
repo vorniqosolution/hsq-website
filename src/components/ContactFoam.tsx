@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { ChevronRight } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
+const EMAIL_API_KEY = import.meta.env.VITE_EMAIL_API_KEY;
 function ContactFoam() {
   const [contactForm, setcontactForm] = useState({
     firstName: "",
@@ -21,7 +22,7 @@ function ContactFoam() {
         "service_iht1fpf", // e.g. service_123xyz
         "template_8lgky9l", // e.g. template_abc456
         contactForm,
-        "gs8s5T3xdOSCgEC7p" // e.g. 0aBcDeFgHiJk
+        `${EMAIL_API_KEY}` // e.g. 0aBcDeFgHiJk
       );
 
       // console.log("SUCCESS!", response.status, response.text);

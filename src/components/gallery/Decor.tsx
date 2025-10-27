@@ -1,13 +1,20 @@
 export default function Decor() {
+  // const images = [
+  //   "/public/Gallery/Decor/decor1.svg",
+  //   "/public/Gallery/Decor/decor2.svg",
+  //   "/public/Gallery/Decor/decor3.svg",
+  //   "/public/Gallery/Decor/decor4.svg",
+  //   "/public/Gallery/Decor/decor5.svg",
+  //   "/public/Gallery/Decor/decor6.svg",
+  // ];
   const images = [
-    "/public/Gallery/Decor/decor1.svg",
-    "/public/Gallery/Decor/decor2.svg",
-    "/public/Gallery/Decor/decor3.svg",
-    "/public/Gallery/Decor/decor4.svg",
-    "/public/Gallery/Decor/decor5.svg",
-    "/public/Gallery/Decor/decor6.svg",
+    "/Gallery/Decor/decor1.svg",
+    "/Gallery/Decor/decor2.svg",
+    "/Gallery/Decor/decor3.svg",
+    "/Gallery/Decor/decor4.svg",
+    "/Gallery/Decor/decor5.svg",
+    "/Gallery/Decor/decor6.svg",
   ];
-
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {images.map((src, i) => (

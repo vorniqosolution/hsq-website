@@ -1,12 +1,13 @@
 import React from "react";
 import ComingSoonCard from "@/components/cards/RetaurentCard";
+import restaurentbg from "@/assets/Restaurent/restaurentbg.png";
 function Restaurent() {
   return (
     <>
       <section
         className=" w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh] "
         style={{
-          backgroundImage: `url(../../public/Restaurent/restaurentbg.png)`,
+          backgroundImage: `url(${restaurentbg})`,
         }}
       >
         <div className="flex flex-col text-white justify-center items-center space-y-1 sm:space-y-2 pt-24 sm:pt-44">

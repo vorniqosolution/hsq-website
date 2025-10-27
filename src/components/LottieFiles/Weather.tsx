@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "lottie-react";
-import WeatherLogo from "../../../public/Weather/WeatherLogo.json";
+import WeatherLogo from "@/assets/Weather/WeatherLogo.json";
 
 function WeatherAnimation() {
   return (

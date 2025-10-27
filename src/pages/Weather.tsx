@@ -5,9 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import DailyForecastCard from "@/components/cards/DailyForecast";
 import Footer from "@/components/layout/Footer";
 import WeatherAnimation from "@/components/LottieFiles/Weather";
-import bgone from "../../public/Weather/bgone.png";
-import bgtwo from "../../public/Weather/bgtwo.png";
-import bgthree from "../../public/Weather/bgthree.png";
+import bgone from "@/assets/Weather/bgone.png";
+import bgtwo from "@/assets/Weather/bgtwo.png";
+import bgthree from "@/assets/Weather/bgthree.png";
+import weatherbg from "@/assets/Weather/weatherbg.png";
 import {
   motion,
   useMotionValue,
@@ -59,7 +60,7 @@ function Weather() {
       {/* hero section */}
       <section
         className=" w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh] "
-        style={{ backgroundImage: `url(../../public/Weather/weatherbg.png)` }}
+        style={{ backgroundImage: `url(${weatherbg})` }}
       >
         <div className="flex flex-col text-white justify-center items-center space-y-3 pt-20 sm:pt-36">
           <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">

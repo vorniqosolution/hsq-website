@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import logo from "@/assets/Frontlogo.svg";
 function FrontLogo() {
   return (
     <div className="bg-black flex justify-center items-center w-full h-screen">
       <motion.img
-        src="./public/Frontlogo.svg"
+        src={`${logo}`}
         alt="HSQLOGO"
         className="w-28 h-28"
         initial={{ opacity: 0, scale: 0 }} // start invisible & small

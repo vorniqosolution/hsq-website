@@ -1,11 +1,11 @@
-import { Toaster } from "@/components/ui/toaster";
+// import { Toaster } from "@/components/ui/toaster";
 import { lazy, Suspense } from "react";
 // import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+// import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
+// import { HelmetProvider } from "react-helmet-async";
 import { Header } from "@/components/layout/Header";
 // import  Footer  from "@/components/layout/Footer";
 
@@ -27,10 +27,10 @@ import Index from "@/pages/Index";
 // const Index = lazy(() => import("./pages/Index"));
 const Rooms = lazy(() => import("./pages/Rooms"));
 const Gallery = lazy(() => import("./pages/Gallery"));
-const Offers = lazy(() => import("./pages/Offers"));
+// const Offers = lazy(() => import("./pages/Offers"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Privacy = lazy(() => import("./pages/Privacy"));
+// const Privacy = lazy(() => import("./pages/Privacy"));
 const TermsAndCondition = lazy(() => import("./pages/TermsAndCondition"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Decor = lazy(() => import("./pages/Decor"));
@@ -41,15 +41,15 @@ const Booking = lazy(() => import("./pages/Booking"));
 // Loading component
 import FrontLogo from "@/components/layout/FrontLogo";
 // testing route
-import ConfirmationDialog from "./components/ConfirmationDialog";
-import BookingFoam from "./components/BookingFoam";
+// import ConfirmationDialog from "./components/ConfirmationDialog";
+// import BookingFoam from "./components/BookingFoam";
 import BookingFormpage from "./pages/BookingFormpage";
-import BookingCard from "./components/cards/BookingCard";
-import BookingWidget from "./components/BookingWidget";
-import Hero from "./components/Hero";
+// import BookingCard from "./components/cards/BookingCard";
+// import BookingWidget from "./components/BookingWidget";
+// import Hero from "./components/Hero";
 import Aminities from "./pages/Aminities";
 import Restaurent from "@/pages/Restaurent";
-import WhatsAppButton from "@/components/buttons/Whatsapp";
+// import WhatsAppButton from "@/components/buttons/Whatsapp";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -69,10 +69,10 @@ const App = () => (
             {/* <Route path="/dining" element={<Dining />} /> */}
             {/* <Route path="/spa" element={<Spa />} /> */}
             <Route path="/gallery" element={<Gallery />} />
-            <Route path="/offers" element={<Offers />} />
+            {/* <Route path="/offers" element={<Offers />} /> */}
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
+            {/* <Route path="/privacy" element={<Privacy />} /> */}
             <Route path="/terms" element={<TermsAndCondition />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/decor" element={<Decor />} />
