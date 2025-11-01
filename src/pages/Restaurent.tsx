@@ -1,6 +1,6 @@
 import React from "react";
 import ComingSoonCard from "@/components/cards/RetaurentCard";
-import restaurentbg from "@/assets/Restaurent/restaurentbg.png";
+import restaurentbg from "@/assets/Restaurent/restaurentbg.webp";
 function Restaurent() {
   return (
     <>

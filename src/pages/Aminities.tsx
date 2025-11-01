@@ -1,5 +1,5 @@
 import React from "react";
-import aminitiesbg from "@/assets/Aminities/aminitiesbg.png";
+import aminitiesbg from "@/assets/Aminities/aminitiesbg.webp";
 import Amenitieparking from "@/components/svg/Amenitieparking";
 import Amenitiewifi from "@/components/svg/Amenitiewifi";
 import Amenitiepower from "@/components/svg/Amenitiepower";
@@ -31,10 +31,9 @@ function Aminities() {
         <div className="grid grid-cols-2 sm:grid-cols-5 items-center text-center gap-y-10">
           {/* card1 */}
           <div className="flex flex-col items-center px-4">
-            <Amenitieparking />{" "}
-            <h3 className="poppins-bold">Secure Guest Parking</h3>
+            <Amenitieparking /> <h3 className="poppins-bold">Secure Parking</h3>
             <p className="text-sm poppins-regular text-gray-600">
-              Ample, safe, and convenient parking facilities.
+              Ample, safe parking facilities.
             </p>
           </div>
           {/* Divider */}
@@ -45,9 +44,10 @@ function Aminities() {
           {/* Card 2 */}
           <div className="flex flex-col items-center px-4">
             <Amenitiewifi />
-            <h3 className="poppins-bold">Complimentary High-Speed Wi-Fi</h3>
+
+            <h3 className="poppins-bold">High-Speed Wi-Fi </h3>
             <p className="text-sm poppins-regular text-gray-600">
-              Stay connected seamlessly throughout your stay.
+              Seamless connectivity everywhere.
             </p>
           </div>
 
@@ -59,18 +59,20 @@ function Aminities() {
           {/* Card 3 */}
           <div className="flex flex-col items-center px-4">
             <Amenitiecouch />
-            <h3 className="poppins-bold">Elegant Lounge Area</h3>
+
+            <h3 className="poppins-bold">Elegant Lounge</h3>
+
             <p className="text-sm poppins-regular  text-gray-600">
-              Relax in stylish lounge spaces with soothing ambiance.
+              Relax with soothing tea service.
             </p>
           </div>
 
           {/* Card 4 */}
           <div className="flex flex-col items-center px-4">
             <Amenitiepower />
-            <h3 className="poppins-bold">Uninterrupted Power Supply</h3>
+            <h3 className="poppins-bold">24/7 Concierge </h3>
             <p className="text-sm poppins-regular text-gray-600">
-              24/7 energy assurance for your peace of mind.
+              Personalized assistance anytime.
             </p>
           </div>
 
@@ -82,9 +84,10 @@ function Aminities() {
           {/* Card 5 */}
           <div className="flex flex-col items-center px-4">
             <Amenitiereception />
-            <h3 className="poppins-bold">24/7 Concierge & Reception</h3>
+            <h3 className="poppins-bold"> 24/7 Power Supply </h3>
+
             <p className="text-sm poppins-regular text-gray-600">
-              Personalized assistance anytime you need it.
+              Uninterrupted energy assurance.
             </p>
           </div>
 
@@ -96,18 +99,18 @@ function Aminities() {
           {/* Card 6 */}
           <div className="flex flex-col items-center px-4">
             <AmenitieHousekeeping />{" "}
-            <h3 className="poppins-bold">Daily Housekeeping Service</h3>
+            <h3 className="poppins-bold">Daily Housekeeping</h3>
             <p className="text-sm poppins-regular text-gray-600">
-              Ensuring spotless comfort throughout your stay.
+              Ensures spotless during your stay.
             </p>
           </div>
 
           {/* Card 7 */}
           <div className="flex flex-col items-center px-4">
             <AmenitieBed />
-            <h3 className="poppins-bold">Luxurious Rooms & Suites</h3>
+            <h3 className="poppins-bold"> Luxurious Rooms</h3>
             <p className="text-sm poppins-regular text-gray-600">
-              Spacious, elegant, and fully equipped for relaxation.
+              Designed for unmatched relaxation.
             </p>
           </div>
 
@@ -119,9 +122,10 @@ function Aminities() {
           {/* Card 8 */}
           <div className="flex flex-col items-center px-4">
             <AmenitieView />
-            <h3 className="poppins-bold">Scenic City & Mountain Views</h3>
+            <h3 className="poppins-bold">Mountain Views</h3>
+
             <p className="text-sm poppins-regular text-gray-600">
-              Breathtaking panoramas from your window.
+              Breathtaking perspective of Murree.
             </p>
           </div>
 
@@ -130,11 +134,11 @@ function Aminities() {
             <div className="w-full md:w-20 lg:w-32 border-t-2 border-black"></div>
           </div>
           {/* Card 9 */}
-          <div className="flex flex-col ml-40 sm:ml-0 items-center px-4">
+          <div className="flex flex-col  items-center px-4">
             <AmenitieSecurity />
-            <h3 className="poppins-bold">Advanced Security System</h3>
+            <h3 className="poppins-bold"> Advanced Security</h3>
             <p className="text-sm poppins-regular text-gray-600">
-              24/7 monitoring to safeguard your comfort.
+              Safety and privacy guaranteed.
             </p>
           </div>
         </div>

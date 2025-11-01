@@ -1,4 +1,4 @@
-import roomimage from "@/assets/BG/Decorbg.png";
+import roomimage from "@/assets/BG/Decorbg.webp";
 import DecorCard from "@/components/cards/DecorCard";
 import Footer from "@/components/layout/Footer";
 function Decor() {
@@ -18,7 +18,7 @@ function Decor() {
             <h1 className="poppins-bold  text-2xl md:text-5xl lg:text-6xl">
               STYLING & DECOR DEALS
             </h1>
-            <p className="text-center w-96 sm:w-1/2">
+            <p className="text-center w-[22rem] sm:w-1/2">
               Discover refined comfort in our elegantly designed rooms spread
               across six floors, each crafted with style and sophistication in
               mind.
@@ -27,10 +27,10 @@ function Decor() {
         </section>
         {/* body section with cards */}
         <section className="backgroundcolor space-y-6 pt-10 pb-10">
-          <DecorCard image="/Gallery/Decor/decor1.svg" />
-          <DecorCard image="/Gallery/Decor/decor2.svg" />
-          <DecorCard image="/Gallery/Decor/decor3.svg" />
-          <DecorCard image="/Gallery/Decor/decor4.svg" />
+          <DecorCard image="/Gallery/Decor/decor1.webp" />
+          <DecorCard image="/Gallery/Decor/decor2.webp" />
+          <DecorCard image="/Gallery/Decor/decor3.webp" />
+          <DecorCard image="/Gallery/Decor/decor4.webp" />
         </section>
         <Footer />
       </div>

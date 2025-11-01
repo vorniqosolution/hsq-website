@@ -46,7 +46,7 @@ const Hero: React.FC<HeroCarouselProps> = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center mt-32 md:mt-40 lg:mt-24 xl:mt-36 h-full  text-center text-white px-6">
+      <div className="relative z-10 flex flex-col items-center mt-32 xs:mt-40 md:mt-40 lg:mt-24 xl:mt-36 h-full  text-center text-white px-6">
         <h3 className="text-4xl sm:text-5xl Tuesdaynight mb-2">
           {slides[current].subtitle}
         </h3>

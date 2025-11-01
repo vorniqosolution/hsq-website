@@ -1,9 +1,11 @@
 // hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { lazy, Suspense } from "react";
 // Components
 import BookingWidget from "@/components/BookingWidget";
-import Hero from "@/components/Hero";
+// import Hero from "@/components/Hero";
+const Hero = lazy(() => import("@/components/Hero"));
 import CommanButton from "@/components/buttons/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -18,6 +20,7 @@ import { Get_All_Available_Room, GoogleReview } from "@/api/roomsApi";
 import { RoomsGroupedResponse } from "@/types/Room";
 import { ReviewSummary } from "@/types/Review";
 import FrontLogo from "@/components/layout/FrontLogo";
+import NewFooter from "@/components/layout/NewFooter";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -44,19 +47,19 @@ import {
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // images
-import v1 from "@/assets/indexpage/v1.png";
-import v2 from "@/assets/indexpage/v2.png";
-import v3 from "@/assets/indexpage/v3.png";
-import v4 from "@/assets/indexpage/v4.png";
-import photoA from "@/assets/indexpage/about-bg.svg";
-import reviewbg from "@/assets/indexpage/reviewbg.svg";
-import dummmyreview from "@/assets/indexpage/dummyreview.svg";
-import amenitiebg from "@/assets/indexpage/amenitiebg.svg";
-import logo from "@/assets/logo.png";
+import v1 from "@/assets/indexpage/v1.webp";
+import v2 from "@/assets/indexpage/v2.webp";
+import v3 from "@/assets/indexpage/v3.webp";
+import v4 from "@/assets/indexpage/v4.webp";
+import photoA from "@/assets/indexpage/about-bg.webp";
+import reviewbg from "@/assets/indexpage/reviewbg.webp";
+// import dummmyreview from "@/assets/indexpage/dummyreview.svg";
+import amenitiebg from "@/assets/indexpage/amenitiebg.webp";
+import logo from "@/assets/logo.webp";
 // import roomimage from "@/assets/Book/roomimage.svg";
-import galleryimage from "@/assets/indexpage/gallerybg.svg";
-import restaurent from "@/assets/indexpage/restaurent.png";
-
+import galleryimage from "@/assets/indexpage/Gallerybg.webp";
+import restaurent from "@/assets/indexpage/restaurent.webp";
+const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
 // store
 import { useRoomStore, useReviewStore } from "@/store/store";
 type FeatureItem = { icon: React.ElementType; label: string };
@@ -178,6 +181,7 @@ const Index = () => {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: false,
+      refetchIntervalInBackground: false,
     });
   // Fetched Reviews api
   const { data: Reviews, isSuccess: isReviewSuccess } = useQuery({
@@ -188,6 +192,7 @@ const Index = () => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     refetchOnReconnect: false,
+    refetchIntervalInBackground: false,
     select: (reviews) =>
       reviews.map((review: any) => ({
         name: review.user?.name,
@@ -197,24 +202,32 @@ const Index = () => {
       })),
   });
 
+  // useEffect(() => {
+  //   if (isSuccess && data) {
+  //     setRooms(data);
+  //   }
+  //   if (isReviewSuccess && Reviews) {
+  //     setReviews(Reviews);
+  //     // console.log("Reviews", Reviews[0]);
+  //     // console.log(
+  //     //   "Total Reviews:",
+  //     //   Reviews.map((data) => data.name)
+  //     // );
+  //     // console.log(
+  //     //   "Reviews d",
+  //     //   reviews.map((data) => data.thumbnail)
+  //     // );
+  //   }
+  //   // console.log("Store Reviews", reviews);
+  // }, [isSuccess, data, setRooms, isReviewSuccess, Reviews]);
+
   useEffect(() => {
-    if (isSuccess && data) {
-      setRooms(data);
-    }
-    if (isReviewSuccess && Reviews) {
-      setReviews(Reviews);
-      // console.log("Reviews", Reviews[0]);
-      // console.log(
-      //   "Total Reviews:",
-      //   Reviews.map((data) => data.name)
-      // );
-      // console.log(
-      //   "Reviews d",
-      //   reviews.map((data) => data.thumbnail)
-      // );
-    }
-    // console.log("Store Reviews", reviews);
-  }, [isSuccess, data, setRooms, isReviewSuccess]);
+    if (isSuccess && data) setRooms(data);
+  }, [isSuccess, data]);
+
+  useEffect(() => {
+    if (isReviewSuccess && Reviews) setReviews(Reviews);
+  }, [isReviewSuccess, Reviews]);
   // useEffect(() => {
   //   // if(Reviews){
   //   console.log("Goole_Review_Response", Reviews);
@@ -226,24 +239,29 @@ const Index = () => {
   // console.log("Store data", rooms);
   const allowedCategories = ["Deluxe", "Executive", "Presidential"];
 
-  const filtered = rooms
-    .filter((cat) => allowedCategories.includes(cat.categoryName)) // only these 3
-    .map((cat) => ({
-      categoryName: cat.categoryName,
-      room: cat.rooms[0],
-    }))
-    .filter((cat) => cat.room);
+  const filtered = useMemo(() => {
+    return rooms
+      .filter((cat) => allowedCategories.includes(cat.categoryName))
+      .map((cat) => ({
+        categoryName: cat.categoryName,
+        room: cat.rooms[0],
+      }))
+      .filter((cat) => cat.room);
+  }, [rooms]); // sirf rooms change hone par recompute hoga
 
   // console.log("Filtered Data",filtered);
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  console.log("BACKEND_URL", BACKEND_URL);
   if (isLoading) return <FrontLogo />;
   return (
     <>
       {/* Landing page */}
       <section className="relative">
-        <Hero slides={slides} autoPlayInterval={5000} />
+        <Suspense fallback={<FrontLogo />}>
+          <Hero slides={slides} autoPlayInterval={5000} />
+        </Suspense>
         <div className="absolute -bottom-60 lg:bottom-[-110px] w-full">
           <BookingWidget />
         </div>
@@ -268,7 +286,7 @@ const Index = () => {
                 className="bg-primary/15 my-8 h-20 w-full lg:w-52 lg:h-28 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  poppins-semibold  rounded-3xl flex items-center justify-center flex-col"
               >
                 <data.icon />
-                <p className="text-[9px] poppins-semibold sm:text-[10px] pt-2">
+                <p className="text-[8px]   poppins-semibold sm:text-[10px] sm:pt-2">
                   {data.label}
                 </p>
               </div>
@@ -315,9 +333,18 @@ const Index = () => {
             // spaceBetween={30}
             loop={true}
             // centeredSlides={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
             breakpoints={{
               0: { slidesPerView: 1.3, spaceBetween: 40 }, // mobile → 1 card
+              400: {
+                slidesPerView: 1.5,
+                spaceBetween: 30,
+                // centeredSlides: true,
+              },
+              411: {
+                slidesPerView: 1.3,
+                spaceBetween: 30,
+              },
               768: {
                 slidesPerView: 1.2,
                 spaceBetween: -130,
@@ -370,7 +397,7 @@ const Index = () => {
             {/* heading */}
             <div className=" w-full flex flex-col order-1 lg:order-2 m-auto lg:w-1/2">
               <img
-                className="w-fit h-32  m-auto lg:ml-44"
+                className="w-[50%] md:w-fit h-32  m-auto lg:ml-44 2xl:ml-56"
                 src={logo}
                 loading="lazy"
                 alt=""
@@ -473,11 +500,11 @@ const Index = () => {
       <section className="w-full backgroundcolor py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Left Side */}
-          <div className=" space-y-3 sm:space-y-6 px-6 md:px-12 lg:px-20">
+          <div className="space-y-3 sm:space-y-6 px-6 md:px-12 lg:px-20">
             <h2 className="text-2xl text-center md:text-4xl poppins-bold text-black">
               Our Restaurant
             </h2>
-            <p className=" text-center lg:leading-relaxed poppins-regular max-w-md">
+            <p className="text-center lg:leading-relaxed poppins-regular max-w-md">
               Indulge in a gourmet buffet breakfast, thoughtfully served in our
               sophisticated lounge or on the serene patio for a touch of
               open-air luxury.
@@ -514,11 +541,11 @@ const Index = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex justify-center">
+          <div className="flex w-[90%] md:m-auto ">
             <img
               src={restaurent}
               alt="Restaurant 1"
-              className="object-cover w-fit h-96 sticky top-24"
+              className="object-cover w-full h-auto md:h-96 md:w-fit  top-24"
             />
           </div>
         </div>
@@ -602,6 +629,7 @@ const Index = () => {
         <WhatsAppButton />
       </div>
       <Footer />
+      {/* <NewFooter></NewFooter> */}
     </>
   );
 };

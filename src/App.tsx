@@ -53,26 +53,23 @@ import Restaurent from "@/pages/Restaurent";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <Suspense fallback={<FrontLogo />}>
-    <QueryClientProvider client={queryClient}>
-      {/* <HelmetProvider> */}
-      {/* <TooltipProvider> */}
-      {/* <Toaster /> */}
-      {/* <Sonner /> */}
-      <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          {/* <main className="flex-1"> */}
+  <QueryClientProvider client={queryClient}>
+    {/* <HelmetProvider> */}
+    {/* <TooltipProvider> */}
+    {/* <Toaster /> */}
+    {/* <Sonner /> */}
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        {/* <main className="flex-1"> */}
+        <Suspense fallback={<FrontLogo />}>
+          {/* </Suspense> */}
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/rooms" element={<Rooms />} />
-            {/* <Route path="/dining" element={<Dining />} /> */}
-            {/* <Route path="/spa" element={<Spa />} /> */}
             <Route path="/gallery" element={<Gallery />} />
-            {/* <Route path="/offers" element={<Offers />} /> */}
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            {/* <Route path="/privacy" element={<Privacy />} /> */}
             <Route path="/terms" element={<TermsAndCondition />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/decor" element={<Decor />} />
@@ -84,20 +81,12 @@ const App = () => (
             <Route path="/logo" element={<FrontLogo />} />
             <Route path="/bookingform" element={<BookingFormpage />} />
             <Route path="/restaurent" element={<Restaurent />} />
-
-            {/* <Route path="/logo" element={<Hero />} /> */}
           </Routes>
-          {/* </main> */}
-          {/* <Footer /> */}
-        </div>
-
-        {/* Add DevTools */}
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-      </BrowserRouter>
-      {/* </TooltipProvider> */}
-      {/* </HelmetProvider> */}
-    </QueryClientProvider>
-  </Suspense>
+        </Suspense>
+      </div>
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
 export default App;

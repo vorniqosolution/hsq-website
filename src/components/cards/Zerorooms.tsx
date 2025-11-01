@@ -1,14 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 function Zerorooms() {
   const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-center min-h-[80vh]  px-4">
-      <div className="bg-[#fff7e8] rounded-3xl shadow-lg p-10 w-full max-w-lg text-center">
+    <div className="flex md:items-center justify-center min-h-[45vh] md:min-h-[80vh]  px-4">
+      <div className="bg-[#fff7e8] rounded-3xl shadow-lg p-2 xs:p-10 w-full xs:max-w-xl text-center">
         <div className="flex justify-center mb-4">
-          <img src={logo} alt="Hotel Logo" className="w-fit h-24 md:h-28" />
+          <img
+            src={logo}
+            alt="Hotel Logo"
+            className="w-[50%] md:w-fit h-24 md:h-28"
+          />
         </div>
         <h2 className="text-2xl md:text-4xl poppins-bold text-black mb-3 tracking-wide">
           NO ROOMS FOUND

@@ -1,4 +1,4 @@
-import reviewbg from "@/assets/Review/reviewbg.png";
+import reviewbg from "@/assets/Review/reviewbg.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import CommanButton from "@/components/buttons/Button";
@@ -21,14 +21,14 @@ function Review() {
       <div>
         {/* upper section */}
         <section
-          className="w-full bg-cover bg-bottom h-[30vh] lg:h-[70vh]"
+          className="w-full bg-cover bg-bottom h-[35vh] xs:h-[30vh] lg:h-[70vh]"
           style={{ backgroundImage: `url(${reviewbg})` }}
         >
-          <div className="flex flex-col  text-white justify-center items-center pt-14 md:pt-24 lg:pt-36 space-y-2">
+          <div className="flex flex-col  text-white justify-center items-center pt-12 xs:pt-14 md:pt-24 lg:pt-36 space-y-2">
             <h1 className="Tuesdaynight text-2xl md:text-3xl lg:text-5xl">
               Stories
             </h1>
-            <h1 className="poppins-bold text-3xl md:text-4xl lg:text-5xl">
+            <h1 className="poppins-bold text-2xl xs:text-3xl md:text-4xl lg:text-5xl">
               OF SATISFACTION
             </h1>
             <p className="text-sm text-center">
@@ -47,14 +47,32 @@ function Review() {
               modules={[Navigation, Autoplay]}
               spaceBetween={-8} // gap between cards
               loop={true}
-              // centeredSlides={true} // 👈 centers active slide
+              // centeredSlides={true}
               slidesPerView="auto"
               autoplay={{ delay: 3000, disableOnInteraction: false }}
               breakpoints={{
                 0: {
+                  slidesPerView: 1,
+                  // spaceBetween: 40,
+                  centeredSlides: true,
+                }, // mobile → 1 card
+                320: {
+                  slidesPerView: 1,
+                  // spaceBetween: 40,
+                },
+                360: {
                   slidesPerView: 1.3,
                   spaceBetween: 40,
+                },
+                400: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 30,
+                  // centeredSlides: true,
                 }, // mobile → 1 card
+                411: {
+                  slidesPerView: 1.3,
+                  spaceBetween: 20,
+                },
                 768: {
                   slidesPerView: 1.2,
                   spaceBetween: -130,
@@ -90,7 +108,7 @@ function Review() {
             </Swiper>
           </div>
           {/* review button  */}
-          <div className="flex items-center justify-center pt-16 pb-28">
+          <div className="flex items-center justify-center pb-20 lg:pt-10  lg:pb-28">
             <a
               href="https://g.page/r/CUELIdypdTzcEBM/review"
               target="_blank"

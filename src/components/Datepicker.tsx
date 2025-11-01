@@ -30,7 +30,7 @@ const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
           <Button
             variant="default"
             id="date"
-            className="w-28 pl-2 sm:w-48 lg:pl-4 justify-between poppins-regular text-black"
+            className="w-24 pl-2 sm:w-48 lg:pl-4 2xl:pl-5 justify-between poppins-regular text-black"
           >
             {value || "Select Date"}
 

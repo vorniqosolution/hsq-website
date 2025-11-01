@@ -1,5 +1,5 @@
-import Contactus from "@/assets/ContactUs/Contactus.png";
-import contactpage from "@/assets/ContactUs/contactpage.png";
+import Contactus from "@/assets/ContactUs/Contactus.webp";
+import contactpage from "@/assets/ContactUs/contactpage.webp";
 import { Phone, Mail, MapPin } from "lucide-react";
 import ContactFoam from "@/components/ContactFoam";
 import ContactCard from "@/components/cards/ContactCard";

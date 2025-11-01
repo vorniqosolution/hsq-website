@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "@/assets/Frontlogo.svg";
+import logo from "@/assets/Frontlogo.webp";
 function FrontLogo() {
   return (
     <div className="bg-black flex justify-center items-center w-full h-screen">

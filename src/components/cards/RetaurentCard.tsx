@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 export default function ComingSoonCard() {
   return (
     <div className=" w-full sm:w-[60%]  ">
@@ -45,7 +45,7 @@ export default function ComingSoonCard() {
             transition={{ duration: 0.8 }}
           >
             <p
-              className="text-white Tuesdaynight text-3xl lg:text-4xl "
+              className="text-white Tuesdaynight text-2xl lg:text-4xl "
               //   style={{ fontFamily: "cursive" }}
             >
               Restaurant
@@ -59,7 +59,7 @@ export default function ComingSoonCard() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className=" text-3xl lg:text-5xl  text-white poppins-bold tracking-wider">
+            <h1 className=" text-2xl lg:text-5xl  text-white poppins-bold tracking-wider">
               <span className="text-white">COMING</span>
               <span className="text-[#D7AB4E] ml-2">SOON</span>!
             </h1>

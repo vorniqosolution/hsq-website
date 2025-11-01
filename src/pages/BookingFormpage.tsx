@@ -3,7 +3,7 @@ import React, { useState, lazy, Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Mutation, useMutation } from "@tanstack/react-query";
 import Toastify from "@/components/Toastify";
-import tembookingform from "@/assets/tembookingform.png";
+import tembookingform from "@/assets/tembookingform.webp";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import BookingFoam from "@/components/BookingFoam";
 import Footer from "@/components/layout/Footer";

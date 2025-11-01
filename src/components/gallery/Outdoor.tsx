@@ -1,20 +1,11 @@
 export default function Outdoor() {
-  // const images = [
-  //   "/public/Gallery/Outdoor/outdoor1.svg",
-  //   "/public/Gallery/Outdoor/outdoor2.svg",
-  //   "/public/Gallery/Outdoor/outdoor3.svg",
-  //   "/public/Gallery/Outdoor/outdoor4.svg",
-  //   "/public/Gallery/Outdoor/outdoor5.svg",
-  //   "/public/Gallery/Outdoor/outdoor6.svg",
-  // ];
-
   const images = [
-    "/Gallery/Outdoor/outdoor1.svg",
-    "/Gallery/Outdoor/outdoor2.svg",
-    "/Gallery/Outdoor/outdoor3.svg",
-    "/Gallery/Outdoor/outdoor4.svg",
-    "/Gallery/Outdoor/outdoor5.svg",
-    "/Gallery/Outdoor/outdoor6.svg",
+    "/Gallery/Outdoor/outdoor1.webp",
+    "/Gallery/Outdoor/outdoor2.webp",
+    "/Gallery/Outdoor/outdoor3.webp",
+    "/Gallery/Outdoor/outdoor4.webp",
+    "/Gallery/Outdoor/outdoor5.webp",
+    "/Gallery/Outdoor/outdoor6.webp",
   ];
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4">

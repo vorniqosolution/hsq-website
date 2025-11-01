@@ -5,10 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import DailyForecastCard from "@/components/cards/DailyForecast";
 import Footer from "@/components/layout/Footer";
 import WeatherAnimation from "@/components/LottieFiles/Weather";
-import bgone from "@/assets/Weather/bgone.png";
-import bgtwo from "@/assets/Weather/bgtwo.png";
-import bgthree from "@/assets/Weather/bgthree.png";
-import weatherbg from "@/assets/Weather/weatherbg.png";
+import bgone from "@/assets/Weather/bgone.webp";
+import bgtwo from "@/assets/Weather/bgtwo.webp";
+import bgthree from "@/assets/Weather/bgthree.webp";
+import weatherbg from "@/assets/Weather/weatherbg.webp";
 import {
   motion,
   useMotionValue,
@@ -52,8 +52,8 @@ function Weather() {
   // console.log(getNextDayName(3));
   if (isLoading) return <FrontLogo />;
   // if (isError) return <p>Error</p>;
-  console.log("Data", data?.daily[0]?.temp?.day);
-  console.log("Min", data?.daily[0]?.temp?.min);
+  // console.log("Data", data?.daily[0]?.temp?.day);
+  // console.log("Min", data?.daily[0]?.temp?.min);
 
   return (
     <>
@@ -69,7 +69,7 @@ function Weather() {
           <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center">
             MURREE FORECAST
           </h1>
-          <p className="text-center w-96 sm:w-1/2">
+          <p className="text-center w-80 sm:w-1/2">
             Discover refined comfort in our elegantly designed rooms spread
             across six floors, each crafted with style and sophistication in
             mind.

@@ -2,7 +2,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { PiStarFill } from "react-icons/pi";
 import { ReviewSummary } from "@/types/Review";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 const GoogleReviewCard: React.FC<ReviewSummary> = ({
   name,
   snippet,

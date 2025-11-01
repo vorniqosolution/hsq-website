@@ -1,5 +1,5 @@
 import React from "react";
-import Termsconditionbg from "@/assets/TermsandCondition/Termsconditionbg.png";
+import Termsconditionbg from "@/assets/TermsandCondition/Termsconditionbg.webp";
 import { useRef } from "react";
 
 import { ChevronUp, Mail, Phone, PhoneCall } from "lucide-react";

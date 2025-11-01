@@ -1,4 +1,4 @@
-import roomimage from "@/assets/BG/Faqbg.png";
+import roomimage from "@/assets/BG/Faqbg.webp";
 import React, { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -116,74 +116,75 @@ function Faqs() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section
-        className="w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh]"
-        style={{ backgroundImage: `url(${roomimage})` }}
-      >
-        {/* when use final image remove this div */}
+      <div className="w-full">
+        {/* Hero Section */}
+        <section
+          className="bg-cover bg-bottom h-[50vh] lg:h-[90vh]"
+          style={{ backgroundImage: `url(${roomimage})` }}
+        >
+          <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-36 px-4">
+            <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
+              FAQS
+            </h1>
+            <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center leading-tight">
+              FREQUENTLY ASKED QUESTIONS
+            </h1>
+            <p className="text-center w-full sm:w-3/4 md:w-1/2 px-2">
+              We’ve Got All the Answers You’re Looking For
+            </p>
+          </div>
+        </section>
 
-        <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-36">
-          <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
-            FAQS
-          </h1>
-          <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center">
-            FREQUENTLY ASKED QUESTIONS
-          </h1>
-          <p className="text-center w-96 sm:w-1/2">
-            We’ve Got All the Answers You’re Looking For
-          </p>
-        </div>
-      </section>
-      {/* FAQ Section */}
-      <section className="backgroundcolor py-10 px-6">
-        <div className="max-w-5xl mx-auto">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row  items-center justify-center lg:justify-between gap-6 mb-10">
-            <h2 className="text-2xl poppins-extrabold lg:text-4xl">
-              Your Queries Answered
-            </h2>
-            <div className="relative ">
-              <Link to={"/contact"}>
-                <button className="text-black poppins-semibold px-8 pl-3 py-2  bg-gradient-to-r from-[#D7AA4D] to-[#D49237] transition rounded-full">
-                  Ask a Question
-                </button>
-              </Link>
-
-              <div className="absolute right-1  rounded-full  bg-black px-[2px] py-[2px] top-[6px]">
-                <ChevronRight size={20} color="white" />
+        {/* FAQ Section */}
+        <section className="w-full backgroundcolor py-10 px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row items-center justify-center lg:justify-between gap-6 mb-10 text-center md:text-left">
+              <h2 className="text-2xl poppins-extrabold lg:text-4xl">
+                Your Queries Answered
+              </h2>
+              <div className="relative">
+                <Link to={"/contact"}>
+                  <button className="text-black poppins-semibold px-8 pl-3 py-2 bg-gradient-to-r from-[#D7AA4D] to-[#D49237] transition rounded-full">
+                    Ask a Question
+                  </button>
+                </Link>
+                <div className="absolute right-1 rounded-full bg-black px-[2px] py-[2px] top-[6px]">
+                  <ChevronRight size={20} color="white" />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Accordion */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-sm border-l-4 border-black px-4 py-3 cursor-pointer"
-                onClick={() => toggleAccordion(index)}
-              >
-                <div className="flex justify-between items-center">
-                  <p className="font-semibold text-sm text-gray-900">
-                    {faq.question}
-                  </p>
-                  <ChevronDown
-                    className={`w-5 h-5 text-black transform transition-transform duration-300 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
+            {/* Accordion */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-sm border-l-4 border-black px-4 py-3 cursor-pointer"
+                  onClick={() => toggleAccordion(index)}
+                >
+                  <div className="flex justify-between items-center">
+                    <p className="font-semibold text-sm text-gray-900 break-words">
+                      {faq.question}
+                    </p>
+                    <ChevronDown
+                      className={`w-5 h-5 text-black transform transition-transform duration-300 ${
+                        openIndex === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+
+                  {openIndex === index && (
+                    <p className="mt-2 text-gray-600 text-sm break-words">
+                      {faq.answer}
+                    </p>
+                  )}
                 </div>
-
-                {/*  Show only the clicked one */}
-                {openIndex === index && (
-                  <p className="mt-2 text-gray-600 text-sm">{faq.answer}</p>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }

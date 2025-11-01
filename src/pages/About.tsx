@@ -1,13 +1,11 @@
 import React from "react";
-import aboutbg from "@/assets/about/aboutbg.svg";
-import logo from "@/assets/logo.svg";
-import hotelimage from "@/assets/about/hotelimage.svg";
+import {Link} from "react-router-dom"
+import aboutbg from "@/assets/about/aboutbg.webp";
+import logo from "@/assets/logo.webp";
+import hotelimage from "@/assets/about/hotelimage.webp";
 import Viewbutton from "@/components/buttons/Viewbutton";
-import cardbg from "@/assets/about/cardbg.svg";
-// import { Users, UserCheck } from "lucide-react";
-// import { FaUsers } from "react-icons/fa";
+import cardbg from "@/assets/about/cardbg.webp";
 import { PiUsersFourFill, PiUsersThreeFill } from "react-icons/pi";
-// import { TbUsersGroup } from "react-icons/tb";
 import { TiTick } from "react-icons/ti";
 import { IoBedSharp } from "react-icons/io5";
 import AboutCard from "@/components/cards/AboutCard";
@@ -23,8 +21,6 @@ function About() {
           style={{ backgroundImage: `url(${aboutbg})` }}
         >
           {/* Overlay for dark effect */}
-          {/* <div className="absolute inset-0 bg-black/50"></div> */}
-
           {/* Content */}
           <div className="relative z-10 flex flex-col justify-center items-center text-center h-full pt-6 ">
             <h1 className="text-3xl md:text-5xl poppins-bold text-white mb-6 sm:mb-2">
@@ -38,14 +34,12 @@ function About() {
             </p>
             <div className="flex justify-betweenflex-row items-center gap-3 sm:gap-4">
               <div className="border-t-0 border  w-20 md:w-48 lg:w-96 border-white" />
-              <Viewbutton label="Book Now"></Viewbutton>
+              <Link to={"/book"}>
+              <Viewbutton label="Book Now"></Viewbutton>              
+              </Link>
+
               <div className="border-t-0 border w-20 md:w-48 lg:w-96 border-white" />
             </div>
-
-            {/* <button className="bg-white text-black font-semibold px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-200 transition">
-              Book Now
-              <span className="bg-black text-white p-1 rounded-full">➝</span>
-            </button> */}
           </div>
         </section>
         {/* hotel card section */}
@@ -88,11 +82,11 @@ function About() {
           </h1>
           {/* card div */}
           <div
-            className="h-[80vh] mt-10 rounded-2xl  p-4 flex  flex-col lg:flex-row justify-center lg:justify-start mb-10 w-[90%] lg:w-[80%] bg-fixed bg-cover lg:p-20 bg-bottom"
+            className="h-[80vh] mt-10 rounded-2xl p-2  xs:p-4 flex  flex-col lg:flex-row justify-center lg:justify-start 2xl:justify-center mb-10 w-[90%] lg:w-[80%] bg-fixed bg-cover md:pt-20 md:pl-16 2xl:pl-0 2xl:items-center  bg-bottom"
             style={{ backgroundImage: `url(${cardbg})` }}
           >
             {/* left */}
-            <div className="flex flex-row  lg:flex-col gap-9">
+            <div className="flex flex-row  lg:flex-col gap-5 xs:gap-9 lg:gap-11">
               <AboutCard
                 total="5+"
                 title="Conference"
@@ -105,63 +99,25 @@ function About() {
               />
             </div>
             {/* center */}
-            <div className="flex justify-center duration-200 ease-out  hover:scale-110  p-10 lg:p-24 items-center">
-              <div className=" w-32 h-32 p-2 lg:p-4 lg:w-44 lg:h-44  bg-opacity-30  backdrop-blur-md border-gray-400 shadow-lg  border rounded-full">
-                <div className="w-28 h-28 lg:w-36 lg:h-36 border flex justify-center items-center border-gray-400 rounded-full ">
-                  <img className="w-28 h-28" src={logo} alt="" />
+            <div className="flex justify-center duration-200 ease-out  hover:scale-110  p-10 lg:p-24  items-center">
+              <div className=" w-32 h-32 p-2 lg:p-4 lg:w-44 lg:h-44 2xl:w-52  2xl:h-52  bg-opacity-30  backdrop-blur-md border-gray-400 shadow-lg  border rounded-full">
+                <div className="w-28 h-28 lg:w-36 lg:h-36 2xl:h-44 2xl:w-44 border flex justify-center items-center border-gray-400 rounded-full ">
+                  <img
+                    className="w-full h-full  2xl:h-36 2xl:w-36"
+                    src={logo}
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
             {/* right */}
-            <div className="flex flex-row lg:flex-col gap-9">
+            <div className="flex flex-row lg:flex-col gap-5  xs:gap-9 lg:gap-11">
               <AboutCard
                 total="3000+"
                 title="Customers"
                 icon={<PiUsersThreeFill />}
               />
               <AboutCard total="96%" title="Hospitality" icon={<TiTick />} />
-              {/* <div
-                className="
-          w-64 h-36
-          rounded-2xl 
-          p-4 
-          bg-opacity-30 
-          // bg-brown-800 
-          backdrop-blur-md
-          border
-          border-gray-400 
-          shadow-lg 
-          flex 
-          flex-col 
-          justify-between 
-          relative
-        "
-              >
-                <div
-                  className="
-            absolute 
-            top-[-35px] 
-            left-[20px] 
-            w-20 h-20 
-            rounded-full 
-            bg-primary 
-            shadow-xl 
-            flex 
-            justify-center 
-            items-center
-          "
-                >
-                  <TiTick color="black" className="text-3xl" />
-                </div>
-                <div className="flex flex-col justify-end h-full mt-4">
-                  <p className="text-white text-4xl lg:text-5xl poppins-bold mb-2 self-end">
-                    96%
-                  </p>
-                  <p className="text-white text-xl poppins-medium self-end ">
-                    Guest Care
-                  </p>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>

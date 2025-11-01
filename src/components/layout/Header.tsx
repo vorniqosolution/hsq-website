@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Container } from "./Container";
 // import { BookingWidget } from "../BookingWidget";
 import { cn } from "@/lib/utils";
-import navIcon from "@/assets/hsq_logo.png";
+import navIcon from "@/assets/hsq_logo.webp";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
 

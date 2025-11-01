@@ -1,26 +1,15 @@
 // components/Footer.tsx
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  Linkedin,
-  Instagram,
-  Twitter,
-  Facebook,
-  Youtube,
-  Globe,
-} from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Instagram, Facebook } from "lucide-react";
 import { PiTiktokLogo } from "react-icons/pi";
 
 // ---- Local assets (swap paths to yours) ----
-import logo from "@/assets/hsq_logo.png";
-import footerBg from "@/assets/footerbg.png";
+import logo from "@/assets/hsq_logo.webp";
+import footerBg from "@/assets/footerbg.webp";
 
-import visa from "@/assets/Payment/visa.svg";
-import mastercard from "@/assets/Payment/master-card.svg";
-import dsc from "@/assets/Payment/discover.svg";
-import amex from "@/assets/Payment/american.svg";
+import visa from "@/assets/Payment/visa.webp";
+import mastercard from "@/assets/Payment/master-card.webp";
+import dsc from "@/assets/Payment/discover.webp";
+import amex from "@/assets/Payment/american.webp";
 
 // Some bundlers import images as strings, others as { src: string }
 const asUrl = (img: any): string =>
@@ -105,22 +94,17 @@ export default function Footer() {
               </li>
               <li>
                 <a className="hover:text-primary" href="/support">
-                  Customer Care/Help
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-primary" href="/corporate-accounts">
-                  Corporate Accounts
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-primary" href="/financials">
-                  Financial Information
+                  Customer Care/help
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary" href="/terms">
-                  Terms &amp; Conditions
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-primary" href="/faqs">
+                  FAQS
                 </a>
               </li>
             </ul>
@@ -133,12 +117,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-white/85">
               <li>
-                <a className="hover:text-primary" href="/hotel">
+                <a className="hover:text-primary" href="/about">
                   About Hotel
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary" href="/privacy">
+                <a className="hover:text-primary" href="/terms">
                   Privacy Policy
                 </a>
               </li>
@@ -181,12 +165,18 @@ export default function Footer() {
             {/* Socials */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {[
-                { Icon: Linkedin, href: "#" },
-                { Icon: Instagram, href: "#" },
-                { Icon: Twitter, href: "#" },
-                { Icon: Facebook, href: "#" },
-                { Icon: PiTiktokLogo, href: "#" },
-                // { Icon: Globe, href: "#" },
+                {
+                  Icon: Instagram,
+                  href: "https://www.instagram.com/hsqtowers/",
+                },
+                {
+                  Icon: Facebook,
+                  href: "https://www.facebook.com/hsq.towers/",
+                },
+                {
+                  Icon: PiTiktokLogo,
+                  href: "https://www.tiktok.com/@hsqtowers",
+                },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
@@ -201,7 +191,7 @@ export default function Footer() {
 
             <p className="mt-6 text-[11px] text-white/70">
               Designed and developed by{" "}
-              <span className="text-primary">Vornipo solutions</span>
+              <span className="text-primary">Vorniqo solutions</span>
             </p>
           </div>
         </div>

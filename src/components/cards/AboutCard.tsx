@@ -57,7 +57,8 @@ const AboutCard: React.FC<Titleprop> = ({ total, title, icon }) => {
       <div
         className="
           absolute 
-          top-[-35px] 
+         top-[-50px]
+          xs:top-[-35px] 
           left-[20px] 
           w-20 h-20 
           rounded-full 

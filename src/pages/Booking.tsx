@@ -1,5 +1,5 @@
 // import { useEffect } from "react";
-import bookbg from "../assets/Book/bookbg.svg";
+import bookbg from "../assets/Book/bookbg.webp";
 import { ArrowRight, PhoneCall, MailIcon, MapPin } from "lucide-react";
 import BookingCard from "../components/cards/BookingCard";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,8 +27,8 @@ function Booking() {
   const { rooms } = useRoomStore();
   const allRooms = rooms.flatMap((category) => category.rooms);
   const justrooms = rooms.map((value) => value.rooms);
-  console.log("All rooms:", allRooms);
-  console.log("Rooms Array", justrooms);
+  // console.log("All rooms:", allRooms);
+  // console.log("Rooms Array", justrooms);
 
   return (
     <>

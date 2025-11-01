@@ -1,4 +1,4 @@
-import roomimage from "@/assets/BG/roombg.png";
+import roomimage from "@/assets/BG/roombg.webp";
 import RoompageCard from "@/components/cards/RoompageCard";
 import { useRoomStore } from "@/store/store";
 import Zerorooms from "@/components/cards/Zerorooms";
@@ -21,7 +21,7 @@ const Rooms = () => {
             <h1 className="poppins-bold  text-3xl md:text-5xl lg:text-7xl">
               ROOMS AND SUITES
             </h1>
-            <p className="text-center w-96 sm:w-1/2">
+            <p className="text-center w-[22rem] sm:w-1/2">
               Discover refined comfort in our elegantly designed rooms spread
               across six floors, each crafted with style and sophistication in
               mind.

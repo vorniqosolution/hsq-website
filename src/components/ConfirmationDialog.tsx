@@ -1,6 +1,6 @@
-// import logo from "../assets/logo.svg";
-import BookingConfirmation from "@/assets/Book/BookingConfirmation.png";
-import logo from "@/assets/logo.png";
+
+import BookingConfirmation from "@/assets/Book/BookingConfirmation.webp";
+import logo from "@/assets/logo.webp";
 import { Link } from "react-router-dom";
 function ConfirmationDialog() {
   return (

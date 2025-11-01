@@ -5,7 +5,7 @@ interface RoomCardProps {
 }
 export default function RoomCard({ price, title, image }: RoomCardProps) {
   return (
-    <div className="relative  w-80 h-80  md:w-60 md:h-60  lg:w-80 lg:h-80 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-105 rounded-xl overflow-hidden shadow-lg bg-white group">
+    <div className="relative  w-72 xs:w-80 h-80  md:w-60 md:h-60  lg:w-80 lg:h-80 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-105 rounded-xl overflow-hidden shadow-lg bg-white group">
       <img
         src={image}
         alt={title}

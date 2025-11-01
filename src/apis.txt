@@ -1,14 +1,6 @@
 
-https://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
-
-GOOGLE API
-AIzaSyDfWxlPT-XurlBLHiXWwM_dmDPz6QtksUE
-place id 
-ChIJaUX9conX3zgRQQsh3Kl1PNwz
 
 #d7ab4e
-api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
-1ce2abc9cc978c98ce2a238de7e18eb2
 
 clip-path: ellipse(62% 8% at 2% 100%);
 
