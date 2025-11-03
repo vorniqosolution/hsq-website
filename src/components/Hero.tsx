@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Viewbutton from "./buttons/Viewbutton";
 import { Link } from "react-router-dom";
+
 interface Slide {
   image: string;
   title: string;
@@ -18,7 +19,7 @@ interface HeroCarouselProps {
 
 const Hero: React.FC<HeroCarouselProps> = ({
   slides,
-  autoPlayInterval = 5000,
+  autoPlayInterval = 4000,
 }) => {
   const [current, setCurrent] = useState(0);
 
@@ -30,30 +31,31 @@ const Hero: React.FC<HeroCarouselProps> = ({
   useEffect(() => {
     const interval = setInterval(nextSlide, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [autoPlayInterval]);
-
-  // console.log("Current slide index:", current);
+  }, [autoPlayInterval, slides.length]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Background */}
-      <div
-        key={current}
-        className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-        style={{ backgroundImage: `url(${slides[current].image})` }}
-      >
+      {/* Main Background Image */}
+      <div className="absolute inset-0 bg-cover bg-center transition-all duration-700">
+        <img
+          src={slides[current].image}
+          alt={slides[current].title}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover transition-opacity duration-700"
+        />
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center mt-32 xs:mt-40 md:mt-40 lg:mt-24 xl:mt-36 h-full  text-center text-white px-6">
+      {/* Text & Button Content */}
+      <div className="relative z-10 flex flex-col items-center mt-32 xs:mt-40 md:mt-40 lg:mt-24 xl:mt-36 h-full text-center text-white px-6">
         <h3 className="text-4xl sm:text-5xl Tuesdaynight mb-2">
           {slides[current].subtitle}
         </h3>
         <h1 className="text-4xl lg:text-5xl poppins-bold mb-2 lg:mb-4">
           {slides[current].title}
         </h1>
-        <p className="max-w-2xl  mx-auto mb-6 poppins-regular text-sm sm:text-lg">
+        <p className="max-w-2xl mx-auto mb-6 poppins-regular text-sm sm:text-lg">
           {slides[current].description}
         </p>
         <Link to={slides[current].href}>
@@ -61,7 +63,7 @@ const Hero: React.FC<HeroCarouselProps> = ({
         </Link>
       </div>
 
-      {/* Controls with line between */}
+      {/* Navigation Arrows */}
       <div className="absolute top-[65%] left-0 right-0 flex items-center justify-between px-12">
         <button
           onClick={prevSlide}
@@ -69,34 +71,37 @@ const Hero: React.FC<HeroCarouselProps> = ({
         >
           <ChevronLeft size={24} className="text-white" />
         </button>
-        {/* Straight line */}
+
         <div className="flex-1 mx-6 border-t border-white" />
+
         <button
           onClick={nextSlide}
-          className="border-white border p-3 hover:bg-black/50 rounded-full hover:cursor-pointer z-50"
+          className="border-white border p-3 hover:bg-black/50 rounded-full cursor-pointer z-50"
         >
           <ChevronRight size={24} className="text-white" />
         </button>
       </div>
 
-      {/* Thumbnails */}
-      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex gap-4">
+      {/* Thumbnails Section */}
+      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex gap-4 z-10">
         {slides.map((slide, index) => (
-          <button
+          <div
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-24 h-24 sm:w-32 sm:h-28 rounded-md overflow-hidden border-2 transition ${
+            className={`w-24 h-24 sm:w-32 sm:h-28 rounded-md overflow-hidden border-2 transition cursor-pointer ${
               index === current
-                ? "border-gray-500 border-2 transition-all ease-in-out  scale-125"
-                : "border-transparent"
+                ? "border-gray-500 scale-125"
+                : "border-transparent opacity-70 hover:opacity-100"
             }`}
           >
             <img
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover"
+              draggable={false}
+              loading="lazy"
             />
-          </button>
+          </div>
         ))}
       </div>
     </div>

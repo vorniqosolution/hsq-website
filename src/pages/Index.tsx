@@ -2,17 +2,18 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { lazy, Suspense } from "react";
-// Components
-import BookingWidget from "@/components/BookingWidget";
-// import Hero from "@/components/Hero";
-const Hero = lazy(() => import("@/components/Hero"));
-import CommanButton from "@/components/buttons/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import RoomCard from "@/components/cards/RoomCard";
-import Viewbutton from "@/components/buttons/Viewbutton";
-import WhatsAppButton from "@/components/buttons/Whatsapp";
-import GoogleReviewCard from "@/components/cards/GoogleReview";
+// Components
+
+const BookingWidget = lazy(() => import("@/components/BookingWidget"));
+const Hero = lazy(() => import("@/components/Hero"));
+const GoogleReviewCard = lazy(() => import("@/components/cards/GoogleReview"));
+const RoomCard = lazy(() => import("@/components/cards/RoomCard"));
+const WhatsAppButton = lazy(() => import("@/components/buttons/Whatsapp"));
+const CommanButton = lazy(() => import("@/components/buttons/Button"));
+const Viewbutton = lazy(() => import("@/components/buttons/Viewbutton"));
+const Footer = lazy(() => import("@/components/layout/Footer"));
 import "swiper/css";
 import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
@@ -28,20 +29,12 @@ import Wifi from "@/components/svg/Wifi";
 import Laundry from "@/components/svg/Laundry";
 import Breakfast from "@/components/svg/Breakfast";
 import Gym from "@/components/svg/Gym";
-import Footer from "@/components/layout/Footer";
+
 import AboutBed from "@/components/svg/AboutBed";
 import AboutSenicView from "@/components/svg/AboutSenicView";
 import AboutDinning from "@/components/svg/AboutDinning";
 // icons
-import {
-  // BedDouble,
-  // DumbbellIcon,
-  // Mountain,
-  // Wine,
-  ArrowRight,
-  Plus,
-  Minus,
-} from "lucide-react";
+import { ArrowRight, Plus, Minus } from "lucide-react";
 // import { IoIosFitness } from "react-icons/io";
 // import { IoMdFitness } from "react-icons/io";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,7 +52,7 @@ import logo from "@/assets/logo.webp";
 // import roomimage from "@/assets/Book/roomimage.svg";
 import galleryimage from "@/assets/indexpage/Gallerybg.webp";
 import restaurent from "@/assets/indexpage/restaurent.webp";
-const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
+// const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
 // store
 import { useRoomStore, useReviewStore } from "@/store/store";
 type FeatureItem = { icon: React.ElementType; label: string };
@@ -131,7 +124,7 @@ const kitchens = [
 const slides = [
   {
     image: v1,
-    title: "HSQ TOWER",
+    title: "HSQ TOWERS",
     subtitle: "Welcome To",
     description:
       "At HSQ Tower, we redefine modern hospitality—blending style, innovation, and authentic warmth. ",
@@ -172,6 +165,12 @@ const Index = () => {
 
   const { setRooms, rooms } = useRoomStore();
   const { setReviews, reviews } = useReviewStore();
+  const [fetchEnabled, setFetchEnabled] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFetchEnabled(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
   const { data, isLoading, isError, error, isSuccess } =
     useQuery<RoomsGroupedResponse>({
       queryKey: ["FetchRooms"],
@@ -179,6 +178,7 @@ const Index = () => {
       staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
       gcTime: 60 * 60 * 1000,
       refetchOnWindowFocus: false,
+      enabled: fetchEnabled,
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchIntervalInBackground: false,
@@ -190,6 +190,7 @@ const Index = () => {
     staleTime: 60 * 60 * 1000, // 1 hour = 3600000 ms
     gcTime: 60 * 60 * 1000,
     refetchOnWindowFocus: false,
+    enabled: fetchEnabled,
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchIntervalInBackground: false,
@@ -201,25 +202,6 @@ const Index = () => {
         date: review.date,
       })),
   });
-
-  // useEffect(() => {
-  //   if (isSuccess && data) {
-  //     setRooms(data);
-  //   }
-  //   if (isReviewSuccess && Reviews) {
-  //     setReviews(Reviews);
-  //     // console.log("Reviews", Reviews[0]);
-  //     // console.log(
-  //     //   "Total Reviews:",
-  //     //   Reviews.map((data) => data.name)
-  //     // );
-  //     // console.log(
-  //     //   "Reviews d",
-  //     //   reviews.map((data) => data.thumbnail)
-  //     // );
-  //   }
-  //   // console.log("Store Reviews", reviews);
-  // }, [isSuccess, data, setRooms, isReviewSuccess, Reviews]);
 
   useEffect(() => {
     if (isSuccess && data) setRooms(data);
@@ -253,7 +235,6 @@ const Index = () => {
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-  console.log("BACKEND_URL", BACKEND_URL);
   if (isLoading) return <FrontLogo />;
   return (
     <>
@@ -263,7 +244,9 @@ const Index = () => {
           <Hero slides={slides} autoPlayInterval={5000} />
         </Suspense>
         <div className="absolute -bottom-60 lg:bottom-[-110px] w-full">
-          <BookingWidget />
+          <Suspense>
+            <BookingWidget />
+          </Suspense>
         </div>
       </section>
       {/* Welcome to Hsqtower section  */}
@@ -372,12 +355,14 @@ const Index = () => {
                   {/* // <p>hello world</p> */}
                   {/* // <p>{d} </p> */}
                   {/* <p>{item.name}</p> */}
-                  <GoogleReviewCard
-                    name={item.name}
-                    thumbnail={item.thumbnail}
-                    snippet={item.snippet}
-                    date={item.date}
-                  />
+                  <Suspense>
+                    <GoogleReviewCard
+                      name={item.name}
+                      thumbnail={item.thumbnail}
+                      snippet={item.snippet}
+                      date={item.date}
+                    />
+                  </Suspense>
                   {/* ))} */}
                 </div>
               </SwiperSlide>
@@ -407,7 +392,9 @@ const Index = () => {
               </h1>
               <Link to="/aminities">
                 <div className="flex justify-center mt-4">
-                  <CommanButton label="Learn More" />
+                  <Suspense>
+                    <CommanButton label="Learn More" />
+                  </Suspense>
                 </div>
               </Link>
             </div>
@@ -443,11 +430,13 @@ const Index = () => {
             //   {value.room.publicName}
             // </p>
             <div key={value.room.id}>
-              <RoomCard
-                price={value.room.rate}
-                title={value.room.publicName}
-                image={value.room.images[0]}
-              />
+              <Suspense>
+                <RoomCard
+                  price={value.room.rate}
+                  title={value.room.publicName}
+                  image={value.room.images[0]}
+                />
+              </Suspense>
             </div>
           ))}
 
@@ -470,7 +459,9 @@ const Index = () => {
         {/* button */}
         <div className="mt-5">
           <Link to="/book">
-            <CommanButton label="View All" />
+            <Suspense>
+              <CommanButton label="View All" />
+            </Suspense>
           </Link>
         </div>
       </section>
@@ -492,7 +483,9 @@ const Index = () => {
           <p className="text-sm">Welcome to our photo gallery</p>
           {/* Button */}
           <Link to="/gallery">
-            <Viewbutton label="  View Gallery" />
+            <Suspense>
+              <Viewbutton label="  View Gallery" />
+            </Suspense>
           </Link>
         </div>
       </section>
@@ -626,9 +619,13 @@ const Index = () => {
         </div>
       </section>
       <div className="relative">
-        <WhatsAppButton />
+        <Suspense>
+          <WhatsAppButton />
+        </Suspense>
       </div>
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
       {/* <NewFooter></NewFooter> */}
     </>
   );

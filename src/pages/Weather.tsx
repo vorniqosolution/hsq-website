@@ -28,6 +28,7 @@ function Weather() {
     refetchOnMount: false, // don’t refetch when remounting component
     refetchOnReconnect: false,
   });
+  // console.log("weather data", data);
   const ref = useRef(null);
   const inview = useInView(ref, { once: true });
   const count = useMotionValue(0);

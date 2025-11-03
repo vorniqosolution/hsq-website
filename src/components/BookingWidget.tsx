@@ -85,7 +85,7 @@ function BookingWidget() {
       <div className="flex justify-center items-center ">
         <div className="border-t-[#D7AB4E] border-l-[#D7AB4E]  border-r-[#666666] border-b-[#666666] border-2 rounded-3xl lg:rounded-full bg-gradient-to-l from-[#303030] to-[#111111]  w-[95%] md:w-[60%] lg:w-[80%]  m-auto h-fit lg:h-32  p-0 lg:p-14 gap-5 flex flex-col lg:flex-row items-center lg:items-center 2xl:gap-14 2xl:p-16 ">
           <div className="flex justify-center 2xl:justify-end">
-            <img className="w-28 h-20 mt-3  lg:h-28" src={logo} alt="Hsqlogo" />
+            <img className="w-28 h-20 mt-3 2xl:h-28" src={logo} alt="Hsqlogo" />
           </div>
 
           <div className="flex gap-2 pl-2 xs:pl-4 lg:gap-7 2xl:gap-16  xs:flex-row">

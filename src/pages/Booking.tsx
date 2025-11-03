@@ -195,7 +195,7 @@ function Booking() {
               </h1>
               {/* location */}
               <div className="flex flex-row items-center gap-4">
-                <div className="relative bg-primary h-12 w-24 md:w-16 lg:w-12 rounded-full">
+                <div className="relative bg-primary h-12 w-24 xs:w-[75px] md:w-16 lg:w-12 rounded-full">
                   <MapPin
                     size={25}
                     className="text-black absolute top-3 left-3"
