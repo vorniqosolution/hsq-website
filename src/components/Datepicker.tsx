@@ -13,9 +13,15 @@ import {
 interface DatepickerProps {
   title: string;
   value?: string | null;
+  hasError?: boolean;
   onChange?: (date: Date | null) => void;
 }
-const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
+const Datepicker: React.FC<DatepickerProps> = ({
+  title,
+  value,
+  onChange,
+  hasError,
+}) => {
   const [open, setOpen] = React.useState(false);
   // const [date, setDate] = React.useState<Date | undefined>(undefined);
   // console.log("Date", date);
@@ -30,7 +36,8 @@ const Datepicker: React.FC<DatepickerProps> = ({ title, value, onChange }) => {
           <Button
             variant="default"
             id="date"
-            className="w-24 pl-2 sm:w-48 lg:pl-4 2xl:pl-5 justify-between poppins-regular text-black"
+            className={`w-24 pl-2 sm:w-48 lg:pl-4 2xl:pl-5 justify-between poppins-regular text-black
+              ${hasError ? "border-2 border-red-800" : ""}`}
           >
             {value || "Select Date"}
 

@@ -1,8 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import { useQuery } from "@tanstack/react-query";
+const Lottie = lazy(() => import("lottie-react"));
 
-// import weatherbg from "";
-import DailyForecastCard from "@/components/cards/DailyForecast";
+//lottie files
+import RainAnimation from "@/assets/Weather/rain.json";
+import CloudsAnimation from "@/assets/Weather/clouds.json";
+import SnowAnimation from "@/assets/Weather/snow.json";
+import ClearAnimation from "@/assets/Weather/clear.json";
+// import WeatherAnimation from "@/components/LottieFiles/Weather";
+// import CloudWithRain from "@/assets/Weather/WeatherLogo.json";
+const DailyForecastCard = lazy(
+  () => import("@/components/cards/DailyForecast")
+);
 import Footer from "@/components/layout/Footer";
 import WeatherAnimation from "@/components/LottieFiles/Weather";
 import bgone from "@/assets/Weather/bgone.webp";
@@ -44,6 +53,22 @@ function Weather() {
     });
     return () => controls.stop();
   }, [data?.current?.temp, inview]);
+  const getWeatherAnimation = () => {
+    const weatherMain = data?.current?.weather?.[0]?.main;
+
+    switch (weatherMain) {
+      case "Rain":
+        return RainAnimation;
+      case "Clouds":
+        return CloudsAnimation;
+      case "Clear":
+        return ClearAnimation;
+      case "Snow":
+        return SnowAnimation;
+      default:
+        return RainAnimation;
+    }
+  };
 
   const getNextDayName = (addDays: number) => {
     const newDate = new Date();
@@ -132,7 +157,14 @@ function Weather() {
 
             {/* Current Weather Icon */}
             <div className="bg-[#D49237] pt-3 rounded-xl shadow-md flex items-center justify-center w-32 h-32 md:w-36 md:h-24">
-              <WeatherAnimation />
+              {/* <WeatherAnimation /> */}
+              <Suspense>
+                <Lottie
+                  animationData={getWeatherAnimation()}
+                  loop
+                  className="w-24 h-24"
+                />
+              </Suspense>
             </div>
           </div>
           {/* Sub-header / Slogan */}
@@ -141,24 +173,28 @@ function Weather() {
           </p>
         </div>
         <div className="pt-10 pb-10 flex flex-col items-center lg:flex-row lg:pt-16 gap-6 justify-center">
-          <DailyForecastCard
-            day={getNextDayName(1)}
-            maxTemp={data?.daily[0]?.temp?.day}
-            minTemp={data?.daily[0]?.temp?.min}
-            image={bgone}
-          />
-          <DailyForecastCard
-            day={getNextDayName(2)}
-            maxTemp={data?.daily[1]?.temp?.day}
-            minTemp={data?.daily[1]?.temp?.min}
-            image={bgtwo}
-          />
-          <DailyForecastCard
-            day={getNextDayName(3)}
-            maxTemp={data?.daily[2]?.temp?.day}
-            minTemp={data?.daily[2]?.temp?.min}
-            image={bgthree}
-          />
+          <Suspense>
+            <DailyForecastCard
+              day={getNextDayName(1)}
+              maxTemp={data?.daily[0]?.temp?.day}
+              minTemp={data?.daily[0]?.temp?.min}
+              image={bgone}
+            />
+
+            <DailyForecastCard
+              day={getNextDayName(2)}
+              maxTemp={data?.daily[1]?.temp?.day}
+              minTemp={data?.daily[1]?.temp?.min}
+              image={bgtwo}
+            />
+
+            <DailyForecastCard
+              day={getNextDayName(3)}
+              maxTemp={data?.daily[2]?.temp?.day}
+              minTemp={data?.daily[2]?.temp?.min}
+              image={bgthree}
+            />
+          </Suspense>
         </div>
       </section>
       <Footer />

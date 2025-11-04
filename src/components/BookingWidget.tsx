@@ -15,6 +15,11 @@ function BookingWidget() {
   const [guests, setGuests] = useState<string | null>(null);
   const { setAvaibleRooms, setBookingwidget, Bookingwidget } = useRoomStore();
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({
+    arrival: false,
+    departure: false,
+    guests: false,
+  });
   const { refetch } = useQuery<AvailableRoomGroupedResponse>({
     queryKey: ["available-rooms", arrival, departure, guests],
     queryFn: () =>
@@ -24,15 +29,22 @@ function BookingWidget() {
 
   const handleDepartureChange = (date: Date | null) => {
     setDeparture(date ? format(date, "yyyy-MM-dd") : null);
-
+    setErrors((prev) => ({ ...prev, departure: false }));
     // console.log("actual date", date);
     // console.log("departure", departure);
   };
   const handleArrivalChange = (date: Date | null) => {
     setArrival(date ? format(date, "yyyy-MM-dd") : null);
+    setErrors((prev) => ({ ...prev, arrival: false }));
   };
 
   const Validation = async () => {
+    const newErrors = {
+      arrival: !arrival,
+      departure: !departure,
+      guests: !guests,
+    };
+    setErrors(newErrors);
     if (!arrival || !guests || !departure) {
       return toast.error("All Fields Required", {
         position: "top-center",
@@ -88,26 +100,33 @@ function BookingWidget() {
             <img className="w-28 h-20 mt-3 2xl:h-28" src={logo} alt="Hsqlogo" />
           </div>
 
-          <div className="flex gap-2 pl-2 xs:pl-4 lg:gap-7 2xl:gap-16  xs:flex-row">
+          <div className="flex gap-2 pl-2 xs:pl-4 lg:gap-7 2xl:gap-16 items-baseline  xs:flex-row">
             <Datepicker
               title="Arrival"
               value={arrival}
+              hasError={errors.arrival}
               onChange={handleArrivalChange}
             />
             <Datepicker
               title="Departure"
               value={departure}
+              hasError={errors.departure}
               onChange={handleDepartureChange}
             />
             {/* Guests Dropdown */}
-            <div className="">
-              <label className="text-white px-1 flex flex-col poppins-light ">
+            <div className="flex flex-col">
+              <label className="text-white px-1  poppins-light ">
                 Guests :
               </label>
               <select
                 value={guests}
-                onChange={(e) => setGuests(e.target.value)}
-                className="w-28 text-black bg-white  mt-1 px-[2px] rounded-md lg:w-full lg:px-3 2xl:px-5 py-2 text-sm border-0 focus:outline-none focus:ring-2 focus:ring-yellow-500 h-10"
+                onChange={(e) => {
+                  setGuests(e.target.value);
+                  setErrors((prev) => ({ ...prev, guests: false }));
+                }}
+                className={`w-28 text-black bg-white mt-2 px-[2px] rounded-md lg:w-full lg:px-3 2xl:px-5 py-2 text-sm h-10
+        ${errors.guests ? "border-2 border-red-800" : "border-0"}
+        focus:outline-none focus:ring-2 focus:ring-yellow-500`}
               >
                 <option value="">Select Guest</option>
                 <option value="1">1 Guest</option>

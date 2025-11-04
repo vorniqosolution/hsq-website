@@ -19,9 +19,7 @@ import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { Get_All_Available_Room, GoogleReview } from "@/api/roomsApi";
 import { RoomsGroupedResponse } from "@/types/Room";
-import { ReviewSummary } from "@/types/Review";
 import FrontLogo from "@/components/layout/FrontLogo";
-import NewFooter from "@/components/layout/NewFooter";
 // svg
 import Parking from "@/components/svg/Parking";
 import Conference from "@/components/svg/Conference";
@@ -35,9 +33,6 @@ import AboutSenicView from "@/components/svg/AboutSenicView";
 import AboutDinning from "@/components/svg/AboutDinning";
 // icons
 import { ArrowRight, Plus, Minus } from "lucide-react";
-// import { IoIosFitness } from "react-icons/io";
-// import { IoMdFitness } from "react-icons/io";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // images
 import v1 from "@/assets/indexpage/v1.webp";
@@ -46,7 +41,7 @@ import v3 from "@/assets/indexpage/v3.webp";
 import v4 from "@/assets/indexpage/v4.webp";
 import photoA from "@/assets/indexpage/about-bg.webp";
 import reviewbg from "@/assets/indexpage/reviewbg.webp";
-// import dummmyreview from "@/assets/indexpage/dummyreview.svg";
+
 import amenitiebg from "@/assets/indexpage/amenitiebg.webp";
 import logo from "@/assets/logo.webp";
 // import roomimage from "@/assets/Book/roomimage.svg";
@@ -552,27 +547,27 @@ const Index = () => {
           </h1>
           {/* location1 */}
           <div className="flex flex-row items-center gap-4">
-            <div className="relative bg-primary h-4 w-4  rounded-full"></div>
+            <div className="relative bg-primary py-2 px-2 rounded-full"></div>
             <p>3 mins Mall Road Murree</p>
           </div>
           {/* location2 */}
           <div className="flex flex-row items-center gap-4">
-            <div className=" relative bg-primary h-4 w-4 rounded-full"></div>
+            <div className=" relative bg-primary py-2 px-2 rounded-full"></div>
             <p>5 mins Mcdonalds,lower topa</p>
           </div>
           {/* location3 */}
           <div className="flex flex-row items-center gap-4">
-            <div className=" relative bg-primary h-4 w-4 rounded-full" />
+            <div className=" relative bg-primary py-2 px-2 rounded-full" />
             <p>6 mins Coffee bean and tea leaf</p>
           </div>
           {/* location4 */}
           <div className="flex flex-row items-center gap-4">
-            <div className="relative bg-primary h-4 w-5 sm:w-4 rounded-full" />
+            <div className="relative bg-primary py-2 px-2 rounded-full" />
             <p> 10 mins Gloria Jeans, OPTP, Chaye Khana</p>
           </div>
           {/* google direction */}
           <div className="flex flex-row items-center gap-4">
-            <div className=" relative bg-primary h-4 w-5 sm:w-4 rounded-full" />
+            <div className=" relative bg-primary py-2 px-2 rounded-full" />
             <p> Get Directions on(Google Maps/Apple Maps)</p>
           </div>
           {/* Review */}

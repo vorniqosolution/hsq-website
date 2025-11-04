@@ -82,7 +82,13 @@ function Booking() {
               breakpoints={{
                 0: {
                   // sm
-                  slidesPerView: 1,
+                  slidesPerView: 1.2,
+                  centeredSlides: true,
+                  spaceBetween: 10,
+                },
+                390: {
+                  slidesPerView: 1.3,
+                  centeredSlides: true,
                 },
                 768: {
                   // md
@@ -194,39 +200,45 @@ function Booking() {
                 Get in touch with us
               </h1>
               {/* location */}
-              <div className="flex flex-row items-center gap-4">
-                <div className="relative bg-primary h-12 w-24 xs:w-[75px] md:w-16 lg:w-12 rounded-full">
+              <div className="flex  items-center">
+                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2  rounded-full">
                   <MapPin
-                    size={25}
-                    className="text-black absolute top-3 left-3"
-                    strokeWidth={3}
+                    size={20}
+                    className="text-black flex justify-center"
+                    strokeWidth={2.5}
                   />
                 </div>
-                <p>Hsq towers,Jhika Gali, Murree, Rawalpindi, Punjab</p>
+                {/* <div className="flex flex-col items-center">
+                  <p className="">002232323232323</p>
+                  <p>dgddfdgdg</p>
+                </div> */}
+                <p className="text-sm md:text-lg pl-4">
+                  Hsq towers,Jhika Gali Muree Rawalpindi
+                </p>
               </div>
               {/* mail */}
-              <div className="flex flex-row items-center gap-4">
-                <div className=" relative bg-primary h-12 w-12 rounded-full">
+              <div className="flex flex-row">
+                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full">
                   <MailIcon
-                    size={25}
-                    className="text-black absolute top-3 left-3"
-                    strokeWidth={3}
+                    size={20}
+                    className="text-black  flex justify-center"
+                    strokeWidth={2.5}
                   />
                 </div>
-                <p>hsqtowers@gmail.com</p>
+                <p className="text-sm md:text-lg pl-4">hsqtowers@gmail.com</p>
               </div>
               {/* phone */}
-              <div className="flex flex-row items-center gap-4">
-                <div className=" relative bg-primary h-12 w-12 rounded-full">
+              <div className="flex flex-row items-center">
+                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full">
                   <PhoneCall
-                    size={25}
-                    className="text-black absolute top-3 left-3"
-                    strokeWidth={3}
+                    size={20}
+                    className="text-black flex justify-center"
+                    strokeWidth={2.5}
                   />
                 </div>
-                <p>+92 3300491479</p>
+                <p className="text-sm md:text-lg pl-4">+92 3300491479</p>
               </div>
-              <h1 className="poppins-bold">
+              <h1 className="text-[12px] poppins-bold ">
                 Get Directions on(Google Maps/Apple Maps)
               </h1>
               {/* Review */}
@@ -256,7 +268,7 @@ function Booking() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="w-64 h-fit  text-black my-4">
+                  <div className="w-64 h-fit  text-black my-2 md:my-4">
                     <div className="bg-[#D7AB4E] p-2">
                       <h1 className="poppins-semibold">
                         Hsq towers,Jhika Gali, Murree
@@ -279,6 +291,7 @@ function Booking() {
                 </a>
               </div>
             </div>
+
             {/* right */}
             <div className="w-fit sm:w-1/2">
               {/* <img className="order-2" src={bookbg} alt="" /> */}

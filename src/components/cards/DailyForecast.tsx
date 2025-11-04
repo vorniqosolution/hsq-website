@@ -40,7 +40,7 @@ const DailyForecastCard: FC<DailyForecastCardProps> = ({
           <p className="font-semibold text-lg text-white  uppercase ">{day}</p>
           {/* Weather Icon (Placeholder) */}
           <div className="flex justify-around items-center ">
-            <WeatherAnimation />
+            {/* <WeatherAnimation /> */}
             <div className="flex flex-col poppins-semibold space-x-">
               <div className="relative ">
                 <div className="absolute -top-2  right-4">
