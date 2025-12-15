@@ -1,21 +1,46 @@
-import React, { FC } from "react";
-import WeatherAnimation from "@/components/LottieFiles/Weather";
+import React, { FC, Suspense, lazy } from "react";
+// import WeatherAnimation from "@/components/LottieFiles/Weather";
+const Lottie = lazy(() => import("lottie-react"));
+
+//lottie files
+import RainAnimation from "@/assets/Weather/rain.json";
+import CloudsAnimation from "@/assets/Weather/clouds.json";
+import SnowAnimation from "@/assets/Weather/snow.json";
+import nightclear from "@/assets/Weather/nightclear.json";
+import morningclear from "@/assets/Weather/morningclear.json";
 // Define the interface for the component's props
 export interface DailyForecastCardProps {
   day: string;
-  maxTemp: number; // Assuming temperature strings include ' °C'
-  minTemp: number; // Assuming temperature strings include ' °C'
-  // isCurrent?: boolean; // Optional prop, used if you wanted to highlight the current day
+  maxTemp: number;
+  minTemp: number;
   image: React.ReactNode;
+  currentweather?: string;
 }
 
+const getWeatherAnimation = (weatherMain) => {
+  // const weatherMain = data?.current?.weather?.[0]?.main;
+  const currentHour = new Date().getHours();
+  const isNight = currentHour >= 16 || currentHour < 6;
+  switch (weatherMain) {
+    case "Rain":
+      return RainAnimation;
+    case "Clouds":
+      return CloudsAnimation;
+    case "Clear":
+      return isNight ? nightclear : morningclear;
+    case "Snow":
+      return SnowAnimation;
+    default:
+      return RainAnimation;
+  }
+};
 // Use React.FC to type the functional component and pass the Props interface
 const DailyForecastCard: FC<DailyForecastCardProps> = ({
   day,
   maxTemp,
   minTemp,
-  // isCurrent,
   image,
+  currentweather,
 }) => {
   // Base styling for the card
   //   const cardStyle =
@@ -41,6 +66,13 @@ const DailyForecastCard: FC<DailyForecastCardProps> = ({
           {/* Weather Icon (Placeholder) */}
           <div className="flex justify-around items-center ">
             {/* <WeatherAnimation /> */}
+            <Suspense>
+              <Lottie
+                animationData={getWeatherAnimation(currentweather)}
+                loop
+                className="w-24 h-24"
+              />
+            </Suspense>
             <div className="flex flex-col poppins-semibold space-x-">
               <div className="relative ">
                 <div className="absolute -top-2  right-4">

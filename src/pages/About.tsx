@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import aboutbg from "@/assets/about/aboutbg.webp";
 import logo from "@/assets/logo.webp";
 import hotelimage from "@/assets/about/hotelimage.webp";
@@ -35,7 +35,7 @@ function About() {
             <div className="flex justify-betweenflex-row items-center gap-3 sm:gap-4">
               <div className="border-t-0 border  w-20 md:w-48 lg:w-96 border-white" />
               <Link to={"/book"}>
-              <Viewbutton label="Book Now"></Viewbutton>              
+                <Viewbutton label="Book Now"></Viewbutton>
               </Link>
 
               <div className="border-t-0 border w-20 md:w-48 lg:w-96 border-white" />
@@ -81,11 +81,10 @@ function About() {
             Exceeding Expectations!
           </h1>
           {/* card div */}
-          <div
-            className="h-[80vh] mt-10 rounded-2xl p-2  xs:p-4 flex  flex-col lg:flex-row justify-center lg:justify-start 2xl:justify-center mb-10 w-[90%] lg:w-[80%] bg-fixed bg-cover md:pt-20 md:pl-16 2xl:pl-0 2xl:items-center  bg-bottom"
+          {/* <div
+            className="h-[80vh] mt-10 rounded-2xl p-2  xs:p-4 flex  flex-col lg:flex-row justify-center  2xl:justify-center mb-10 w-[90%] lg:w-[80%] bg-fixed bg-cover md:pt-20 md:pl-16 2xl:pl-0 2xl:items-center  bg-bottom"
             style={{ backgroundImage: `url(${cardbg})` }}
           >
-            {/* left */}
             <div className="flex flex-row  lg:flex-col gap-5 xs:gap-9 lg:gap-11">
               <AboutCard
                 total="5+"
@@ -98,20 +97,66 @@ function About() {
                 icon={<IoBedSharp />}
               />
             </div>
-            {/* center */}
-            <div className="flex justify-center duration-200 ease-out  hover:scale-110  p-10 lg:p-24  items-center">
+
+            <div className="flex justify-center duration-200 ease-out  hover:scale-110  p-10 lg:p-14 2xl:p-24  items-center">
               <div className=" w-32 h-32 p-2 lg:p-4 lg:w-44 lg:h-44 2xl:w-52  2xl:h-52  bg-opacity-30  backdrop-blur-md border-gray-400 shadow-lg  border rounded-full">
                 <div className="w-28 h-28 lg:w-36 lg:h-36 2xl:h-44 2xl:w-44 border flex justify-center items-center border-gray-400 rounded-full ">
+                  <img className="w-full 2xl:h-36 2xl:w-36" src={logo} alt="" />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-row lg:flex-col gap-5  xs:gap-9 lg:gap-11">
+              <AboutCard
+                total="3000+"
+                title="Customers"
+                icon={<PiUsersThreeFill />}
+              />
+              <AboutCard total="96%" title="Hospitality" icon={<TiTick />} />
+            </div>
+          </div> */}
+          <div
+            className="flex flex-col lg:flex-row justify-center items-center
+             w-[90%] lg:w-[80%] mx-auto h-full lg:h-[80vh] 
+             mt-10 mb-10 rounded-2xl p-4 md:p-8 2xl:p-10
+             bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url(${cardbg})` }}
+          >
+            {/* Left section */}
+            <div className="flex flex-row lg:flex-col items-center justify-center gap-6 sm:gap-8 lg:gap-10">
+              <AboutCard
+                total="5+"
+                title="Conference"
+                icon={<PiUsersFourFill />}
+              />
+              <AboutCard
+                total="50+"
+                title="Lavish room"
+                icon={<IoBedSharp />}
+              />
+            </div>
+
+            {/* Center logo section */}
+            <div className="flex justify-center items-center p-8 sm:p-10 lg:p-14 2xl:p-20 hover:scale-105 duration-200 ease-out">
+              <div
+                className="w-32 h-32 sm:w-36 sm:h-36 lg:w-44 lg:h-44 2xl:w-52 2xl:h-52 
+                    bg-white/10 backdrop-blur-md border border-gray-300 
+                    rounded-full shadow-lg flex justify-center items-center"
+              >
+                <div
+                  className="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 2xl:w-44 2xl:h-44 
+                      border border-gray-300 rounded-full flex justify-center items-center"
+                >
                   <img
-                    className="w-full h-full  2xl:h-36 2xl:w-36"
+                    className="w-20 sm:w-24 lg:w-28 2xl:w-36 object-contain"
                     src={logo}
-                    alt=""
+                    alt="logo"
                   />
                 </div>
               </div>
             </div>
-            {/* right */}
-            <div className="flex flex-row lg:flex-col gap-5  xs:gap-9 lg:gap-11">
+
+            {/* Right section */}
+            <div className="flex flex-row lg:flex-col items-center justify-center gap-6 sm:gap-8 lg:gap-10">
               <AboutCard
                 total="3000+"
                 title="Customers"

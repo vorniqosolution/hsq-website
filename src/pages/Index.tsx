@@ -197,7 +197,7 @@ const Index = () => {
         date: review.date,
       })),
   });
-
+  // console.log("Review", reviews);
   useEffect(() => {
     if (isSuccess && data) setRooms(data);
   }, [isSuccess, data]);
@@ -226,7 +226,7 @@ const Index = () => {
       .filter((cat) => cat.room);
   }, [rooms]); // sirf rooms change hone par recompute hoga
 
-  // console.log("Filtered Data",filtered);
+  console.log("Filtered Data", filtered);
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -375,15 +375,36 @@ const Index = () => {
           {/* content */}
           <div className="flex flex-col lg:flex-row w-full space-y-3 md:space-y-5  relative pt-3 md:pt-10 lg:pt-20 pb-10 ">
             {/* heading */}
-            <div className=" w-full flex flex-col order-1 lg:order-2 m-auto lg:w-1/2">
+            {/* <div className=" w-full flex flex-col order-1 lg:order-2 m-auto lg:w-1/2">
               <img
-                className="w-[50%] md:w-fit h-32  m-auto lg:ml-44 2xl:ml-56"
+                className="w-[50%] md:w-[50%] h-32  m-auto lg:ml-44 2xl:ml-56"
                 src={logo}
                 loading="lazy"
                 alt=""
               />
               <h1 className="text-white text-center poppins-extrabold  sm:text-2xl">
                 Hotel Guest Facilities <p>Where Every Detail Meets Luxury</p>
+              </h1>
+              <Link to="/aminities">
+                <div className="flex justify-center mt-4">
+                  <Suspense>
+                    <CommanButton label="Learn More" />
+                  </Suspense>
+                </div>
+              </Link>
+            </div> */}
+            <div className="w-full flex flex-col items-center justify-center text-center order-1 lg:order-2 m-auto lg:w-1/2">
+              <img
+                className="w-[50%] md:w-[40%] h-32 object-contain mx-auto"
+                src={logo}
+                loading="lazy"
+                alt=""
+              />
+              <h1 className="text-white poppins-extrabold mt-4 sm:text-2xl">
+                Hotel Guest Facilities
+                <p className="text-white text-sm sm:text-base font-normal">
+                  Where Every Detail Meets Luxury
+                </p>
               </h1>
               <Link to="/aminities">
                 <div className="flex justify-center mt-4">
@@ -539,7 +560,7 @@ const Index = () => {
         </div>
       </section>
       {/* Map section */}
-      <section className="bg-black w-full  p-10 flex flex-col sm:flex-row justify-between text-white">
+      <section className="bg-black w-full  p-1 md:p-10 flex flex-col sm:flex-row justify-between text-white">
         {/* left */}
         <div className="p-5 oder-1 flex items-baseline flex-col space-y-7">
           <h1 className="poppins-extrabold text-2xl text-center lg:text-3xl">
@@ -563,12 +584,12 @@ const Index = () => {
           {/* location4 */}
           <div className="flex flex-row items-center gap-4">
             <div className="relative bg-primary py-2 px-2 rounded-full" />
-            <p> 10 mins Gloria Jeans, OPTP, Chaye Khana</p>
+            <p> 10 mins Gloria Jeans, Chaye Khana</p>
           </div>
           {/* google direction */}
           <div className="flex flex-row items-center gap-4">
             <div className=" relative bg-primary py-2 px-2 rounded-full" />
-            <p> Get Directions on(Google Maps/Apple Maps)</p>
+            <p> Get Directions on Google/Apple Maps</p>
           </div>
           {/* Review */}
           <a
@@ -599,14 +620,14 @@ const Index = () => {
           </a>
         </div>
         {/* right */}
-        <div className="w-fit sm:w-1/2 ">
+        <div className="w-full sm:w-1/2 ">
           {/* <img className="order-2" src={bookbg} alt="" /> */}
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.0013501276594!2d73.41395537442568!3d33.91536482494771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfd78972fd4569%3A0xdc3c75a9dc210b41!2sHSQ%20Towers!5e0!3m2!1sen!2s!4v1758212472901!5m2!1sen!2s"
             width="600"
             height="450"
             // style={{ border: 0 }}
-            className="w-fit h-56 sm:h-full sm:w-full"
+            className="w-full pb-3 h-56 sm:h-full sm:w-full"
             //  allowFullScreen=
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

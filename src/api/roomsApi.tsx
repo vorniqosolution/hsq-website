@@ -1,5 +1,5 @@
 // src/api/roomsApi.js
-import apiClient from "./apiClient";
+// import apiClient from "./apiClient";
 import axios, { AxiosError } from "axios";
 import {
   RoomsGroupedResponse,
@@ -49,7 +49,7 @@ export const Get_All_Available_Room =
       const response = await axios.get(
         `${BACKEND_URL}/api/public/category-details`
       );
-      // console.log("GET Available Response", response.data);
+      console.log("GET Available Response", response.data);
 
       return response.data;
     } catch (error) {
@@ -88,6 +88,6 @@ export const CreateReservation = async (BookingData: PostBookingData) => {
 // Google Review Api
 export const GoogleReview = async () => {
   const response = await axios.get(`${BACKEND_URL}/api/public/googlereview`);
-  console.log("Goole_Review_Response", response.data);
+  // console.log("Goole_Review_Response", response.data);
   return response.data;
 };

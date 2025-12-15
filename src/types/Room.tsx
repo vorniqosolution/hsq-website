@@ -14,9 +14,11 @@ export interface AvailableRooms {
   rate: number;
   images: string[];
   adults: number;
+  infants: number;
 }
 export interface CategoryGroupAvailableRoom {
   adultsCapacity: string;
+  infantsCapacity: string;
   amenities?: string[] | null;
   availableCount?: number;
   availableRooms: AvailableRooms[];

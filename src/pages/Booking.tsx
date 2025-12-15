@@ -193,50 +193,47 @@ function Booking() {
             <WhatsAppButton />
           </div>
           {/* Footer Section */}
-          <div className="bg-black w-full mt-16 p-10 flex flex-col sm:flex-row justify-between text-white">
+          <div className="bg-black w-full mt-16 p-5 md:p-10 flex flex-col sm:flex-row justify-between text-white">
             {/* left */}
             <div className="p-5 oder-1 flex items-baseline flex-col space-y-7">
               <h1 className="poppins-extrabold text-xl lg:text-3xl">
                 Get in touch with us
               </h1>
               {/* location */}
-              <div className="flex  items-center">
-                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2  rounded-full">
-                  <MapPin
-                    size={20}
-                    className="text-black flex justify-center"
-                    strokeWidth={2.5}
-                  />
+              <div className="flex items-center whitespace-nowrap overflow-hidden text-ellipsis">
+                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full flex-shrink-0">
+                  <MapPin size={20} className="text-black" strokeWidth={2.5} />
                 </div>
-                {/* <div className="flex flex-col items-center">
-                  <p className="">002232323232323</p>
-                  <p>dgddfdgdg</p>
-                </div> */}
-                <p className="text-sm md:text-lg pl-4">
-                  Hsq towers,Jhika Gali Muree Rawalpindi
+                <p className="text-sm md:text-lg pl-4 truncate">
+                  Hsq towers, Jhika Gali, Murree, Rawalpindi
                 </p>
               </div>
+
               {/* mail */}
-              <div className="flex flex-row">
-                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full">
+              <div className="flex items-center whitespace-nowrap overflow-hidden text-ellipsis">
+                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full flex-shrink-0">
                   <MailIcon
                     size={20}
-                    className="text-black  flex justify-center"
+                    className="text-black"
                     strokeWidth={2.5}
                   />
                 </div>
-                <p className="text-sm md:text-lg pl-4">hsqtowers@gmail.com</p>
+                <p className="text-sm md:text-lg pl-4 truncate">
+                  hsqtowers@gmail.com
+                </p>
               </div>
               {/* phone */}
-              <div className="flex flex-row items-center">
-                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full">
+              <div className="flex items-center whitespace-nowrap overflow-hidden text-ellipsis">
+                <div className="bg-primary py-[5px] px-[5px] md:px-2 md:py-2 rounded-full flex-shrink-0">
                   <PhoneCall
                     size={20}
-                    className="text-black flex justify-center"
+                    className="text-black "
                     strokeWidth={2.5}
                   />
                 </div>
-                <p className="text-sm md:text-lg pl-4">+92 3300491479</p>
+                <p className="text-sm md:text-lg pl-4 truncate">
+                  +92 3300491479
+                </p>
               </div>
               <h1 className="text-[12px] poppins-bold ">
                 Get Directions on(Google Maps/Apple Maps)
@@ -293,14 +290,14 @@ function Booking() {
             </div>
 
             {/* right */}
-            <div className="w-fit sm:w-1/2">
+            <div className="w-full p-5 md:w-1/2">
               {/* <img className="order-2" src={bookbg} alt="" /> */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.0013501276594!2d73.41395537442568!3d33.91536482494771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfd78972fd4569%3A0xdc3c75a9dc210b41!2sHSQ%20Towers!5e0!3m2!1sen!2s!4v1758212472901!5m2!1sen!2s"
-                width="600"
-                height="450"
+                // width="600"
+                // height="450"
                 // style={{ border: 0 }}
-                className="w-fit h-56 sm:h-full sm:w-full"
+                className="w-full h-56 md:h-full md:w-full"
                 //  allowFullScreen=
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -6,14 +6,13 @@ const Lottie = lazy(() => import("lottie-react"));
 import RainAnimation from "@/assets/Weather/rain.json";
 import CloudsAnimation from "@/assets/Weather/clouds.json";
 import SnowAnimation from "@/assets/Weather/snow.json";
-import ClearAnimation from "@/assets/Weather/clear.json";
-// import WeatherAnimation from "@/components/LottieFiles/Weather";
-// import CloudWithRain from "@/assets/Weather/WeatherLogo.json";
+import nightclear from "@/assets/Weather/nightclear.json";
+import morningclear from "@/assets/Weather/morningclear.json";
 const DailyForecastCard = lazy(
   () => import("@/components/cards/DailyForecast")
 );
 import Footer from "@/components/layout/Footer";
-import WeatherAnimation from "@/components/LottieFiles/Weather";
+
 import bgone from "@/assets/Weather/bgone.webp";
 import bgtwo from "@/assets/Weather/bgtwo.webp";
 import bgthree from "@/assets/Weather/bgthree.webp";
@@ -37,14 +36,13 @@ function Weather() {
     refetchOnMount: false, // don’t refetch when remounting component
     refetchOnReconnect: false,
   });
-  // console.log("weather data", data);
+  console.log("weather data", data);
   const ref = useRef(null);
   const inview = useInView(ref, { once: true });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.floor(latest));
   const date = new Date();
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-
   useEffect(() => {
     if (!inview && !data?.current?.temp) return;
     const controls = animate(count, data.current.temp, {
@@ -55,14 +53,16 @@ function Weather() {
   }, [data?.current?.temp, inview]);
   const getWeatherAnimation = () => {
     const weatherMain = data?.current?.weather?.[0]?.main;
-
+    const currentHour = new Date().getHours();
+    const isNight = currentHour >= 16 || currentHour < 6;
     switch (weatherMain) {
       case "Rain":
         return RainAnimation;
       case "Clouds":
         return CloudsAnimation;
       case "Clear":
-        return ClearAnimation;
+        // show night clear animation after 6 PM or before 6 AM
+        return isNight ? nightclear : morningclear;
       case "Snow":
         return SnowAnimation;
       default:
@@ -179,6 +179,7 @@ function Weather() {
               maxTemp={data?.daily[0]?.temp?.day}
               minTemp={data?.daily[0]?.temp?.min}
               image={bgone}
+              currentweather={data?.daily[0]?.weather?.[0]?.main}
             />
 
             <DailyForecastCard
@@ -186,6 +187,7 @@ function Weather() {
               maxTemp={data?.daily[1]?.temp?.day}
               minTemp={data?.daily[1]?.temp?.min}
               image={bgtwo}
+              currentweather={data?.daily[1]?.weather?.[0]?.main}
             />
 
             <DailyForecastCard
@@ -193,6 +195,7 @@ function Weather() {
               maxTemp={data?.daily[2]?.temp?.day}
               minTemp={data?.daily[2]?.temp?.min}
               image={bgthree}
+              currentweather={data?.daily[1]?.weather?.[0]?.main}
             />
           </Suspense>
         </div>

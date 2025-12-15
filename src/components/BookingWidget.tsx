@@ -95,12 +95,12 @@ function BookingWidget() {
   return (
     <>
       <div className="flex justify-center items-center ">
-        <div className="border-t-[#D7AB4E] border-l-[#D7AB4E]  border-r-[#666666] border-b-[#666666] border-2 rounded-3xl lg:rounded-full bg-gradient-to-l from-[#303030] to-[#111111]  w-[95%] md:w-[60%] lg:w-[80%]  m-auto h-fit lg:h-32  p-0 lg:p-14 gap-5 flex flex-col lg:flex-row items-center lg:items-center 2xl:gap-14 2xl:p-16 ">
+        <div className="border-t-[#D7AB4E] border-l-[#D7AB4E]  border-r-[#666666] border-b-[#666666] border-2 rounded-3xl lg:rounded-full bg-gradient-to-l from-[#303030] to-[#111111] w-full xs:w-[95%] md:w-[60%] lg:w-[80%]  m-auto h-fit lg:h-32 p-0 lg:p-14 gap-5 flex flex-col items-center lg:flex-row 2xl:gap-14 2xl:p-16">
           <div className="flex justify-center 2xl:justify-end">
-            <img className="w-28 h-20 mt-3 2xl:h-28" src={logo} alt="Hsqlogo" />
+            <img className="w-28 h-20  2xl:h-28" src={logo} alt="Hsqlogo" />
           </div>
 
-          <div className="flex gap-2 pl-2 xs:pl-4 lg:gap-7 2xl:gap-16 items-baseline  xs:flex-row">
+          <div className="flex gap-2 pl-2 xs:pl-4 lg:gap-7 2xl:gap-16 it  xs:flex-row">
             <Datepicker
               title="Arrival"
               value={arrival}
@@ -124,7 +124,7 @@ function BookingWidget() {
                   setGuests(e.target.value);
                   setErrors((prev) => ({ ...prev, guests: false }));
                 }}
-                className={`w-28 text-black bg-white mt-2 px-[2px] rounded-md lg:w-full lg:px-3 2xl:px-5 py-2 text-sm h-10
+                className={` text-black bg-white px-[2px] rounded-md lg:w-full lg:px-3 2xl:px-5 py-2 text-sm h-10
         ${errors.guests ? "border-2 border-red-800" : "border-0"}
         focus:outline-none focus:ring-2 focus:ring-yellow-500`}
               >
@@ -149,7 +149,7 @@ function BookingWidget() {
               Responsive test box
             </div> */}
 
-            <div className="absolute left-14 iphone11:left-16 xs:left-20    lg:left-3 bg-black rounded-full px-1 py-1">
+            <div className="absolute left-14 xs:left-20    lg:left-3 bg-black rounded-full px-1 py-1">
               <Search size={18} color="white" />
             </div>
           </div>

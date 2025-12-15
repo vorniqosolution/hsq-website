@@ -203,8 +203,8 @@ export default function Footer() {
       </div>
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-black">
-        <div className="mx-auto max-w-7xl px-6 py-3 text-center text-xs text-white/80">
-          Vorniqo solutions © {year}. All Rights Reserved
+        <div className="mx-auto max-w-7xl px-6 py-3 text-center text-xs text-primary">
+          Hsq towers © {year} All Rights Reserved
         </div>
       </div>
     </footer>

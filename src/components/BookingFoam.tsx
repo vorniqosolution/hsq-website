@@ -150,9 +150,9 @@ function BookingFoam() {
             </div>
             {/* payment method */}
             <p className="poppins-reguler text-gray-400">Payment Method</p>
-            <div className="pt-3 gap-5 flex  flex-col lg:flex-row poppins-reguler text-neutral-700">
+            <div className="pt-3 gap-2 flex  flex-col lg:flex-row poppins-reguler text-neutral-700">
               <div className="flex  items-center space-x-2">
-                <input
+                {/* <input
                   type="radio"
                   id="cash"
                   name="paymentmethod"
@@ -160,8 +160,8 @@ function BookingFoam() {
                   checked={formData.paymentmethod === "Cash"}
                   onChange={handleChange}
                   className="accent-blue-600"
-                />
-                <label htmlFor="cash">Cash</label>
+                /> */}
+                {/* <label htmlFor="cash">Cash</label> */}
               </div>
               <div className="flex items-center space-x-2">
                 <input
@@ -173,10 +173,10 @@ function BookingFoam() {
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
-                <label htmlFor="card">Card</label>
+                <label htmlFor="card">Credit/Debit Card</label>
               </div>
               <div className="flex items-center space-x-2">
-                <input
+                {/* <input
                   type="radio"
                   id="online"
                   name="paymentmethod"
@@ -184,8 +184,8 @@ function BookingFoam() {
                   checked={formData.paymentmethod === "Online"}
                   onChange={handleChange}
                   className="accent-blue-600"
-                />
-                <label htmlFor="online">Online</label>
+                /> */}
+                {/* <label htmlFor="online">Online</label> */}
               </div>
               <div className="flex items-center space-x-2">
                 <input

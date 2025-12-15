@@ -1,10 +1,28 @@
+import { useEffect, useMemo } from "react";
 import roomimage from "@/assets/BG/roombg.webp";
 import RoompageCard from "@/components/cards/RoompageCard";
 import { useRoomStore } from "@/store/store";
 import Zerorooms from "@/components/cards/Zerorooms";
+import { toast } from "react-toastify";
 const Rooms = () => {
   const { AvaibleRooms } = useRoomStore();
   // console.log("Store data AvaibleRooms", AvaibleRooms);
+
+  const roomCount = useMemo(() => AvaibleRooms.length, [AvaibleRooms.length]);
+
+  useEffect(() => {
+    if (roomCount === 0) {
+      toast.error("Go back home and search available rooms ", {
+        position: "top-center",
+        style: {
+          background: "#dfab4e", // light orange background
+          color: "black", // deep amber text
+          border: "1px solid #fbbf24",
+          fontWeight: "600",
+        },
+      });
+    }
+  }, [roomCount]); // Runs only when count changes
   return (
     <>
       <div>

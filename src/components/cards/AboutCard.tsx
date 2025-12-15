@@ -39,7 +39,7 @@ const AboutCard: React.FC<Titleprop> = ({ total, title, icon }) => {
       whileInView={{ x: 0, opacity: 1 }} // apni jagah pe aa jaye
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="
-        w-64 h-36
+        w-36 h-36
         rounded-2xl 
         p-4 
         bg-opacity-30 
@@ -51,16 +51,19 @@ const AboutCard: React.FC<Titleprop> = ({ total, title, icon }) => {
         flex-col 
         justify-between 
         relative
+        sm:w-64
       "
     >
       {/* Gold Circle Icon */}
       <div
         className="
           absolute 
-         top-[-50px]
-          xs:top-[-35px] 
+         top-[-30px]
+          xs:top-[-30px]
+          md:top-[-35px] 
           left-[20px] 
-          w-20 h-20 
+          w-14 h-14
+          md:w-20 md:h-20
           rounded-full 
           bg-primary 
           shadow-xl 

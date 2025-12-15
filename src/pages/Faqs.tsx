@@ -149,7 +149,7 @@ function Faqs() {
                     Ask a Question
                   </button>
                 </Link>
-                <div className="absolute right-1 rounded-full bg-black px-[2px] py-[2px] top-[6px]">
+                <div className="absolute right-1 rounded-full bg-black px-[3px] py-[3px]  top-[7px] md:top-[6px]">
                   <ChevronRight size={20} color="white" />
                 </div>
               </div>

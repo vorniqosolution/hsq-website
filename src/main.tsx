@@ -6,8 +6,11 @@ import App from "./App.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <App />
     <ToastContainer />
-  </React.StrictMode>
+  </>
+
+  // </React.StrictMode>
 );

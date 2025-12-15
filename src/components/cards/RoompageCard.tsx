@@ -66,7 +66,7 @@ const RoompageCard: React.FC<RoomCardProps> = ({ room }) => {
       </div>
 
       {/* Price Section */}
-      <div className="w-full lg:w-1/4 bg-[#FFF7E7] rounded-xl shadow p-2 sm:p-6 h-72  flex flex-col gap-2">
+      <div className="w-full lg:w-1/4 bg-[#FFF7E7] rounded-xl shadow xs:p-1  h-72  flex flex-col gap-2">
         <h3 className="text-2xl poppins-bold">RS. {room.startingRate}/-</h3>
         <p className="text-xs poppins-medium text-black">
           for 1 night (+taxes and fees)
@@ -78,6 +78,13 @@ const RoompageCard: React.FC<RoomCardProps> = ({ room }) => {
               Adults:
             </h1>
             <p className="text-en">{room.adultsCapacity}</p>
+          </div>
+          {/* new changes */}
+          <div className="flex flex-row justify-between poppins-regular">
+            <h1 className="text-[13px] sm:text-[15px] text-gray-700 poppins-regular">
+              Infants:
+            </h1>
+            <p className="text-en">{room.infantsCapacity}</p>
           </div>
           <div className="flex flex-row justify-between poppins-regular">
             <h1 className="text-[13px] sm:text-[15px] text-gray-700 poppins-regular">
@@ -95,14 +102,19 @@ const RoompageCard: React.FC<RoomCardProps> = ({ room }) => {
             <h1 className=" text-[13px] sm:text-[15px] text-gray-700 poppins-regular">
               Amenities:
             </h1>
-            <p className="text-right text-sm flex flex-wrap pl-3 ">
+            {/* <p className="text-right text-sm flex flex-wrap pl-3 scroll-auto">
               <p className="text-right ">
                 {room?.amenities?.length === 0
                   ? "free wifi, safety, laundry, ironing, minibar, telephone, inroom safety"
                   : room.amenities.join(", ")}
               </p>
-
-              {/*  */}
+            </p> */}
+            <p className="text-right text-sm flex flex-wrap pl-3 scroll-auto">
+              <p className="text-right ">
+                {room?.amenities?.length === 0
+                  ? "Free Wifi, Safety, Laundry, Ironing, Minibar, Telephone, Inroom safety"
+                  : room.amenities.join(", ")}
+              </p>
             </p>
           </div>
         </div>

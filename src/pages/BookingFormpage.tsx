@@ -140,6 +140,13 @@ function BookingFormpage() {
       mutate(mergeData);
     }
   };
+  const getSafeImage = (img) => {
+    if (!img || img === "" || img === null || img === undefined) {
+      return tembookingform; // fallback image
+    }
+    return img;
+  };
+
   return (
     <>
       {Confirmation ? (
@@ -152,9 +159,7 @@ function BookingFormpage() {
           <div
             className="relative w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh]"
             style={{
-              backgroundImage: `url(${
-                Firstimage ? Firstimage : tembookingform
-              })`,
+              backgroundImage: `url(${getSafeImage(Firstimage)})`,
             }}
           >
             {/* shadow div */}
