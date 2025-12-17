@@ -72,7 +72,7 @@ export const Header = () => {
             <img
               src={navIcon}
               alt="HSQ Towers"
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain 2xl:h-20"
             />
           </Link>
 
@@ -93,7 +93,7 @@ export const Header = () => {
                       key={item.name}
                       to={item.href}
                       className={cn(
-                        "px-3 py-1.5 rounded-full uppercase tracking-wider text-[12px] poppins-semibold transition-colors",
+                        "px-3 py-1.5 rounded-full uppercase tracking-wider text-[12px] 2xl:text-[14px] poppins-semibold transition-colors",
                         active ? "hsq-gold" : "text-white hover:text-primary"
                       )}
                     >
@@ -107,7 +107,7 @@ export const Header = () => {
                   <Link to="/book">
                     <Button
                       size="sm"
-                      className="rounded-full h-8 px-4 text-[12px] font-semibold hsq-gradient-gold text-white hover:opacity-90"
+                      className="rounded-full h-8 px-4 text-[12px] 2xl:text-[14px] font-semibold hsq-gradient-gold text-white hover:opacity-90"
                     >
                       Book Now
                     </Button>
@@ -127,9 +127,9 @@ export const Header = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={label}
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/30 text-white/90 bg-black/30 hover:bg-black/50 hover:text-white hover:border-white/60 transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/30 text-white/90 bg-black/30 hover:bg-black/50 hover:text-white hover:border-white/60 transition-colors 2xl:w-10 2xl:h-10"
                       >
-                        <Icon className="w-4 h-4" />
+                        <Icon className="w-4 h-4 2xl:h-5 2xl:w-5" />
                       </a>
                     ) : (
                       <Link

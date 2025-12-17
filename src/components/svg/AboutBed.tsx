@@ -4,8 +4,7 @@ function AboutBed() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={65}
-      height={65}
+      className="w-16 h-16 lg:w-20 lg:h-20 2xl:w-48 2xl:h-48"
       viewBox="0 0 64 64"
     >
       <path

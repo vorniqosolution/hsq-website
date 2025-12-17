@@ -15,17 +15,17 @@ function TermsAndCondition() {
         className="w-full  bg-cover  bg-bottom h-[60vh] lg:h-[85vh]"
         style={{ backgroundImage: `url(${Termsconditionbg})` }}
       >
-        <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-36 sm:pt-40">
-          <h1 className="Tuesdaynight text-[30px] sm:text-[50px] text-center">
+        <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-36 sm:pt-40 2xl:pt-56">
+          <h1 className="Tuesdaynight text-[30px] sm:text-[50px] text-center 2xl:text-8xl">
             Privacy Policy
           </h1>
           {/* <h1 className="poppins-bold  text-3xl md:text-5xl lg:text-7xl">
           ROOMS AND SUITES
         </h1> */}
-          <h1 className="text-center text-3xl  poppins-extrabold w-96 lg:text-6xl sm:w-1/2">
+          <h1 className="text-center text-3xl  poppins-extrabold w-96 lg:text-6xl sm:w-1/2 2xl:text-7xl">
             Terms & Conditions
           </h1>
-          <p className="text-center">
+          <p className="text-center 2xl:text-xl">
             We value your comfort and privacy. Review our Terms.
           </p>
         </div>
@@ -40,11 +40,11 @@ function TermsAndCondition() {
         >
           {/* Reservation and billing */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3">
+            <h3 className="poppins-bold text-lg mb-3 2xl:text-2xl">
               Reservations & Billing :
             </h3>
 
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 Reservations can be made via our website, phone, or email.
               </li>
@@ -60,7 +60,7 @@ function TermsAndCondition() {
                 incomplete information.
               </li>
             </ul>
-            <ul className="list-disc pl-5 poppins-medium space-y-2 mt-5">
+            <ul className="list-disc pl-5 poppins-medium space-y-2 mt-5 2xl:text-xl">
               <li>
                 Free cancellation is available up to [insert number] days before
                 arrival.
@@ -78,11 +78,11 @@ function TermsAndCondition() {
           </div>
           {/* check in guest */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
               Check-In & Check-Out
             </h3>
 
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>Standard check-in time: 12:00.</li>
 
               <li>Standard check-out time: 12:00</li>
@@ -95,11 +95,11 @@ function TermsAndCondition() {
           </div>
           {/* Guest Responsibilities */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
               Guest Responsibilities
             </h3>
 
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 Guests are responsible for any damage caused to hotel property
                 during their stay.
@@ -119,11 +119,11 @@ function TermsAndCondition() {
           </div>
           {/* Sharing of Information */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
               Sharing of Information
             </h3>
 
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 We may share data with trusted third parties such as payment
                 processors or booking platforms.
@@ -137,8 +137,10 @@ function TermsAndCondition() {
           </div>
           {/* Policy Updates: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">Policy Updates:</h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
+              Policy Updates:
+            </h3>
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 We may update this Privacy Policy occasionally. Any changes will
                 be posted on this page with a revised date
@@ -147,8 +149,10 @@ function TermsAndCondition() {
           </div>
           {/* Hotel’s Rights: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">Hotel’s Rights: </h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
+              Hotel’s Rights:{" "}
+            </h3>
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 HSQ Towers reserves the right to refuse service to anyone who
                 violates these Terms & Conditions.
@@ -164,8 +168,10 @@ function TermsAndCondition() {
           </div>
           {/* Governing Law: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">Governing Law:</h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
+              Governing Law:
+            </h3>
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 These Terms & Conditions shall be governed by and construed in
                 accordance with the laws of Pakistan.
@@ -183,10 +189,10 @@ function TermsAndCondition() {
           </div>
           {/* Important Notice: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
               Important Notice:{" "}
             </h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 Please switch off all electrical and gas appliances and hand
                 over your room key to the reception when leaving
@@ -202,10 +208,10 @@ function TermsAndCondition() {
           </div>
           {/* Information We Collect: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
               Information We Collect:{" "}
             </h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>Personal details: name, email, phone number, address.</li>
               <li>
                 Booking information: dates of stay, room type, preferences.
@@ -218,10 +224,10 @@ function TermsAndCondition() {
           </div>
           {/* Data Protection & Security: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
               Data Protection & Security:
             </h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl  ">
               <li>
                 We use secure servers and encryption to protect your personal
                 data.
@@ -233,8 +239,10 @@ function TermsAndCondition() {
           </div>
           {/* Your Rights: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">Your Rights:</h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
+              Your Rights:
+            </h3>
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>Access, update, or correct your personal data.</li>
               <li>
                 Request deletion of your information, subject to legal
@@ -245,8 +253,10 @@ function TermsAndCondition() {
           </div>
           {/* Amenities: */}
           <div>
-            <h3 className="poppins-bold text-lg mb-3 mt-3">Amenities:</h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
+              Amenities:
+            </h3>
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 Amenities offered may differ depending on your selected room and
                 package. Please check with the reception for{" "}
@@ -256,8 +266,10 @@ function TermsAndCondition() {
           </div>
           {/* Feedback: */}
           <div className="  md:w-[80%]">
-            <h3 className="poppins-bold text-lg mb-3 mt-3">Feedback:</h3>
-            <ul className="list-disc poppins-medium pl-5 space-y-2">
+            <h3 className="poppins-bold text-lg mb-3 mt-3 2xl:text-2xl">
+              Feedback:
+            </h3>
+            <ul className="list-disc poppins-medium pl-5 space-y-2 2xl:text-xl">
               <li>
                 Your suggestions help us refine our services and make your
                 experience even better. If you have any feedback, questions, or

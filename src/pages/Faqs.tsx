@@ -122,14 +122,14 @@ function Faqs() {
           className="bg-cover bg-bottom h-[50vh] lg:h-[90vh]"
           style={{ backgroundImage: `url(${roomimage})` }}
         >
-          <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-36 px-4">
-            <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
+          <div className="relative flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-36 px-4 2xl:pt-56">
+            <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center 2xl:text-8xl">
               FAQS
             </h1>
-            <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center leading-tight">
+            <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center leading-tight 2xl:text-7xl">
               FREQUENTLY ASKED QUESTIONS
             </h1>
-            <p className="text-center w-full sm:w-3/4 md:w-1/2 px-2">
+            <p className="text-center w-full sm:w-3/4 md:w-1/2 px-2 2xl:text-lg">
               We’ve Got All the Answers You’re Looking For
             </p>
           </div>
@@ -156,15 +156,15 @@ function Faqs() {
             </div>
 
             {/* Accordion */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 2xl:grid-cols-1">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl shadow-sm border-l-4 border-black px-4 py-3 cursor-pointer"
+                  className="bg-white rounded-xl shadow-sm border-l-4 border-black px-4 py-3 cursor-pointer "
                   onClick={() => toggleAccordion(index)}
                 >
                   <div className="flex justify-between items-center">
-                    <p className="font-semibold text-sm text-gray-900 break-words">
+                    <p className="font-semibold text-sm text-gray-900 break-words 2xl:text-xl">
                       {faq.question}
                     </p>
                     <ChevronDown
@@ -175,7 +175,7 @@ function Faqs() {
                   </div>
 
                   {openIndex === index && (
-                    <p className="mt-2 text-gray-600 text-sm break-words">
+                    <p className="mt-2 text-gray-600 text-sm break-words 2xl:text-lg">
                       {faq.answer}
                     </p>
                   )}

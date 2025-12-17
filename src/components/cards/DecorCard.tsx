@@ -7,11 +7,16 @@ interface Cardprops {
   image?: string;
   description?: string;
   rate?: string;
-  heading?:string;
+  heading?: string;
 }
-const DecorCard:React.FC<Cardprops> = ({image,heading,rate,description}) => {
+const DecorCard: React.FC<Cardprops> = ({
+  image,
+  heading,
+  rate,
+  description,
+}) => {
   return (
-    <div className="bg-[#FFFAF1] rounded-3xl h-fit shadow-md flex flex-col lg:flex-row items-center justify-between w-full md:w-[70%]  space-y-4 max-w-5xl p-6 mx-auto">
+    <div className="bg-[#FFFAF1] rounded-3xl h-fit shadow-md flex flex-col lg:flex-row items-center justify-between w-full md:w-[70%]  space-y-4 max-w-5xl p-6 mx-auto 2xl:w-[80%]">
       {/* Left Side - Image */}
       <div className="flex-shrink-0">
         <img
@@ -23,11 +28,11 @@ const DecorCard:React.FC<Cardprops> = ({image,heading,rate,description}) => {
 
       {/* Middle Content */}
       <div className="flex-1 px-10">
-        <h2 className="text-2xl poppins-bold text-black  ">
+        <h2 className="text-2xl poppins-bold text-black 2xl:text-3xl ">
           Essential Room Design
           {heading}
         </h2>
-        <p className="text-black mt-2 text-sm poppins-regular leading-relaxed">
+        <p className="text-black mt-2 text-sm poppins-regular leading-relaxed 2xl:text-[16px]">
           {description}
           Turn your Murree stay into something unforgettable at HSQ Towers! With
           fresh flowers, stylish décor, and a cozy minimalist vibe, every moment
@@ -41,7 +46,8 @@ const DecorCard:React.FC<Cardprops> = ({image,heading,rate,description}) => {
         <div className="flex flex-col ">
           <h3 className="text-2xl poppins-bold">
             RS. 9,999/-
-            {rate}</h3>
+            {rate}
+          </h3>
           <p className="text-xs text-black poppins-medium mt-1">
             for 1 night (+taxes and fees)
           </p>
@@ -52,7 +58,7 @@ const DecorCard:React.FC<Cardprops> = ({image,heading,rate,description}) => {
             label="Book Now"
             className="pl-4 text-left py-2 lg:w-44 lg:pl-6 "
           />
-          <div className="absolute ease-out px-1 py-1 rounded-full right-1 lg:right-3 top-[6px] bg-black">
+          <div className="absolute ease-out px-1 py-1 rounded-full right-1 lg:right-3 top-[6px] bg-black 2xl:right-8 2xl:top-1">
             <ChevronRight color="white" size={20} />
           </div>
         </div>

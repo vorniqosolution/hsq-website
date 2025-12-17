@@ -6,7 +6,7 @@ function Breakfast() {
       xmlns="http://www.w3.org/2000/svg"
       // width={90.67}
       // height={46.67}
-      className="w-[90.67%] h-[46.67%] lg:w-[100%] lg:h-[46.67%]"
+      className="w-[90.67%] h-[46.67%] lg:w-[100%] lg:h-[46.67%] 2xl:h-[60%]"
       viewBox="0 0 24 24"
     >
       <path

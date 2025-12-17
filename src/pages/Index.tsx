@@ -230,7 +230,7 @@ const Index = () => {
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-  if (isLoading) return <FrontLogo />;
+  // if (isLoading) return <FrontLogo />;
   return (
     <>
       {/* Landing page */}
@@ -238,7 +238,7 @@ const Index = () => {
         <Suspense fallback={<FrontLogo />}>
           <Hero slides={slides} autoPlayInterval={5000} />
         </Suspense>
-        <div className="absolute -bottom-60 lg:bottom-[-110px] w-full">
+        <div className="absolute -bottom-60 lg:bottom-[-110px] w-full 2xl:w-[80%] 2xl:left-52">
           <Suspense>
             <BookingWidget />
           </Suspense>
@@ -248,10 +248,10 @@ const Index = () => {
       <section className="backgroundcolor flex flex-col lg:flex-row justify-between ">
         {/* left  */}
         <div className="flex flex-col mt-[270px] w-[70%] lg:mt-48 lg:w-1/3 m-auto order-1 text-center space-y-2 lg:space-y-4 ">
-          <h1 className="poppins-bold text-left text-xl  lg:text-3xl ">
+          <h1 className="poppins-bold text-left text-xl lg:text-3xl 2xl:text-4xl">
             Welcome To HSQ Tower
           </h1>
-          <p className="poppins-medium text-sm text-left">
+          <p className="poppins-medium text-sm text-left 2xl:text-lg">
             At HSQ Tower, elegance meets convenience — the perfect stay for
             guests who seek charm, comfort, and the ideal location to explore
             Murree.
@@ -261,10 +261,10 @@ const Index = () => {
             {FEATURES.map((data, index) => (
               <div
                 key={index}
-                className="bg-primary/15 my-8 h-20 w-full lg:w-52 lg:h-28 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  poppins-semibold  rounded-3xl flex items-center justify-center flex-col"
+                className="bg-primary/15 my-8 h-20 w-full lg:w-52 lg:h-28 2xl:w-44 2xl:h-36 transition-all duration-300 ease-out hover:shadow-xl hover:cursor-pointer hover:scale-110  poppins-semibold  rounded-3xl flex items-center justify-center flex-col"
               >
                 <data.icon />
-                <p className="text-[8px]   poppins-semibold sm:text-[10px] sm:pt-2">
+                <p className="text-[8px] poppins-semibold sm:text-[10px] sm:pt-2 2xl:text-[16px]">
                   {data.label}
                 </p>
               </div>
@@ -277,11 +277,11 @@ const Index = () => {
           </div>
         </div>
         {/* right */}
-        <div className="mt-10 lg:mt-44 lg:mr-32 mb-16 order-2 flex justify-center lg:justify-end">
+        <div className="mt-10  mb-16 order-2 flex justify-center lg:mt-44 lg:mr-32 lg:justify-end 2xl:mr-56">
           <img
             src={photoA}
             alt="HSQ Tower Exterior View with green mountains"
-            className="w-72 h-80 lg:w-80 lg:h-96 rounded-3xl object-cover"
+            className="w-72 h-80 lg:w-80 lg:h-96 rounded-3xl object-cover 2xl:w-[60%] 2xl:h-[80%]"
             loading="lazy"
           />
         </div>
@@ -293,7 +293,7 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-black/20 h-64 " />
         <div className="pt-10  flex flex-col relative text-center space-y-3">
-          <h1 className="poppins-bold text-2xl  lg:text-3xl text-white">
+          <h1 className="poppins-bold text-2xl  lg:text-3xl text-white 2xl:text-5xl">
             Guest Feedback You Can Trust
           </h1>
           <a
@@ -334,6 +334,11 @@ const Index = () => {
                 spaceBetween: -100,
                 centeredSlides: true,
               }, // large desktop → 4 cards
+              1536: {
+                slidesPerView: 3.2,
+                spaceBetween: -100,
+                centeredSlides: true,
+              },
             }}
             className="w-full"
           >
@@ -358,7 +363,6 @@ const Index = () => {
                       date={item.date}
                     />
                   </Suspense>
-                  {/* ))} */}
                 </div>
               </SwiperSlide>
             ))}
@@ -375,34 +379,16 @@ const Index = () => {
           {/* content */}
           <div className="flex flex-col lg:flex-row w-full space-y-3 md:space-y-5  relative pt-3 md:pt-10 lg:pt-20 pb-10 ">
             {/* heading */}
-            {/* <div className=" w-full flex flex-col order-1 lg:order-2 m-auto lg:w-1/2">
-              <img
-                className="w-[50%] md:w-[50%] h-32  m-auto lg:ml-44 2xl:ml-56"
-                src={logo}
-                loading="lazy"
-                alt=""
-              />
-              <h1 className="text-white text-center poppins-extrabold  sm:text-2xl">
-                Hotel Guest Facilities <p>Where Every Detail Meets Luxury</p>
-              </h1>
-              <Link to="/aminities">
-                <div className="flex justify-center mt-4">
-                  <Suspense>
-                    <CommanButton label="Learn More" />
-                  </Suspense>
-                </div>
-              </Link>
-            </div> */}
             <div className="w-full flex flex-col items-center justify-center text-center order-1 lg:order-2 m-auto lg:w-1/2">
               <img
-                className="w-[50%] md:w-[40%] h-32 object-contain mx-auto"
+                className="w-[50%] md:w-[40%] h-32 object-contain mx-auto 2xl:h-[30%] 2xl:w-[30%]"
                 src={logo}
                 loading="lazy"
                 alt=""
               />
-              <h1 className="text-white poppins-extrabold mt-4 sm:text-2xl">
+              <h1 className="text-white poppins-extrabold mt-4 sm:text-2xl 2xl:text-4xl 2xl:mt-1">
                 Hotel Guest Facilities
-                <p className="text-white text-sm sm:text-base font-normal">
+                <p className="text-white text-sm sm:text-base font-normal 2xl:text-lg">
                   Where Every Detail Meets Luxury
                 </p>
               </h1>
@@ -414,7 +400,7 @@ const Index = () => {
                 </div>
               </Link>
             </div>
-            <div className="flex flex-row justify-center  order-1 lg:order-2 gap-3 w-full md:w-[60%] m-auto lg:w-[40%] flex-wrap">
+            <div className="flex flex-row justify-center  order-1 lg:order-2 gap-3 w-full md:w-[60%] m-auto lg:w-[40%] 2xl:w-[30%] flex-wrap">
               {Aminities.map((data, index) => (
                 <div
                   key={index}
@@ -423,7 +409,7 @@ const Index = () => {
                   {/* <data.icon size={40} className="text-primary" /> */}
                   <data.icon />
 
-                  <p className="text-white text-[12px] font-medium pt-1">
+                  <p className="text-white text-[12px] poppins-semibold pt-1 2xl:text-[14px]">
                     {data.lable}
                   </p>
                 </div>
@@ -434,8 +420,10 @@ const Index = () => {
       </section>
       {/* Rooms and Suites */}
       <section className="backgroundcolor flex pt-10 justify-center flex-col items-center pb-10  ">
-        <h1 className="poppins-bold text-2xl sm:text-3xl ">Rooms & Suites</h1>
-        <p className="text-sm poppins-medium">
+        <h1 className="poppins-bold text-2xl sm:text-3xl 2xl:text-4xl">
+          Rooms & Suites
+        </h1>
+        <p className="text-sm poppins-medium 2xl:text-lg">
           Discover Our Collection of Elegant Rooms
         </p>
         <div className="flex flex-col lg:flex-row gap-4 mt-10">
@@ -492,11 +480,13 @@ const Index = () => {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center  space-y-3 text-center px-4">
-          <h1 className="Tuesdaynight text-lg md:text-4xl">Look at The</h1>
-          <p className="poppins-bold  sm:w-[70%] text-xl md:text-3xl lg:text-5xl">
+          <h1 className="Tuesdaynight text-lg md:text-4xl 2xl:text-7xl">
+            Look at The
+          </h1>
+          <p className="poppins-bold  sm:w-[70%] text-xl md:text-3xl lg:text-5xl 2xl:text-6xl">
             PHOTO GALLERY OF OUR HOTEL
           </p>
-          <p className="text-sm">Welcome to our photo gallery</p>
+          <p className="text-sm 2xl:text-xl">Welcome to our photo gallery</p>
           {/* Button */}
           <Link to="/gallery">
             <Suspense>
@@ -510,10 +500,10 @@ const Index = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Left Side */}
           <div className="space-y-3 sm:space-y-6 px-6 md:px-12 lg:px-20">
-            <h2 className="text-2xl text-center md:text-4xl poppins-bold text-black">
+            <h2 className="text-2xl text-center md:text-4xl poppins-bold text-black 2xl:text-5xl">
               Our Restaurant
             </h2>
-            <p className="text-center lg:leading-relaxed poppins-regular max-w-md">
+            <p className="text-center lg:leading-relaxed poppins-regular max-w-md 2xl:w-[80%] 2xl:m-auto 2xl:text-lg">
               Indulge in a gourmet buffet breakfast, thoughtfully served in our
               sophisticated lounge or on the serene patio for a touch of
               open-air luxury.
@@ -527,19 +517,19 @@ const Index = () => {
                     onClick={() => toggleAccordion(index)}
                     className="w-full flex items-center justify-between px-4 py-2 transition"
                   >
-                    <span className="text-black poppins-medium">
+                    <span className="text-black poppins-medium 2xl:text-2xl">
                       {kitchen.title}
                     </span>
                     {activeIndex === index ? (
-                      <Minus className="text-black w-5 h-5 bg-gradient-to-r from-[#D7A94D] to-[#D49237] rounded-sm" />
+                      <Minus className="text-black w-5 h-5 bg-gradient-to-r from-[#D7A94D] to-[#D49237] rounded-sm 2xl:w-9 2xl:h-9" />
                     ) : (
-                      <Plus className="text-black w-5 h-5 bg-gradient-to-r from-[#D7A94D] to-[#D49237] rounded-sm" />
+                      <Plus className="text-black w-5 h-5 bg-gradient-to-r from-[#D7A94D] to-[#D49237] rounded-sm 2xl:w-9 2xl:h-9" />
                     )}
                   </button>
 
                   {/* Description */}
                   {activeIndex === index && (
-                    <div className="px-4 pb-4 poppins-reguler text-sm text-black">
+                    <div className="px-4 pb-4 poppins-reguler text-sm text-black 2xl:text-lg">
                       <div className="border-t opacity-15 border-black" />{" "}
                       <p className="pt-1">{kitchen.description}</p>
                     </div>
@@ -550,11 +540,11 @@ const Index = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex w-[90%] md:m-auto ">
+          <div className="flex w-[90%] md:m-auto 2xl:w-[50%] ">
             <img
               src={restaurent}
               alt="Restaurant 1"
-              className="object-cover w-full h-auto md:h-96 md:w-fit  top-24"
+              className="object-cover w-full h-auto md:h-96 md:w-fit  top-24 2xl:w-full 2xl:h-full"
             />
           </div>
         </div>
@@ -563,33 +553,33 @@ const Index = () => {
       <section className="bg-black w-full  p-1 md:p-10 flex flex-col sm:flex-row justify-between text-white">
         {/* left */}
         <div className="p-5 oder-1 flex items-baseline flex-col space-y-7">
-          <h1 className="poppins-extrabold text-2xl text-center lg:text-3xl">
+          <h1 className="poppins-extrabold text-2xl text-center lg:text-3xl 2xl:text-4xl">
             Near HSQ Towers
           </h1>
           {/* location1 */}
           <div className="flex flex-row items-center gap-4">
             <div className="relative bg-primary py-2 px-2 rounded-full"></div>
-            <p>3 mins Mall Road Murree</p>
+            <p className="2xl:text-lg">3 mins Mall Road Murree</p>
           </div>
           {/* location2 */}
           <div className="flex flex-row items-center gap-4">
             <div className=" relative bg-primary py-2 px-2 rounded-full"></div>
-            <p>5 mins Mcdonalds,lower topa</p>
+            <p className="2xl:text-lg">5 mins Mcdonalds,lower topa</p>
           </div>
           {/* location3 */}
           <div className="flex flex-row items-center gap-4">
             <div className=" relative bg-primary py-2 px-2 rounded-full" />
-            <p>6 mins Coffee bean and tea leaf</p>
+            <p className="2xl:text-lg">6 mins Coffee bean and tea leaf</p>
           </div>
           {/* location4 */}
           <div className="flex flex-row items-center gap-4">
             <div className="relative bg-primary py-2 px-2 rounded-full" />
-            <p> 10 mins Gloria Jeans, Chaye Khana</p>
+            <p className="2xl:text-lg"> 10 mins Gloria Jeans, Chaye Khana</p>
           </div>
           {/* google direction */}
           <div className="flex flex-row items-center gap-4">
             <div className=" relative bg-primary py-2 px-2 rounded-full" />
-            <p> Get Directions on Google/Apple Maps</p>
+            <p className="2xl:text-lg"> Get Directions on Google/Apple Maps</p>
           </div>
           {/* Review */}
           <a

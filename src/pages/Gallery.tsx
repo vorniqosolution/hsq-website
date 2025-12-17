@@ -43,14 +43,14 @@ function Gallery() {
           {/* Overlays */}
           {/* <div className="absolute inset-0 bg-[#FFDC92]/20" /> */}
           {/* <div className="absolute inset-0 bg-black/50" /> */}
-          <div className=" pt-20 lg:pt-28 2xl:pt-36 flex-col flex justify-center items-center text-white">
-            <h1 className="Tuesdaynight text-white text-[35px] lg:text-[50px] text-center ">
+          <div className=" pt-20 lg:pt-28  flex-col flex justify-center items-center text-white 2xl:pt-56">
+            <h1 className="Tuesdaynight text-white text-[35px] lg:text-[50px] text-center 2xl:text-8xl ">
               Look at The
             </h1>
-            <h1 className="poppins-bold  text-center text-2xl xs:text-4xl lg:text-7xl">
+            <h1 className="poppins-bold  text-center text-2xl xs:text-4xl lg:text-7xl 2xl:text-7xl">
               PHOTO GALLERY
             </h1>
-            <p className=" w-[90%] lg:w-[70%]  m-auto text-center">
+            <p className=" w-[90%] lg:w-[70%]  m-auto text-center 2xl:text-lg">
               At HSQ Tower, we blend comfort, elegance, and thoughtful service
               to create experiences beyond a place to stay.
             </p>
@@ -65,7 +65,7 @@ function Gallery() {
             <div className="text-center text-2xl xs:text-3xl lg:text-start 2xl:text-5xl 2xl:ml-4 lg:w-1/3">
               <h1 className="poppins-bold">Discover Elegance Frame By Frame</h1>
             </div>
-            <div className=" text-center text-sm poppins-medium  lg:w-1/3 2xl:w-1/4 2xl:text-start 2xl:mr-3">
+            <div className=" text-center text-sm poppins-medium  lg:w-1/3 2xl:w-1/4 2xl:text-start 2xl:mr-3 2xl:text-lg">
               <p>
                 At HSQ Tower, elegance meets convenience — the perfect stay for
                 guests who seek charm, comfort, and the ideal location to
@@ -80,7 +80,7 @@ function Gallery() {
                 <button
                   key={cat.name}
                   onClick={() => setActive(cat.name)}
-                  className={`px-3 lg:px-10 py-2 rounded-md text-sm poppins-semibold transition ${
+                  className={`px-3 lg:px-10 py-2 rounded-md text-sm poppins-semibold transition 2xl:text-xl ${
                     active === cat.name
                       ? "bg-[#D49237] text-white shadow"
                       : "text-black hover:bg-[#D49237]"

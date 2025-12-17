@@ -48,7 +48,7 @@ function BookingFoam() {
   }, [formData, setBookingFormData]);
   return (
     <>
-      <div className="bg-[#FFFAF1]  w-full  rounded-lg h-full pb-5">
+      <div className="bg-[#FFFAF1] w-full rounded-lg h-full pb-5">
         {/* heading */}
         <div className="bg-primary h-12 p-4 text-white  rounded-tl-3xl rounded-tr-3xl">
           <h1 className="poppins-bold">Guest Details</h1>
@@ -59,7 +59,7 @@ function BookingFoam() {
             <div className="flex flex-col lg:flex-row gap-4 mb-5">
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 name="name"
                 id=""
@@ -69,7 +69,7 @@ function BookingFoam() {
               />
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 placeholder="03123456789"
                 name="contact"
@@ -81,7 +81,7 @@ function BookingFoam() {
             <div className="flex  flex-col lg:flex-row gap-4 mb-5">
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 name="address"
                 value={formData.address}
@@ -91,7 +91,7 @@ function BookingFoam() {
               />
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 name="email"
                 value={formData.email}
@@ -103,7 +103,7 @@ function BookingFoam() {
             <div className="flex  flex-col lg:flex-row gap-4 mb-5">
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 name="cnic"
                 value={formData.cnic}
@@ -113,7 +113,7 @@ function BookingFoam() {
               />
               <input
                 className="pl-5 py-2 rounded-md lg:w-1/2 border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 name="arrivaltime"
                 value={formData.arrivaltime}
@@ -125,7 +125,7 @@ function BookingFoam() {
             <div className="flex  flex-col lg:flex-row gap-4 mb-5">
               <input
                 className="pl-5 py-2 rounded-md  border border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:py-3"
                 type="text"
                 name="promocode"
                 value={formData.promocode}
@@ -145,11 +145,13 @@ function BookingFoam() {
                 cols={50}
                 placeholder="Special message...."
                 className="border p-2 w-full rounded-md border-gray-300 
-             focus:outline-none focus:ring-2 focus:ring-blue-400"
+             focus:outline-none focus:ring-2 focus:ring-blue-400 2xl:p-8"
               ></textarea>
             </div>
             {/* payment method */}
-            <p className="poppins-reguler text-gray-400">Payment Method</p>
+            <p className="poppins-reguler text-gray-400 2xl:text-xl">
+              Payment Method
+            </p>
             <div className="pt-3 gap-2 flex  flex-col lg:flex-row poppins-reguler text-neutral-700">
               <div className="flex  items-center space-x-2">
                 {/* <input
@@ -173,7 +175,9 @@ function BookingFoam() {
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
-                <label htmlFor="card">Credit/Debit Card</label>
+                <label className="2xl:text-xl" htmlFor="card">
+                  Credit/Debit Card
+                </label>
               </div>
               <div className="flex items-center space-x-2">
                 {/* <input
@@ -197,7 +201,9 @@ function BookingFoam() {
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
-                <label htmlFor="hotel">Pay At Hotel</label>
+                <label className="2xl:text-xl" htmlFor="hotel">
+                  Pay At Hotel
+                </label>
               </div>
             </div>
             {/* terms and condition */}
@@ -211,7 +217,11 @@ function BookingFoam() {
                 onChange={handleChange}
                 className="accent-blue-600"
               />
-              <label onClick={() => navigate("/terms")} htmlFor="term">
+              <label
+                className="2xl:text-xl"
+                onClick={() => navigate("/terms")}
+                htmlFor="term"
+              >
                 I agree with{" "}
                 <span className="underline hover:cursor-pointer">
                   terms conditions

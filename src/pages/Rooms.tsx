@@ -32,14 +32,14 @@ const Rooms = () => {
           style={{ backgroundImage: `url(${roomimage})` }}
         >
           <div className="inset-0 bg-black/50" />
-          <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-40">
-            <h1 className="Tuesdaynight text-[35px] sm:text-[50px] text-center">
+          <div className=" flex flex-col text-white justify-center items-center space-y-3 pt-24 sm:pt-40 2xl:pt-56">
+            <h1 className="Tuesdaynight text-[35px] sm:text-[50px] text-center 2xl:text-8xl">
               Look at The
             </h1>
             <h1 className="poppins-bold  text-3xl md:text-5xl lg:text-7xl">
               ROOMS AND SUITES
             </h1>
-            <p className="text-center w-[22rem] sm:w-1/2">
+            <p className="text-center w-[22rem] sm:w-1/2 2xl:text-xl">
               Discover refined comfort in our elegantly designed rooms spread
               across six floors, each crafted with style and sophistication in
               mind.

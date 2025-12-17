@@ -24,21 +24,21 @@ function Review() {
           className="w-full bg-cover bg-bottom h-[35vh] xs:h-[30vh] lg:h-[70vh]"
           style={{ backgroundImage: `url(${reviewbg})` }}
         >
-          <div className="flex flex-col  text-white justify-center items-center pt-12 xs:pt-14 md:pt-24 lg:pt-36 space-y-2">
-            <h1 className="Tuesdaynight text-2xl md:text-3xl lg:text-5xl">
+          <div className="flex flex-col  text-white justify-center items-center pt-12 xs:pt-14 md:pt-24 lg:pt-36 space-y-2 2xl:pt-56">
+            <h1 className="Tuesdaynight text-2xl md:text-3xl lg:text-5xl 2xl:text-8xl">
               Stories
             </h1>
-            <h1 className="poppins-bold text-2xl xs:text-3xl md:text-4xl lg:text-5xl">
+            <h1 className="poppins-bold text-2xl xs:text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl">
               OF SATISFACTION
             </h1>
-            <p className="text-sm text-center">
+            <p className="text-sm text-center 2xl:text-lg">
               Discover what makes every stay at HSQ Towers truly unforgettable
             </p>
           </div>
         </section>
         {/* body section */}
         <section className="backgroundcolor">
-          <h1 className="poppins-bold text-2xl pt-12 pb-10 text-center">
+          <h1 className="poppins-bold text-2xl pt-12 pb-10 text-center 2xl:text-4xl">
             Stories Shared by Our Visitors
           </h1>
           {/* cards with crousel */}
@@ -84,6 +84,11 @@ function Review() {
                   spaceBetween: -100,
                   centeredSlides: true,
                 }, // large desktop → 4 cards
+                1536: {
+                  slidesPerView: 3.2,
+                  spaceBetween: -100,
+                  centeredSlides: true,
+                },
               }}
               className="w-full"
             >

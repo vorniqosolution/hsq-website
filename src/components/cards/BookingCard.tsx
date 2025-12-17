@@ -21,7 +21,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ room }) => {
   };
   return (
     <>
-      <Card className="rounded-2xl relative shadow-lg overflow-hidden bg-white w-72 sm:w-64 ">
+      <Card className="rounded-2xl relative shadow-lg overflow-hidden bg-white w-72 sm:w-64 2xl:w-80 2xl:overflow-visible">
         {/* Price Badge */}
         <div className="absolute top-3 left-3 bg-white rounded-full px-3 py-1 z-50 shadow text-sm poppins-semibold-italic">
           Rs {room.rate}/-
@@ -31,7 +31,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ room }) => {
         <img
           src={room.images[0]}
           alt="One Bed Deluxe Room"
-          className="w-full h-52 object-cover relative rounded-lg"
+          className="w-full h-52 object-cover relative rounded-lg "
         />
         <CardContent className="flex flex-col space-y-4 p-4">
           {/* Title & Description */}

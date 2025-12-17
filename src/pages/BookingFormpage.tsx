@@ -164,9 +164,9 @@ function BookingFormpage() {
           >
             {/* shadow div */}
             <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute left-[20%] top-[30%]   md:left-[30%] md:top-[40%] lg:left-[35%] lg:top-[30%]">
-              <h1 className="text-white poppins-extrabold uppercase text-2xl  md:text-4xl lg:text-5xl ">
-                {room?.category ? room?.category : null} room
+            <div className="absolute left-[20%] top-[30%] md:left-[30%] md:top-[40%] lg:left-[35%] lg:top-[30%] 2xl:top-[40%]">
+              <h1 className="text-white poppins-extrabold uppercase text-2xl  md:text-4xl lg:text-5xl 2xl:text-6xl ">
+                {room?.category ? room?.category : null} Room
               </h1>
             </div>
             <div className="absolute flex flex-col bottom-0 md:left-16  lg:left-24 sm:bottom-24 text-white">
@@ -181,8 +181,10 @@ function BookingFormpage() {
               </p>
             </div>
             <div className="absolute  text-white right-0 bottom-3  sm:bottom-10 md:right-10 lg:right-32">
-              <p className="text-primary poppins-bold ">Room Details:</p>
-              <ul className="text-sm">
+              <p className="text-primary poppins-bold  2xl:text-2xl">
+                Room Details:
+              </p>
+              <ul className="text-sm 2xl:text-lg">
                 <li>Free Wi-Fi</li>
                 <li>Complimentary Breakfast</li>
                 <li>Mountain View</li>
@@ -206,7 +208,7 @@ function BookingFormpage() {
                   <h1 className="poppins-bold text-xl">Stays</h1>
                 </div>
                 {/* line */}
-                <div className="border-t-2 text-neutral-500 w-[90%] lg:w-[350px] m-auto " />
+                <div className="border-t-2 text-neutral-500 w-[90%] lg:w-[350px] m-auto  2xl:w-full" />
                 {/* room type */}
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
@@ -255,7 +257,7 @@ function BookingFormpage() {
                   </div>
                 </div>
                 {/* line */}
-                <div className="border-t-2 text-neutral-500 w-[90%] lg:w-[350px] m-auto " />
+                <div className="border-t-2 text-neutral-500 w-[90%] lg:w-[350px] m-auto  2xl:w-full" />
                 {/* One Day Rate  */}
                 <div className="m p-4">
                   <h1 className="poppins-bold text-xl">One Day Rate </h1>
@@ -276,7 +278,7 @@ function BookingFormpage() {
                   <h1 className="poppins-bold text-xl">Price Summary</h1>
                 </div>
                 {/* room rent */}
-                <div className="flex flex-col p-4 bg-[#FFF2DD]  w-[90%] lg:w-96 rounded-md m-auto">
+                <div className="flex flex-col p-4 bg-[#FFF2DD]  w-[90%] lg:w-96 2xl:w-full rounded-md m-auto">
                   <div className="flex flex-row justify-between">
                     <h1 className="poppins-bold">Room Rate:</h1>
                     <p>
@@ -292,7 +294,7 @@ function BookingFormpage() {
                   </div>
                 </div>
                 {/* line */}
-                <div className="border-t-2 text-neutral-500 w-[90%] lg:w-[350px] m-auto " />
+                <div className="border-t-2 text-neutral-500 w-[90%] lg:w-[350px] m-auto 2xl:w-full " />
                 {/* total */}
                 <div className="flex flex-col p-4">
                   <div className="flex flex-row justify-between">
@@ -317,12 +319,12 @@ function BookingFormpage() {
               {/* Review */}
               <div className=" flex md:justify-center lg:justify-start ">
                 {/* review card */}
-                <div className="w-full  md:w-[90%] lg:w-[70%] text-black my-4">
-                  <div className="bg-[#D7AB4E]  rounded-xl">
-                    <h1 className="poppins-semibold pt-5 pl-5 ">
+                <div className="w-full  md:w-[90%] lg:w-[70%] text-black my-4 2xl:my-7">
+                  <div className="bg-[#D7AB4E]  rounded-xl 2xl:h-36">
+                    <h1 className="poppins-semibold pt-5 pl-5 2xl:text-xl">
                       Hsq towers,Jhika Gali, Murree
                     </h1>
-                    <p className="pl-5 pb-2 poppins-bold">
+                    <p className="pl-5 pb-2 poppins-bold 2xl:text-lg">
                       4.8 ★★★★★{" "}
                       <span className="underline pl-4 text-sm">
                         49Google reviews
@@ -334,7 +336,7 @@ function BookingFormpage() {
                       rel="noopener noreferrer"
                     >
                       <div className="bg-[#FFD680] rounded-xl p-2 flex justify-center poppins-semibold flex-row gap-3 items-center">
-                        <p className="underline text-sm text-center hover:cursor-pointer">
+                        <p className="underline text-sm text-center hover:cursor-pointer 2xl:text-lg">
                           View larger map
                         </p>
                         <div className="relative bg-black w-7 h-7 rounded-full">

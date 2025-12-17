@@ -140,8 +140,8 @@ const RoompageCard: React.FC<RoomCardProps> = ({ room }) => {
           onClick={() => navigate("/bookingform", { state: room })}
           className="relative flex justify-center"
         >
-          <Button label="Book Now" className="w-52" />
-          <div className="absolute px-1 py-1 rounded-full right-2 xs:right-10 md:right-[37%] lg:right-6 top-[2px] bg-black">
+          <Button label="Book Now" className="w-52 2xl:w-40 2xl:h-10" />
+          <div className="absolute px-1 py-1 rounded-full right-2 xs:right-10 md:right-[37%] lg:right-6 top-[2px] bg-black 2xl:right-[52px] 2xl:top-[5px]">
             <ChevronRight color="white" size={20} />
           </div>
         </div>

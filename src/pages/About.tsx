@@ -23,10 +23,10 @@ function About() {
           {/* Overlay for dark effect */}
           {/* Content */}
           <div className="relative z-10 flex flex-col justify-center items-center text-center h-full pt-6 ">
-            <h1 className="text-3xl md:text-5xl poppins-bold text-white mb-6 sm:mb-2">
+            <h1 className="text-3xl md:text-5xl poppins-bold text-white mb-6 sm:mb-2 2xl:text-8xl">
               ABOUT HSQ TOWER
             </h1>
-            <p className="text-white text-sm poppins-medium  w-fit lg:w-[550px] leading-relaxed mb-6">
+            <p className="text-white text-sm poppins-medium  w-fit lg:w-[550px] leading-relaxed mb-6 2xl:text-xl 2xl:w-[50%]">
               At HSQ Tower, we believe that true luxury lies in the perfect
               blend of comfort, elegance, and thoughtful service. Our hotel is
               designed for travelers who seek more than just a place to stay —
@@ -43,12 +43,12 @@ function About() {
           </div>
         </section>
         {/* hotel card section */}
-        <section className="backgroundcolor h-[85vh] lg:h-64">
+        <section className="backgroundcolor h-[85vh] lg:h-64 2xl:h-96">
           <section className="w-full flex flex-col  pt-10 lg:pt-0  justify-center lg:-bottom-10  items-center  lg:mt-0 absolute ">
-            <div className="bg-[#FFF3DB] rounded-[30px] shadow-[0px_20px_0px_rgb(215,171,78),0_35px_60px_-15px_rgba(0,0,0,0.3)]  flex flex-col lg:flex-row items-center justify-center space-y-7 md:space-y-2 lg:space-y-0  pt-10 pb-7 lg:pt-0 w-[90%] md:w-[60%] lg:w-full  max-w-5xl h-full lg:h-48 ">
+            <div className="bg-[#FFF3DB] rounded-[30px] shadow-[0px_20px_0px_rgb(215,171,78),0_35px_60px_-15px_rgba(0,0,0,0.3)]  flex flex-col lg:flex-row items-center justify-center space-y-7 md:space-y-2 lg:space-y-0  pt-10 pb-7 lg:pt-0 w-[90%] md:w-[60%] lg:w-full  max-w-5xl h-full lg:h-48 2xl:h-64 2xl:py-36 ">
               {/* Left Content */}
-              <div className="flex-flex flex-col  lg:ml-16 poppins-extrabold items-center lg:items-start text-5xl  lg:text-4xl text-center md:text-left">
-                <h2 className=" mb-4">
+              <div className="flex-flex flex-col lg:ml-16 poppins-extrabold items-center lg:items-start text-5xl  lg:text-4xl text-center md:text-left">
+                <h2 className=" mb-4 2xl:text-5xl">
                   Welcome To <br />
                   <span className="text-primary">HSQ Tower</span>
                 </h2>
@@ -59,13 +59,13 @@ function About() {
                 <img
                   src={hotelimage} // replace with your image
                   alt="HSQ Tower"
-                  className="w-52 md:w-60 lg:w-52 lg:pt-32  lg:ml-32 "
+                  className="w-52 md:w-60 lg:w-52 lg:pt-32  lg:ml-32 2xl:ml-5 2xl:w-72 "
                 />
               </div>
 
               {/* Right Content */}
               <div className="w flex justify-center ">
-                <p className="text-black  poppins-medium leading-relaxed md:pt-10 lg:pt-0 text-center text-sm lg:text-left w-[80%] md:w-full  max-w-sm">
+                <p className="text-black  poppins-medium leading-relaxed md:pt-10 lg:pt-0 text-center text-sm lg:text-left w-[80%] md:w-full  max-w-sm 2xl:text-lg">
                   At HSQ Tower, elegance meets convenience — the perfect stay
                   for guests who seek charm, comfort, and the ideal location to
                   explore Murree.
@@ -76,8 +76,10 @@ function About() {
         </section>
         {/* Exceeding Expectations */}
         <section className="backgroundcolor pt-4  flex justify-center flex-col items-center">
-          <p className="poppins-medium text-[#D49237]">Pure Hospitality</p>
-          <h1 className="poppins-bold text-2xl lg:text-3xl">
+          <p className="poppins-medium text-[#D49237] 2xl:text-2xl">
+            Pure Hospitality
+          </p>
+          <h1 className="poppins-bold text-2xl lg:text-3xl 2xl:text-5xl mt-3">
             Exceeding Expectations!
           </h1>
           {/* card div */}
@@ -136,9 +138,9 @@ function About() {
             </div>
 
             {/* Center logo section */}
-            <div className="flex justify-center items-center p-8 sm:p-10 lg:p-14 2xl:p-20 hover:scale-105 duration-200 ease-out">
+            <div className="flex justify-center items-center p-8 sm:p-10 lg:p-14 2xl:p-40 hover:scale-105 duration-200 ease-out">
               <div
-                className="w-32 h-32 sm:w-36 sm:h-36 lg:w-44 lg:h-44 2xl:w-52 2xl:h-52 
+                className="w-32 h-32 sm:w-36 sm:h-36 lg:w-44 lg:h-44 2xl:w-80 2xl:h-80 
                     bg-white/10 backdrop-blur-md border border-gray-300 
                     rounded-full shadow-lg flex justify-center items-center"
               >

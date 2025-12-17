@@ -2,16 +2,12 @@ import React from "react";
 
 function AboutDinning() {
   return (
-    // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-    // <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
     <svg
       fill="#d7ab4e"
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
-      width={65}
-      height={65}
+      className="w-16 h-16 lg:w-20 lg:h-20 2xl:w-48 2xl:h-48"
       viewBox="0 0 528.453 528.453"
       stroke="#d7ab4e"
     >

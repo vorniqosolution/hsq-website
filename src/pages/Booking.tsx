@@ -39,14 +39,17 @@ function Booking() {
           style={{ backgroundImage: `url(${bookbg})` }}
         >
           {/* heading */}
-          <div className="flex justify-center space-y-3 pt-20 md:pt-36  lg:pt-[150px] xl:pt-48 flex-col items-center">
-            <p className="poppins-thin text-sm">
+          <div className="flex justify-center space-y-3 pt-20 md:pt-36  lg:pt-[150px] xl:pt-48 flex-col items-center 2xl:pt-56">
+            <p className="poppins-thin text-sm 2xl:text-xl">
               Get Directions on(Google Maps/Apple Maps)
             </p>
-            <h1 className="poppins-bold text-2xl  lg:text-5xl lg:w-1/2 text-center">
-              Stay your way – six rooms, six unique vibes
+            <h1 className="poppins-bold text-2xl  lg:text-5xl lg:w-1/2 text-center 2xl:text-6xl">
+              Stay your way six rooms, six unique vibes
             </h1>
-            <Viewbutton label="Book Now" />
+            <div className="!mt-5 2xl:!mt-10">
+              <Viewbutton label="Book Now" />
+            </div>
+
             {/* <button className="bookbtn flex items-center gap-2">
               BOOK NOW
               <div className="bg-black rounded-full">
@@ -55,19 +58,18 @@ function Booking() {
             </button> */}
           </div>
           {/* booking widget */}
-          <div className="absolute -bottom-44 md:-bottom-24 lg:-bottom-14 w-full ">
+          <div className="absolute -bottom-44 md:-bottom-24 lg:-bottom-14 w-full  2xl:w-[80%] 2xl:left-52">
             <BookingWidget></BookingWidget>
-            {/* <Bookin */}
           </div>
         </div>
         {/* body section*/}
         <div className="bg-primary/25 pt-52 sm:pt-32  flex flex-col text-center space-y-5 ">
-          <h1 className="poppins-bold  text-3xl sm:text-4xl">
+          <h1 className="poppins-bold  text-3xl sm:text-4xl 2xl:text-6xl">
             Our
             <span className="text-primary"> Featured </span>
             Room
           </h1>
-          <p className="poppins-light">
+          <p className="poppins-light 2xl:text-xl">
             Where elegance meets relaxation for an unforgettable stay
           </p>
           {/* cards with crousel */}
@@ -77,8 +79,6 @@ function Booking() {
               spaceBetween={1} // <-- gap between cards
               loop={true}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
-              // centeredSlides={true}
-              // navigation={true}
               breakpoints={{
                 0: {
                   // sm
@@ -98,8 +98,12 @@ function Booking() {
                   // lg
                   slidesPerView: 4,
                 },
+                1536: {
+                  slidesPerView: 5.5,
+                  centeredSlides: true,
+                  spaceBetween: 5,
+                },
               }}
-              // className="pb-10" // give bottom space for arrows if needed
             >
               {allRooms.map((data, index) => (
                 <SwiperSlide
@@ -107,9 +111,7 @@ function Booking() {
                   className="flex justify-center items-center "
                 >
                   <div className="flex justify-center">
-                    {/* {data.map((data, index) => ( */}
                     <BookingCard room={data} />
-                    {/* ))} */}
                   </div>
                 </SwiperSlide>
               ))}
@@ -117,19 +119,19 @@ function Booking() {
           </div>
           {/* Exclusive Amenities */}
           <div>
-            <h1 className="poppins-extrabold text-2xl sm:text-3xl mt-10 ">
+            <h1 className="poppins-extrabold text-2xl sm:text-3xl mt-10  2xl:text-5xl">
               Exclusive Amenities
             </h1>
-            <p className="mb-5">
+            <p className="mb-5 2xl:text-xl">
               Where elegance meets relaxation for an unforgettable stay
             </p>
           </div>
           {/* Amenities Card */}
-          <div className="mr-5 ml-5 poppins-medium lg:max-w-4xl lg:m-auto  h-fit sm:h-40 bg-primary rounded-lg  justify-center p-8 gap-6 md:gap-5 lg:gap-10 flex flex-wrap sm:flex-nowrap flex-row">
+          <div className="mr-5 ml-5 poppins-medium lg:max-w-4xl lg:m-auto h-fit sm:h-40 2xl:max-w-[90%] 2xl:h-56 bg-primary rounded-lg  justify-center p-8 gap-6 md:gap-5 lg:gap-10 flex flex-wrap sm:flex-nowrap flex-row">
             {/* wifi */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
-                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
+                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 2xl:w-32 2xl:h-32"
             >
               <div className="bg-black relative rounded-full  w-12 h-12 flex items-center justify-center">
                 {/* <Wifi className="text-primary" size={25} strokeWidth={3} /> */}
@@ -140,7 +142,7 @@ function Booking() {
             {/* fitness */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
-                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
+                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 2xl:w-32 2xl:h-32"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
                 <Gym />
@@ -150,7 +152,7 @@ function Booking() {
             {/* laundry */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
-                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
+                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 2xl:w-32 2xl:h-32"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
                 <Laundry />
@@ -160,7 +162,7 @@ function Booking() {
             {/* conference hall */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
-                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
+                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 2xl:w-32 2xl:h-32"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
                 <Conference />
@@ -170,7 +172,7 @@ function Booking() {
             {/* Roomservice */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
-                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
+                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 2xl:w-32 2xl:h-32"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
                 <Roomservice />
@@ -180,7 +182,7 @@ function Booking() {
             {/* on-site parking */}
             <div
               className="bg-white w-28 h-28 rounded-lg p-4 flex flex-col justify-center items-center 
-                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105"
+                transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 2xl:w-32 2xl:h-32"
             >
               <div className="bg-black relative rounded-full w-12 h-12 flex items-center justify-center">
                 <Parking />

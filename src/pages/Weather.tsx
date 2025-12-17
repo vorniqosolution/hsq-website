@@ -36,7 +36,7 @@ function Weather() {
     refetchOnMount: false, // don’t refetch when remounting component
     refetchOnReconnect: false,
   });
-  console.log("weather data", data);
+  // console.log("weather data", data);
   const ref = useRef(null);
   const inview = useInView(ref, { once: true });
   const count = useMotionValue(0);
@@ -88,14 +88,14 @@ function Weather() {
         className=" w-full bg-cover bg-bottom h-[50vh] lg:h-[90vh] "
         style={{ backgroundImage: `url(${weatherbg})` }}
       >
-        <div className="flex flex-col text-white justify-center items-center space-y-3 pt-20 sm:pt-36">
-          <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center">
+        <div className="flex flex-col text-white justify-center items-center space-y-3 pt-20 sm:pt-36 2xl:pt-56">
+          <h1 className="Tuesdaynight text-[25px] sm:text-[50px] text-center 2xl:text-8xl">
             Weather
           </h1>
-          <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center">
+          <h1 className="poppins-bold text-2xl md:text-5xl lg:text-6xl text-center 2xl:text-7xl">
             MURREE FORECAST
           </h1>
-          <p className="text-center w-80 sm:w-1/2">
+          <p className="text-center w-80 sm:w-1/2 2xl:text-xl">
             Discover refined comfort in our elegantly designed rooms spread
             across six floors, each crafted with style and sophistication in
             mind.
@@ -110,7 +110,7 @@ function Weather() {
         >
           {/* Header */}
           <header className="text-center">
-            <h1 className="text-xl poppins-semibold text-black">
+            <h1 className="text-xl poppins-semibold text-black 2xl:text-2xl">
               Murree, Punjab | <br className="block sm:hidden" /> {dayName},
               {`${date.getDate().toString().padStart(2, "0")}/${(
                 date.getMonth() + 1
@@ -131,7 +131,7 @@ function Weather() {
             <motion.div
               ref={ref}
               className="p-2 rounded-xl bg-[#D49237] text-2xl shadow-lg flex items-center justify-center 
-                 w-32 h-32 md:w-40 md:h-24 lg:w-36 lg:h-24 text-white poppins-bold md:text-4xl lg:p-6"
+                 w-32 h-32 md:w-40 md:h-24 lg:w-36 lg:h-24 text-white poppins-bold md:text-4xl lg:p-6 2xl:text-6xl 2xl:w-40 2xl:h-32"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -141,34 +141,34 @@ function Weather() {
             </motion.div>
             {/* Details (Max Temp, Dew, Humidity) */}
             <div className="flex flex-col space-y-3 my-6 md:my-0 text-black poppins-reguler text-lg">
-              <div className="flex items-center text-[15px] sm:text-lg ">
+              <div className="flex items-center text-[15px] sm:text-lg 2xl:text-2xl ">
                 <span className="mr-3 text-2xl ">🌡️</span> Feels like:{" "}
                 {data?.current?.feels_like} °C
               </div>
-              <div className="flex items-center text-[15px] sm:text-lg ">
+              <div className="flex items-center text-[15px] sm:text-lg  2xl:text-2xl">
                 <span className="mr-3 text-2xl">💧</span> Dew:{" "}
                 {data?.current?.dew_point} °C
               </div>
-              <div className="flex items-center text-[15px] sm:text-lg ">
+              <div className="flex items-center text-[15px] sm:text-lg  2xl:text-2xl">
                 <span className="mr-3 text-2xl">💨</span> Humidity:{" "}
                 {data?.current?.humidity}%
               </div>
             </div>
 
             {/* Current Weather Icon */}
-            <div className="bg-[#D49237] pt-3 rounded-xl shadow-md flex items-center justify-center w-32 h-32 md:w-36 md:h-24">
+            <div className="bg-[#D49237] pt-3 rounded-xl shadow-md flex items-center justify-center w-32 h-32 md:w-36 md:h-24 2xl:w-40 2xl:h-32">
               {/* <WeatherAnimation /> */}
               <Suspense>
                 <Lottie
                   animationData={getWeatherAnimation()}
                   loop
-                  className="w-24 h-24"
+                  className="w-24 h-24 2xl:w-32 2xl:h-32"
                 />
               </Suspense>
             </div>
           </div>
           {/* Sub-header / Slogan */}
-          <p className="text-center poppins-reguler ">
+          <p className="text-center poppins-reguler 2xl:text-xl">
             Plan Your Perfect Stay—Murree Weather at a glance
           </p>
         </div>

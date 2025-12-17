@@ -52,6 +52,8 @@ const AboutCard: React.FC<Titleprop> = ({ total, title, icon }) => {
         justify-between 
         relative
         sm:w-64
+        2xl:w-80
+        2xl:h-44
       "
     >
       {/* Gold Circle Icon */}
