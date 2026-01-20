@@ -48,7 +48,7 @@ const Hero: React.FC<HeroCarouselProps> = ({
       </div>
 
       {/* Text & Button Content */}
-      <div className="relative z-10 flex flex-col items-center mt-32 xs:mt-40 md:mt-40 lg:mt-24 xl:mt-36 2xl:mt-56 h-full text-center text-white px-6">
+      <div className="relative z-10 flex flex-col items-center mt-32 xs:mt-40 md:mt-40 lg:mt-24 xl:mt-36  h-full text-center text-white px-6">
         <h3 className="text-4xl sm:text-5xl Tuesdaynight mb-2 2xl:text-8xl">
           {slides[current].subtitle}
         </h3>
@@ -83,7 +83,7 @@ const Hero: React.FC<HeroCarouselProps> = ({
       </div>
 
       {/* Thumbnails Section */}
-      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex gap-4 z-10 2xl:bottom-20 2xl:gap-7">
+      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex gap-4 z-10 xl:bottom-12  2xl:gap-7">
         {slides.map((slide, index) => (
           <div
             key={index}

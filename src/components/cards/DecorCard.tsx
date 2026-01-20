@@ -45,8 +45,8 @@ const DecorCard: React.FC<Cardprops> = ({
       <div className="bg-[#FFF7E7] shadow-xl rounded-2xl p-6 flex flex-row lg:flex-col  w-full lg:w-56  lg:h-48 mt-6 md:mt-0">
         <div className="flex flex-col ">
           <h3 className="text-2xl poppins-bold">
-            RS. 9,999/-
-            {rate}
+            RS. {rate}/-
+            {/* {rate} */}
           </h3>
           <p className="text-xs text-black poppins-medium mt-1">
             for 1 night (+taxes and fees)
@@ -58,7 +58,7 @@ const DecorCard: React.FC<Cardprops> = ({
             label="Book Now"
             className="pl-4 text-left py-2 lg:w-44 lg:pl-6 "
           />
-          <div className="absolute ease-out px-1 py-1 rounded-full right-1 lg:right-3 top-[6px] bg-black 2xl:right-8 2xl:top-1">
+          <div className="absolute ease-out px-1 py-1 rounded-full right-1 lg:right-3 top-[6px] bg-black 2xl:right-2 2xl:top-1.5">
             <ChevronRight color="white" size={20} />
           </div>
         </div>

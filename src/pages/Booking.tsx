@@ -99,7 +99,7 @@ function Booking() {
                   slidesPerView: 4,
                 },
                 1536: {
-                  slidesPerView: 5.5,
+                  slidesPerView: 3.8,
                   centeredSlides: true,
                   spaceBetween: 5,
                 },

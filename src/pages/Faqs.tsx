@@ -164,7 +164,7 @@ function Faqs() {
                   onClick={() => toggleAccordion(index)}
                 >
                   <div className="flex justify-between items-center">
-                    <p className="font-semibold text-sm text-gray-900 break-words 2xl:text-xl">
+                    <p className="font-semibold text-sm text-gray-900 break-words 2xl:text-[15px]">
                       {faq.question}
                     </p>
                     <ChevronDown
@@ -175,7 +175,7 @@ function Faqs() {
                   </div>
 
                   {openIndex === index && (
-                    <p className="mt-2 text-gray-600 text-sm break-words 2xl:text-lg">
+                    <p className="mt-2 text-gray-600 text-sm break-words 2xl:text-[14px]">
                       {faq.answer}
                     </p>
                   )}

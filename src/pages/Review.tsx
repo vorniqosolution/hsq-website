@@ -85,8 +85,8 @@ function Review() {
                   centeredSlides: true,
                 }, // large desktop → 4 cards
                 1536: {
-                  slidesPerView: 3.2,
-                  spaceBetween: -100,
+                  slidesPerView: 2.9,
+                  spaceBetween: 0,
                   centeredSlides: true,
                 },
               }}

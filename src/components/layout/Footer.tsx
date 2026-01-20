@@ -10,6 +10,7 @@ import visa from "@/assets/Payment/visa.webp";
 import mastercard from "@/assets/Payment/master-card.webp";
 import dsc from "@/assets/Payment/discover.webp";
 import amex from "@/assets/Payment/american.webp";
+import { Link } from "react-router-dom";
 
 // Some bundlers import images as strings, others as { src: string }
 const asUrl = (img: any): string =>
@@ -136,13 +137,13 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-white/85">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                Hsq towers, Main Jhika Gali, Murree,
-                <br />
-                Rawalpindi, Punjab
+                <MapPin className="mt-0. h-4 w-4 text-primary lg:h-6 lg:w-6" />
+                Hsq towers, Main Jhika Gali, Murree
+                {/* <br /> */}
+                {/* Rawalpindi, Punjab */}
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" />
+                <Mail className="h-4 w-4 text-primary lg:h-6 lg:w-6" />
                 <a
                   className="hover:text-primary"
                   href="mailto:hsqtowers@gmail.com"
@@ -151,13 +152,13 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
+                <Phone className="h-4 w-4 text-primary lg:h-6 lg:w-6" />
                 <a className="hover:text-primary" href="tel:+923300049479">
                   +92 330 004 9479
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Clock className="h-4 w-4 text-primary" />
+                <Clock className="h-4 w-4 text-primary lg:h-6 lg:w-6" />
                 24/7 Customer Service
               </li>
             </ul>
@@ -189,9 +190,11 @@ export default function Footer() {
               ))}
             </div>
 
-            <p className="mt-6 text-[11px] text-white/70">
+            <p className="mt-6 text-[11px] lg:text-[13px] text-white/70">
               Designed and developed by{" "}
-              <span className="text-primary">Vorniqo solutions</span>
+              <Link to="https://vorniqosolutions.com/">
+                <span className="text-primary">Vorniqo solutions</span>
+              </Link>
             </p>
           </div>
         </div>

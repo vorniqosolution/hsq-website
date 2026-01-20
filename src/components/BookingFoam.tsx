@@ -21,7 +21,7 @@ function BookingFoam() {
 
   // Step 2: Handle input changes
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     // console.log("", name, value);
@@ -51,7 +51,7 @@ function BookingFoam() {
       <div className="bg-[#FFFAF1] w-full rounded-lg h-full pb-5">
         {/* heading */}
         <div className="bg-primary h-12 p-4 text-white  rounded-tl-3xl rounded-tr-3xl">
-          <h1 className="poppins-bold">Guest Details</h1>
+          <h1 className="poppins-bold lg:text-xl">Guest Details</h1>
         </div>
         <div className="pt-10 p-3 ">
           <form className="">
@@ -175,7 +175,7 @@ function BookingFoam() {
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
-                <label className="2xl:text-xl" htmlFor="card">
+                <label className="2xl:text-lg" htmlFor="card">
                   Credit/Debit Card
                 </label>
               </div>
@@ -201,7 +201,7 @@ function BookingFoam() {
                   onChange={handleChange}
                   className="accent-blue-600"
                 />
-                <label className="2xl:text-xl" htmlFor="hotel">
+                <label className="2xl:text-lg" htmlFor="hotel">
                   Pay At Hotel
                 </label>
               </div>

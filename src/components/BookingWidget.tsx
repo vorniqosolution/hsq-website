@@ -98,9 +98,9 @@ function BookingWidget() {
         <div
           className="border-t-[#D7AB4E] border-l-[#D7AB4E] border-r-[#666666] border-b-[#666666]
     border-2 rounded-3xl lg:rounded-full bg-gradient-to-l from-[#303030] to-[#111111]
-    w-full xs:w-[95%] md:w-[60%] lg:w-[80%]
+    w-full xs:w-[95%] md:w-[70%] lg:w-[80%] xl:w-[90%] 2xl:w-full
     m-auto h-fit lg:h-32 p-0 lg:p-14
-    gap-5 flex flex-col items-center lg:flex-row
+    gap-5 flex flex-col items-center lg:flex-row  lg:justify-center
     2xl:gap-14 2xl:p-16"
         >
           {/* LOGO */}
@@ -170,7 +170,7 @@ function BookingWidget() {
               Search
             </button>
 
-            <div className="absolute left-14 xs:left-20 lg:left-3 top-10 bg-black rounded-full px-1 py-1">
+            <div className="absolute left-14 xs:left-20 md:left-2 lg:left-3 top-10 bg-black rounded-full px-1 py-1">
               <Search size={18} color="white" />
             </div>
           </div>
